@@ -22,6 +22,16 @@ func controllerInit() -> void:
 		_allActions[child.name.to_lower()] = child
 		
 		continue
+		
+	for action in _allActions:
+		var foundAction:ControllerAction = _allActions[action]
+		
+		foundAction.coreState = self
+		
+		
+		continue
+		
+	actionTransition(_initalAction)
 	
 	return
 	
@@ -42,6 +52,8 @@ func actionTransition(actionName:String)->void:
 	foundAction.actionEnter()
 	currentAction = foundAction
 	
+	print(currentAction)
+	
 	
 	return
 
@@ -55,4 +67,20 @@ func controllerProcess(_delta:float) -> void:
 	return
 	
 func controllerPhysics(_delta:float) -> void:
+	return
+
+func _actionPhysics(delta:float) -> void:
+	if !currentAction:
+		return
+		
+	currentAction.actionPhysics(delta)
+
+	return
+	
+func _actionProcess(delta:float) -> void:
+	if !currentAction:
+		return
+		
+	currentAction.actionProcess(delta)
+
 	return

@@ -3,6 +3,10 @@
 class_name ControllerAction extends Node
 
 
+var coreState:ControllerState
+var corePlayer:Player
+
+
 @abstract
 func actionEnter(_message:String="")->void
 

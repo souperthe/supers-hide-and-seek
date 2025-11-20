@@ -2,8 +2,10 @@
 class_name ControllerManager extends Node
 
 var currentState:ControllerState
-var _previousState:ControllerState
+var run:bool = true
 
+
+var _previousState:ControllerState
 var _allStates:Dictionary[String, ControllerState]
 
 
@@ -50,5 +52,32 @@ func changeState(desiredState:String)->void:
 	foundState.controllerStart()
 	currentState = foundState
 	
+	
+	return
+
+
+func _process(delta: float) -> void:
+	
+	if !run:
+		return
+		
+	if !currentState:
+		return
+		
+	currentState.controllerProcess(delta)
+	currentState._actionProcess(delta)
+	
+	return
+	
+func _physics_process(delta: float) -> void:
+	
+	if !run:
+		return
+		
+	if !currentState:
+		return
+		
+	currentState.controllerPhysics(delta)
+	currentState._actionPhysics(delta)
 	
 	return
