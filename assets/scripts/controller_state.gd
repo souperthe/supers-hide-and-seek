@@ -4,7 +4,11 @@ class_name ControllerState extends Node
 
 @export var _initalAction:String
 
+var coreManager:ControllerManager
+var corePlayer:Player
+
 var currentAction:ControllerAction
+var currentActionName:String
 var _previousAction:ControllerAction
 
 var _allActions:Dictionary[String, ControllerAction]
@@ -27,6 +31,7 @@ func controllerInit() -> void:
 		var foundAction:ControllerAction = _allActions[action]
 		
 		foundAction.coreState = self
+		foundAction.corePlayer = corePlayer
 		
 		
 		continue
@@ -51,6 +56,7 @@ func actionTransition(actionName:String)->void:
 		
 	foundAction.actionEnter()
 	currentAction = foundAction
+	currentActionName = currentAction.name
 	
 	print(currentAction)
 	

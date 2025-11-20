@@ -1,6 +1,8 @@
 @icon("res://addons/plenticons/icons/svg/objects/coins-white.svg")
 class_name ControllerManager extends Node
 
+@export var corePlayer:Player
+
 var currentState:ControllerState
 var run:bool = true
 
@@ -25,6 +27,9 @@ func _ready() -> void:
 	for state in _allStates:
 		
 		var foundState:ControllerState = _allStates.get(state)
+		
+		foundState.corePlayer = corePlayer
+		foundState.coreManager = self
 		
 		foundState.controllerInit()
 		

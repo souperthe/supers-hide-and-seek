@@ -14,3 +14,7 @@ config/name="Super's Hide & Seek"
 run/main_scene="uid://l0fnoreb82o8"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[rendering]
+
+shading/overrides/force_vertex_shading=true

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://jrbuo0ken0kb" path="res://assets/scripts/player.gd" id="1_ikdab"]
 [ext_resource type="Script" uid="uid://df1c277cqjm5o" path="res://assets/scripts/controller_manager.gd" id="2_5pvfp"]
-[ext_resource type="Script" uid="uid://dx63y06pacekr" path="res://assets/scripts/controller_states/seeker.gd" id="3_jg13i"]
-[ext_resource type="Script" uid="uid://c04b57p8gi1fy" path="res://assets/scripts/controller_actions/seeker/idle.gd" id="4_jssbp"]
+[ext_resource type="Script" uid="uid://dx63y06pacekr" path="res://assets/scripts/controller_states/hider.gd" id="3_jg13i"]
+[ext_resource type="Script" uid="uid://c04b57p8gi1fy" path="res://assets/scripts/controller_actions/hider/idle.gd" id="4_jssbp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ikdab"]
 radius = 0.3
@@ -12,18 +12,20 @@ radius = 0.3
 radius = 0.3
 height = 1.2
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("controller")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "controller")]
 script = ExtResource("1_ikdab")
+camera = NodePath("Neck/Camera3D")
 controller = NodePath("controllerManager")
 
-[node name="controllerManager" type="Node" parent="."]
+[node name="controllerManager" type="Node" parent="." node_paths=PackedStringArray("corePlayer")]
 script = ExtResource("2_5pvfp")
+corePlayer = NodePath("..")
 
-[node name="seeker" type="Node" parent="controllerManager"]
+[node name="hider" type="Node" parent="controllerManager"]
 script = ExtResource("3_jg13i")
 _initalAction = "idle"
 
-[node name="idle" type="Node" parent="controllerManager/seeker"]
+[node name="idle" type="Node" parent="controllerManager/hider"]
 script = ExtResource("4_jssbp")
 
 [node name="standingCollision" type="CollisionShape3D" parent="."]
