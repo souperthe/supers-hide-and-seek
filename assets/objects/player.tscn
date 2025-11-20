@@ -21,6 +21,7 @@ script = ExtResource("2_5pvfp")
 
 [node name="seeker" type="Node" parent="controllerManager"]
 script = ExtResource("3_jg13i")
+_initalAction = "idle"
 
 [node name="idle" type="Node" parent="controllerManager/seeker"]
 script = ExtResource("4_jssbp")
