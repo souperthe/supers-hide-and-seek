@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8i5i2af5ohaf"]
+[gd_scene load_steps=9 format=3 uid="uid://c8i5i2af5ohaf"]
 
 [ext_resource type="Script" uid="uid://jrbuo0ken0kb" path="res://assets/scripts/player.gd" id="1_ikdab"]
 [ext_resource type="Script" uid="uid://df1c277cqjm5o" path="res://assets/scripts/controller_manager.gd" id="2_5pvfp"]
 [ext_resource type="Script" uid="uid://dx63y06pacekr" path="res://assets/scripts/controller_states/hider.gd" id="3_jg13i"]
 [ext_resource type="Script" uid="uid://c04b57p8gi1fy" path="res://assets/scripts/controller_actions/hider/idle.gd" id="4_jssbp"]
+[ext_resource type="Script" uid="uid://6c5e5ebftq52" path="res://assets/scripts/controller_actions/hider/walk.gd" id="5_6r1sy"]
+[ext_resource type="Script" uid="uid://dqcgyyqkxjksd" path="res://assets/scripts/controller_actions/hider/jump.gd" id="6_nqkij"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ikdab"]
 radius = 0.3
@@ -12,10 +14,11 @@ radius = 0.3
 radius = 0.3
 height = 1.2
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "controller")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "controller", "_neck")]
 script = ExtResource("1_ikdab")
-camera = NodePath("Neck/Camera3D")
+camera = NodePath("neckOffset/Neck/tiltPivot/cameraArm/Camera3D")
 controller = NodePath("controllerManager")
+_neck = NodePath("neckOffset/Neck")
 
 [node name="controllerManager" type="Node" parent="." node_paths=PackedStringArray("corePlayer")]
 script = ExtResource("2_5pvfp")
@@ -28,6 +31,12 @@ _initalAction = "idle"
 [node name="idle" type="Node" parent="controllerManager/hider"]
 script = ExtResource("4_jssbp")
 
+[node name="walk" type="Node" parent="controllerManager/hider"]
+script = ExtResource("5_6r1sy")
+
+[node name="jump" type="Node" parent="controllerManager/hider"]
+script = ExtResource("6_nqkij")
+
 [node name="standingCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_ikdab")
@@ -38,7 +47,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 shape = SubResource("CapsuleShape3D_5pvfp")
 debug_color = Color(0, 0.6, 0.69803923, 1)
 
-[node name="Neck" type="Node3D" parent="."]
+[node name="neckOffset" type="Node3D" parent="."]
+
+[node name="Neck" type="Node3D" parent="neckOffset"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Neck"]
+[node name="tiltPivot" type="Node3D" parent="neckOffset/Neck"]
+
+[node name="cameraArm" type="SpringArm3D" parent="neckOffset/Neck/tiltPivot"]
+spring_length = 0.0
+
+[node name="Camera3D" type="Camera3D" parent="neckOffset/Neck/tiltPivot/cameraArm"]
+current = true
+fov = 100.0

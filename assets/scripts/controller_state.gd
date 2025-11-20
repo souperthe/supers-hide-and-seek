@@ -36,11 +36,10 @@ func controllerInit() -> void:
 		
 		continue
 		
-	actionTransition(_initalAction)
 	
 	return
 	
-func actionTransition(actionName:String)->void:
+func actionTransition(actionName:String, message:String="")->void:
 	
 	_previousAction = currentAction
 	currentAction = null
@@ -54,7 +53,7 @@ func actionTransition(actionName:String)->void:
 		currentAction = _previousAction
 		return
 		
-	foundAction.actionEnter()
+	foundAction.actionEnter(message)
 	currentAction = foundAction
 	currentActionName = currentAction.name
 	

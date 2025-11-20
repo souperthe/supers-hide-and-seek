@@ -34,6 +34,8 @@ func _ready() -> void:
 		foundState.controllerInit()
 		
 		continue
+		
+	changeState("hider")
 	
 	
 	return
@@ -63,6 +65,9 @@ func changeState(desiredState:String)->void:
 
 func _process(delta: float) -> void:
 	
+	if !corePlayer.is_multiplayer_authority():
+		return
+	
 	if !run:
 		return
 		
@@ -75,6 +80,9 @@ func _process(delta: float) -> void:
 	return
 	
 func _physics_process(delta: float) -> void:
+	
+	if !corePlayer.is_multiplayer_authority():
+		return
 	
 	if !run:
 		return
