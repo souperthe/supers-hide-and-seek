@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8i5i2af5ohaf"]
+
+[ext_resource type="Script" uid="uid://jrbuo0ken0kb" path="res://assets/scripts/player.gd" id="1_ikdab"]
+[ext_resource type="Script" uid="uid://df1c277cqjm5o" path="res://assets/scripts/controller_manager.gd" id="2_5pvfp"]
+[ext_resource type="Script" uid="uid://dx63y06pacekr" path="res://assets/scripts/controller_states/seeker.gd" id="3_jg13i"]
+[ext_resource type="Script" uid="uid://c04b57p8gi1fy" path="res://assets/scripts/controller_actions/seeker/idle.gd" id="4_jssbp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ikdab"]
+radius = 0.3
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5pvfp"]
+radius = 0.3
+height = 1.2
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("controller")]
+script = ExtResource("1_ikdab")
+controller = NodePath("controllerManager")
+
+[node name="controllerManager" type="Node" parent="."]
+script = ExtResource("2_5pvfp")
+
+[node name="seeker" type="Node" parent="controllerManager"]
+script = ExtResource("3_jg13i")
+
+[node name="idle" type="Node" parent="controllerManager/seeker"]
+script = ExtResource("4_jssbp")
+
+[node name="standingCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ikdab")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="crouchingCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+shape = SubResource("CapsuleShape3D_5pvfp")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="Neck" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Neck"]
