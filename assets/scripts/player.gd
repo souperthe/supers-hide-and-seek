@@ -19,8 +19,8 @@ const jump_velocity : float = 6.0
 
 const walk_speed : float = 7.0
 const sprint_speed : float = 12.1
-const ground_accel : float = 11.0
-const ground_decel : float = 8.5
+const ground_accel : float = 12.0
+const ground_decel : float = 15.0
 const ground_friction : float = 3.5
 
 # Air movement settings. Need to tweak these to get the feeling dialed in.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8i5i2af5ohaf"]
+[gd_scene load_steps=10 format=3 uid="uid://c8i5i2af5ohaf"]
 
 [ext_resource type="Script" uid="uid://jrbuo0ken0kb" path="res://assets/scripts/player.gd" id="1_ikdab"]
 [ext_resource type="Script" uid="uid://df1c277cqjm5o" path="res://assets/scripts/controller_manager.gd" id="2_5pvfp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c04b57p8gi1fy" path="res://assets/scripts/controller_actions/hider/idle.gd" id="4_jssbp"]
 [ext_resource type="Script" uid="uid://6c5e5ebftq52" path="res://assets/scripts/controller_actions/hider/walk.gd" id="5_6r1sy"]
 [ext_resource type="Script" uid="uid://dqcgyyqkxjksd" path="res://assets/scripts/controller_actions/hider/jump.gd" id="6_nqkij"]
+[ext_resource type="PackedScene" uid="uid://6g6cls708sff" path="res://assets/objects/player_hud.tscn" id="7_xvjlw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ikdab"]
 radius = 0.3
@@ -60,3 +61,5 @@ spring_length = 0.0
 [node name="Camera3D" type="Camera3D" parent="neckOffset/Neck/tiltPivot/cameraArm"]
 current = true
 fov = 100.0
+
+[node name="playerHud" parent="." instance=ExtResource("7_xvjlw")]
