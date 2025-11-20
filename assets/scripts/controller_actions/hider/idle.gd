@@ -1,7 +1,12 @@
 extends ControllerAction
 
 
-func actionEnter(_message:String="")->void:
+func actionEnter(message:String="")->void:
+	
+	if message == "landing":
+		coreSound.playSound("res://assets/resources/rnd_sound/stone_step.tres")
+	
+	
 	return
 	
 func actioneExit()->void:
@@ -18,7 +23,7 @@ func actionPhysics(delta:float)->void:
 		
 	corePlayer.velocity *= new_speed
 	
-	if Input.is_action_just_pressed("player_jump"):
+	if Input.is_action_pressed("player_jump"):
 		coreState.actionTransition("jump", "jump")
 		return
 	

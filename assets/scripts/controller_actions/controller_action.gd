@@ -5,6 +5,7 @@ class_name ControllerAction extends Node
 
 var coreState:ControllerState
 var corePlayer:Player
+var coreSound:SoundManager
 
 
 @abstract

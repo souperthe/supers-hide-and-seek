@@ -31,6 +31,7 @@ func controllerInit() -> void:
 		var foundAction:ControllerAction = _allActions[action]
 		
 		foundAction.coreState = self
+		foundAction.coreSound = corePlayer.sound
 		foundAction.corePlayer = corePlayer
 		
 		

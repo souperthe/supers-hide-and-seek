@@ -13,7 +13,7 @@ font_color = Color(0.8098538, 1, 0.95183474, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_8shm4"]
 font = ExtResource("3_as176")
-font_size = 17
+font_size = 12
 font_color = Color(0.8098538, 1, 0.95183474, 1)
 
 [node name="playerHud" type="CanvasLayer"]
@@ -86,10 +86,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -98.5
-offset_top = 47.0
-offset_right = 98.5
-offset_bottom = 65.0
+offset_left = -74.5
+offset_top = 46.38462
+offset_right = 74.5
+offset_bottom = 64.38462
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("3_8shm4")

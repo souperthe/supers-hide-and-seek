@@ -1,7 +1,10 @@
 extends ControllerAction
 
+var _stepTime:float = 0
+
 
 func actionEnter(_message:String="")->void:
+	_stepTime = 0
 	return
 	
 func actioneExit()->void:
@@ -35,5 +38,13 @@ func actionPhysics(delta:float)->void:
 	if corePlayer.wishDir == Vector3.ZERO:
 		coreState.actionTransition("idle")
 		return
+		
+	_stepTime += corePlayer.velocity.length() * delta
+	
+	#print(_stepTime)
+	
+	if _stepTime > 3.5:
+		coreSound.playSound("res://assets/resources/rnd_sound/stone_step.tres")
+		_stepTime = 0
 	
 	return

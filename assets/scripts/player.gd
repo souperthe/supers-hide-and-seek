@@ -3,6 +3,7 @@ class_name Player extends CharacterBody3D
 
 @export var camera:Camera3D
 @export var controller:ControllerManager
+@export var sound:SoundManager
 @export var _neck:Node3D
 
 var cameraInput:bool = true
@@ -13,14 +14,14 @@ var rawDir:Vector2
 
 var useMovement:bool = true
 
-const  gravity:float = 18.0
+var gravity:float = 42.0
 
-const jump_velocity : float = 6.0
+var jump_velocity : float = 12.0
 
-const walk_speed : float = 7.0
-const sprint_speed : float = 12.1
+const walk_speed : float = 12.1
+const sprint_speed : float = 18.1
 const ground_accel : float = 12.0
-const ground_decel : float = 15.0
+const ground_decel : float = 20.0
 const ground_friction : float = 3.5
 
 # Air movement settings. Need to tweak these to get the feeling dialed in.
@@ -33,10 +34,6 @@ const climb_speed : float = 7.0
 
 
 func getSpeed()->float:
-	
-	if Input.is_action_pressed("player_sprint"):
-		return sprint_speed
-	
 	
 	return walk_speed
 

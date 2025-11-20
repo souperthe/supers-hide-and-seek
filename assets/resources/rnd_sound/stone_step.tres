@@ -1,0 +1,18 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=7 format=3 uid="uid://djw2c4fsun6tn"]
+
+[ext_resource type="AudioStream" uid="uid://c4kvyobah200p" path="res://assets/sound/sfx/step/stone1.ogg" id="1_c55mq"]
+[ext_resource type="AudioStream" uid="uid://jaqqd64j1m2i" path="res://assets/sound/sfx/step/stone2.ogg" id="2_th6ia"]
+[ext_resource type="AudioStream" uid="uid://65a0i5s1g63d" path="res://assets/sound/sfx/step/stone3.ogg" id="3_6m54g"]
+[ext_resource type="AudioStream" uid="uid://ry4m6w72n0yx" path="res://assets/sound/sfx/step/stone4.ogg" id="4_nkxef"]
+[ext_resource type="AudioStream" uid="uid://doo52uytr3jaj" path="res://assets/sound/sfx/step/stone5.ogg" id="5_ahlik"]
+[ext_resource type="AudioStream" uid="uid://bakvddgccyyx2" path="res://assets/sound/sfx/step/stone6.ogg" id="6_25i3x"]
+
+[resource]
+random_pitch = 1.1
+streams_count = 6
+stream_0/stream = ExtResource("1_c55mq")
+stream_1/stream = ExtResource("2_th6ia")
+stream_2/stream = ExtResource("3_6m54g")
+stream_3/stream = ExtResource("4_nkxef")
+stream_4/stream = ExtResource("5_ahlik")
+stream_5/stream = ExtResource("6_25i3x")
