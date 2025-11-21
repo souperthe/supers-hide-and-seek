@@ -13,6 +13,22 @@ var _previousAction:ControllerAction
 
 var _allActions:Dictionary[String, ControllerAction]
 
+func handleViewmodelRotation(delta:float) -> void:
+	var camera:Camera3D = corePlayer.camera
+	var viewmodelRoot:Node3D = corePlayer.viewmodelRoot
+	var weight:float = 24*delta
+	var start:Vector3 = viewmodelRoot.global_rotation
+	var goal:Vector3 = camera.global_rotation
+	
+	var lerped:Vector3 = util.vector3_angleLerp(start, goal, weight)
+	var final:Vector3 = Vector3(
+		clampf(lerped.x, goal.x-deg_to_rad(16), goal.x+deg_to_rad(16)),
+		lerped.y,
+		clampf(lerped.z, goal.z-deg_to_rad(45), goal.z+deg_to_rad(45))
+	)
+	viewmodelRoot.global_rotation = final
+	return
+
 
 func controllerInit() -> void:
 	

@@ -12,6 +12,10 @@ func actioneExit()->void:
 	
 func actionPhysics(delta:float)->void:
 	
+	if corePlayer.crouching:
+		corePlayer.velocity = corePlayer.wishDir * corePlayer.getSpeed()
+		return
+	
 	#corePlayer.velocity = corePlayer.wishDir * corePlayer.getSpeed()
 	
 	var cur_speed_in_wish_dir:float = corePlayer.velocity.dot(corePlayer.wishDir)
@@ -43,8 +47,9 @@ func actionPhysics(delta:float)->void:
 	
 	#print(_stepTime)
 	
-	if _stepTime > 3.5:
-		coreSound.playSound("res://assets/resources/rnd_sound/stone_step.tres")
-		_stepTime = 0
+	if !corePlayer.crouching:
+		if _stepTime > 3.5:
+			coreSound.playSound("res://assets/resources/rnd_sound/stone_step.tres")
+			_stepTime = 0
 	
 	return

@@ -6,6 +6,13 @@ class_name Player extends CharacterBody3D
 @export var sound:SoundManager
 @export var _neck:Node3D
 
+@export var viewmodelRoot:Node3D
+
+@export var neckOffset:Node3D
+
+@export var collisionStanding:CollisionShape3D
+@export var collisionCrouching:CollisionShape3D
+
 var cameraInput:bool = true
 
 var cameraDir:Vector3
@@ -17,6 +24,8 @@ var useMovement:bool = true
 var gravity:float = 42.0
 
 var jump_velocity : float = 12.0
+
+var crouching:bool = false
 
 const walk_speed : float = 12.1
 const sprint_speed : float = 18.1
@@ -34,6 +43,9 @@ const climb_speed : float = 7.0
 
 
 func getSpeed()->float:
+	
+	if crouching:
+		return walk_speed/2
 	
 	return walk_speed
 

@@ -5,6 +5,8 @@ func actionEnter(message:String="")->void:
 	
 	if message == "jump":
 		corePlayer.velocity.y = corePlayer.jump_velocity
+		if corePlayer.crouching:
+			corePlayer.velocity.y = corePlayer.jump_velocity * 0.8
 	return
 	
 func actioneExit()->void:
