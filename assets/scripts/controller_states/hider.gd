@@ -18,7 +18,8 @@ func controllerProcess(delta:float) -> void:
 		util.sfx("res://assets/sound/sfx/items/flashlight1.wav")
 		_light.visible = !_light.visible
 		
-	handleViewmodelRotation(delta)
+	_handleViewmodelRotation(delta)
+	corePlayer.interactor.handleInteraction(delta)
 	
 	
 	var neckGoto:float = -float(corePlayer.crouching)*0.75

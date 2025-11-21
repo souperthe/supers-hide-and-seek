@@ -2,8 +2,12 @@
 class_name Player extends CharacterBody3D
 
 @export var camera:Camera3D
+
 @export var controller:ControllerManager
 @export var sound:SoundManager
+@export var interactor:InteractionManager
+
+
 @export var _neck:Node3D
 
 @export var viewmodelRoot:Node3D
@@ -12,6 +16,8 @@ class_name Player extends CharacterBody3D
 
 @export var collisionStanding:CollisionShape3D
 @export var collisionCrouching:CollisionShape3D
+
+@export var interactRay:RayCast3D
 
 var cameraInput:bool = true
 

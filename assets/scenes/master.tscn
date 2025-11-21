@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://l0fnoreb82o8"]
+[gd_scene load_steps=6 format=3 uid="uid://l0fnoreb82o8"]
 
 [ext_resource type="PackedScene" uid="uid://c8i5i2af5ohaf" path="res://assets/objects/player.tscn" id="1_xvgtq"]
 [ext_resource type="Environment" uid="uid://bt0pj1n20bbtt" path="res://assets/resources/environments/test.tres" id="2_723qe"]
@@ -7,6 +7,8 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x2cbm"]
 albedo_texture = ExtResource("2_tpt81")
 uv1_scale = Vector3(15, 15, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tpt81"]
 
 [node name="master" type="Node"]
 
@@ -32,3 +34,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.779406, -0.5, 11.770255)
 use_collision = true
 size = Vector3(15, 15, 20.324097)
 material = SubResource("StandardMaterial3D_x2cbm")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1686487, -7.0104113)
+gravity_scale = 4.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/RigidBody3D"]
+shape = SubResource("BoxShape3D_tpt81")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Node3D/RigidBody3D"]

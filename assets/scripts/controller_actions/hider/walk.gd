@@ -15,6 +15,10 @@ func actionPhysics(delta:float)->void:
 	if corePlayer.crouching:
 		corePlayer.velocity = corePlayer.wishDir * corePlayer.getSpeed()
 		return
+		
+	if !corePlayer.is_on_floor():
+		coreState.actionTransition("jump")
+		return
 	
 	#corePlayer.velocity = corePlayer.wishDir * corePlayer.getSpeed()
 	

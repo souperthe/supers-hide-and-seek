@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c8i5i2af5ohaf"]
+[gd_scene load_steps=13 format=3 uid="uid://c8i5i2af5ohaf"]
 
 [ext_resource type="Script" uid="uid://jrbuo0ken0kb" path="res://assets/scripts/player.gd" id="1_ikdab"]
 [ext_resource type="Script" uid="uid://df1c277cqjm5o" path="res://assets/scripts/controller_manager.gd" id="2_5pvfp"]
 [ext_resource type="Script" uid="uid://d1acepvi6enht" path="res://assets/scripts/sound_manager.gd" id="2_fh75e"]
+[ext_resource type="Script" uid="uid://2ib7l6uqqdra" path="res://assets/scripts/interaction_manager.gd" id="2_lvyht"]
 [ext_resource type="Script" uid="uid://dx63y06pacekr" path="res://assets/scripts/controller_states/hider.gd" id="3_jg13i"]
 [ext_resource type="Script" uid="uid://c04b57p8gi1fy" path="res://assets/scripts/controller_actions/hider/idle.gd" id="4_jssbp"]
 [ext_resource type="Script" uid="uid://6c5e5ebftq52" path="res://assets/scripts/controller_actions/hider/walk.gd" id="5_6r1sy"]
@@ -17,16 +18,23 @@ radius = 0.3
 radius = 0.3
 height = 1.2
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "controller", "sound", "_neck", "viewmodelRoot", "neckOffset", "collisionStanding", "collisionCrouching")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "controller", "sound", "interactor", "_neck", "viewmodelRoot", "neckOffset", "collisionStanding", "collisionCrouching", "interactRay")]
 script = ExtResource("1_ikdab")
 camera = NodePath("neckOffset/Neck/viewbobPivot/tiltPivot/cameraArm/Camera3D")
 controller = NodePath("controllerManager")
 sound = NodePath("soundManager")
+interactor = NodePath("interactionManager")
 _neck = NodePath("neckOffset/Neck")
 viewmodelRoot = NodePath("neckOffset/Neck/viewbobPivot/tiltPivot/cameraArm/Camera3D/viewmodelHolder")
 neckOffset = NodePath("neckOffset")
 collisionStanding = NodePath("standingCollision")
 collisionCrouching = NodePath("crouchingCollision")
+interactRay = NodePath("neckOffset/Neck/viewbobPivot/tiltPivot/cameraArm/Camera3D/InteractRay")
+
+[node name="interactionManager" type="Node" parent="." node_paths=PackedStringArray("_corePlayer", "_holdPoint")]
+script = ExtResource("2_lvyht")
+_corePlayer = NodePath("..")
+_holdPoint = NodePath("../neckOffset/Neck/holdPoint")
 
 [node name="soundManager" type="Node" parent="." node_paths=PackedStringArray("_corePlayer")]
 script = ExtResource("2_fh75e")
@@ -93,6 +101,12 @@ spot_angle = 43.15
 remote_path = NodePath("../viewmodelHolder")
 update_rotation = false
 update_scale = false
+
+[node name="InteractRay" type="RayCast3D" parent="neckOffset/Neck/viewbobPivot/tiltPivot/cameraArm/Camera3D"]
+target_position = Vector3(0, 0, -5)
+
+[node name="holdPoint" type="Node3D" parent="neckOffset/Neck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.71499515, -1.3728298)
 
 [node name="playerHud" parent="." instance=ExtResource("7_xvjlw")]
 

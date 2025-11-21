@@ -13,7 +13,7 @@ var _previousAction:ControllerAction
 
 var _allActions:Dictionary[String, ControllerAction]
 
-func handleViewmodelRotation(delta:float) -> void:
+func _handleViewmodelRotation(delta:float) -> void:
 	var camera:Camera3D = corePlayer.camera
 	var viewmodelRoot:Node3D = corePlayer.viewmodelRoot
 	var weight:float = 24*delta
@@ -28,6 +28,7 @@ func handleViewmodelRotation(delta:float) -> void:
 	)
 	viewmodelRoot.global_rotation = final
 	return
+	
 
 
 func controllerInit() -> void:

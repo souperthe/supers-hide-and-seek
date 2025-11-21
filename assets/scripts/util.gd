@@ -1,6 +1,37 @@
 @icon("res://addons/plenticons/icons/16x/objects/hammer-gray.png")
 class_name ClassUtil extends Node
 
+const _characters:String= 'abcdefghijklmnopqrstuvwxyz12371293192ASJDBJASAEJKFWEJK'
+
+
+func setCollisions(parentNode:Node3D, disabled:bool=false)->void:
+	
+	for node in getDescendants(parentNode):
+		
+		if node is CollisionShape3D:
+			node.disabled = disabled
+	
+	
+	return
+	
+func getDescendants(in_node:Node,arr:=[]) -> Array: 
+	arr.push_back(in_node)    
+	for child in in_node.get_children(): 
+		arr = getDescendants(child,arr)   
+	return arr
+
+func clearChildren(node:Node) -> void:
+	for child in node.get_children():
+		child.queue_free()
+	return
+	
+
+func generate_word(length:int) -> String:
+	var word: String = ""
+	var n_char = len(_characters)
+	for i in range(length):
+		word += _characters[randi()% n_char]
+	return word
 
 func sfx3D(emitter:Node3D, soundPath:String, soundPitch:float=1, soundVolume:float=1, from:float=0)->void:
 	var newSound:AudioStreamPlayer3D = AudioStreamPlayer3D.new()

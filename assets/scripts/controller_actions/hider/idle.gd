@@ -23,6 +23,10 @@ func actionPhysics(delta:float)->void:
 		
 	corePlayer.velocity *= new_speed
 	
+	if !corePlayer.is_on_floor():
+		coreState.actionTransition("jump")
+		return
+	
 	if Input.is_action_pressed("player_jump"):
 		coreState.actionTransition("jump", "jump")
 		return
