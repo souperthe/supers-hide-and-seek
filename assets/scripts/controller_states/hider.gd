@@ -10,6 +10,14 @@ func controllerStart(_message:String="")->void:
 func controllerProcess(delta:float) -> void:
 	
 	corePlayer.crouching = Input.is_action_pressed("player_crouch")
+	
+	if corePlayer.is_on_floor() and Input.is_action_just_pressed("player_crouch"):
+		corePlayer.position.y -= 0.8
+		
+	if Input.is_action_just_released("player_crouch"):
+		corePlayer.position.y += 0.8
+	
+	
 	corePlayer.collisionCrouching.disabled = !corePlayer.crouching
 	corePlayer.collisionStanding.disabled = corePlayer.crouching
 	
@@ -22,13 +30,13 @@ func controllerProcess(delta:float) -> void:
 	corePlayer.interactor.handleInteraction(delta)
 	
 	
-	var neckGoto:float = -float(corePlayer.crouching)*0.75
-	
-	corePlayer.neckOffset.position.y = lerpf(
-		corePlayer.neckOffset.position.y,
-		neckGoto,
-		12*delta
-	)
+	#var neckGoto:float = -float(corePlayer.crouching)*0.75
+	#
+	#corePlayer.neckOffset.position.y = lerpf(
+		#corePlayer.neckOffset.position.y,
+		#neckGoto,
+		#12*delta
+	#)
 	
 	_tiltPivot.rotation.z = lerpf(
 		_tiltPivot.rotation.z,

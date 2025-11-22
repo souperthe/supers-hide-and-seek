@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://5v8hkm8lwh8k"]
+
+[ext_resource type="Texture2D" uid="uid://dwteyedemb8ce" path="res://addons/plenticons/icons/64x-hidpi/objects/globe-green.png" id="1_u6orc"]
+[ext_resource type="Environment" uid="uid://bt0pj1n20bbtt" path="res://assets/resources/environments/test.tres" id="2_gdt2i"]
+[ext_resource type="Script" uid="uid://ckt28bfs5uxyb" path="res://assets/scripts/collide_sound.gd" id="3_gdt2i"]
+[ext_resource type="AudioStream" uid="uid://djw2c4fsun6tn" path="res://assets/resources/rnd_sound/stone_step.tres" id="4_7j7eo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x2cbm"]
+albedo_texture = ExtResource("1_u6orc")
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tpt81"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(50, 1, 50)
+material = SubResource("StandardMaterial3D_x2cbm")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_gdt2i")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.47736296, 0.5289757, 0.7016477, -0.8474294, 0.48828596, 0.20842373, -0.23235355, -0.6940906, 0.6813593, 0, 5.5020785, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.779406, -0.5, 11.770255)
+use_collision = true
+size = Vector3(15, 15, 20.324097)
+material = SubResource("StandardMaterial3D_x2cbm")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1686487, -7.0104113)
+gravity_scale = 4.0
+
+[node name="collideSound" type="Node" parent="RigidBody3D"]
+script = ExtResource("3_gdt2i")
+sound = ExtResource("4_7j7eo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_tpt81")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="RigidBody3D"]
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6084628, -2.909912, 14.694288)
+use_collision = true
+size = Vector3(2.956543, 15, 3.4631042)
+material = SubResource("StandardMaterial3D_x2cbm")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0246768, -5.2437935, 9.557309)
+use_collision = true
+size = Vector3(2.956543, 15, 3.4631042)
+material = SubResource("StandardMaterial3D_x2cbm")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5428224, -6.3204556, 14.670085)
+use_collision = true
+size = Vector3(2.956543, 15, 3.4631042)
+material = SubResource("StandardMaterial3D_x2cbm")

@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxlp4b3vn5qxq"]
+
+[ext_resource type="Script" uid="uid://cop7v106vddud" path="res://assets/scripts/networking.gd" id="1_se51c"]
+[ext_resource type="Script" uid="uid://4asl1c4se60" path="res://assets/scripts/networking_classes/lobby.gd" id="2_ifa6d"]
+[ext_resource type="PackedScene" uid="uid://c8i5i2af5ohaf" path="res://assets/objects/player.tscn" id="3_8anus"]
+[ext_resource type="Script" uid="uid://ddyx6xuknpxor" path="res://assets/scripts/networking_classes/lobby_connectables.gd" id="3_qbfn3"]
+[ext_resource type="Script" uid="uid://di0hvc3hoohoj" path="res://assets/scripts/networking_classes/host_events.gd" id="4_4lkwq"]
+[ext_resource type="Script" uid="uid://dpjn3m7ykkb5d" path="res://assets/scripts/networking_classes/networking_console.gd" id="5_bc5yj"]
+
+[node name="Networking" type="Node" node_paths=PackedStringArray("lobby", "hostEvents", "playersHolder")]
+script = ExtResource("1_se51c")
+lobby = NodePath("Lobby")
+hostEvents = NodePath("HostEvents")
+playersHolder = NodePath("PlayersHolder")
+
+[node name="Lobby" type="Node" parent="." node_paths=PackedStringArray("_connectables")]
+script = ExtResource("2_ifa6d")
+_connectables = NodePath("LobbyConnectables")
+_playerScene = ExtResource("3_8anus")
+
+[node name="LobbyConnectables" type="Node" parent="Lobby"]
+script = ExtResource("3_qbfn3")
+
+[node name="HostEvents" type="Node" parent="."]
+script = ExtResource("4_4lkwq")
+
+[node name="NetworkingConsole" type="Node" parent="."]
+script = ExtResource("5_bc5yj")
+
+[node name="PlayersHolder" type="Node3D" parent="."]

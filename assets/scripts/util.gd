@@ -1,4 +1,4 @@
-@icon("res://addons/plenticons/icons/16x/objects/hammer-gray.png")
+@icon("res://assets/images/icons/spanner.svg")
 class_name ClassUtil extends Node
 
 const _characters:String= 'abcdefghijklmnopqrstuvwxyz12371293192ASJDBJASAEJKFWEJK'

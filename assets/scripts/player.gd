@@ -1,6 +1,10 @@
 @icon("res://addons/plenticons/icons/svg/creatures/person-red.svg")
 class_name Player extends CharacterBody3D
 
+var playerName:String = "steamuser99"
+var authID:int = 1
+var steamID:int = 1
+
 @export var camera:Camera3D
 
 @export var controller:ControllerManager
@@ -55,15 +59,28 @@ func getSpeed()->float:
 	
 	return walk_speed
 
+func _setupOthers() -> void:
+	$playerHud.visible = false
+	$Player.cast_shadow = GeometryInstance3D.ShadowCastingSetting.SHADOW_CASTING_SETTING_ON
+	return
 
 func _setupAuthority()->void:
+	camera.clear_current()
+	
+	Networking.localPlayer = self
+	
+	
 	camera.make_current()
+	camera.current = true
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	$Talking.pixel_size = 0
 	return
 
 
 func _ready() -> void:
 	if !is_multiplayer_authority():
+		_setupOthers()
 		return
 	_setupAuthority()
 	return

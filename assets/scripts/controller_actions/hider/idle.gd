@@ -27,7 +27,7 @@ func actionPhysics(delta:float)->void:
 		coreState.actionTransition("jump")
 		return
 	
-	if Input.is_action_pressed("player_jump"):
+	if Input.is_action_just_pressed("player_jump"):
 		coreState.actionTransition("jump", "jump")
 		return
 	

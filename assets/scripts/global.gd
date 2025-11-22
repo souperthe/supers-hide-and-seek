@@ -7,3 +7,8 @@ var look_sensitivity : float = 0.006
 func _init() -> void:
 	print("starting game")
 	return
+
+
+func _process(_delta: float) -> void:
+	Steam.run_callbacks()
+	return

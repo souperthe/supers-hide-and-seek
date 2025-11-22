@@ -12,12 +12,13 @@ func actioneExit()->void:
 	
 func actionPhysics(delta:float)->void:
 	
-	if corePlayer.crouching:
-		corePlayer.velocity = corePlayer.wishDir * corePlayer.getSpeed()
-		return
 		
 	if !corePlayer.is_on_floor():
 		coreState.actionTransition("jump")
+		return
+		
+	if Input.is_action_just_pressed("player_jump"):
+		coreState.actionTransition("jump", "jump")
 		return
 	
 	#corePlayer.velocity = corePlayer.wishDir * corePlayer.getSpeed()
@@ -27,6 +28,10 @@ func actionPhysics(delta:float)->void:
 	if add_speed_till_cap > 0:
 		var accel_speed:float = corePlayer.ground_accel * delta * corePlayer.getSpeed()
 		accel_speed = min(accel_speed, add_speed_till_cap)
+		
+		if corePlayer.crouching:
+			accel_speed *= 1.5
+		
 		corePlayer.velocity += accel_speed * corePlayer.wishDir
 	
 	# Apply friction
@@ -39,9 +44,6 @@ func actionPhysics(delta:float)->void:
 		
 	corePlayer.velocity *= new_speed
 	
-	if Input.is_action_just_pressed("player_jump"):
-		coreState.actionTransition("jump", "jump")
-		return
 	
 	if corePlayer.wishDir == Vector3.ZERO:
 		coreState.actionTransition("idle")

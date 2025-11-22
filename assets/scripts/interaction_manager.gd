@@ -1,40 +1,67 @@
-@icon("res://addons/plenticons/icons/svg/2d/circle-white.svg")
+@icon("res://addons/plenticons/icons/svg/2d/diamond-white.svg")
 class_name InteractionManager extends Node
 
 @export var _corePlayer:Player
-@export var _holdPoint:Node3D
+#@export var _holdPoint:Node3D
+
+var _interactionProcesses : Array[Interaction]
+var _allInteractions : Dictionary[String, Interaction]
 
 var currentBody:RigidBody3D
 
+func _ready() -> void:
+	var children:Array[Node] = get_children()
+	
+	for child in children:
+		if !(child is Interaction):
+			continue
+			
+		_allInteractions[child.name.to_lower()] = child
+		
+		continue
+	
+	
+	return
+	
+func startProcess(interactor:Interaction) -> void:
+	_interactionProcesses.append(interactor)
+	return
+	
+func endProcess(interactor:Interaction) -> void:
+	_interactionProcesses.remove_at(
+		_interactionProcesses.find(interactor)
+	)
+	return
+
+func _startInteraction(interactable:Object) -> void:
+	
+	
+	var interactionType:String = interactable.get_class().to_lower()
+	
+	if !_allInteractions.has(interactionType):
+		return
+	
+	
+	var possibleInteractor:Interaction = _allInteractions[interactionType]
+	
+	if _interactionProcesses.has(possibleInteractor):
+		return
+	
+	if possibleInteractor == null:
+		return
+		
+	possibleInteractor.core = self
+	possibleInteractor.corePlayer = _corePlayer
+	possibleInteractor.enterInteraction(interactable)
+	
+	
+	return
+
 func handleInteraction(delta:float)->void:
 	
-	if currentBody:
-		currentBody.global_position = currentBody.global_position.lerp(
-			_holdPoint.global_position,
-			32*delta
-		)
-		currentBody.global_rotation = _holdPoint.global_rotation
-		
-		if Input.is_action_just_pressed("player_interact"):
-			
-			
-			var mouseVelo:Vector2 = Input.get_last_mouse_velocity()
-			
-			var fling:Vector3 = (_corePlayer._neck.global_transform.basis * Vector3(mouseVelo.x, 0, mouseVelo.y)).normalized()
-			
-			print(mouseVelo.length())
-			
-			if mouseVelo.length() < 500:
-				fling = Vector3.ZERO
-				
-			currentBody.linear_velocity = fling*12
-			util.setCollisions(currentBody, false)
-			currentBody.freeze = false
-			currentBody = null
-			return
-		
-		
-		return
+	for interaction in _interactionProcesses:
+		interaction.interactionProcess(delta)
+		continue
 	
 	var interactRay:RayCast3D = _corePlayer.interactRay
 	var interactable:Object = interactRay.get_collider()
@@ -43,16 +70,8 @@ func handleInteraction(delta:float)->void:
 	if interactable == null:
 		return
 		
-	if !(interactable is RigidBody3D):
-		return
-		
-	var body:RigidBody3D = interactable
-		
 	if Input.is_action_just_pressed("player_interact"):
-		body.freeze = true
-		currentBody = body
-		util.setCollisions(body, true)
-	
+		_startInteraction(interactable)
 	
 	
 	return
