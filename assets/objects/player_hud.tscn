@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://6g6cls708sff"]
+[gd_scene load_steps=9 format=3 uid="uid://6g6cls708sff"]
 
 [ext_resource type="Script" uid="uid://b77mlexn74h6b" path="res://assets/scripts/player_hud.gd" id="1_yt60p"]
 [ext_resource type="Script" uid="uid://4tsjytst2406" path="res://assets/scripts/hud/health.gd" id="2_ms88w"]
 [ext_resource type="StyleBox" uid="uid://imcr7eeyigil" path="res://assets/resources/style/stylebox.tres" id="3_8shm4"]
 [ext_resource type="FontFile" uid="uid://cf6oxl6bhsl5e" path="res://assets/fonts/Basalte-Fond.ttf" id="3_as176"]
+[ext_resource type="Script" uid="uid://c11780ui54qe4" path="res://assets/scripts/hud/chat.gd" id="5_8shm4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ms88w"]
 line_spacing = 2.0
@@ -16,6 +17,9 @@ font = ExtResource("3_as176")
 font_size = 12
 font_color = Color(0.8098538, 1, 0.95183474, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_as176"]
+font_size = 11
+
 [node name="playerHud" type="CanvasLayer"]
 script = ExtResource("1_yt60p")
 
@@ -24,9 +28,9 @@ layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -133.0
+offset_top = -102.0
 offset_right = 143.0
-offset_bottom = -31.0
+offset_bottom = -23.846191
 grow_vertical = 0
 scale = Vector2(1.3, 1.3)
 script = ExtResource("2_ms88w")
@@ -99,3 +103,69 @@ layout_mode = 2
 text = "IDK"
 label_settings = SubResource("LabelSettings_8shm4")
 horizontal_alignment = 1
+
+[node name="Chat" type="Control" parent="." node_paths=PackedStringArray("textEdit", "chatLabel", "_panel")]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -262.15387
+offset_right = 235.0
+offset_bottom = -184.0
+grow_vertical = 0
+script = ExtResource("5_8shm4")
+textEdit = NodePath("TextEdit")
+chatLabel = NodePath("Control/Label")
+_panel = NodePath("PanelContainer")
+
+[node name="PanelContainer" type="PanelContainer" parent="Chat"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.769232
+offset_top = -64.30779
+offset_right = 301.0
+offset_bottom = 67.076904
+grow_vertical = 0
+theme_override_styles/panel = ExtResource("3_8shm4")
+
+[node name="TextEdit" type="LineEdit" parent="Chat"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 17.692307
+offset_top = 149.61537
+offset_right = 65.46156
+offset_bottom = 173.84618
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+placeholder_text = "type here"
+context_menu_enabled = false
+emoji_menu_enabled = false
+
+[node name="Control" type="Control" parent="Chat"]
+clip_contents = true
+anchors_preset = 0
+offset_left = 21.769234
+offset_top = 17.69231
+offset_right = 295.0
+offset_bottom = 142.30768
+
+[node name="Label" type="Label" parent="Chat/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -173.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "sasd
+s
+
+sda"
+label_settings = SubResource("LabelSettings_as176")
+vertical_alignment = 2
+autowrap_mode = 3
+justification_flags = 35

@@ -13,3 +13,6 @@ signal lobbyFailed
 signal lobbySucess
 
 signal hostSucess
+
+
+signal chatMessage(sender:int, message:String)
