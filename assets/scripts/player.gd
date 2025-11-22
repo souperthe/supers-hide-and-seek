@@ -5,6 +5,8 @@ var playerName:String = "steamuser99"
 var authID:int = 1
 var steamID:int = 1
 
+var currentTeam:superEnum.teams = superEnum.teams.hider
+
 @export var camera:Camera3D
 
 @export var controller:ControllerManager

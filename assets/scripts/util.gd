@@ -4,6 +4,22 @@ class_name ClassUtil extends Node
 const _characters:String= 'abcdefghijklmnopqrstuvwxyz12371293192ASJDBJASAEJKFWEJK'
 
 
+func getPlayer(pid:int) -> Player:
+	
+	var allPlayers:Array = Networking.playersHolder.get_children()
+	
+	for player in allPlayers:
+		
+		if (player is Player):
+			
+			if player.authID == pid:
+				
+				return player
+		continue
+	
+	
+	return null
+
 func setCollisions(parentNode:Node3D, disabled:bool=false)->void:
 	
 	for node in getDescendants(parentNode):
@@ -38,6 +54,7 @@ func sfx3D(emitter:Node3D, soundPath:String, soundPitch:float=1, soundVolume:flo
 	newSound.stream = load(soundPath)
 	newSound.pitch_scale = soundPitch
 	newSound.volume_linear = soundVolume
+	newSound.attenuation_filter_db = 0.0
 	emitter.add_child(newSound)
 	newSound.play(from)
 	await newSound.finished

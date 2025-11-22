@@ -7,6 +7,20 @@ var _networkTransform:Transform3D
 @export var _light:SpotLight3D
 @export var _corePlayer:Player
 
+@rpc("authority", "call_local", "reliable")
+func setAuthority(nodePath:String) -> void:
+	
+	var senderID:int = multiplayer.get_remote_sender_id()
+	var desiredNode:Node = get_node(nodePath)
+	
+	if desiredNode == null:
+		return
+		
+	desiredNode.set_multiplayer_authority(senderID)
+	
+	
+	return
+
 @rpc("authority", "call_remote", "unreliable")
 func updateTransform(newTransform:Transform3D)->void:
 	_networkTransform = newTransform

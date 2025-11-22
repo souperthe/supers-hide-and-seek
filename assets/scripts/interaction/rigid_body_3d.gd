@@ -10,7 +10,9 @@ func enterInteraction(interactable:Object) -> void:
 	core.startProcess(self)
 	currentlyInteractable = rigidBody
 	
-	rigidBody.freeze = true
+	corePlayer.events.setAuthority.rpc(rigidBody.get_path())
+	
+	#rigidBody.freeze = true
 	
 	util.setCollisions(rigidBody, true)
 	
@@ -20,6 +22,8 @@ func enterInteraction(interactable:Object) -> void:
 func interactionProcess(delta:float) -> void:
 	
 	var rigidBody:RigidBody3D = currentlyInteractable
+	
+	rigidBody.linear_velocity = Vector3.ZERO
 	
 	rigidBody.global_position = rigidBody.global_position.lerp(
 		_holdPoint.global_position,

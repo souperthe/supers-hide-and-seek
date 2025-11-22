@@ -6,6 +6,12 @@ enum lobbyType {
 	steam
 }
 
+enum teams {
+	hider,
+	seeker,
+	spectator
+}
+
 enum steamResult {
 	RESULT_NONE,
 	RESULT_OK,

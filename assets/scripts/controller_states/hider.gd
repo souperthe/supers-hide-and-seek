@@ -26,6 +26,7 @@ func controllerProcess(delta:float) -> void:
 		util.sfx("res://assets/sound/sfx/items/flashlight1.wav")
 		_light.visible = !_light.visible
 		corePlayer.events.setLight.rpc(_light.visible)
+		corePlayer.events.sound.rpc("res://assets/sound/sfx/items/flashlight1.wav")
 		
 	_handleViewmodelRotation(delta)
 	corePlayer.interactor.handleInteraction(delta)

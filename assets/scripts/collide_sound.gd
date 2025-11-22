@@ -6,12 +6,14 @@ class_name CollideSound extends Node
 var _parent:RigidBody3D
 
 
-func _playSound(body:Node)->void:
+func _playSound(_body:Node)->void:
 	
 	if _parent.linear_velocity.length() > 0.5:
 		util.sfx3D(
 			_parent,
-			sound.resource_path
+			sound.resource_path,
+			1,
+			0.2
 		)
 	
 	return
@@ -28,6 +30,11 @@ func _ready() -> void:
 	print("yea")
 	
 	realParent.body_entered.connect(_playSound)
+	realParent.contact_monitor = true
+	realParent.max_contacts_reported = 1
+	realParent.continuous_cd = true
+	realParent.can_sleep = false
+	realParent.freeze = false
 	_parent = realParent
 	
 	

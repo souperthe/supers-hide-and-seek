@@ -1,19 +1,33 @@
 extends Control
 
 @export var textEdit:LineEdit
-@export var chatLabel:Label
+@export var chatLabel:RichTextLabel
 @export var _panel:PanelContainer
+@export var _parser:RichTextLabel
+
+var _teamColors:Dictionary[superEnum.teams, String] = {
+	superEnum.teams.seeker: "red",
+	superEnum.teams.hider: "blue"
+}
 
 func _getMessage(sender:int, message:String) -> void:
 	
 	var senderData:Dictionary = Networking.players[sender]
 	var senderName:String = senderData.get("username")
+	var senderPlayer:Player = util.getPlayer(sender)
+	
+	_parser.text = message
+	var parsedMessage:String = _parser.get_parsed_text()
+	var teamColor:String = _teamColors[senderPlayer.currentTeam]
 	
 	if sender == 1:
 		senderName += " (HOST)"
+		
+		
+	senderName = "[color=" + teamColor + "]" + senderName + ": [/color]"
 	
 	
-	var additionText:String = "\n" + senderName + ": " + message
+	var additionText:String = "\n" + senderName + parsedMessage
 	
 	chatLabel.text = chatLabel.text + additionText
 	

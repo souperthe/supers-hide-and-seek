@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://6g6cls708sff"]
+[gd_scene load_steps=8 format=3 uid="uid://6g6cls708sff"]
 
 [ext_resource type="Script" uid="uid://b77mlexn74h6b" path="res://assets/scripts/player_hud.gd" id="1_yt60p"]
 [ext_resource type="Script" uid="uid://4tsjytst2406" path="res://assets/scripts/hud/health.gd" id="2_ms88w"]
@@ -16,9 +16,6 @@ font_color = Color(0.8098538, 1, 0.95183474, 1)
 font = ExtResource("3_as176")
 font_size = 12
 font_color = Color(0.8098538, 1, 0.95183474, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_as176"]
-font_size = 11
 
 [node name="playerHud" type="CanvasLayer"]
 script = ExtResource("1_yt60p")
@@ -104,7 +101,7 @@ text = "IDK"
 label_settings = SubResource("LabelSettings_8shm4")
 horizontal_alignment = 1
 
-[node name="Chat" type="Control" parent="." node_paths=PackedStringArray("textEdit", "chatLabel", "_panel")]
+[node name="Chat" type="Control" parent="." node_paths=PackedStringArray("textEdit", "chatLabel", "_panel", "_parser")]
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
@@ -118,6 +115,7 @@ script = ExtResource("5_8shm4")
 textEdit = NodePath("TextEdit")
 chatLabel = NodePath("Control/Label")
 _panel = NodePath("PanelContainer")
+_parser = NodePath("parser")
 
 [node name="PanelContainer" type="PanelContainer" parent="Chat"]
 layout_mode = 1
@@ -125,8 +123,8 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 16.769232
-offset_top = -64.30779
-offset_right = 301.0
+offset_top = -125.0
+offset_right = 457.0
 offset_bottom = 67.076904
 grow_vertical = 0
 theme_override_styles/panel = ExtResource("3_8shm4")
@@ -137,7 +135,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_left = 17.692307
 offset_top = 149.61537
-offset_right = 66.0
+offset_right = 222.0
 offset_bottom = 173.84618
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 10
@@ -149,24 +147,31 @@ emoji_menu_enabled = false
 clip_contents = true
 anchors_preset = 0
 offset_left = 21.769234
-offset_top = 17.69231
-offset_right = 295.0
+offset_top = -42.84614
+offset_right = 452.0
 offset_bottom = 142.30768
 
-[node name="Label" type="Label" parent="Chat/Control"]
+[node name="Label" type="RichTextLabel" parent="Chat/Control"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -173.0
+offset_top = -187.15381
 grow_horizontal = 2
 grow_vertical = 0
-text = "sasd
-s
-
-sda"
-label_settings = SubResource("LabelSettings_as176")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+tab_size = 3
+shortcut_keys_enabled = false
 vertical_alignment = 2
-autowrap_mode = 3
-justification_flags = 35
+justification_flags = 0
+
+[node name="parser" type="RichTextLabel" parent="Chat"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+bbcode_enabled = true
