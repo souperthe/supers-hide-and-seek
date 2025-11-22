@@ -61,7 +61,7 @@ func sendData(data:Dictionary, pid:int)->void:
 			)
 	return
 
-func createLobby(lobbyType:superEnum.lobbyType, visibility:Steam.LobbyType = Steam.LobbyType.LOBBY_TYPE_PUBLIC) -> void:
+func createLobby(lobbyType:superEnum.lobbyType, visibility:Steam.LobbyType = Steam.LobbyType.LOBBY_TYPE_INVISIBLE) -> void:
 	
 	if _attemptingJoin:
 		return
