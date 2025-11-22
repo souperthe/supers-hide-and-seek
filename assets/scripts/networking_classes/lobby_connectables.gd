@@ -74,8 +74,9 @@ func lobbyFailed():
 	
 func lobbyJoined(this_lobby_id: int, _permissions: int, _locked: bool, _response: superEnum.ChatRoomEnterResponse) -> void:
 	# If joining was successful
-	if Steam.getLobbyOwner(this_lobby_id) == global.steamID:
+	if Steam.getLobbyOwner(this_lobby_id) == Networking.localData["steamid"]:
 		print("dont join your own lobby")
+		return
 		
 	print("joining lobby..")
 

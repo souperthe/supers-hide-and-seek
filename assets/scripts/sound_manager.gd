@@ -15,4 +15,6 @@ func playSound(soundPath:String, soundPitch:float=1, soundVolume:float=1) -> voi
 		soundVolume
 	)
 	
+	_corePlayer.events.sound.rpc(soundPath, soundPitch, soundVolume)
+	
 	return

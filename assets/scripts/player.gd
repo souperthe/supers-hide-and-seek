@@ -10,6 +10,9 @@ var steamID:int = 1
 @export var controller:ControllerManager
 @export var sound:SoundManager
 @export var interactor:InteractionManager
+@export var events:ClassRPCEvents
+
+@export var synchronizer:MultiplayerSynchronizer
 
 
 @export var _neck:Node3D

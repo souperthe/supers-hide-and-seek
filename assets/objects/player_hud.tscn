@@ -86,16 +86,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -74.5
-offset_top = 46.38462
-offset_right = 74.5
-offset_bottom = 64.38462
+offset_left = -14.0
+offset_top = 46.38463
+offset_right = 14.0
+offset_bottom = 64.38463
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("3_8shm4")
 
 [node name="InfoLabel" type="Label" parent="Timer/PanelContainer2"]
 layout_mode = 2
-text = "Superthe is the seeker!"
+text = "IDK"
 label_settings = SubResource("LabelSettings_8shm4")
 horizontal_alignment = 1
