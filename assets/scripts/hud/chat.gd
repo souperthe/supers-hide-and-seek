@@ -9,6 +9,9 @@ func _getMessage(sender:int, message:String) -> void:
 	var senderData:Dictionary = Networking.players[sender]
 	var senderName:String = senderData.get("username")
 	
+	if sender == 1:
+		senderName += " (HOST)"
+	
 	
 	var additionText:String = "\n" + senderName + ": " + message
 	
@@ -19,17 +22,9 @@ func _getMessage(sender:int, message:String) -> void:
 	return
 	
 	
-@rpc("any_peer", "call_local", "reliable")
-func sendMessage(message:String) -> void:
-	var senderID:int = multiplayer.get_remote_sender_id()
-	
-	SignalManager.chatMessage.emit(senderID, message)
-	
-	
-	return
 	
 func _textSubmitted(newText:String) -> void:
-	sendMessage.rpc(newText)
+	Networking.localPlayer.events.sendMessage.rpc(newText)
 	textEdit.text = ""
 	textEdit.release_focus()
 	_panel.hide()
@@ -53,8 +48,4 @@ func _process(_delta: float) -> void:
 			_panel.show()
 			textEdit.show()
 			textEdit.grab_focus()
-		else:
-			_panel.hide()
-			textEdit.hide()
-			textEdit.release_focus()
 	return

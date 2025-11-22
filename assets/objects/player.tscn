@@ -51,8 +51,9 @@ volume_db = 50.0
 max_distance = 50.0
 bus = &"Voice"
 
-[node name="RPCEvents" type="Node" parent="." node_paths=PackedStringArray("_corePlayer")]
+[node name="RPCEvents" type="Node" parent="." node_paths=PackedStringArray("_light", "_corePlayer")]
 script = ExtResource("2_1qp14")
+_light = NodePath("../neckOffset/Neck/network_light")
 _corePlayer = NodePath("..")
 
 [node name="VoiceEmitter" type="Node" parent="." node_paths=PackedStringArray("targetEmitter", "targetPlayer", "_talkingSprite")]
@@ -140,6 +141,14 @@ update_scale = false
 
 [node name="InteractRay" type="RayCast3D" parent="neckOffset/Neck/viewbobPivot/tiltPivot/cameraArm/Camera3D"]
 target_position = Vector3(0, 0, -3)
+
+[node name="network_light" type="SpotLight3D" parent="neckOffset/Neck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.22825933)
+visible = false
+light_energy = 2.0
+shadow_enabled = true
+spot_range = 15.244
+spot_angle = 43.15
 
 [node name="playerHud" parent="." instance=ExtResource("7_xvjlw")]
 

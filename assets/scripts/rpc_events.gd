@@ -4,12 +4,27 @@ class_name ClassRPCEvents extends Node
 var _networkTransform:Transform3D
 
 
+@export var _light:SpotLight3D
 @export var _corePlayer:Player
 
 @rpc("authority", "call_remote", "unreliable")
 func updateTransform(newTransform:Transform3D)->void:
 	_networkTransform = newTransform
 	_corePlayer.transform = newTransform
+	return
+	
+@rpc("any_peer", "call_remote", "reliable")
+func setLight(visible:bool) -> void:
+	_light.visible = visible
+	return
+	
+@rpc("any_peer", "call_local", "reliable")
+func sendMessage(message:String) -> void:
+	var senderID:int = multiplayer.get_remote_sender_id()
+	
+	SignalManager.chatMessage.emit(senderID, message)
+	
+	
 	return
 
 

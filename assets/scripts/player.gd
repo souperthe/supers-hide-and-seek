@@ -63,7 +63,7 @@ func getSpeed()->float:
 	return walk_speed
 
 func _setupOthers() -> void:
-	$playerHud.visible = false
+	$playerHud.queue_free()
 	$Player.cast_shadow = GeometryInstance3D.ShadowCastingSetting.SHADOW_CASTING_SETTING_ON
 	return
 
