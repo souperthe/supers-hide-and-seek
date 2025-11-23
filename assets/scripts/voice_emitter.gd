@@ -41,6 +41,16 @@ func _ready() -> void:
 	Steam.startVoiceRecording()
 	return
 	
+var _peak: float = 0.01
+var _gain: float = 1.0
+	
+func get_dynamic_gain(sample: float) -> float:
+	var abs_sample:float = abs(sample)
+	_peak = max(_peak * 0.9995, abs_sample)      
+	_gain = 0.18 / _peak
+	_gain = clamp(_gain, 0.1, 12.0)
+	return _gain
+	
 	
 @rpc("any_peer", "call_remote", "unreliable")
 func _processVoice(voiceData:Dictionary) -> void:
@@ -58,10 +68,24 @@ func _processVoice(voiceData:Dictionary) -> void:
 			return
 		
 		for i: int in range(0, mini(_playback.get_frames_available() * 2, _voiceBuffer.size()), 2):
-			var raw_value: int = _voiceBuffer[0] | (_voiceBuffer[1] << 8)
-			raw_value = (raw_value + 32768) & 0xffff
+			var low: int = _voiceBuffer[0]
+			var high: int = _voiceBuffer[1]
+			#var raw_value: int = _voiceBuffer[0] | (_voiceBuffer[1] << 8)
+			var raw_value: int = (high << 8) | low
+			#raw_value = (raw_value + 32768) & 0xffff
+			if raw_value >= 32768:
+				raw_value -= 65536
 			
-			var amplitude: float = float(raw_value - 32768) / 32768.0
+			#var amplitude: float = float(raw_value - 32768) / 32768.0
+			var amplitude: float = float(raw_value) / 32768.0
+			
+			
+			amplitude *= get_dynamic_gain(amplitude)
+			
+			amplitude = clamp(amplitude, -1.0, 1.0)
+		
+			
+			
 			_playback.push_frame(Vector2(amplitude, amplitude))
 			
 			_voiceBuffer.remove_at(0)
@@ -87,9 +111,11 @@ func _process(_delta: float) -> void:
 		return
 	
 	var frames:float = _playback.get_frames_available()/float(targetRate)
+	
+	#print(frames)
 	#print(frames)
 	
-	speaking = frames < 0.74
+	speaking = frames < 0.68
 	
 	if _talkingSprite:
 		_talkingSprite.visible = speaking
