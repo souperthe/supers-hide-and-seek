@@ -14,7 +14,7 @@ var speaking:bool = false
 
 
 
-const targetRate:int = 11025
+const targetRate:int = 12000
 
 
 func _ready() -> void:
@@ -41,13 +41,20 @@ func _ready() -> void:
 	Steam.startVoiceRecording()
 	return
 	
+const _noiseFloor: float = 0.015 
+const _targetPeak: float = 0.18
+
 var _peak: float = 0.01
 var _gain: float = 1.0
 	
-func get_dynamic_gain(sample: float) -> float:
-	var abs_sample:float = abs(sample)
-	_peak = max(_peak * 0.9995, abs_sample)      
-	_gain = 0.18 / _peak
+func dymanicGain(sample: float) -> float:
+	var absSample:float = abs(sample)
+	if absSample < _noiseFloor:
+		_peak *= 0.995/2
+		return 0.0 
+	
+	_gain = max(_peak * 0.9995, absSample)
+	_gain = _targetPeak / max(_peak, 0.01)
 	_gain = clamp(_gain, 0.1, 12.0)
 	return _gain
 	
@@ -80,7 +87,7 @@ func _processVoice(voiceData:Dictionary) -> void:
 			var amplitude: float = float(raw_value) / 32768.0
 			
 			
-			amplitude *= get_dynamic_gain(amplitude)
+			amplitude *= dymanicGain(amplitude)
 			
 			amplitude = clamp(amplitude, -1.0, 1.0)
 		
