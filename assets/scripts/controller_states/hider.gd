@@ -3,6 +3,8 @@ extends ControllerState
 @export var _tiltPivot:Node3D
 @export var _light:SpotLight3D
 
+var _canCrouch:bool = false
+
 func controllerStart(_message:String="")->void:
 	actionTransition(_initalAction)
 	return
@@ -11,11 +13,18 @@ func controllerProcess(delta:float) -> void:
 	
 	corePlayer.crouching = Input.is_action_pressed("player_crouch")
 	
+	if corePlayer.is_on_floor():
+		_canCrouch = true
+	
 	if corePlayer.is_on_floor() and Input.is_action_just_pressed("player_crouch"):
-		corePlayer.position.y -= 0.8
+		if _canCrouch:
+			corePlayer.position.y -= 0.8
 		
 	if Input.is_action_just_released("player_crouch"):
-		corePlayer.position.y += 0.8
+		if _canCrouch:
+			corePlayer.position.y += 0.8
+		if !corePlayer.is_on_floor():
+			_canCrouch = false
 	
 	
 	corePlayer.collisionCrouching.disabled = !corePlayer.crouching
@@ -23,7 +32,7 @@ func controllerProcess(delta:float) -> void:
 	
 	if Input.is_action_just_pressed("player_light"):
 		print("help")
-		util.sfx("res://assets/sound/sfx/items/flashlight1.wav")
+		util.oneShotSFX("res://assets/sound/sfx/items/flashlight1.wav")
 		_light.visible = !_light.visible
 		corePlayer.events.setLight.rpc(_light.visible)
 		corePlayer.events.sound.rpc("res://assets/sound/sfx/items/flashlight1.wav")

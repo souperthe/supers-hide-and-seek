@@ -49,7 +49,7 @@ func generate_word(length:int) -> String:
 		word += _characters[randi()% n_char]
 	return word
 
-func sfx3D(emitter:Node3D, soundPath:String, soundPitch:float=1, soundVolume:float=1, from:float=0)->void:
+func oneShotSFX3D(emitter:Node3D, soundPath:String, soundPitch:float=1, soundVolume:float=1, from:float=0)->void:
 	var newSound:AudioStreamPlayer3D = AudioStreamPlayer3D.new()
 	newSound.stream = load(soundPath)
 	newSound.pitch_scale = soundPitch
@@ -61,7 +61,7 @@ func sfx3D(emitter:Node3D, soundPath:String, soundPitch:float=1, soundVolume:flo
 	newSound.queue_free()
 	return
 	
-func sfx(soundPath:String, soundPitch:float=1, soundVolume:float=1, from:float=0)->void:
+func oneShotSFX(soundPath:String, soundPitch:float=1, soundVolume:float=1, from:float=0)->void:
 	var newSound:AudioStreamPlayer = AudioStreamPlayer.new()
 	newSound.stream = load(soundPath)
 	newSound.pitch_scale = soundPitch
@@ -79,3 +79,17 @@ func vector3_angleLerp(start:Vector3, goal:Vector3, weight:float) -> Vector3:
 		lerp_angle(start.z, goal.z, weight)
 	)
 	return vec
+	
+	
+var _seekerPath:String = "res://assets/resources/seekers/"
+	
+func getSeeker(seekerName:String) -> Seeker:
+	var trueName:String = seekerName.to_lower()
+	var seekerPath:String = _seekerPath + trueName + ".tres"
+	
+	if !FileAccess.file_exists(seekerPath):
+		return null
+		
+	var foundSeeker:Seeker = load(seekerPath) as Seeker
+
+	return foundSeeker

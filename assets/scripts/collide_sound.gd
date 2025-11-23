@@ -9,7 +9,8 @@ var _parent:RigidBody3D
 func _playSound(_body:Node)->void:
 	
 	if _parent.linear_velocity.length() > 0.5:
-		util.sfx3D(
+		
+		util.oneShotSFX3D(
 			_parent,
 			sound.resource_path,
 			1,

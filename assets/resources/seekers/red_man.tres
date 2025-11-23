@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Seeker" load_steps=4 format=3 uid="uid://cph0dij0fljaw"]
+
+[ext_resource type="Script" uid="uid://btqjdvfscl84" path="res://assets/scripts/seeker.gd" id="1_v83l0"]
+[ext_resource type="PackedScene" uid="uid://bjpqxm6pr7ynw" path="res://assets/models/characters/seeker/seeker.tscn" id="1_veubs"]
+[ext_resource type="Texture2D" uid="uid://bmaax1pyvw5iw" path="res://assets/images/seeker_icons/seeker.png" id="3_r2k8y"]
+
+[resource]
+script = ExtResource("1_v83l0")
+seekerName = "Red-Man"
+seekerQuote = "I'm red."
+seekerIcon = ExtResource("3_r2k8y")
+seekerModel = ExtResource("1_veubs")
+metadata/_custom_type_script = "uid://btqjdvfscl84"

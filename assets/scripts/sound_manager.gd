@@ -8,7 +8,7 @@ class_name SoundManager extends Node
 
 func playSound(soundPath:String, soundPitch:float=1, soundVolume:float=1) -> void:
 	
-	util.sfx3D(
+	util.oneShotSFX3D(
 		_corePlayer,
 		soundPath,
 		soundPitch,

@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dmghd4m5h1ojl"]
+
+[ext_resource type="Texture2D" uid="uid://orut8himudd5" path="res://assets/models/characters/big_cheese/bigcheese_head_suitA_cvs_PICTURES_big_cheese_picFile.png" id="1_wkw61"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_wkw61")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjpqxm6pr7ynw"]
+
+[ext_resource type="ArrayMesh" uid="uid://ddlvb5op1kbts" path="res://assets/models/placeholder/player.obj" id="1_471sb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38hkk"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="seeker" type="Node3D"]
+
+[node name="Player" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.027, 0, -2.360415e-09, 0, 0.027, 0, 2.360415e-09, 0, -0.027, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_38hkk")
+mesh = ExtResource("1_471sb")
+skeleton = NodePath("../..")

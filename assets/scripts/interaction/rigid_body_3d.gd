@@ -10,7 +10,7 @@ func enterInteraction(interactable:Object) -> void:
 	core.startProcess(self)
 	currentlyInteractable = rigidBody
 	
-	corePlayer.events.setAuthority.rpc(rigidBody.get_path())
+	corePlayer.events.setupGrabbable.rpc(rigidBody.get_path(), true)
 	
 	#rigidBody.freeze = true
 	
@@ -36,6 +36,7 @@ func interactionProcess(delta:float) -> void:
 		
 		rigidBody.linear_velocity = corePlayer.camera.global_transform.basis.z*-15
 		
+		corePlayer.events.setupGrabbable.rpc(rigidBody.get_path(), false)
 		
 		core.endProcess(self)
 		util.setCollisions(rigidBody, false)
@@ -47,6 +48,7 @@ func interactionProcess(delta:float) -> void:
 		
 		print(flingDiffrence)
 		
+		corePlayer.events.setupGrabbable.rpc(rigidBody.get_path(), false)
 		
 		rigidBody.freeze = false
 		rigidBody.linear_velocity = flingDiffrence*24

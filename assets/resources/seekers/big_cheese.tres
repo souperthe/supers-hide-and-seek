@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Seeker" load_steps=4 format=3 uid="uid://dwo8wys2wcakn"]
+
+[ext_resource type="Script" uid="uid://btqjdvfscl84" path="res://assets/scripts/seeker.gd" id="1_n1dy2"]
+[ext_resource type="PackedScene" uid="uid://dms3o4vp11tr4" path="res://assets/models/characters/big_cheese/big_cheese.tscn" id="1_wso4f"]
+[ext_resource type="Texture2D" uid="uid://borex5vqc1i4e" path="res://assets/images/seeker_icons/big_cheese.png" id="2_6vsp0"]
+
+[resource]
+script = ExtResource("1_n1dy2")
+seekerName = "Big Cheese"
+seekerQuote = "Watch out, I'm a whiz at this game."
+seekerIcon = ExtResource("2_6vsp0")
+seekerModel = ExtResource("1_wso4f")
+seekerSize = Vector3(0.5, 0.5, 0.5)
+useFirstPerson = false
+stateName = "big_cheese"
+metadata/_custom_type_script = "uid://btqjdvfscl84"

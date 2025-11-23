@@ -31,7 +31,7 @@ func _getMessage(sender:int, message:String) -> void:
 	
 	chatLabel.text = chatLabel.text + additionText
 	
-	util.sfx("res://assets/sound/sfx/tools/ifm/ifm_snap.wav")
+	util.oneShotSFX("res://assets/sound/sfx/tools/ifm/ifm_snap.wav")
 	
 	return
 	

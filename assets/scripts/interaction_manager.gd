@@ -39,7 +39,7 @@ func _startInteraction(interactable:Object) -> void:
 	var interactionType:String = interactable.get_class().to_lower()
 	
 	if !_allInteractions.has(interactionType):
-		util.sfx("res://assets/sound/sfx/tools/ifm/ifm_denyundo.wav")
+		util.oneShotSFX("res://assets/sound/sfx/tools/ifm/ifm_denyundo.wav")
 		return
 	
 	

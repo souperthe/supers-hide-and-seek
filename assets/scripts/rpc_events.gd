@@ -8,7 +8,7 @@ var _networkTransform:Transform3D
 @export var _corePlayer:Player
 
 @rpc("authority", "call_local", "reliable")
-func setAuthority(nodePath:String) -> void:
+func setupGrabbable(nodePath:String, collisions:bool) -> void:
 	
 	var senderID:int = multiplayer.get_remote_sender_id()
 	var desiredNode:Node = get_node(nodePath)
@@ -17,6 +17,9 @@ func setAuthority(nodePath:String) -> void:
 		return
 		
 	desiredNode.set_multiplayer_authority(senderID)
+	
+	util.setCollisions(desiredNode, collisions)
+	
 	
 	
 	return
@@ -60,7 +63,7 @@ func _physics_process(_delta: float) -> void:
 @rpc("authority", "call_remote", "unreliable")
 func sound(soundPath:String, soundPitch:float=1, soundVolume:float=1)->void:
 	
-	util.sfx3D(
+	util.oneShotSFX3D(
 		_corePlayer,
 		soundPath,
 		soundPitch,

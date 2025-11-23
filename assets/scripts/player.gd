@@ -8,11 +8,13 @@ var steamID:int = 1
 var currentTeam:superEnum.teams = superEnum.teams.hider
 
 @export var camera:Camera3D
+@export var cameraArm:SpringArm3D
 
 @export var controller:ControllerManager
 @export var sound:SoundManager
 @export var interactor:InteractionManager
 @export var events:ClassRPCEvents
+@export var animator:AnimationManager
 
 @export var synchronizer:MultiplayerSynchronizer
 
@@ -20,6 +22,7 @@ var currentTeam:superEnum.teams = superEnum.teams.hider
 @export var _neck:Node3D
 
 @export var viewmodelRoot:Node3D
+@export var modelRoot:Node3D
 
 @export var neckOffset:Node3D
 
@@ -42,6 +45,8 @@ var jump_velocity : float = 12.0
 
 var crouching:bool = false
 
+var firstPerson:bool = true
+
 const walk_speed : float = 12.1
 const sprint_speed : float = 18.1
 const ground_accel : float = 12.0
@@ -57,6 +62,43 @@ const swim_up_speed : float = 10.0
 const climb_speed : float = 7.0
 
 
+func loadSeeker(seekerName:String) -> void:
+	var desiredSeeker:Seeker = util.getSeeker(seekerName)
+	
+	if desiredSeeker == null:
+		return
+		
+	#print(desiredSeeker.seekerQuote)`
+	
+	firstPerson = desiredSeeker.useFirstPerson
+	
+	if !firstPerson:
+		cameraArm.spring_length = 5
+		
+	util.clearChildren(modelRoot)
+	
+	rotation = Vector3.ZERO
+		
+	var seekerModel:Node3D = desiredSeeker.seekerModel.instantiate()
+	seekerModel.scale = desiredSeeker.seekerSize
+	
+	
+	modelRoot.add_child(seekerModel)
+	
+	animator.animatorSetup()
+	
+	controller.changeState(desiredSeeker.stateName)
+	
+
+	
+	
+	
+	#currentTeam = superEnum.teams.seeker
+	
+	
+	return
+
+
 func getSpeed()->float:
 	
 	if crouching:
@@ -66,7 +108,7 @@ func getSpeed()->float:
 
 func _setupOthers() -> void:
 	$playerHud.queue_free()
-	$Player.cast_shadow = GeometryInstance3D.ShadowCastingSetting.SHADOW_CASTING_SETTING_ON
+	$modelHolder/Player.cast_shadow = GeometryInstance3D.ShadowCastingSetting.SHADOW_CASTING_SETTING_ON
 	return
 
 func _setupAuthority()->void:
@@ -79,11 +121,16 @@ func _setupAuthority()->void:
 	camera.current = true
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
+	$modelHolder/Player.cast_shadow = GeometryInstance3D.ShadowCastingSetting.SHADOW_CASTING_SETTING_SHADOWS_ONLY
+	
 	$Talking.pixel_size = 0
+	
+	Console.add_command("load_seeker", loadSeeker, ["Seeker Name"], 1)
 	return
 
 
 func _ready() -> void:
+	animator.animatorSetup()
 	if !is_multiplayer_authority():
 		_setupOthers()
 		return
@@ -97,6 +144,9 @@ func _process(_delta: float) -> void:
 	cameraDir = (_neck.global_transform.basis * Vector3(rawDir.x, 0, rawDir.y)).normalized()
 	
 	var _movementDir:Vector3 = (global_transform.basis * Vector3(rawDir.x, 0, rawDir.y)).normalized()
+	
+	if !firstPerson:
+		_movementDir = (neckOffset.global_transform.basis * Vector3(rawDir.x, 0, rawDir.y)).normalized()
 	
 	
 	wishDir = Vector3(_movementDir.x, 0, _movementDir.z)
@@ -116,9 +166,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
-			rotate_y(-event.relative.x * global.look_sensitivity)
 			
 			_neck.rotate_x(-event.relative.y * global.look_sensitivity)
 			_neck.rotation.x = clamp(_neck.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+			
+			if firstPerson:
+				rotate_y(-event.relative.x * global.look_sensitivity)
+			else:
+				neckOffset.rotate_y(-event.relative.x * global.look_sensitivity)
 			
 	return
