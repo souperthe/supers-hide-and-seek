@@ -3,5 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://d2vcfce3qb7gx" path="res://assets/models/characters/big_cheese/textures/cogRobots_palette_3cmla_1.png" id="1_236gd"]
 
 [resource]
+cull_mode = 2
 shading_mode = 0
 albedo_texture = ExtResource("1_236gd")
