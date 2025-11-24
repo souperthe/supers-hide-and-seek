@@ -10,8 +10,16 @@ func actionEnter(message:String="")->void:
 	
 	if entering:
 		corePlayer.animator.playAnimation("landing_reverse", 2, 0.83)
+		coreSound.playSound(
+			"res://assets/sound/sfx/character/big_cheese/ENC_propeller_out.mp3",
+			2
+			)
 	else:
 		corePlayer.animator.playAnimation("landing", 1.5, 0.83)
+		coreSound.playSound(
+			"res://assets/sound/sfx/character/big_cheese/ENC_propeller_in.mp3",
+			1.5
+			)
 	
 	return
 	

@@ -21,6 +21,8 @@ var currentTeam:superEnum.teams = superEnum.teams.hider
 @export var animator:AnimationManager
 @export var hitbox:HitboxManager
 
+@export var abilityTimer:Timer
+
 @export var synchronizer:MultiplayerSynchronizer
 
 
@@ -110,6 +112,8 @@ func loadSeeker(seekerName:String) -> void:
 		
 	var seekerModel:Node3D = desiredSeeker.seekerModel.instantiate()
 	seekerModel.scale = desiredSeeker.seekerSize
+	
+	$Voice.pitch_scale = 0.8
 	
 	
 	

@@ -74,6 +74,17 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	
+	if Networking.localPlayer:
+		var timeLeft:float = Networking.localPlayer.abilityTimer.time_left
+		if timeLeft > 0:
+			$seekerIcon/Label.show()
+			var seconds:float = fmod(timeLeft, 60)
+			$seekerIcon/Label.text = str(seconds).pad_decimals(1)
+			$seekerIcon/TextureRect.modulate = Color.DIM_GRAY
+		else:
+			$seekerIcon/Label.hide()
+			$seekerIcon/TextureRect.modulate = Color.WHITE
+	
 	_shakeAmount = lerpf(_shakeAmount, 0, 3 * delta)
 	
 	var shakeAddition:Vector2 = Vector2(

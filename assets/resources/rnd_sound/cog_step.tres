@@ -1,0 +1,13 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://3o0gdikx25sh"]
+
+[ext_resource type="AudioStream" uid="uid://d3fy6p8c8pt5k" path="res://assets/sound/sfx/character/big_cheese/cogstep_1.wav" id="1_vb871"]
+[ext_resource type="AudioStream" uid="uid://bekulondgdsq8" path="res://assets/sound/sfx/character/big_cheese/cogstep_2.wav" id="2_ahx3d"]
+[ext_resource type="AudioStream" uid="uid://cu1soc7f0p2i4" path="res://assets/sound/sfx/character/big_cheese/cogstep_3.wav" id="3_wukpa"]
+[ext_resource type="AudioStream" uid="uid://cqoll3n2np0rv" path="res://assets/sound/sfx/character/big_cheese/cogstep_4.wav" id="4_5256y"]
+
+[resource]
+streams_count = 4
+stream_0/stream = ExtResource("1_vb871")
+stream_1/stream = ExtResource("2_ahx3d")
+stream_2/stream = ExtResource("3_wukpa")
+stream_3/stream = ExtResource("4_5256y")

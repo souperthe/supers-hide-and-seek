@@ -8,3 +8,11 @@ func controllerStart(_message:String="") -> void:
 func controllerPhysics(delta:float) -> void:
 	corePlayer.interactor.handleInteraction(delta)
 	return
+	
+	
+func useAbility() -> bool:
+	if corePlayer.abilityTimer.time_left > 0:
+		return false
+	corePlayer.abilityTimer.start()
+	actionTransition("search")
+	return true

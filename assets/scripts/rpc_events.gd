@@ -6,6 +6,7 @@ var _networkTransform:Transform3D
 
 @export var _light:SpotLight3D
 @export var _corePlayer:Player
+@export var _voiceEmitter:AudioStreamPlayer3D
 
 @rpc("any_peer", "call_local", "reliable")
 func damageEvent(amount:float, knockback:Vector3) -> void:
@@ -67,6 +68,7 @@ func callDead() -> void:
 	_corePlayer.collisionCrouching.disabled = true
 	_corePlayer.currentTeam = superEnum.teams.spectator
 	_corePlayer.health = 0
+	_voiceEmitter.stop()
 	SignalManager.peerDied.emit(_corePlayer.authID)
 	
 	if Networking.localPlayer == _corePlayer:

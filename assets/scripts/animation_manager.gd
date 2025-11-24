@@ -16,6 +16,18 @@ func _animationFinished(_animationName:String) -> void:
 	animationDone = true
 	return
 	
+func animationSetSpeed(speed:float) -> void:
+	
+	if _animator == null:
+		return
+		
+	if _animator.speed_scale == speed:
+		return
+		
+	_animator.speed_scale = speed
+	
+	return
+	
 func animationSeek(timePosition:float) -> void:
 	
 	if _animator == null:
@@ -44,8 +56,8 @@ func playAnimation(desiredAnimation:String, speed:float=1, seek:float=0, blend:f
 	_animator.play(
 		desiredAnimation,
 		blend,
-		speed
 	)
+	_animator.speed_scale = speed
 	_animator.seek(seek)
 	
 	animationDone = false

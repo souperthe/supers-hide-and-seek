@@ -13,6 +13,10 @@ func actionProcess(_delta:float)->void:
 	if Input.is_action_pressed("player_sprint"):
 		speed *= 2
 		
+	if Input.is_action_just_pressed("player_jump"):
+		coreState.actionTransition("specificplayer")
+		return
+		
 		
 	var goto:Vector3 = corePlayer.cameraDir*speed
 	

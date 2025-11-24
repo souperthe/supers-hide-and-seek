@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c8i5i2af5ohaf"]
+[gd_scene load_steps=35 format=3 uid="uid://c8i5i2af5ohaf"]
 
 [ext_resource type="Script" uid="uid://jrbuo0ken0kb" path="res://assets/scripts/player.gd" id="1_ikdab"]
 [ext_resource type="Script" uid="uid://bmoapp8kdmh2f" path="res://assets/scripts/rpc_events.gd" id="2_1qp14"]
@@ -21,12 +21,14 @@
 [ext_resource type="Script" uid="uid://bu2rt8q5lcw5o" path="res://assets/scripts/controller_actions/big_cheese/idle.gd" id="14_y0ns2"]
 [ext_resource type="Script" uid="uid://dhr0dsd005iu7" path="res://assets/scripts/controller_actions/spectate/freecam.gd" id="15_cis3c"]
 [ext_resource type="Script" uid="uid://ciqm61qaw8njt" path="res://assets/scripts/controller_actions/big_cheese/walk.gd" id="15_rjy6x"]
+[ext_resource type="Script" uid="uid://b78hyq3oq1n0c" path="res://assets/scripts/controller_actions/spectate/specificplayer.gd" id="16_3l5fp"]
 [ext_resource type="Script" uid="uid://cscosh8oacq3v" path="res://assets/scripts/controller_actions/big_cheese/fly_transition.gd" id="16_g7bc3"]
 [ext_resource type="Script" uid="uid://olq56wixjsls" path="res://assets/scripts/controller_actions/big_cheese/flying.gd" id="17_usqfr"]
 [ext_resource type="Script" uid="uid://dtj2tphdin33k" path="res://assets/scripts/controller_actions/big_cheese/flying_land.gd" id="18_vhanp"]
 [ext_resource type="Script" uid="uid://b7w14hwl52i2" path="res://assets/scripts/controller_actions/big_cheese/land_fall.gd" id="19_foeld"]
 [ext_resource type="Script" uid="uid://icufwxc08tme" path="res://assets/scripts/controller_actions/big_cheese/fall.gd" id="20_7lv6i"]
 [ext_resource type="Script" uid="uid://bvofu61bxjlb3" path="res://assets/scripts/controller_actions/big_cheese/attack.gd" id="21_8wh5m"]
+[ext_resource type="Script" uid="uid://b8ebovwnw3vl2" path="res://assets/scripts/controller_actions/big_cheese/search.gd" id="26_xmuqx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ikdab"]
 radius = 0.3
@@ -50,7 +52,7 @@ radius = 1.3088431
 height = 1.4736328
 radius = 1.4516602
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "cameraArm", "controller", "sound", "interactor", "events", "animator", "hitbox", "synchronizer", "_neck", "viewmodelRoot", "modelRoot", "modelPivot", "neckOffset", "collisionStanding", "collisionCrouching", "interactRay")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "cameraArm", "controller", "sound", "interactor", "events", "animator", "hitbox", "abilityTimer", "synchronizer", "_neck", "viewmodelRoot", "modelRoot", "modelPivot", "neckOffset", "collisionStanding", "collisionCrouching", "interactRay")]
 script = ExtResource("1_ikdab")
 camera = NodePath("neckOffset/Neck/viewbobPivot/tiltPivot/cameraArm/Camera3D")
 cameraArm = NodePath("neckOffset/Neck/viewbobPivot/tiltPivot/cameraArm")
@@ -60,6 +62,7 @@ interactor = NodePath("interactionManager")
 events = NodePath("RPCEvents")
 animator = NodePath("animationManager")
 hitbox = NodePath("hitboxManager")
+abilityTimer = NodePath("AbilityTimer")
 synchronizer = NodePath("MultiplayerSynchronizer")
 _neck = NodePath("neckOffset/Neck")
 viewmodelRoot = NodePath("neckOffset/Neck/viewbobPivot/tiltPivot/cameraArm/Camera3D/viewmodelHolder")
@@ -86,10 +89,11 @@ _corePlayer = NodePath("..")
 script = ExtResource("2_7muya")
 _corePlayer = NodePath("..")
 
-[node name="RPCEvents" type="Node" parent="." node_paths=PackedStringArray("_light", "_corePlayer")]
+[node name="RPCEvents" type="Node" parent="." node_paths=PackedStringArray("_light", "_corePlayer", "_voiceEmitter")]
 script = ExtResource("2_1qp14")
 _light = NodePath("../neckOffset/Neck/network_light")
 _corePlayer = NodePath("..")
+_voiceEmitter = NodePath("../Voice")
 
 [node name="VoiceEmitter" type="Node" parent="." node_paths=PackedStringArray("targetEmitter", "targetPlayer", "_talkingSprite")]
 script = ExtResource("2_34ecl")
@@ -131,10 +135,13 @@ script = ExtResource("6_nqkij")
 
 [node name="spectate" type="Node" parent="controllerManager"]
 script = ExtResource("14_axagv")
-_initalAction = "freecam"
+_initalAction = "specificplayer"
 
 [node name="freecam" type="Node" parent="controllerManager/spectate"]
 script = ExtResource("15_cis3c")
+
+[node name="specificplayer" type="Node" parent="controllerManager/spectate"]
+script = ExtResource("16_3l5fp")
 
 [node name="big_cheese" type="Node" parent="controllerManager"]
 script = ExtResource("12_qgtm8")
@@ -163,6 +170,9 @@ script = ExtResource("20_7lv6i")
 
 [node name="attack" type="Node" parent="controllerManager/big_cheese"]
 script = ExtResource("21_8wh5m")
+
+[node name="search" type="Node" parent="controllerManager/big_cheese"]
+script = ExtResource("26_xmuqx")
 
 [node name="red_man" type="Node" parent="controllerManager" node_paths=PackedStringArray("_tiltPivot", "_light")]
 script = ExtResource("3_jg13i")
@@ -276,3 +286,7 @@ shape = SubResource("SphereShape3D_8wh5m")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="modelPivot/HitBoxes/cheesebox_fall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06591797, 0)
 shape = SubResource("CylinderShape3D_am6w6")
+
+[node name="AbilityTimer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true

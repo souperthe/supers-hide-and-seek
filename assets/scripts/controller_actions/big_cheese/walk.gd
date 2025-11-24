@@ -8,8 +8,9 @@ func actionEnter(_message:String="")->void:
 	_stepTime = 0
 	
 	coreSound.playSound(
-		"res://assets/resources/rnd_sound/metal_step.tres",
-		0.8
+		"res://assets/resources/rnd_sound/cog_step.tres",
+		1,
+		0.5
 		)
 	
 	return
@@ -45,10 +46,15 @@ func actionPhysics(delta:float)->void:
 	
 	_stepTime += corePlayer.velocity.length() * delta
 	
+	if Input.is_action_just_pressed("player_ability"):
+		if get_parent().useAbility():
+			return
+	
 	if _stepTime > 4.5:
 		coreSound.playSound(
-			"res://assets/resources/rnd_sound/metal_step.tres",
-			0.8
+			"res://assets/resources/rnd_sound/cog_step.tres",
+			1,
+			0.5
 			)
 		_stepTime = 0
 	
