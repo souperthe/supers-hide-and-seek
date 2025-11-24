@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c8i5i2af5ohaf"]
+[gd_scene load_steps=33 format=3 uid="uid://c8i5i2af5ohaf"]
 
 [ext_resource type="Script" uid="uid://jrbuo0ken0kb" path="res://assets/scripts/player.gd" id="1_ikdab"]
 [ext_resource type="Script" uid="uid://bmoapp8kdmh2f" path="res://assets/scripts/rpc_events.gd" id="2_1qp14"]
@@ -17,7 +17,9 @@
 [ext_resource type="ArrayMesh" uid="uid://ddlvb5op1kbts" path="res://assets/models/placeholder/player.obj" id="9_bkysh"]
 [ext_resource type="Script" uid="uid://qwdcoukg2owl" path="res://assets/scripts/controller_states/big_cheese.gd" id="12_qgtm8"]
 [ext_resource type="Texture2D" uid="uid://sfofdqbs0rvf" path="res://assets/images/icons/old-microphone.png" id="13_fg3d2"]
+[ext_resource type="Script" uid="uid://c1nptbygdrtmt" path="res://assets/scripts/controller_states/spectate.gd" id="14_axagv"]
 [ext_resource type="Script" uid="uid://bu2rt8q5lcw5o" path="res://assets/scripts/controller_actions/big_cheese/idle.gd" id="14_y0ns2"]
+[ext_resource type="Script" uid="uid://dhr0dsd005iu7" path="res://assets/scripts/controller_actions/spectate/freecam.gd" id="15_cis3c"]
 [ext_resource type="Script" uid="uid://ciqm61qaw8njt" path="res://assets/scripts/controller_actions/big_cheese/walk.gd" id="15_rjy6x"]
 [ext_resource type="Script" uid="uid://cscosh8oacq3v" path="res://assets/scripts/controller_actions/big_cheese/fly_transition.gd" id="16_g7bc3"]
 [ext_resource type="Script" uid="uid://olq56wixjsls" path="res://assets/scripts/controller_actions/big_cheese/flying.gd" id="17_usqfr"]
@@ -126,6 +128,13 @@ script = ExtResource("5_6r1sy")
 
 [node name="jump" type="Node" parent="controllerManager/hider"]
 script = ExtResource("6_nqkij")
+
+[node name="spectate" type="Node" parent="controllerManager"]
+script = ExtResource("14_axagv")
+_initalAction = "freecam"
+
+[node name="freecam" type="Node" parent="controllerManager/spectate"]
+script = ExtResource("15_cis3c")
 
 [node name="big_cheese" type="Node" parent="controllerManager"]
 script = ExtResource("12_qgtm8")

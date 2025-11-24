@@ -71,11 +71,17 @@ const climb_speed : float = 7.0
 
 func takeDamage(amount:float, knockback:Vector3) -> void:
 	print(amount)
+	
 	var previousHealth:float = health
 	
 	health -= amount
 	
+	
 	velocity = knockback
+	
+	if health < 0:
+		health = 0
+		events.callDead.rpc()
 	
 	SignalManager.damageTaken.emit(previousHealth, health, amount)
 	sound.playSound("res://assets/resources/rnd_sound/player_hurt.tres")

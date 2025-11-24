@@ -22,7 +22,7 @@ func hitboxDamage(hitboxName:String, amount:float, knockback:Vector3) -> bool:
 			if body == _corePlayer:
 				continue
 				
-			if body.currentTeam == superEnum.teams.hider:
+			if body.currentTeam != superEnum.teams.hider:
 				continue
 			
 			

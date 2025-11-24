@@ -60,6 +60,21 @@ func setLight(visible:bool) -> void:
 	_light.visible = visible
 	return
 	
+@rpc("authority", "call_local", "reliable")
+func callDead() -> void:
+	_corePlayer.modelRoot.hide()
+	_corePlayer.collisionStanding.disabled = true
+	_corePlayer.collisionCrouching.disabled = true
+	_corePlayer.currentTeam = superEnum.teams.spectator
+	_corePlayer.health = 0
+	SignalManager.peerDied.emit(_corePlayer.authID)
+	
+	if Networking.localPlayer == _corePlayer:
+		_corePlayer.controller.changeState("spectate")
+	
+	
+	return
+	
 @rpc("any_peer", "call_local", "reliable")
 func sendMessage(message:String) -> void:
 	var senderID:int = multiplayer.get_remote_sender_id()
