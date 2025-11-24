@@ -79,7 +79,7 @@ func takeDamage(amount:float, knockback:Vector3) -> void:
 	
 	velocity = knockback
 	
-	if health < 0:
+	if health <= 0:
 		health = 0
 		events.callDead.rpc()
 	
