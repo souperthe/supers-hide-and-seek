@@ -93,7 +93,7 @@ func loadSeeker(seekerName:String) -> void:
 	
 	
 	
-	#currentTeam = superEnum.teams.seeker
+	currentTeam = superEnum.teams.seeker
 	
 	
 	return

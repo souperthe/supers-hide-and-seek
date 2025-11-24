@@ -59,6 +59,19 @@ func _physics_process(_delta: float) -> void:
 		updateTransform.rpc(_corePlayer.transform)
 	
 	return
+	
+@rpc("authority", "call_remote", "unreliable")
+func animation(desiredAnimation:String, speed:float=1, seek:float=0, blend:float=-1) -> void:
+	
+	
+	_corePlayer.animator.playAnimation(
+		desiredAnimation,
+		speed,
+		seek,
+		blend
+	)
+	
+	return
 
 @rpc("authority", "call_remote", "unreliable")
 func sound(soundPath:String, soundPitch:float=1, soundVolume:float=1)->void:

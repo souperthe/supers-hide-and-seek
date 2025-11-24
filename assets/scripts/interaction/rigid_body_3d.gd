@@ -4,6 +4,9 @@ extends Interaction
 
 func enterInteraction(interactable:Object) -> void:
 	
+	if corePlayer.currentTeam != superEnum.teams.hider:
+		return
+	
 	var rigidBody:RigidBody3D = interactable
 	
 	

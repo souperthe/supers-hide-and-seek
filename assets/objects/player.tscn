@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c8i5i2af5ohaf"]
+[gd_scene load_steps=27 format=3 uid="uid://c8i5i2af5ohaf"]
 
 [ext_resource type="Script" uid="uid://jrbuo0ken0kb" path="res://assets/scripts/player.gd" id="1_ikdab"]
 [ext_resource type="Script" uid="uid://bmoapp8kdmh2f" path="res://assets/scripts/rpc_events.gd" id="2_1qp14"]
@@ -16,6 +16,13 @@
 [ext_resource type="ArrayMesh" uid="uid://ddlvb5op1kbts" path="res://assets/models/placeholder/player.obj" id="9_bkysh"]
 [ext_resource type="Script" uid="uid://qwdcoukg2owl" path="res://assets/scripts/controller_states/big_cheese.gd" id="12_qgtm8"]
 [ext_resource type="Texture2D" uid="uid://sfofdqbs0rvf" path="res://assets/images/icons/old-microphone.png" id="13_fg3d2"]
+[ext_resource type="Script" uid="uid://bu2rt8q5lcw5o" path="res://assets/scripts/controller_actions/big_cheese/idle.gd" id="14_y0ns2"]
+[ext_resource type="Script" uid="uid://ciqm61qaw8njt" path="res://assets/scripts/controller_actions/big_cheese/walk.gd" id="15_rjy6x"]
+[ext_resource type="Script" uid="uid://cscosh8oacq3v" path="res://assets/scripts/controller_actions/big_cheese/fly_transition.gd" id="16_g7bc3"]
+[ext_resource type="Script" uid="uid://olq56wixjsls" path="res://assets/scripts/controller_actions/big_cheese/flying.gd" id="17_usqfr"]
+[ext_resource type="Script" uid="uid://dtj2tphdin33k" path="res://assets/scripts/controller_actions/big_cheese/flying_land.gd" id="18_vhanp"]
+[ext_resource type="Script" uid="uid://b7w14hwl52i2" path="res://assets/scripts/controller_actions/big_cheese/land_fall.gd" id="19_foeld"]
+[ext_resource type="Script" uid="uid://icufwxc08tme" path="res://assets/scripts/controller_actions/big_cheese/fall.gd" id="20_7lv6i"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ikdab"]
 radius = 0.3
@@ -106,6 +113,28 @@ script = ExtResource("6_nqkij")
 
 [node name="big_cheese" type="Node" parent="controllerManager"]
 script = ExtResource("12_qgtm8")
+_initalAction = "idle"
+
+[node name="idle" type="Node" parent="controllerManager/big_cheese"]
+script = ExtResource("14_y0ns2")
+
+[node name="walk" type="Node" parent="controllerManager/big_cheese"]
+script = ExtResource("15_rjy6x")
+
+[node name="fly_transition" type="Node" parent="controllerManager/big_cheese"]
+script = ExtResource("16_g7bc3")
+
+[node name="flying" type="Node" parent="controllerManager/big_cheese"]
+script = ExtResource("17_usqfr")
+
+[node name="flying_land" type="Node" parent="controllerManager/big_cheese"]
+script = ExtResource("18_vhanp")
+
+[node name="land_fall" type="Node" parent="controllerManager/big_cheese"]
+script = ExtResource("19_foeld")
+
+[node name="fall" type="Node" parent="controllerManager/big_cheese"]
+script = ExtResource("20_7lv6i")
 
 [node name="standingCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -127,6 +156,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 [node name="tiltPivot" type="Node3D" parent="neckOffset/Neck/viewbobPivot"]
 
 [node name="cameraArm" type="SpringArm3D" parent="neckOffset/Neck/viewbobPivot/tiltPivot"]
+collision_mask = 0
 spring_length = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="neckOffset/Neck/viewbobPivot/tiltPivot/cameraArm"]
@@ -146,6 +176,7 @@ spot_angle = 43.15
 
 [node name="holdPoint" type="Node3D" parent="neckOffset/Neck/viewbobPivot/tiltPivot/cameraArm/Camera3D/viewmodelHolder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.71499515, -1.3728298)
+visible = false
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="neckOffset/Neck/viewbobPivot/tiltPivot/cameraArm/Camera3D"]
 remote_path = NodePath("../viewmodelHolder")

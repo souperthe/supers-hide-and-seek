@@ -1,14 +1,10 @@
 extends ControllerState
 
 func controllerStart(_message:String="") -> void:
-	print("pls")
-	corePlayer.animator.playAnimation("neutral")
+	corePlayer.neckOffset.position.y = 1
+	actionTransition(_initalAction)
 	return
-
-func controllerPhysics(_delta:float) -> void:
 	
-	corePlayer.velocity = corePlayer.wishDir * corePlayer.walk_speed
-	
-	if corePlayer.wishDir != Vector3.ZERO:
-		corePlayer.modelRoot.rotation.y = atan2(-corePlayer.wishDir.x, -corePlayer.wishDir.z)
+func controllerPhysics(delta:float) -> void:
+	corePlayer.interactor.handleInteraction(delta)
 	return

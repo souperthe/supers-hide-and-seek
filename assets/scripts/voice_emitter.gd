@@ -49,7 +49,7 @@ var _gain: float = 1.0
 	
 func dymanicGain(sample: float) -> float:
 	var absSample:float = abs(sample)
-	if absSample < _noiseFloor:
+	if absSample < _noiseFloor/2:
 		_peak *= 0.995/2
 		return 0.0 
 	_gain = max(_peak * 0.9995, absSample)
@@ -88,7 +88,7 @@ func _processVoice(voiceData:Dictionary) -> void:
 			
 			amplitude *= dymanicGain(amplitude)
 			
-			amplitude = clamp(amplitude, -1.0, 1.0)
+			#amplitude = clamp(amplitude, -1.0, 1.0)
 		
 			
 			

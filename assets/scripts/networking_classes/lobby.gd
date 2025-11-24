@@ -46,10 +46,14 @@ func sendData(data:Dictionary, pid:int)->void:
 		newPlayer.playerName = data["username"]
 		newPlayer.name = str(pid)
 		
+		
 		if pid != multiplayer.get_unique_id():
 			newPlayer.position = Vector3.UP*1248
 		
 		Networking.playersHolder.add_child(newPlayer)
+		
+		if pid == 1:
+			newPlayer.loadSeeker("big_cheese")
 		
 	if !multiplayer.is_server():
 		return
