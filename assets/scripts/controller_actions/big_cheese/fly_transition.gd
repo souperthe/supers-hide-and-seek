@@ -9,9 +9,9 @@ func actionEnter(message:String="")->void:
 	entering = message == "enter"
 	
 	if entering:
-		corePlayer.animator.playAnimation("landing_reverse", 2)
+		corePlayer.animator.playAnimation("landing_reverse", 2, 0.83)
 	else:
-		corePlayer.animator.playAnimation("landing", 1.5)
+		corePlayer.animator.playAnimation("landing", 1.5, 0.83)
 	
 	return
 	

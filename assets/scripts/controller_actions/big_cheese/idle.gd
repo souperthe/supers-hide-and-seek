@@ -20,6 +20,10 @@ func actionPhysics(_delta:float)->void:
 	if Input.is_action_just_pressed("player_emote"):
 		corePlayer.animator.playAnimation("song-and-dance")
 		
+	if Input.is_action_just_pressed("player_attack"):
+		coreState.actionTransition("attack", "enter")
+		return
+		
 	if Input.is_action_just_pressed("player_jump"):
 		coreState.actionTransition("fly_transition", "enter")
 		return

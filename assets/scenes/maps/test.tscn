@@ -18,6 +18,8 @@ uv1_triplanar = true
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 use_collision = true
+collision_layer = 3
+collision_mask = 3
 size = Vector3(500, 1, 500)
 material = SubResource("StandardMaterial3D_x2cbm")
 
@@ -31,11 +33,15 @@ shadow_enabled = true
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.779406, -0.5, 11.770255)
 use_collision = true
+collision_layer = 3
+collision_mask = 3
 size = Vector3(15, 15, 20.324097)
 material = SubResource("StandardMaterial3D_x2cbm")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1686487, -7.0104113)
+collision_layer = 3
+collision_mask = 3
 gravity_scale = 4.0
 script = ExtResource("3_gfvay")
 
@@ -52,18 +58,24 @@ metadata/_custom_type_script = "uid://ckt28bfs5uxyb"
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6084628, -2.909912, 14.694288)
 use_collision = true
+collision_layer = 3
+collision_mask = 3
 size = Vector3(2.956543, 15, 3.4631042)
 material = SubResource("StandardMaterial3D_x2cbm")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0246768, -5.2437935, 9.557309)
 use_collision = true
+collision_layer = 3
+collision_mask = 3
 size = Vector3(2.956543, 15, 3.4631042)
 material = SubResource("StandardMaterial3D_x2cbm")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5428224, -6.3204556, 14.670085)
 use_collision = true
+collision_layer = 3
+collision_mask = 3
 size = Vector3(2.956543, 15, 3.4631042)
 material = SubResource("StandardMaterial3D_x2cbm")
 

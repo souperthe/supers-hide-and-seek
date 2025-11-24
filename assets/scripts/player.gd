@@ -62,6 +62,9 @@ const swim_up_speed : float = 10.0
 const climb_speed : float = 7.0
 
 
+signal becameSeeker(seeker:Seeker)
+
+
 func loadSeeker(seekerName:String) -> void:
 	var desiredSeeker:Seeker = util.getSeeker(seekerName)
 	
@@ -72,18 +75,30 @@ func loadSeeker(seekerName:String) -> void:
 	
 	firstPerson = desiredSeeker.useFirstPerson
 	
-	if !firstPerson:
-		cameraArm.spring_length = 5
+		
+	_neck.rotation = Vector3.ZERO
+	neckOffset.rotation = Vector3.ZERO
+	modelRoot.rotation = Vector3.ZERO
+	rotation = Vector3.ZERO
 		
 	util.clearChildren(modelRoot)
 	
-	rotation = Vector3.ZERO
 		
 	var seekerModel:Node3D = desiredSeeker.seekerModel.instantiate()
 	seekerModel.scale = desiredSeeker.seekerSize
 	
 	
+	
 	modelRoot.add_child(seekerModel)
+	
+	if !firstPerson:
+		cameraArm.spring_length = 5
+	else:
+		cameraArm.spring_length = 0
+		util.setShadows(
+			modelRoot,
+			GeometryInstance3D.ShadowCastingSetting.SHADOW_CASTING_SETTING_SHADOWS_ONLY
+		)
 	
 	animator.animatorSetup()
 	
@@ -94,6 +109,8 @@ func loadSeeker(seekerName:String) -> void:
 	
 	
 	currentTeam = superEnum.teams.seeker
+	
+	SignalManager.becameSeeker.emit(desiredSeeker)
 	
 	
 	return

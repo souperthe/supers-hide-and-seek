@@ -81,6 +81,19 @@ func vector3_angleLerp(start:Vector3, goal:Vector3, weight:float) -> Vector3:
 	return vec
 	
 	
+func setShadows(rootNode:Node3D, shadowMode:GeometryInstance3D.ShadowCastingSetting) -> void:
+	
+	for node in getDescendants(rootNode):
+		
+		if node is GeometryInstance3D:
+			node.cast_shadow = shadowMode
+		
+		
+		continue
+	
+	return
+	
+	
 var _seekerPath:String = "res://assets/resources/seekers/"
 	
 func getSeeker(seekerName:String) -> Seeker:

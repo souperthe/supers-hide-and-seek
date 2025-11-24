@@ -16,3 +16,4 @@ signal hostSucess
 
 
 signal chatMessage(sender:int, message:String)
+signal becameSeeker(seeker:Seeker)

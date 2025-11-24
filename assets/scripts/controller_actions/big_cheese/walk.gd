@@ -15,6 +15,10 @@ func actionPhysics(_delta:float)->void:
 	if Input.is_action_just_pressed("player_jump"):
 		coreState.actionTransition("fly_transition", "enter")
 		return
+		
+	if Input.is_action_just_pressed("player_attack"):
+		coreState.actionTransition("attack", "enter")
+		return
 	
 	if corePlayer.wishDir == Vector3.ZERO:
 		coreState.actionTransition("idle")

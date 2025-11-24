@@ -10,4 +10,5 @@ seekerName = "Red-Man"
 seekerQuote = "I'm red."
 seekerIcon = ExtResource("3_r2k8y")
 seekerModel = ExtResource("1_veubs")
+stateName = "red_man"
 metadata/_custom_type_script = "uid://btqjdvfscl84"

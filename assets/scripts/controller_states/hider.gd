@@ -6,6 +6,7 @@ extends ControllerState
 var _canCrouch:bool = false
 
 func controllerStart(_message:String="")->void:
+	corePlayer.neckOffset.position.y = 0
 	actionTransition(_initalAction)
 	return
 	

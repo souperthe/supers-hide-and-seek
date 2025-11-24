@@ -1,0 +1,42 @@
+extends ControllerAction
+
+var _finishingUp:bool = false
+
+func actionEnter(_message:String="")->void:
+	
+	corePlayer.animator.playAnimation("magic3", 2, 0.63)
+	coreSound.playSound(
+		"res://assets/sound/sfx/weapons/iceaxe/iceaxe_swing1.wav",
+		randf_range(0.9,1.1)
+		)
+		
+	_finishingUp = false
+	
+
+	
+	return
+	
+func actioneExit()->void:
+	return
+
+
+func actionPhysics(delta:float)->void:
+	corePlayer.velocity = corePlayer.velocity.lerp(Vector3.ZERO, 6*delta)
+	
+	
+	if corePlayer.animator.animationGetPosition() > 1.53 and !_finishingUp:
+		print("hi")
+		corePlayer.animator.animationSeek(2.93)
+		_finishingUp = true
+	
+	if !(corePlayer.is_on_floor()):
+		coreState.actionTransition("fall")
+		return
+	
+	
+	if corePlayer.animator.animationDone:
+		coreState.actionTransition("idle")
+		return
+	
+	
+	return

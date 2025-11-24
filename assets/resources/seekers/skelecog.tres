@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Seeker" load_steps=4 format=3 uid="uid://bj80c5bko421t"]
+
+[ext_resource type="Script" uid="uid://btqjdvfscl84" path="res://assets/scripts/seeker.gd" id="1_7o4hk"]
+[ext_resource type="Texture2D" uid="uid://e3sunpe13tay" path="res://assets/images/seeker_icons/skelecog.png" id="2_7o4hk"]
+[ext_resource type="PackedScene" uid="uid://cio74ygsm385a" path="res://assets/models/characters/skelecog/skelecog.tscn" id="3_7o4hk"]
+
+[resource]
+script = ExtResource("1_7o4hk")
+seekerName = "Skelecog"
+seekerQuote = "Sneaking around like that dog, were you? Nice try."
+seekerIcon = ExtResource("2_7o4hk")
+seekerModel = ExtResource("3_7o4hk")
+seekerSize = Vector3(0.5, 0.5, 0.5)
+useFirstPerson = false
+stateName = "big_cheese"
+metadata/_custom_type_script = "uid://btqjdvfscl84"

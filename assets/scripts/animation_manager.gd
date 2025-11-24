@@ -15,6 +15,21 @@ func _animationFinished(_animationName:String) -> void:
 	print("animation done")
 	animationDone = true
 	return
+	
+func animationSeek(timePosition:float) -> void:
+	
+	if _animator == null:
+		return
+		
+		
+	_animator.seek(timePosition)
+	
+	return
+	
+func animationGetPosition() -> float:
+	if _animator == null:
+		return 0
+	return _animator.get_current_animation_position()
 
 
 func playAnimation(desiredAnimation:String, speed:float=1, seek:float=0, blend:float=-1) -> void:
@@ -51,6 +66,9 @@ func animatorSetup() -> void:
 	
 	if _animator:
 		_animator.animation_finished.disconnect(_animationFinished)
+		
+	animationName = ""
+	animationDone = false
 	
 	var modelDescendants:Array = util.getDescendants(_corePlayer.modelRoot)
 	
