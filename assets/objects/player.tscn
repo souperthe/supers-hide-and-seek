@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c8i5i2af5ohaf"]
+[gd_scene load_steps=31 format=3 uid="uid://c8i5i2af5ohaf"]
 
 [ext_resource type="Script" uid="uid://jrbuo0ken0kb" path="res://assets/scripts/player.gd" id="1_ikdab"]
 [ext_resource type="Script" uid="uid://bmoapp8kdmh2f" path="res://assets/scripts/rpc_events.gd" id="2_1qp14"]
@@ -43,6 +43,9 @@ properties/1/replication_mode = 1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8wh5m"]
 radius = 1.3088431
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_am6w6"]
+radius = 0.9466196
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "cameraArm", "controller", "sound", "interactor", "events", "animator", "hitbox", "synchronizer", "_neck", "viewmodelRoot", "modelRoot", "modelPivot", "neckOffset", "collisionStanding", "collisionCrouching", "interactRay")]
 script = ExtResource("1_ikdab")
@@ -257,3 +260,8 @@ skeleton = NodePath("../../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="modelPivot/HitBoxes/cheesebox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5268917, -2.4641435)
 shape = SubResource("SphereShape3D_8wh5m")
+
+[node name="cheesebox_fall" type="Area3D" parent="modelPivot/HitBoxes"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="modelPivot/HitBoxes/cheesebox_fall"]
+shape = SubResource("SphereShape3D_am6w6")

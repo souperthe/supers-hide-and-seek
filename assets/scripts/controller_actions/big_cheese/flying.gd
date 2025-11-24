@@ -30,6 +30,10 @@ func actionPhysics(delta:float)->void:
 		corePlayer.velocity.z = lerpf(corePlayer.velocity.z, 0, 6 * delta)
 	if Input.is_action_just_pressed("player_jump") and corePlayer.velocity.y < 0: 
 		corePlayer.velocity.y = corePlayer.jump_velocity*2
+		
+	if corePlayer.hitbox.hitboxDamage("cheesebox_fall", 100, corePlayer.velocity):
+		coreState.actionTransition("land_fall")
+		return
 	
 	if corePlayer.is_on_floor():
 		if goto != Vector3.ZERO:
