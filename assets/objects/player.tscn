@@ -44,8 +44,9 @@ properties/1/replication_mode = 1
 [sub_resource type="SphereShape3D" id="SphereShape3D_8wh5m"]
 radius = 1.3088431
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_am6w6"]
-radius = 0.9466196
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_am6w6"]
+height = 1.4736328
+radius = 1.4516602
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "cameraArm", "controller", "sound", "interactor", "events", "animator", "hitbox", "synchronizer", "_neck", "viewmodelRoot", "modelRoot", "modelPivot", "neckOffset", "collisionStanding", "collisionCrouching", "interactRay")]
 script = ExtResource("1_ikdab")
@@ -264,4 +265,5 @@ shape = SubResource("SphereShape3D_8wh5m")
 [node name="cheesebox_fall" type="Area3D" parent="modelPivot/HitBoxes"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="modelPivot/HitBoxes/cheesebox_fall"]
-shape = SubResource("SphereShape3D_am6w6")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06591797, 0)
+shape = SubResource("CylinderShape3D_am6w6")

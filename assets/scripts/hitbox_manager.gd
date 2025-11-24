@@ -12,7 +12,7 @@ var _allBoxes:Dictionary[String, Area3D]
 func hitboxDamage(hitboxName:String, amount:float, knockback:Vector3) -> bool:
 	var bodies:Array[Node3D] = checkHitbox(hitboxName)
 	
-	print(bodies)
+	#print(bodies)
 	
 	
 	for body in bodies:
@@ -20,6 +20,9 @@ func hitboxDamage(hitboxName:String, amount:float, knockback:Vector3) -> bool:
 		if body is Player:
 			
 			if body == _corePlayer:
+				continue
+				
+			if body.currentTeam == superEnum.teams.hider:
 				continue
 			
 			

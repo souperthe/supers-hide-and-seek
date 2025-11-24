@@ -21,7 +21,7 @@ font_color = Color(0.8098538, 1, 0.95183474, 1)
 [node name="playerHud" type="CanvasLayer"]
 script = ExtResource("1_yt60p")
 
-[node name="Health" type="Control" parent="."]
+[node name="Health" type="Control" parent="." node_paths=PackedStringArray("_healthPanel")]
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
@@ -32,9 +32,9 @@ offset_bottom = -23.846191
 grow_vertical = 0
 scale = Vector2(1.3, 1.3)
 script = ExtResource("2_ms88w")
+_healthPanel = NodePath("healthPivot/PanelContainer")
 
-[node name="Control" type="Control" parent="Health"]
-visible = false
+[node name="seekerIcon" type="Control" parent="Health"]
 anchors_preset = 0
 offset_left = 16.923077
 offset_top = -8.4615135
@@ -42,7 +42,7 @@ offset_right = 86.923096
 offset_bottom = 61.538486
 metadata/_edit_group_ = true
 
-[node name="TextureRect" type="TextureRect" parent="Health/Control"]
+[node name="TextureRect" type="TextureRect" parent="Health/seekerIcon"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,19 +52,26 @@ grow_vertical = 2
 texture = ExtResource("3_o8weo")
 expand_mode = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="Health"]
+[node name="healthPivot" type="Control" parent="Health"]
+anchors_preset = 0
+offset_left = 50.769222
+offset_top = 39.230774
+offset_right = 59.999996
+offset_bottom = 53.84616
+
+[node name="PanelContainer" type="PanelContainer" parent="Health/healthPivot"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 16.000008
-offset_top = -61.0
-offset_right = 86.00002
-offset_bottom = -16.0
+offset_left = -33.999996
+offset_top = -36.692352
+offset_right = 36.00002
+offset_bottom = 8.307648
 grow_vertical = 0
 theme_override_styles/panel = ExtResource("3_8shm4")
 
-[node name="Label" type="Label" parent="Health/PanelContainer"]
+[node name="Label" type="Label" parent="Health/healthPivot/PanelContainer"]
 layout_mode = 2
 text = "100"
 label_settings = SubResource("LabelSettings_ms88w")

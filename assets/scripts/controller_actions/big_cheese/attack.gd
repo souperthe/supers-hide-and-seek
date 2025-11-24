@@ -33,9 +33,10 @@ func actionPhysics(delta:float)->void:
 		
 		
 	if !_attacked:
-		if corePlayer.hitbox.hitboxDamage("cheesebox", 95, corePlayer.velocity):
+		var knockBack:Vector3 = corePlayer.modelPivot.transform.basis.z*-12
+		if corePlayer.hitbox.hitboxDamage("cheesebox", 95, knockBack):
 			#corePlayer.animator.animationSeek(2.93)
-			corePlayer.velocity = -corePlayer.velocity
+			#corePlayer.velocity = -corePlayer.velocity
 			_attacked = true
 	
 	if !(corePlayer.is_on_floor()):

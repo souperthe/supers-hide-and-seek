@@ -75,8 +75,10 @@ func takeDamage(amount:float, knockback:Vector3) -> void:
 	
 	health -= amount
 	
-	velocity = knockback*4
+	velocity = knockback
+	
 	SignalManager.damageTaken.emit(previousHealth, health, amount)
+	sound.playSound("res://assets/resources/rnd_sound/player_hurt.tres")
 	return
 
 

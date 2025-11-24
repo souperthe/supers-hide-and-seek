@@ -1,0 +1,16 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=6 format=3 uid="uid://bb5nbeao583v5"]
+
+[ext_resource type="AudioStream" uid="uid://iete2ton70p" path="res://assets/sound/sfx/physics/flesh/flesh_impact_bullet1.wav" id="1_pr1wv"]
+[ext_resource type="AudioStream" uid="uid://cg4yehjk1unyt" path="res://assets/sound/sfx/physics/flesh/flesh_impact_bullet2.wav" id="2_n2mou"]
+[ext_resource type="AudioStream" uid="uid://c3760w7ra8d03" path="res://assets/sound/sfx/physics/flesh/flesh_impact_bullet3.wav" id="3_o4gpr"]
+[ext_resource type="AudioStream" uid="uid://b3gjscxlb8cl1" path="res://assets/sound/sfx/physics/flesh/flesh_impact_bullet4.wav" id="4_12gql"]
+[ext_resource type="AudioStream" uid="uid://cfukat18xw2j3" path="res://assets/sound/sfx/physics/flesh/flesh_impact_bullet5.wav" id="5_n7yjd"]
+
+[resource]
+random_pitch = 1.1
+streams_count = 5
+stream_0/stream = ExtResource("1_pr1wv")
+stream_1/stream = ExtResource("2_n2mou")
+stream_2/stream = ExtResource("3_o4gpr")
+stream_3/stream = ExtResource("4_12gql")
+stream_4/stream = ExtResource("5_n7yjd")
