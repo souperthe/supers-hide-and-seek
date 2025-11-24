@@ -7,6 +7,16 @@ var _networkTransform:Transform3D
 @export var _light:SpotLight3D
 @export var _corePlayer:Player
 
+@rpc("authority", "call_remote", "reliable")
+func imReady() -> void:
+	var sender:int = multiplayer.get_remote_sender_id()
+	
+	
+	Networking.localPlayer.synchronizer.set_visibility_for(sender, true)
+	
+	
+	return
+
 @rpc("authority", "call_local", "reliable")
 func setupGrabbable(nodePath:String, collisions:bool) -> void:
 	
@@ -25,9 +35,10 @@ func setupGrabbable(nodePath:String, collisions:bool) -> void:
 	return
 
 @rpc("authority", "call_remote", "unreliable")
-func updateTransform(newTransform:Transform3D)->void:
+func updateTransform(newTransform:Transform3D, modelrootRot:Vector3)->void:
 	_networkTransform = newTransform
 	_corePlayer.transform = newTransform
+	_corePlayer.modelRoot.rotation = modelrootRot
 	return
 	
 @rpc("any_peer", "call_remote", "reliable")
@@ -56,7 +67,7 @@ func _physics_process(_delta: float) -> void:
 		return
 	
 	if _networkTransform != _corePlayer.transform:
-		updateTransform.rpc(_corePlayer.transform)
+		updateTransform.rpc(_corePlayer.transform, _corePlayer.modelRoot.rotation)
 	
 	return
 	
