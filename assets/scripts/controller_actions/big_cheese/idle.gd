@@ -6,7 +6,7 @@ func actionEnter(message:String="")->void:
 	corePlayer.animator.playAnimation("neutral")
 	
 	if message == "land":
-		corePlayer.animator.playAnimation("slip-forward", 1.5, 2.91)
+		corePlayer.animator.playAnimation("slip-forward", 1.5, 2.84)
 	
 	corePlayer.velocity = Vector3.ZERO
 	
