@@ -75,6 +75,7 @@ func takeDamage(amount:float, knockback:Vector3) -> void:
 	
 	health -= amount
 	
+	velocity = knockback*4
 	SignalManager.damageTaken.emit(previousHealth, health, amount)
 	return
 
