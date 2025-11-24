@@ -26,7 +26,7 @@ func actionPhysics(delta:float)->void:
 		coreState.actionTransition("idle")
 		return
 		
-	corePlayer.modelRoot.rotation.y = atan2(
+	corePlayer.modelPivot.rotation.y = atan2(
 		-corePlayer.wishDir.x,
 		-corePlayer.wishDir.z
 	)

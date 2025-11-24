@@ -17,3 +17,4 @@ signal hostSucess
 
 signal chatMessage(sender:int, message:String)
 signal becameSeeker(seeker:Seeker)
+signal damageTaken(previousHealth:float, currentHealth:float, damageAmount:float)

@@ -21,7 +21,7 @@ func actionPhysics(delta:float)->void:
 		corePlayer.velocity.x = lerpf(corePlayer.velocity.x, goto.x, 6 * delta)
 		corePlayer.velocity.z = lerpf(corePlayer.velocity.z, goto.z, 6 * delta)
 		
-		corePlayer.modelRoot.rotation.y = atan2(
+		corePlayer.modelPivot.rotation.y = atan2(
 			-corePlayer.velocity.x,
 			-corePlayer.velocity.z
 		)

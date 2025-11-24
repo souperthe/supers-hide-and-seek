@@ -5,6 +5,10 @@ var playerName:String = "steamuser99"
 var authID:int = 1
 var steamID:int = 1
 
+
+var health:float = 100
+var maxHealth:float = 100
+
 var currentTeam:superEnum.teams = superEnum.teams.hider
 
 @export var camera:Camera3D
@@ -15,6 +19,7 @@ var currentTeam:superEnum.teams = superEnum.teams.hider
 @export var interactor:InteractionManager
 @export var events:ClassRPCEvents
 @export var animator:AnimationManager
+@export var hitbox:HitboxManager
 
 @export var synchronizer:MultiplayerSynchronizer
 
@@ -23,6 +28,7 @@ var currentTeam:superEnum.teams = superEnum.teams.hider
 
 @export var viewmodelRoot:Node3D
 @export var modelRoot:Node3D
+@export var modelPivot:Node3D
 
 @export var neckOffset:Node3D
 
@@ -62,7 +68,15 @@ const swim_up_speed : float = 10.0
 const climb_speed : float = 7.0
 
 
-signal becameSeeker(seeker:Seeker)
+
+func takeDamage(amount:float, knockback:Vector3) -> void:
+	print(amount)
+	var previousHealth:float = health
+	
+	health -= amount
+	
+	SignalManager.damageTaken.emit(previousHealth, health, amount)
+	return
 
 
 func loadSeeker(seekerName:String) -> void:
@@ -79,6 +93,7 @@ func loadSeeker(seekerName:String) -> void:
 	_neck.rotation = Vector3.ZERO
 	neckOffset.rotation = Vector3.ZERO
 	modelRoot.rotation = Vector3.ZERO
+	modelPivot.rotation = Vector3.ZERO
 	rotation = Vector3.ZERO
 		
 	util.clearChildren(modelRoot)
@@ -125,7 +140,6 @@ func getSpeed()->float:
 
 func _setupOthers() -> void:
 	$playerHud.queue_free()
-	$modelHolder/Player.cast_shadow = GeometryInstance3D.ShadowCastingSetting.SHADOW_CASTING_SETTING_ON
 	return
 
 func _setupAuthority()->void:
@@ -138,7 +152,13 @@ func _setupAuthority()->void:
 	camera.current = true
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
-	$modelHolder/Player.cast_shadow = GeometryInstance3D.ShadowCastingSetting.SHADOW_CASTING_SETTING_SHADOWS_ONLY
+	
+	util.setShadows(
+		modelRoot,
+		GeometryInstance3D.ShadowCastingSetting.SHADOW_CASTING_SETTING_SHADOWS_ONLY
+		)
+	
+	#$modelHolder/Player.cast_shadow = GeometryInstance3D.ShadowCastingSetting.SHADOW_CASTING_SETTING_SHADOWS_ONLY
 	
 	$Talking.pixel_size = 0
 	

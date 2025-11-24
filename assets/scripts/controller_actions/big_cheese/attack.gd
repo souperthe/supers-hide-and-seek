@@ -1,6 +1,7 @@
 extends ControllerAction
 
 var _finishingUp:bool = false
+var _attacked:bool = false
 
 func actionEnter(_message:String="")->void:
 	
@@ -11,6 +12,7 @@ func actionEnter(_message:String="")->void:
 		)
 		
 	_finishingUp = false
+	_attacked = false
 	
 
 	
@@ -28,6 +30,13 @@ func actionPhysics(delta:float)->void:
 		print("hi")
 		corePlayer.animator.animationSeek(2.93)
 		_finishingUp = true
+		
+		
+	if !_attacked:
+		if corePlayer.hitbox.hitboxDamage("cheesebox", 95, corePlayer.velocity):
+			#corePlayer.animator.animationSeek(2.93)
+			corePlayer.velocity = -corePlayer.velocity
+			_attacked = true
 	
 	if !(corePlayer.is_on_floor()):
 		coreState.actionTransition("fall")
