@@ -7,6 +7,11 @@ func actionEnter(_message:String="")->void:
 	corePlayer.animator.playAnimation("walk")
 	_stepTime = 0
 	
+	coreSound.playSound(
+		"res://assets/resources/rnd_sound/metal_step.tres",
+		0.8
+		)
+	
 	return
 	
 func actioneExit()->void:

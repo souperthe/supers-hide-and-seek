@@ -53,7 +53,7 @@ func sendData(data:Dictionary, pid:int)->void:
 		Networking.playersHolder.add_child(newPlayer)
 		
 		if pid == 1:
-			newPlayer.loadSeeker("big_cheese")
+			newPlayer.loadSeeker("skelecog")
 		
 	if !multiplayer.is_server():
 		return
