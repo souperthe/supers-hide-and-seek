@@ -1,0 +1,14 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://chh7duw00xvjc"]
+
+[ext_resource type="AudioStream" uid="uid://b5xl3cxs8w08x" path="res://assets/sound/sfx/character/fredbear/fredbear_step1.wav" id="1_b4b6h"]
+[ext_resource type="AudioStream" uid="uid://c4ygx4detowcb" path="res://assets/sound/sfx/character/fredbear/fredbear_step2.wav" id="2_lhpq3"]
+[ext_resource type="AudioStream" uid="uid://di4vjw8pg0mmn" path="res://assets/sound/sfx/character/fredbear/fredbear_step3.wav" id="3_5rweh"]
+[ext_resource type="AudioStream" uid="uid://dixd8tbgd24l7" path="res://assets/sound/sfx/character/fredbear/fredbear_step4.wav" id="4_kywyl"]
+
+[resource]
+random_pitch = 1.1
+streams_count = 4
+stream_0/stream = ExtResource("1_b4b6h")
+stream_1/stream = ExtResource("2_lhpq3")
+stream_2/stream = ExtResource("3_5rweh")
+stream_3/stream = ExtResource("4_kywyl")

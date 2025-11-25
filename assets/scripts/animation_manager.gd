@@ -84,6 +84,7 @@ func animatorSetup() -> void:
 	if _animator:
 		_animator.animation_finished.disconnect(_animationFinished)
 		
+	_animator = null
 	animationName = ""
 	animationDone = false
 	

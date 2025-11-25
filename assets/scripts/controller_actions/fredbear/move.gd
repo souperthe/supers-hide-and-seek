@@ -48,8 +48,21 @@ func actionPhysics(delta:float)->void:
 	else:
 		corePlayer.animator.playAnimation("Fredbear_Walk_Anim")
 		
+		
 	
 	corePlayer.velocity = corePlayer.wishDir * speed
+	_stepTime += corePlayer.velocity.length() * delta
+	
+	if _stepTime > 2.8:
+		var volume:float = 0.3
+		if running:
+			volume = 0.2
+		coreSound.playSound(
+			"res://assets/resources/rnd_sound/fredbear_step.tres",
+			1,
+			volume
+			)
+		_stepTime = 0
 	
 	
 	return
