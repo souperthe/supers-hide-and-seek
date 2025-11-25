@@ -154,5 +154,8 @@ visible = false
 [node name="BoneAttachment3D" parent="rig_deform/Skeleton3D" index="7"]
 transform = Transform3D(0.99818003, -0.03344953, 0.050176762, 0.040101953, 0.9896132, -0.1380494, -0.045037895, 0.13981032, 0.9891535, -0.07327319, 5.864007, -1.3617055)
 
-[node name="cog_head_bigcheese" parent="rig_deform/Skeleton3D/BoneAttachment3D/Node3D2/Node3D/bigcheese_head" index="0"]
+[node name="cog_head_bigcheese" parent="rig_deform/Skeleton3D/BoneAttachment3D/headRoot/Node3D/bigcheese_head" index="0"]
 visible = false
+
+[node name="scan" parent="rig_deform/Skeleton3D/BoneAttachment3D/headRoot" index="1"]
+transparency = 1.0
