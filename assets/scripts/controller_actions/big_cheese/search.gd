@@ -5,8 +5,7 @@ var _headRoot:Sprite3D
 var _tween:Tween
 
 func _createScanRing(root:Node3D) -> void:
-	util.oneShotSFX3D(
-		root,
+	coreSound.playSound(
 		"res://assets/sound/sfx/hl1/fvox/bell.wav"
 	)
 	
@@ -58,6 +57,10 @@ func actionEnter(_message:String="")->void:
 		)
 		
 	await get_tree().create_timer(0.8).timeout
+	
+	coreSound.playSound("res://assets/sound/sfx/character/big_cheese/scan.wav")
+	
+	await get_tree().create_timer(0.4).timeout
 	
 	
 	for i in range(5):
