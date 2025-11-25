@@ -1,6 +1,7 @@
 extends ControllerState
 
-var runTimer:float = 10
+var runTimer:float = 0
+
 
 func controllerStart(_message:String="") -> void:
 	corePlayer.neckOffset.position.y = 1

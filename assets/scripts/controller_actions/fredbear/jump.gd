@@ -1,12 +1,18 @@
 extends ControllerAction
 
 var _movingSpeed:float = 0
+var _canClimb:bool = false
 
 func actionEnter(message:String="")->void:
+	_canClimb = true
 	_movingSpeed = corePlayer.velocity.length()
 	if message == "jump":
 		corePlayer.animator.playAnimation("Fredbear_Jump_Start_Anim")
 		corePlayer.velocity.y = corePlayer.jump_velocity*1.5
+	elif message == "noclimb":
+		corePlayer.animator.playAnimation("Fredbear_Jump_Start_Anim")
+		corePlayer.velocity.y = corePlayer.jump_velocity*1
+		_canClimb = false
 	else:
 		corePlayer.animator.playAnimation("Fredbear_Jump_Start_Anim", 1, 0.375)
 	return
@@ -39,4 +45,8 @@ func actionPhysics(delta:float)->void:
 			desiredRotation,
 			6*delta
 		)
+		
+		if corePlayer.wallRay.is_colliding() and _canClimb:
+			coreState.actionTransition("climbing")
+			return
 	return

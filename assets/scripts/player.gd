@@ -32,6 +32,8 @@ var currentTeam:superEnum.teams = superEnum.teams.hider
 @export var modelRoot:Node3D
 @export var modelPivot:Node3D
 
+@export var wallRay:RayCast3D
+
 @export var neckOffset:Node3D
 
 @export var collisionStanding:CollisionShape3D

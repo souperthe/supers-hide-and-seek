@@ -1,7 +1,7 @@
 extends ControllerAction
 
 
-func actionEnter(message:String="")->void:
+func actionEnter(_message:String="")->void:
 	
 	corePlayer.animator.playAnimation("Fredbear_Idle_Anim")
 	
@@ -14,7 +14,7 @@ func actioneExit()->void:
 	
 func actionPhysics(delta:float)->void:
 	
-	corePlayer.velocity = corePlayer.velocity.lerp(Vector3.ZERO, 12*delta)
+	corePlayer.velocity = corePlayer.velocity.lerp(Vector3.ZERO, 24*delta)
 	
 	if Input.is_action_just_pressed("player_jump"):
 		coreState.actionTransition("jump", "jump")

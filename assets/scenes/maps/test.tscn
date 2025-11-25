@@ -82,3 +82,11 @@ material = SubResource("StandardMaterial3D_x2cbm")
 [node name="WoodCrateImpactHard5" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.974711, 9.536743e-07, 1.3997622)
 stream = ExtResource("6_pun3w")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.873283, 15.684814, 11.770255)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(15, 47.36963, 20.324097)
+material = SubResource("StandardMaterial3D_x2cbm")
