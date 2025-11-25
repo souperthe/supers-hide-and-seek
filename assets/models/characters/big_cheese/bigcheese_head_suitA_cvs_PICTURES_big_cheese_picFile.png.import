@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://orut8himudd5"
-path.s3tc="res://.godot/imported/bigcheese_head_suitA_cvs_PICTURES_big_cheese_picFile.png-e564282f1536d29b7858808ddd1f337f.s3tc.ctex"
+path="res://.godot/imported/bigcheese_head_suitA_cvs_PICTURES_big_cheese_picFile.png-e564282f1536d29b7858808ddd1f337f.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "1e71d2408228a27c634a987595d39ac5"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/characters/big_cheese/bigcheese_head_suitA_cvs_PICTURES_big_cheese_picFile.png"
-dest_files=["res://.godot/imported/bigcheese_head_suitA_cvs_PICTURES_big_cheese_picFile.png-e564282f1536d29b7858808ddd1f337f.s3tc.ctex"]
+dest_files=["res://.godot/imported/bigcheese_head_suitA_cvs_PICTURES_big_cheese_picFile.png-e564282f1536d29b7858808ddd1f337f.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
