@@ -26,6 +26,8 @@ func animationSetSpeed(speed:float) -> void:
 		
 	_animator.speed_scale = speed
 	
+	_corePlayer.events.animationSpeed.rpc(speed)
+	
 	return
 	
 func animationSeek(timePosition:float) -> void:
@@ -35,6 +37,9 @@ func animationSeek(timePosition:float) -> void:
 		
 		
 	_animator.seek(timePosition)
+	
+	
+	_corePlayer.events.animationSeek.rpc(timePosition)
 	
 	return
 	
