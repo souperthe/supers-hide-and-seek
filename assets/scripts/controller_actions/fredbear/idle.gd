@@ -5,14 +5,16 @@ func actionEnter(message:String="")->void:
 	
 	corePlayer.animator.playAnimation("Fredbear_Idle_Anim")
 	
-	corePlayer.velocity = Vector3.ZERO
+	#corePlayer.velocity = Vector3.ZERO
 	
 	return
 	
 func actioneExit()->void:
 	return
 	
-func actionPhysics(_delta:float)->void:
+func actionPhysics(delta:float)->void:
+	
+	corePlayer.velocity = corePlayer.velocity.lerp(Vector3.ZERO, 12*delta)
 	
 	if Input.is_action_just_pressed("player_jump"):
 		coreState.actionTransition("jump", "jump")
