@@ -7,6 +7,11 @@ func actionEnter(message:String="")->void:
 	
 	if message == "land":
 		corePlayer.animator.playAnimation("slip-forward", 1.5, 2.84)
+		coreSound.playSound(
+			"res://assets/resources/rnd_sound/cog_step.tres",
+			1,
+			0.5
+		)
 	
 	corePlayer.velocity = Vector3.ZERO
 	

@@ -15,7 +15,7 @@ func actionEnter(message:String="")->void:
 			2
 			)
 	else:
-		corePlayer.animator.playAnimation("landing", 1.5, 0.83)
+		corePlayer.animator.playAnimation("landing", 1.5, 0.48)
 		coreSound.playSound(
 			"res://assets/sound/sfx/character/big_cheese/ENC_propeller_in.mp3",
 			1.5

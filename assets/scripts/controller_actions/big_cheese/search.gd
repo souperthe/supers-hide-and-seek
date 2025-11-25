@@ -25,14 +25,14 @@ func _createScanRing(root:Node3D) -> void:
 	_tween.tween_property(
 		_headRoot,
 		"pixel_size",
-		15.0,
-		0.5
+		128.0,
+		0.5*4
 	)
 	_tween.tween_property(
 		_headRoot,
 		"transparency",
 		1,
-		0.8
+		0.8*3
 	)
 	
 	
@@ -57,7 +57,7 @@ func actionEnter(_message:String="")->void:
 		"res://assets/sound/sfx/character/big_cheese/TL_step_on_rake.mp3"
 		)
 		
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.8).timeout
 	
 	
 	for i in range(5):
