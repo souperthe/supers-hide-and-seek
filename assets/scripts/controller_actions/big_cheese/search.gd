@@ -6,7 +6,9 @@ var _tween:Tween
 
 func _createScanRing(root:Node3D) -> void:
 	coreSound.playSound(
-		"res://assets/sound/sfx/hl1/fvox/bell.wav"
+		"res://assets/sound/sfx/hl1/fvox/bell.wav",
+		0.8,
+		0.2
 	)
 	
 	
@@ -16,6 +18,7 @@ func _createScanRing(root:Node3D) -> void:
 	
 	_headRoot.pixel_size = 0.1
 	_headRoot.transparency = 0
+	_headRoot.show()
 	
 	_tween = get_tree().create_tween()
 	
@@ -50,7 +53,7 @@ func actionEnter(_message:String="")->void:
 			continue
 		continue
 	
-	await get_tree().create_timer(0.6).timeout
+	await get_tree().create_timer(0.5).timeout
 	
 	coreSound.playSound(
 		"res://assets/sound/sfx/character/big_cheese/TL_step_on_rake.mp3"
@@ -60,7 +63,7 @@ func actionEnter(_message:String="")->void:
 	
 	coreSound.playSound("res://assets/sound/sfx/character/big_cheese/scan.wav")
 	
-	await get_tree().create_timer(0.4).timeout
+	await get_tree().create_timer(1.3).timeout
 	
 	
 	for i in range(5):

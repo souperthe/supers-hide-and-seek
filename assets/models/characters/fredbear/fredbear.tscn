@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhdfe8h8eih18"]
+
+[ext_resource type="PackedScene" uid="uid://bps54viqkwh35" path="res://assets/models/characters/fredbear/source/fredbear2.glb" id="1_hixs3"]
+[ext_resource type="Material" uid="uid://d3suacd4rs8lu" path="res://assets/resources/materials/fredbear/eyes.tres" id="2_lyips"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_drs26"]
+metallic_specular = 0.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 1.79
+
+[node name="Fredbear" type="Node3D"]
+
+[node name="fredbear2" parent="." instance=ExtResource("1_hixs3")]
+transform = Transform3D(-1.5, 0, 2.2649371e-07, 0, 1.5, 0, -2.2649371e-07, 0, -1.5, 0, 0, 0)
+
+[node name="Skeleton3D" parent="fredbear2/Fredbear" index="0"]
+bones/0/position = Vector3(0.059693445, 1.7339541, -0.12244563)
+bones/0/rotation = Quaternion(0.80266404, -0.0015918314, -0.054936416, 0.5938939)
+bones/1/rotation = Quaternion(0.121337876, -0.003349701, -0.010571569, 0.99254936)
+bones/2/rotation = Quaternion(0.042613555, 0.0046377126, -0.012383282, 0.9990041)
+bones/3/rotation = Quaternion(0.042382337, 0.0034531613, -0.012342773, 0.99901927)
+bones/4/rotation = Quaternion(0.15767065, -0.03127826, 0.014212068, 0.986894)
+bones/5/rotation = Quaternion(-0.28268874, 0.07468807, 0.08562592, 0.9524584)
+bones/7/rotation = Quaternion(0.47518975, -0.40958887, -0.54598624, 0.55527544)
+bones/8/rotation = Quaternion(-0.30694997, 0.2361748, 0.11540495, 0.9147048)
+bones/9/rotation = Quaternion(-0.010833832, 0.41217992, 0.0001338697, 0.91103816)
+bones/10/rotation = Quaternion(-0.2257936, -0.012923299, 0.3548929, 0.90713906)
+bones/11/rotation = Quaternion(0.18356696, 0.3355264, -0.11027992, 0.91736776)
+bones/12/rotation = Quaternion(-0.106044516, -0.0006331151, -0.051552124, 0.993024)
+bones/13/rotation = Quaternion(-0.17398192, 0.13692984, 0.04789143, 0.9740057)
+bones/15/rotation = Quaternion(0.04381394, 0.21278957, -0.0025392517, 0.97611195)
+bones/16/rotation = Quaternion(0.14762, -0.013586054, -6.3188556e-05, 0.9889509)
+bones/17/rotation = Quaternion(0.06665136, -0.005231754, -4.522031e-05, 0.9977626)
+bones/19/rotation = Quaternion(0.089393675, 0.06572736, -0.011694326, 0.99375653)
+bones/20/rotation = Quaternion(0.15416597, -0.013088614, 6.0505365e-05, 0.9879583)
+bones/21/rotation = Quaternion(0.16290888, -0.014334069, -1.3866225e-05, 0.986537)
+bones/23/rotation = Quaternion(0.13938738, -0.02264528, -0.028070878, 0.9895809)
+bones/24/rotation = Quaternion(0.1842848, -0.015274413, 0.00020124791, 0.9827542)
+bones/25/rotation = Quaternion(0.15813637, -0.014643273, -6.997225e-05, 0.9873088)
+bones/27/rotation = Quaternion(0.18835276, -0.13244335, -0.053744502, 0.97164476)
+bones/28/rotation = Quaternion(0.15272775, -0.0133063095, 0.00024498516, 0.9881787)
+bones/29/rotation = Quaternion(0.14492343, -0.015682457, 4.4866578e-05, 0.9893186)
+bones/31/rotation = Quaternion(0.48425704, 0.3436995, 0.52413017, 0.61045337)
+bones/32/rotation = Quaternion(0.04644384, 0.14557202, -0.19560194, 0.96870613)
+bones/33/rotation = Quaternion(-0.0059955083, -0.31915522, -7.3607094e-05, 0.9476835)
+bones/34/rotation = Quaternion(-0.16304623, 0.07714463, -0.12441306, 0.9756977)
+bones/35/rotation = Quaternion(0.1763572, -0.33468565, 0.1038856, 0.91983235)
+bones/36/rotation = Quaternion(-0.097014494, 0.035418894, 0.1786627, 0.9784751)
+bones/37/rotation = Quaternion(-0.2144993, -0.06951675, -0.03215976, 0.97371626)
+bones/39/rotation = Quaternion(0.092764914, -0.23117782, -0.009574091, 0.96843165)
+bones/40/rotation = Quaternion(0.121680334, 0.009929681, -1.6994552e-05, 0.9925197)
+bones/41/rotation = Quaternion(0.041486114, 0.0036037578, -5.7798757e-06, 0.9991326)
+bones/43/rotation = Quaternion(0.11621389, -0.05943563, 0.0067733023, 0.9914212)
+bones/44/rotation = Quaternion(0.109028526, 0.008566697, -9.612549e-05, 0.9940017)
+bones/45/rotation = Quaternion(0.11782374, 0.010762006, -1.5493598e-06, 0.9929762)
+bones/47/rotation = Quaternion(0.14736207, 0.010623524, 0.023203973, 0.9887533)
+bones/48/rotation = Quaternion(0.17128775, 0.011877803, -0.00021413976, 0.98514944)
+bones/49/rotation = Quaternion(0.14491524, 0.011754382, 0.000104753584, 0.98937434)
+bones/51/rotation = Quaternion(0.18821119, 0.10955824, 0.04609713, 0.9749096)
+bones/52/rotation = Quaternion(0.14666258, 0.010648949, -0.00033376328, 0.98912925)
+bones/53/rotation = Quaternion(0.13918822, 0.014256452, -1.8499952e-05, 0.9901634)
+bones/55/rotation = Quaternion(0.1609717, 0.5901217, -0.78742194, -0.07623249)
+bones/56/rotation = Quaternion(-0.8457072, 0.0068245945, 0.004482407, 0.5335849)
+bones/57/rotation = Quaternion(0.5084148, 0.16516016, 0.23484002, 0.8118416)
+bones/58/rotation = Quaternion(0.34571463, -0.02205719, -0.023768898, 0.93777925)
+bones/60/rotation = Quaternion(-0.063654356, 0.49261874, -0.8593585, 0.121565044)
+bones/61/rotation = Quaternion(-0.8663472, 0.01861194, -0.011240692, 0.49896875)
+bones/62/rotation = Quaternion(0.43186647, -0.10258548, -0.27326062, 0.85340285)
+bones/63/rotation = Quaternion(0.35882178, 0.022700366, 0.012461413, 0.9330468)
+
+[node name="Fredbear_001" parent="fredbear2/Fredbear/Skeleton3D" index="0"]
+surface_material_override/8 = ExtResource("2_lyips")
+surface_material_override/9 = ExtResource("2_lyips")
+surface_material_override/10 = SubResource("StandardMaterial3D_drs26")
+
+[editable path="fredbear2"]

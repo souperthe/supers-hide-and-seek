@@ -27,7 +27,7 @@ material = SubResource("StandardMaterial3D_x2cbm")
 environment = ExtResource("2_gdt2i")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.47736296, 0.5289757, 0.7016477, -0.8474294, 0.48828596, 0.20842373, -0.23235355, -0.6940906, 0.6813593, 0, 5.5020785, 0)
+transform = Transform3D(-0.5486536, -0.76109505, -0.34599635, -0.83414805, 0.52622527, 0.1651783, 0.05635559, 0.37923792, -0.92358136, 0, 5.5020785, 0)
 shadow_enabled = true
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]

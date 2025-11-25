@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c8i5i2af5ohaf"]
+[gd_scene load_steps=39 format=3 uid="uid://c8i5i2af5ohaf"]
 
 [ext_resource type="Script" uid="uid://jrbuo0ken0kb" path="res://assets/scripts/player.gd" id="1_ikdab"]
 [ext_resource type="Script" uid="uid://bmoapp8kdmh2f" path="res://assets/scripts/rpc_events.gd" id="2_1qp14"]
@@ -29,6 +29,10 @@
 [ext_resource type="Script" uid="uid://icufwxc08tme" path="res://assets/scripts/controller_actions/big_cheese/fall.gd" id="20_7lv6i"]
 [ext_resource type="Script" uid="uid://bvofu61bxjlb3" path="res://assets/scripts/controller_actions/big_cheese/attack.gd" id="21_8wh5m"]
 [ext_resource type="Script" uid="uid://b8ebovwnw3vl2" path="res://assets/scripts/controller_actions/big_cheese/search.gd" id="26_xmuqx"]
+[ext_resource type="Script" uid="uid://bvhsmwc4upntt" path="res://assets/scripts/controller_states/fredbear.gd" id="27_w8ahy"]
+[ext_resource type="Script" uid="uid://dvi8yyaqx2t4r" path="res://assets/scripts/controller_actions/fredbear/idle.gd" id="28_cjdy6"]
+[ext_resource type="Script" uid="uid://bjk5miuq51i8m" path="res://assets/scripts/controller_actions/fredbear/move.gd" id="29_0hcfg"]
+[ext_resource type="Script" uid="uid://db3obgc1pnh5a" path="res://assets/scripts/controller_actions/fredbear/jump.gd" id="30_0hcfg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ikdab"]
 radius = 0.3
@@ -188,6 +192,19 @@ script = ExtResource("5_6r1sy")
 
 [node name="jump" type="Node" parent="controllerManager/red_man"]
 script = ExtResource("6_nqkij")
+
+[node name="fredbear" type="Node" parent="controllerManager"]
+script = ExtResource("27_w8ahy")
+_initalAction = "idle"
+
+[node name="idle" type="Node" parent="controllerManager/fredbear"]
+script = ExtResource("28_cjdy6")
+
+[node name="move" type="Node" parent="controllerManager/fredbear"]
+script = ExtResource("29_0hcfg")
+
+[node name="jump" type="Node" parent="controllerManager/fredbear"]
+script = ExtResource("30_0hcfg")
 
 [node name="standingCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

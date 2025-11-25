@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Seeker" load_steps=4 format=3 uid="uid://ct7wntoys3fyi"]
+
+[ext_resource type="Script" uid="uid://btqjdvfscl84" path="res://assets/scripts/seeker.gd" id="1_otxv0"]
+[ext_resource type="Texture2D" uid="uid://b5d5ibjrkb022" path="res://assets/images/seeker_icons/fredbear.png" id="2_otxv0"]
+[ext_resource type="PackedScene" uid="uid://dhdfe8h8eih18" path="res://assets/models/characters/fredbear/fredbear.tscn" id="3_405op"]
+
+[resource]
+script = ExtResource("1_otxv0")
+seekerName = "Fredbear"
+seekerQuote = "Watch out, I'm a whiz at this game."
+seekerIcon = ExtResource("2_otxv0")
+seekerModel = ExtResource("3_405op")
+useFirstPerson = false
+stateName = "fredbear"
+metadata/_custom_type_script = "uid://btqjdvfscl84"
