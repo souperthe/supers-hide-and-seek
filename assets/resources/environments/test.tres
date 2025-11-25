@@ -1,3 +1,10 @@
 [gd_resource type="Environment" format=3 uid="uid://bt0pj1n20bbtt"]
 
 [resource]
+glow_normalized = true
+glow_intensity = 0.94
+glow_strength = 2.0
+glow_blend_mode = 0
+glow_hdr_threshold = 1.69
+glow_hdr_scale = 1.83
+glow_hdr_luminance_cap = 43.81

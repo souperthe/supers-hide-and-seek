@@ -269,7 +269,8 @@ shadow_enabled = true
 spot_range = 15.244
 spot_angle = 43.15
 
-[node name="playerHud" parent="." instance=ExtResource("7_xvjlw")]
+[node name="playerHud" parent="." node_paths=PackedStringArray("_corePlayer") instance=ExtResource("7_xvjlw")]
+_corePlayer = NodePath("..")
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7940472, 0)
