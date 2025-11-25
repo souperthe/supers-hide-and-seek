@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_otxv0")
 seekerName = "Fredbear"
-seekerQuote = "Watch out, I'm a whiz at this game."
+seekerQuote = "When I scare, I become a nightmare!"
 seekerIcon = ExtResource("2_otxv0")
 seekerModel = ExtResource("3_405op")
 useFirstPerson = false

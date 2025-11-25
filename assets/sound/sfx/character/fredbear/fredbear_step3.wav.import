@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/fredbear_step3.wav-60508c61d8b5f4923d3ae9b87e
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false

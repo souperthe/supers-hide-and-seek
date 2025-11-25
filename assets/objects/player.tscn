@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c8i5i2af5ohaf"]
+[gd_scene load_steps=42 format=3 uid="uid://c8i5i2af5ohaf"]
 
 [ext_resource type="Script" uid="uid://jrbuo0ken0kb" path="res://assets/scripts/player.gd" id="1_ikdab"]
 [ext_resource type="Script" uid="uid://bmoapp8kdmh2f" path="res://assets/scripts/rpc_events.gd" id="2_1qp14"]
@@ -34,6 +34,7 @@
 [ext_resource type="Script" uid="uid://bjk5miuq51i8m" path="res://assets/scripts/controller_actions/fredbear/move.gd" id="29_0hcfg"]
 [ext_resource type="Script" uid="uid://db3obgc1pnh5a" path="res://assets/scripts/controller_actions/fredbear/jump.gd" id="30_0hcfg"]
 [ext_resource type="Script" uid="uid://c8mdawwvu1sjt" path="res://assets/scripts/controller_actions/fredbear/climbing.gd" id="31_ec4pp"]
+[ext_resource type="Script" uid="uid://el1apeyixe0y" path="res://assets/scripts/controller_actions/fredbear/punch.gd" id="32_dx6kc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ikdab"]
 radius = 0.3
@@ -56,6 +57,10 @@ radius = 1.3088431
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_am6w6"]
 height = 1.4736328
 radius = 1.4516602
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lnwx1"]
+radius = 0.8798828
+height = 3.6064453
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "cameraArm", "controller", "sound", "interactor", "events", "animator", "hitbox", "abilityTimer", "synchronizer", "_neck", "viewmodelRoot", "modelRoot", "modelPivot", "wallRay", "neckOffset", "collisionStanding", "collisionCrouching", "interactRay")]
 script = ExtResource("1_ikdab")
@@ -211,6 +216,9 @@ script = ExtResource("30_0hcfg")
 [node name="climbing" type="Node" parent="controllerManager/fredbear"]
 script = ExtResource("31_ec4pp")
 
+[node name="punch" type="Node" parent="controllerManager/fredbear"]
+script = ExtResource("32_dx6kc")
+
 [node name="standingCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_ikdab")
@@ -309,6 +317,12 @@ shape = SubResource("SphereShape3D_8wh5m")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="modelPivot/HitBoxes/cheesebox_fall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06591797, 0)
 shape = SubResource("CylinderShape3D_am6w6")
+
+[node name="bearbox" type="Area3D" parent="modelPivot/HitBoxes"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="modelPivot/HitBoxes/bearbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0156612, -1.2079715)
+shape = SubResource("CapsuleShape3D_lnwx1")
 
 [node name="wallRay" type="RayCast3D" parent="modelPivot"]
 target_position = Vector3(0, 0, -1)

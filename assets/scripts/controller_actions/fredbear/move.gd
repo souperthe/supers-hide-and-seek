@@ -19,6 +19,10 @@ func actionPhysics(delta:float)->void:
 		coreState.actionTransition("idle")
 		return
 		
+	if Input.is_action_just_pressed("player_attack"):
+		coreState.actionTransition("punch")
+		return
+		
 	if Input.is_action_just_pressed("player_jump"):
 		coreState.actionTransition("jump", "jump")
 		return

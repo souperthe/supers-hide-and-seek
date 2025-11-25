@@ -9,6 +9,11 @@ func actionEnter(message:String="")->void:
 	if message == "jump":
 		corePlayer.animator.playAnimation("Fredbear_Jump_Start_Anim")
 		corePlayer.velocity.y = corePlayer.jump_velocity*1.5
+		coreSound.playSound(
+			"res://assets/sound/sfx/weapons/iceaxe/iceaxe_swing1.wav",
+			randf_range(0.9,1.1)-.3,
+			0.5
+		)
 	elif message == "noclimb":
 		corePlayer.animator.playAnimation("Fredbear_Jump_Start_Anim")
 		corePlayer.velocity.y = corePlayer.jump_velocity*1
@@ -29,8 +34,12 @@ func actionPhysics(delta:float)->void:
 		-corePlayer.wishDir.z
 	)
 	
+	if Input.is_action_just_pressed("player_attack"):
+		coreState.actionTransition("punch", "airborne")
+		return
+	
 	if corePlayer.is_on_floor():
-		coreState.actionTransition("idle")
+		coreState.actionTransition("idle", "land")
 		return
 	
 	if corePlayer.wishDir != Vector3.ZERO:
