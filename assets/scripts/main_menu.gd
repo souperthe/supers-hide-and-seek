@@ -2,10 +2,17 @@ extends Node
 
 var _seekerPath:String = "res://assets/resources/seekers/"
 
-@export var _seekersHolder:GridContainer
+@export var _seekersHolder:FlowContainer
+
+
+func _enterGame() -> void:
+	$Control.hide()
+	return
 
 func _ready() -> void:
 	_loadSeekers()
+	SignalManager.lobbySucess.connect(_enterGame)
+	SignalManager.hostSucess.connect(_enterGame)
 	return
 	
 	
