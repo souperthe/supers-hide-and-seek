@@ -34,7 +34,7 @@
 [ext_resource type="Script" uid="uid://bjk5miuq51i8m" path="res://assets/scripts/controller_actions/fredbear/move.gd" id="29_0hcfg"]
 [ext_resource type="Script" uid="uid://db3obgc1pnh5a" path="res://assets/scripts/controller_actions/fredbear/jump.gd" id="30_0hcfg"]
 [ext_resource type="Script" uid="uid://c8mdawwvu1sjt" path="res://assets/scripts/controller_actions/fredbear/climbing.gd" id="31_ec4pp"]
-[ext_resource type="Script" uid="uid://el1apeyixe0y" path="res://assets/scripts/controller_actions/fredbear/punch.gd" id="32_dx6kc"]
+[ext_resource type="Script" path="res://assets/scripts/controller_actions/fredbear/punch.gd" id="32_dx6kc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ikdab"]
 radius = 0.3

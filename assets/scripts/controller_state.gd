@@ -76,9 +76,6 @@ func actionTransition(actionName:String, message:String="")->void:
 	currentActionName = currentAction.name
 	
 	
-	print(currentAction)
-	
-	
 	return
 
 @abstract

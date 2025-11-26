@@ -13,7 +13,7 @@ var animationBlend:float = -1
 
 
 func _animationFinished(_animationName:String) -> void:
-	print("animation done")
+	#print("animation done")
 	animationDone = true
 	return
 	
