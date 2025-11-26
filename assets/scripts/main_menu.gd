@@ -3,6 +3,7 @@ extends Node
 var _seekerPath:String = "res://assets/resources/seekers/"
 
 @export var _seekersHolder:FlowContainer
+@export var _currentSeeker:Button
 
 
 func _enterGame() -> void:
@@ -43,6 +44,8 @@ func _loadSeekers() -> void:
 			Networking.localData.set(
 				"desired_seeker", seekerName
 			)
+			newButton.release_focus()
+			_currentSeeker.icon = loadedSeeker.seekerIcon
 			return
 		
 		
