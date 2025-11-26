@@ -121,18 +121,21 @@ func loadSeeker(seekerName:String) -> void:
 	
 	modelRoot.add_child(seekerModel)
 	
-	if !firstPerson:
-		cameraArm.spring_length = 5
-	else:
-		cameraArm.spring_length = 0
-		util.setShadows(
-			modelRoot,
-			GeometryInstance3D.ShadowCastingSetting.SHADOW_CASTING_SETTING_SHADOWS_ONLY
-		)
-	
 	animator.animatorSetup()
 	
-	controller.changeState(desiredSeeker.stateName)
+	if is_multiplayer_authority():
+	
+		if !firstPerson:
+			cameraArm.spring_length = 5
+		else:
+			cameraArm.spring_length = 0
+			util.setShadows(
+				modelRoot,
+				GeometryInstance3D.ShadowCastingSetting.SHADOW_CASTING_SETTING_SHADOWS_ONLY
+			)
+	
+	
+		controller.changeState(desiredSeeker.stateName)
 	
 
 	

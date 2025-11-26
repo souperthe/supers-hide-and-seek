@@ -13,6 +13,9 @@ var _allStates:Dictionary[String, ControllerState]
 
 func _ready() -> void:
 	
+	if !corePlayer.is_multiplayer_authority():
+		return
+	
 	var children:Array[Node] = get_children()
 	
 	for child in children:

@@ -12,6 +12,8 @@ var localPlayer:Player
 var localData := {
 	username = "steamuser99",
 	steamid = 0,
+	desired_seeker = "fredbear",
+	desired_hider = "base_hider"
 }
 
 

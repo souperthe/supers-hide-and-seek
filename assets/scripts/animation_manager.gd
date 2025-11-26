@@ -8,6 +8,7 @@ var _animator:AnimationPlayer
 
 var animationDone:bool = false
 var animationName:String = ""
+var animationBlend:float = -1
 
 
 
@@ -49,7 +50,7 @@ func animationGetPosition() -> float:
 	return _animator.get_current_animation_position()
 
 
-func playAnimation(desiredAnimation:String, speed:float=1, seek:float=0, blend:float=-1) -> void:
+func playAnimation(desiredAnimation:String, speed:float=1, seek:float=0, sending:bool=false) -> void:
 	if _animator == null:
 		return
 		
@@ -60,19 +61,20 @@ func playAnimation(desiredAnimation:String, speed:float=1, seek:float=0, blend:f
 		
 	_animator.play(
 		desiredAnimation,
-		blend,
+		animationBlend,
 	)
 	_animator.speed_scale = speed
 	_animator.seek(seek)
 	
 	animationDone = false
 	
-	_corePlayer.events.animation.rpc(
-		desiredAnimation,
-		speed,
-		seek,
-		blend
-	)
+	if !sending:
+	
+		_corePlayer.events.animation.rpc(
+			desiredAnimation,
+			speed,
+			seek,
+		)
 	
 	return
 	
