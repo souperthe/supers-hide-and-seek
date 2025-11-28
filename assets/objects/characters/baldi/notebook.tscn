@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7djvr1tmacn4"]
+
+[ext_resource type="Script" uid="uid://dm0ogh6suu2tl" path="res://assets/scripts/characters/baldi/notebook.gd" id="1_q5vi1"]
+[ext_resource type="Texture2D" uid="uid://cotlr2hxwgogu" path="res://assets/images/character/baldi/notebooksheet.png" id="2_ny0jq"]
+
+[node name="Notebook" type="Node3D"]
+script = ExtResource("1_q5vi1")
+
+[node name="Sprite" type="Sprite3D" parent="."]
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_ny0jq")
+hframes = 7

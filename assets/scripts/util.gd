@@ -43,6 +43,10 @@ func clearChildren(node:Node) -> void:
 	return
 	
 
+func lingerNode(node : Node, time: float):
+	await get_tree().create_timer(time).timeout
+	node.queue_free()
+
 func generate_word(length:int) -> String:
 	var word: String = ""
 	var n_char = len(_characters)

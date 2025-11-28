@@ -1,0 +1,151 @@
+[gd_scene load_steps=7 format=3 uid="uid://biv4krfy5ek2d"]
+
+[ext_resource type="Shader" uid="uid://bgomhkc4nvb5m" path="res://assets/shaders/ditherUI.gdshader" id="1_5wb0t"]
+[ext_resource type="Texture2D" uid="uid://cqlhqyxf2no4e" path="res://assets/models/characters/baldi/pad.png" id="1_wpi74"]
+[ext_resource type="Texture2D" uid="uid://chc87qfd8brsn" path="res://assets/models/characters/baldi/padBG.png" id="2_qgpc8"]
+[ext_resource type="FontFile" uid="uid://cfxb2x8c377u6" path="res://assets/fonts/Comic Sans MS.ttf" id="5_ji4hv"]
+
+[sub_resource type="GDScript" id="GDScript_qgpc8"]
+script/source = "extends Control
+
+var corePlayer:Player
+var notebookUIScene:PackedScene = preload(\"res://assets/objects/characters/baldi/notebook_ui.tscn\")
+@onready var list:VBoxContainer = $NotebookList
+@onready var pad:TextureRect = $Pad
+@onready var bg:TextureRect = $BG
+@onready var exit:Button = $EXIT
+var tranisitionTime:float = 0.2
+var hudVisible:bool = false
+
+func _ready() -> void:
+	pad.material.set_shader_parameter(\"intensity\",1)
+	bg.material.set_shader_parameter(\"intensity\",1)
+	pass
+
+func tp_button_pressed(notebookUI : NotebookUI):
+	corePlayer.global_position = notebookUI.notebookPart.global_position
+	hide_dither()
+
+func add_notebook(notebookPart : Notebook):
+	var newNotebookUI: NotebookUI = notebookUIScene.instantiate()
+	newNotebookUI.notebookPart = notebookPart
+	list.add_child(newNotebookUI)
+	newNotebookUI.get_node(\"BUTTON\").pressed.connect(tp_button_pressed.bind(newNotebookUI))
+
+func set_shader_value(value : float):
+	pad.material.set_shader_parameter(\"intensity\",value)
+	bg.material.set_shader_parameter(\"intensity\",value)
+
+func switch_visible():
+	if hudVisible:
+		hide_dither()
+	else:
+		show_dither()
+
+func show_dither():
+	hudVisible = true
+	list.mouse_filter = Control.MOUSE_FILTER_STOP
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	var tween = get_tree().create_tween()
+	tween.tween_method(set_shader_value,1.0,0.0,tranisitionTime)
+	list.show()
+	exit.show()
+
+func hide_dither():
+	hudVisible = false
+	list.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	var tween = get_tree().create_tween()
+	tween.tween_method(set_shader_value,0.0,1.0,tranisitionTime)
+	list.hide()
+	exit.hide()
+
+func _on_exit_pressed() -> void:
+	hide_dither()
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5wb0t"]
+shader = ExtResource("1_5wb0t")
+shader_parameter/intensity = 0.0
+
+[node name="BaldiHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = SubResource("GDScript_qgpc8")
+
+[node name="BG" type="TextureRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_5wb0t")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1152.0
+offset_top = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("2_qgpc8")
+
+[node name="NotebookList" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -396.0
+offset_top = -305.0
+offset_right = 221.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Pad" type="TextureRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_5wb0t")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1152.0
+offset_top = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+mouse_filter = 2
+texture = ExtResource("1_wpi74")
+
+[node name="EXIT" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 233.0
+offset_top = 138.0
+offset_right = 457.0
+offset_bottom = 231.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("5_ji4hv")
+theme_override_font_sizes/font_size = 60
+flat = true
+icon_alignment = 1
+
+[connection signal="pressed" from="EXIT" to="." method="_on_exit_pressed"]

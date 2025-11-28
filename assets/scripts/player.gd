@@ -22,6 +22,7 @@ var currentTeam:superEnum.teams = superEnum.teams.hider
 @export var hitbox:HitboxManager
 @export var voiceEmitter:VoiceEmitter
 @export var playerHud:CanvasLayer
+@export var seekerHud:CanvasLayer
 
 @export var abilityTimer:Timer
 @export var abilityCooldown:Timer
@@ -104,12 +105,12 @@ func loadHider(hiderName:String) -> void:
 	currentTeam = superEnum.teams.seeker
 	firstPerson = true
 	
+	util.clearChildren(seekerHud)
 	util.clearChildren(modelRoot)
 	$Voice.pitch_scale = 1
 	
 	var hiderModel:Node3D = desiredHider.hiderModel.instantiate()
 	hiderModel.scale = desiredHider.modelScale
-	
 	
 	modelRoot.add_child(hiderModel)
 	
@@ -147,7 +148,8 @@ func loadSeeker(seekerName:String) -> void:
 	modelRoot.rotation = Vector3.ZERO
 	modelPivot.rotation = Vector3.ZERO
 	rotation = Vector3.ZERO
-		
+	
+	util.clearChildren(seekerHud)
 	util.clearChildren(modelRoot)
 	
 		
@@ -157,12 +159,16 @@ func loadSeeker(seekerName:String) -> void:
 	$Voice.pitch_scale = 0.8
 	
 	
-	
 	modelRoot.add_child(seekerModel)
 	
 	animator.animatorSetup()
 	
 	if is_multiplayer_authority():
+		if desiredSeeker.seekerHUD:
+			var chosenSeekerHud:Control = desiredSeeker.seekerHUD.instantiate()
+			chosenSeekerHud.corePlayer = self
+			seekerHud.add_child(chosenSeekerHud)
+			seekerHud.show()
 	
 		if !firstPerson:
 			cameraArm.spring_length = 5

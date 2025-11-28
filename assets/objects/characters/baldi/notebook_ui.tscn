@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://clusrcc5cgavj"]
+
+[ext_resource type="Texture2D" uid="uid://dbuck0x04m0" path="res://assets/images/character/baldi/uiborder.png" id="1_3v313"]
+[ext_resource type="Script" uid="uid://jpyn1g0yuhnt" path="res://assets/scripts/characters/baldi/notebook_ui.gd" id="1_5r17n"]
+[ext_resource type="Texture2D" uid="uid://cotlr2hxwgogu" path="res://assets/images/character/baldi/notebooksheet.png" id="1_ypjep"]
+[ext_resource type="FontFile" uid="uid://cfxb2x8c377u6" path="res://assets/fonts/Comic Sans MS.ttf" id="2_3ajmx"]
+
+[node name="NotebookUI" type="Control"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 0.231
+offset_bottom = 0.31199646
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5r17n")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3v313")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(146, 74)
+texture = ExtResource("1_ypjep")
+hframes = 7
+frame = 1
+
+[node name="BUTTON" type="Button" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 150.0
+grow_horizontal = 2
+focus_mode = 3
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_3ajmx")
+theme_override_font_sizes/font_size = 36
+text = "TELEPORT"
+flat = true
+autowrap_mode = 3
+autowrap_trim_flags = 192

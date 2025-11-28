@@ -47,14 +47,6 @@ radius = 0.3
 radius = 0.3
 height = 1.2
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_fg3d2"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath(".:rotation")
-properties/1/spawn = true
-properties/1/replication_mode = 1
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_8wh5m"]
 radius = 1.3088431
 
@@ -66,7 +58,15 @@ radius = 1.4516602
 radius = 0.8798828
 height = 3.6064453
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "cameraArm", "controller", "sound", "interactor", "events", "animator", "hitbox", "voiceEmitter", "playerHud", "abilityTimer", "abilityCooldown", "synchronizer", "_neck", "viewmodelRoot", "modelRoot", "modelPivot", "wallRay", "neckOffset", "collisionStanding", "collisionCrouching", "interactRay")]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_fg3d2"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "cameraArm", "controller", "sound", "interactor", "events", "animator", "hitbox", "voiceEmitter", "playerHud", "seekerHud", "abilityTimer", "abilityCooldown", "synchronizer", "_neck", "viewmodelRoot", "modelRoot", "modelPivot", "wallRay", "neckOffset", "collisionStanding", "collisionCrouching", "interactRay")]
 script = ExtResource("1_ikdab")
 camera = NodePath("neckOffset/Neck/viewbobPivot/tiltPivot/cameraArm/Camera3D")
 cameraArm = NodePath("neckOffset/Neck/viewbobPivot/tiltPivot/cameraArm")
@@ -78,6 +78,7 @@ animator = NodePath("animationManager")
 hitbox = NodePath("hitboxManager")
 voiceEmitter = NodePath("VoiceEmitter")
 playerHud = NodePath("playerHud")
+seekerHud = NodePath("seekerHud")
 abilityTimer = NodePath("AbilityTimer")
 abilityCooldown = NodePath("AbilityCoolDown")
 synchronizer = NodePath("MultiplayerSynchronizer")
@@ -239,6 +240,9 @@ script = ExtResource("34_lnwx1")
 [node name="jump" type="Node" parent="controllerManager/baldi"]
 script = ExtResource("36_ti3fm")
 
+[node name="Notebooks" type="Node3D" parent="controllerManager/baldi"]
+top_level = true
+
 [node name="standingCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_ikdab")
@@ -248,6 +252,19 @@ debug_color = Color(0, 0.6, 0.69803923, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
 shape = SubResource("CapsuleShape3D_5pvfp")
 debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="playerHud" parent="." node_paths=PackedStringArray("_corePlayer") instance=ExtResource("7_xvjlw")]
+_corePlayer = NodePath("..")
+
+[node name="seekerHud" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Talking" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.36858, 0)
+visible = false
+pixel_size = 0.001
+billboard = 1
+texture = ExtResource("13_fg3d2")
 
 [node name="neckOffset" type="Node3D" parent="."]
 
@@ -297,23 +314,9 @@ shadow_enabled = true
 spot_range = 15.244
 spot_angle = 43.15
 
-[node name="playerHud" parent="." node_paths=PackedStringArray("_corePlayer") instance=ExtResource("7_xvjlw")]
-_corePlayer = NodePath("..")
-
 [node name="Node3D" type="Node3D" parent="."]
+editor_description = "what the FUCK does this do super"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7940472, 0)
-
-[node name="Talking" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.36858, 0)
-visible = false
-pixel_size = 0.001
-billboard = 1
-texture = ExtResource("13_fg3d2")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_fg3d2")
-visibility_update_mode = 1
-public_visibility = false
 
 [node name="modelPivot" type="Node3D" parent="."]
 
@@ -347,6 +350,11 @@ shape = SubResource("CapsuleShape3D_lnwx1")
 [node name="wallRay" type="RayCast3D" parent="modelPivot"]
 target_position = Vector3(0, 0, -1)
 collision_mask = 2
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_fg3d2")
+visibility_update_mode = 1
+public_visibility = false
 
 [node name="AbilityCoolDown" type="Timer" parent="."]
 wait_time = 20.0

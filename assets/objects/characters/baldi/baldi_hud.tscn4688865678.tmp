@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://biv4krfy5ek2d"]
+
+[ext_resource type="Shader" uid="uid://bgomhkc4nvb5m" path="res://assets/shaders/ditherUI.gdshader" id="1_5wb0t"]
+[ext_resource type="Texture2D" uid="uid://cqlhqyxf2no4e" path="res://assets/models/characters/baldi/pad.png" id="1_wpi74"]
+
+[sub_resource type="GDScript" id="GDScript_qgpc8"]
+script/source = "extends Control
+
+@onready var pad = $Pad
+
+func _ready() -> void:
+	#pad.material.set_shader_parameter(\"intensity\",1)
+	pass
+
+func set_shader_value( value : float):
+	pad.material.set_shader_parameter(\"intensity\",value)
+
+func show_dither():
+	var tween = get_tree().create_tween()
+	tween.tween_method(set_shader_value,1.0,0.0,0.2)
+
+func hide_dither():
+	var tween = get_tree().create_tween()
+	tween.tween_method(set_shader_value,0.0,1.0,0.2)
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5wb0t"]
+shader = ExtResource("1_5wb0t")
+shader_parameter/intensity = 0.0
+
+[node name="BaldiHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = SubResource("GDScript_qgpc8")
+
+[node name="Pad" type="TextureRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_5wb0t")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1152.0
+offset_top = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("1_wpi74")
