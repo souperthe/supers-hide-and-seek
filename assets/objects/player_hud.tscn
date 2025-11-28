@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://6g6cls708sff"]
+[gd_scene load_steps=11 format=3 uid="uid://6g6cls708sff"]
 
 [ext_resource type="Script" uid="uid://b77mlexn74h6b" path="res://assets/scripts/player_hud.gd" id="1_yt60p"]
 [ext_resource type="Script" uid="uid://4tsjytst2406" path="res://assets/scripts/hud/health.gd" id="2_ms88w"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://cf6oxl6bhsl5e" path="res://assets/fonts/Basalte-Fond.ttf" id="3_as176"]
 [ext_resource type="Texture2D" uid="uid://e3sunpe13tay" path="res://assets/images/seeker_icons/skelecog.png" id="3_o8weo"]
 [ext_resource type="Script" uid="uid://c11780ui54qe4" path="res://assets/scripts/hud/chat.gd" id="5_8shm4"]
+[ext_resource type="Texture2D" uid="uid://dmgtpya8jh4rf" path="res://assets/images/icons/old-microphoneMUTED.png" id="7_2nd5j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ms88w"]
 line_spacing = 2.0
@@ -237,3 +238,20 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 bbcode_enabled = true
+
+[node name="MutedMic" type="TextureRect" parent="Chat"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 784.0
+offset_top = 368.0
+offset_right = 906.0
+offset_bottom = 490.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("7_2nd5j")
+expand_mode = 4

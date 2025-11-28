@@ -1,0 +1,13 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://dlb841oi4psyd"]
+
+[ext_resource type="AudioStream" uid="uid://dudu4oraoato7" path="res://assets/sound/sfx/character/misc/m_match_drums.mp3" id="1_4giwv"]
+[ext_resource type="AudioStream" uid="uid://dbaqcmpaorpen" path="res://assets/sound/sfx/character/misc/m_match_guitar.mp3" id="2_s4p6y"]
+[ext_resource type="AudioStream" uid="uid://cn4qstdrvyoko" path="res://assets/sound/sfx/character/misc/m_match_piano.mp3" id="3_xnude"]
+[ext_resource type="AudioStream" uid="uid://b0fa6ixi2pi4d" path="res://assets/sound/sfx/character/misc/m_match_trumpet.mp3" id="4_s4p6y"]
+
+[resource]
+streams_count = 4
+stream_0/stream = ExtResource("1_4giwv")
+stream_1/stream = ExtResource("2_s4p6y")
+stream_2/stream = ExtResource("3_xnude")
+stream_3/stream = ExtResource("4_s4p6y")

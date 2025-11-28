@@ -1,9 +1,206 @@
-[gd_scene load_steps=2 format=3 uid="uid://l0fnoreb82o8"]
+[gd_scene load_steps=4 format=3 uid="uid://l0fnoreb82o8"]
 
 [ext_resource type="PackedScene" uid="uid://5v8hkm8lwh8k" path="res://assets/scenes/maps/test.tscn" id="2_723qe"]
+[ext_resource type="Script" uid="uid://daborhbprgsmt" path="res://assets/scripts/main_menu.gd" id="2_tpt81"]
+[ext_resource type="Texture2D" uid="uid://borex5vqc1i4e" path="res://assets/images/seeker_icons/big_cheese.png" id="3_tpt81"]
 
 [node name="master" type="Node"]
 
 [node name="map" type="Node" parent="."]
 
 [node name="Node3D" parent="map" instance=ExtResource("2_723qe")]
+
+[node name="Camera3D" type="Camera3D" parent="map"]
+transform = Transform3D(-0.11691347, 0, -0.9931421, 0, 1, 0, 0.9931421, 0, -0.11691347, -32.769543, 6.0270805, 0)
+fov = 48.2
+
+[node name="menu" type="Node" parent="." node_paths=PackedStringArray("_seekersHolder", "_currentSeeker")]
+script = ExtResource("2_tpt81")
+_seekersHolder = NodePath("Control/Control/FlowContainer")
+_currentSeeker = NodePath("Control/Button")
+
+[node name="Control" type="Control" parent="menu"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="menu/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.5
+offset_top = -235.5
+offset_right = 50.5
+offset_bottom = -212.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "select seeker"
+
+[node name="Control" type="Control" parent="menu/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -172.0
+offset_right = 397.0
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FlowContainer" type="FlowContainer" parent="menu/Control/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="menu/Control/Control/FlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "fredbear"
+icon = ExtResource("3_tpt81")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button2" type="Button" parent="menu/Control/Control/FlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "fredbear"
+icon = ExtResource("3_tpt81")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button3" type="Button" parent="menu/Control/Control/FlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "fredbear"
+icon = ExtResource("3_tpt81")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button4" type="Button" parent="menu/Control/Control/FlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "fredbear"
+icon = ExtResource("3_tpt81")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button5" type="Button" parent="menu/Control/Control/FlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "fredbear"
+icon = ExtResource("3_tpt81")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button6" type="Button" parent="menu/Control/Control/FlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "fredbear"
+icon = ExtResource("3_tpt81")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button7" type="Button" parent="menu/Control/Control/FlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "fredbear"
+icon = ExtResource("3_tpt81")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button8" type="Button" parent="menu/Control/Control/FlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "fredbear"
+icon = ExtResource("3_tpt81")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button9" type="Button" parent="menu/Control/Control/FlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "fredbear"
+icon = ExtResource("3_tpt81")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button10" type="Button" parent="menu/Control/Control/FlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "fredbear"
+icon = ExtResource("3_tpt81")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button11" type="Button" parent="menu/Control/Control/FlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "fredbear"
+icon = ExtResource("3_tpt81")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button12" type="Button" parent="menu/Control/Control/FlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "fredbear"
+icon = ExtResource("3_tpt81")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button" type="Button" parent="menu/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -85.0
+offset_top = -218.0
+offset_right = 85.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+button_mask = 0
+icon = ExtResource("3_tpt81")
+expand_icon = true
+
+[node name="Label2" type="Label" parent="menu/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -57.0
+offset_top = -263.0
+offset_right = 57.0
+offset_bottom = -240.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "current seeker"

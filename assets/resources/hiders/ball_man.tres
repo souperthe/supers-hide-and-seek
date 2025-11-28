@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Hider" load_steps=3 format=3 uid="uid://d2xkavrrtmg2y"]
+
+[ext_resource type="Script" uid="uid://b8obmcxm0kp71" path="res://assets/scripts/hider.gd" id="1_bompr"]
+[ext_resource type="PackedScene" uid="uid://dxpu8sq5c6dst" path="res://assets/models/characters/base_hider/base_hider.tscn" id="1_xt3hs"]
+
+[resource]
+script = ExtResource("1_bompr")
+hiderModel = ExtResource("1_xt3hs")
+hiderName = "Ball-Man"
+metadata/_custom_type_script = "uid://b8obmcxm0kp71"

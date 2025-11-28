@@ -1,0 +1,10 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://lsjqx3bxgbsj"]
+
+[ext_resource type="AudioStream" uid="uid://cq210x3juepxy" path="res://assets/sound/sfx/doors/door_wood_close1.wav" id="1_kmi8n"]
+[ext_resource type="AudioStream" uid="uid://b118fwwtn0dbr" path="res://assets/sound/sfx/doors/wood_stop1.wav" id="2_r6e0u"]
+
+[resource]
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = ExtResource("1_kmi8n")
+stream_1/stream = ExtResource("2_r6e0u")

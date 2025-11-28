@@ -30,7 +30,7 @@ func actionPhysics(_delta:float)->void:
 		return
 		
 	if Input.is_action_just_pressed("player_ability"):
-		if get_parent().useAbility():
+		if coreState.useAbility("search"):
 			return
 		
 	if Input.is_action_just_pressed("player_jump"):

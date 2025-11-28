@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://c8i5i2af5ohaf"]
+[gd_scene load_steps=47 format=3 uid="uid://c8i5i2af5ohaf"]
 
 [ext_resource type="Script" uid="uid://jrbuo0ken0kb" path="res://assets/scripts/player.gd" id="1_ikdab"]
 [ext_resource type="Script" uid="uid://bmoapp8kdmh2f" path="res://assets/scripts/rpc_events.gd" id="2_1qp14"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://6c5e5ebftq52" path="res://assets/scripts/controller_actions/hider/walk.gd" id="5_6r1sy"]
 [ext_resource type="Script" uid="uid://dqcgyyqkxjksd" path="res://assets/scripts/controller_actions/hider/jump.gd" id="6_nqkij"]
 [ext_resource type="PackedScene" uid="uid://6g6cls708sff" path="res://assets/objects/player_hud.tscn" id="7_xvjlw"]
+[ext_resource type="Script" uid="uid://wndtq88tdhh6" path="res://assets/scripts/interaction/door.gd" id="8_bseap"]
 [ext_resource type="ArrayMesh" uid="uid://ddlvb5op1kbts" path="res://assets/models/placeholder/player.obj" id="9_bkysh"]
 [ext_resource type="Script" uid="uid://qwdcoukg2owl" path="res://assets/scripts/controller_states/big_cheese.gd" id="12_qgtm8"]
 [ext_resource type="Texture2D" uid="uid://sfofdqbs0rvf" path="res://assets/images/icons/old-microphone.png" id="13_fg3d2"]
@@ -34,7 +35,11 @@
 [ext_resource type="Script" uid="uid://bjk5miuq51i8m" path="res://assets/scripts/controller_actions/fredbear/move.gd" id="29_0hcfg"]
 [ext_resource type="Script" uid="uid://db3obgc1pnh5a" path="res://assets/scripts/controller_actions/fredbear/jump.gd" id="30_0hcfg"]
 [ext_resource type="Script" uid="uid://c8mdawwvu1sjt" path="res://assets/scripts/controller_actions/fredbear/climbing.gd" id="31_ec4pp"]
-[ext_resource type="Script" uid="uid://el1apeyixe0y" path="res://assets/scripts/controller_actions/fredbear/punch.gd" id="32_dx6kc"]
+[ext_resource type="Script" path="res://assets/scripts/controller_actions/fredbear/punch.gd" id="32_dx6kc"]
+[ext_resource type="Script" path="res://assets/scripts/controller_states/baldi.gd" id="33_8vsm8"]
+[ext_resource type="Script" uid="uid://detl8rd5n36jw" path="res://assets/scripts/controller_actions/baldi/idle.gd" id="34_jg5mb"]
+[ext_resource type="Script" uid="uid://e8b2pj45yomg" path="res://assets/scripts/controller_actions/baldi/slap.gd" id="34_lnwx1"]
+[ext_resource type="Script" uid="uid://de1xskh0bq0a7" path="res://assets/scripts/controller_actions/baldi/jump.gd" id="36_ti3fm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ikdab"]
 radius = 0.3
@@ -62,7 +67,7 @@ radius = 1.4516602
 radius = 0.8798828
 height = 3.6064453
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "cameraArm", "controller", "sound", "interactor", "events", "animator", "hitbox", "abilityTimer", "synchronizer", "_neck", "viewmodelRoot", "modelRoot", "modelPivot", "wallRay", "neckOffset", "collisionStanding", "collisionCrouching", "interactRay")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "cameraArm", "controller", "sound", "interactor", "events", "animator", "hitbox", "voiceEmitter", "playerHud", "abilityTimer", "abilityCooldown", "synchronizer", "_neck", "viewmodelRoot", "modelRoot", "modelPivot", "wallRay", "neckOffset", "collisionStanding", "collisionCrouching", "interactRay")]
 script = ExtResource("1_ikdab")
 camera = NodePath("neckOffset/Neck/viewbobPivot/tiltPivot/cameraArm/Camera3D")
 cameraArm = NodePath("neckOffset/Neck/viewbobPivot/tiltPivot/cameraArm")
@@ -72,7 +77,10 @@ interactor = NodePath("interactionManager")
 events = NodePath("RPCEvents")
 animator = NodePath("animationManager")
 hitbox = NodePath("hitboxManager")
+voiceEmitter = NodePath("VoiceEmitter")
+playerHud = NodePath("playerHud")
 abilityTimer = NodePath("AbilityTimer")
+abilityCooldown = NodePath("AbilityCoolDown")
 synchronizer = NodePath("MultiplayerSynchronizer")
 _neck = NodePath("neckOffset/Neck")
 viewmodelRoot = NodePath("neckOffset/Neck/viewbobPivot/tiltPivot/cameraArm/Camera3D/viewmodelHolder")
@@ -117,9 +125,12 @@ metadata/_custom_type_script = "uid://bxavxns0owjwj"
 script = ExtResource("2_lvyht")
 _corePlayer = NodePath("..")
 
-[node name="RigidBody3D" type="Node" parent="interactionManager" node_paths=PackedStringArray("_holdPoint")]
+[node name="RigidSync" type="Node" parent="interactionManager" node_paths=PackedStringArray("_holdPoint")]
 script = ExtResource("3_htwuo")
 _holdPoint = NodePath("../../neckOffset/Neck/viewbobPivot/tiltPivot/cameraArm/Camera3D/viewmodelHolder/holdPoint")
+
+[node name="Door" type="Node" parent="interactionManager"]
+script = ExtResource("8_bseap")
 
 [node name="soundManager" type="Node" parent="." node_paths=PackedStringArray("_corePlayer")]
 script = ExtResource("2_fh75e")
@@ -219,6 +230,19 @@ script = ExtResource("31_ec4pp")
 [node name="punch" type="Node" parent="controllerManager/fredbear"]
 script = ExtResource("32_dx6kc")
 
+[node name="baldi" type="Node" parent="controllerManager"]
+script = ExtResource("33_8vsm8")
+_initalAction = "idle"
+
+[node name="idle" type="Node" parent="controllerManager/baldi"]
+script = ExtResource("34_jg5mb")
+
+[node name="slap" type="Node" parent="controllerManager/baldi"]
+script = ExtResource("34_lnwx1")
+
+[node name="jump" type="Node" parent="controllerManager/baldi"]
+script = ExtResource("36_ti3fm")
+
 [node name="standingCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_ikdab")
@@ -268,6 +292,8 @@ update_scale = false
 
 [node name="InteractRay" type="RayCast3D" parent="neckOffset/Neck/viewbobPivot/tiltPivot/cameraArm/Camera3D"]
 target_position = Vector3(0, 0, -3)
+collision_mask = 4
+collide_with_areas = true
 
 [node name="network_light" type="SpotLight3D" parent="neckOffset/Neck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.22825933)
@@ -328,6 +354,10 @@ shape = SubResource("CapsuleShape3D_lnwx1")
 target_position = Vector3(0, 0, -1)
 collision_mask = 2
 
-[node name="AbilityTimer" type="Timer" parent="."]
+[node name="AbilityCoolDown" type="Timer" parent="."]
 wait_time = 20.0
+one_shot = true
+
+[node name="AbilityTimer" type="Timer" parent="."]
+wait_time = 8.0
 one_shot = true

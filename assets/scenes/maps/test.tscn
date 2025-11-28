@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://5v8hkm8lwh8k"]
+[gd_scene load_steps=10 format=3 uid="uid://5v8hkm8lwh8k"]
 
 [ext_resource type="Texture2D" uid="uid://dwteyedemb8ce" path="res://addons/plenticons/icons/64x-hidpi/objects/globe-green.png" id="1_u6orc"]
 [ext_resource type="Environment" uid="uid://bt0pj1n20bbtt" path="res://assets/resources/environments/test.tres" id="2_gdt2i"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bsnhpfrji01b7" path="res://assets/scripts/rigid_sync.gd" id="3_gfvay"]
 [ext_resource type="AudioStream" uid="uid://cg1kqqgnnrttf" path="res://assets/resources/rnd_sound/plastic_collide.tres" id="4_7j7eo"]
 [ext_resource type="AudioStream" uid="uid://jjeshwyeqoe0" path="res://assets/sound/sfx/physics/wood/wood_crate_impact_hard5.wav" id="6_pun3w"]
+[ext_resource type="PackedScene" uid="uid://bab2cok5f6g5r" path="res://assets/objects/door.tscn" id="7_mime5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x2cbm"]
 albedo_texture = ExtResource("1_u6orc")
@@ -40,8 +41,8 @@ material = SubResource("StandardMaterial3D_x2cbm")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1686487, -7.0104113)
-collision_layer = 3
-collision_mask = 3
+collision_layer = 7
+collision_mask = 7
 gravity_scale = 4.0
 script = ExtResource("3_gfvay")
 
@@ -90,3 +91,6 @@ collision_layer = 3
 collision_mask = 3
 size = Vector3(15, 47.36963, 20.324097)
 material = SubResource("StandardMaterial3D_x2cbm")
+
+[node name="DoorHolder" parent="." instance=ExtResource("7_mime5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.165688, -1.5258789e-05, 23.33313)

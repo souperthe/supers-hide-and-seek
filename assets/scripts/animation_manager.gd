@@ -13,7 +13,7 @@ var animationBlend:float = -1
 
 
 func _animationFinished(_animationName:String) -> void:
-	print("animation done")
+	#print("animation done")
 	animationDone = true
 	return
 	
@@ -51,14 +51,20 @@ func animationGetPosition() -> float:
 
 
 func playAnimation(desiredAnimation:String, speed:float=1, seek:float=0, sending:bool=false) -> void:
+	
 	if _animator == null:
+		# TODO this is a temp fix, going to actually fix this later
+		animatorSetup()
+		#playAnimation(desiredAnimation,speed,seek,sending)
 		return
-		
+	
 	if _animator.current_animation == desiredAnimation:
 		return
-		
+	
+	if not _animator.has_animation(desiredAnimation):
+		return
 	animationName = desiredAnimation
-		
+	
 	_animator.play(
 		desiredAnimation,
 		animationBlend,
@@ -89,7 +95,6 @@ func animatorSetup() -> void:
 	_animator = null
 	animationName = ""
 	animationDone = false
-	
 	var modelDescendants:Array = util.getDescendants(_corePlayer.modelRoot)
 	
 	for node in modelDescendants:
@@ -99,14 +104,14 @@ func animatorSetup() -> void:
 		else:
 			continue
 		continue
-		
+	
 	if _animator == null:
 		return
-		
-	_animator.animation_finished.connect(_animationFinished)
-		
 	
-		
+	_animator.animation_finished.connect(_animationFinished)
+	
+	
+	
 	
 	
 	return

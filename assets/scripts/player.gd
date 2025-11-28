@@ -20,8 +20,11 @@ var currentTeam:superEnum.teams = superEnum.teams.hider
 @export var events:ClassRPCEvents
 @export var animator:AnimationManager
 @export var hitbox:HitboxManager
+@export var voiceEmitter:VoiceEmitter
+@export var playerHud:CanvasLayer
 
 @export var abilityTimer:Timer
+@export var abilityCooldown:Timer
 
 @export var synchronizer:MultiplayerSynchronizer
 
@@ -89,6 +92,42 @@ func takeDamage(amount:float, knockback:Vector3) -> void:
 	
 	SignalManager.damageTaken.emit(previousHealth, health, amount)
 	sound.playSound("res://assets/resources/rnd_sound/player_hurt.tres")
+	return
+	
+	
+func loadHider(hiderName:String) -> void:
+	var desiredHider:Hider = util.getHider(hiderName)
+	
+	if desiredHider == null:
+		return
+		
+	currentTeam = superEnum.teams.seeker
+	firstPerson = true
+	
+	util.clearChildren(modelRoot)
+	$Voice.pitch_scale = 1
+	
+	var hiderModel:Node3D = desiredHider.hiderModel.instantiate()
+	hiderModel.scale = desiredHider.modelScale
+	
+	
+	modelRoot.add_child(hiderModel)
+	
+	
+	animator.animatorSetup()
+	
+	if is_multiplayer_authority():
+	
+		cameraArm.spring_length = 0
+		util.setShadows(
+			modelRoot,
+			GeometryInstance3D.ShadowCastingSetting.SHADOW_CASTING_SETTING_SHADOWS_ONLY
+		)
+	
+	
+		controller.changeState("hider")
+		
+		
 	return
 
 
@@ -218,7 +257,12 @@ func _physics_process(_delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if !is_multiplayer_authority():
 		return
-		
+	
+	if Input.is_action_just_pressed("mute_mic"):
+		voiceEmitter.muted = not voiceEmitter.muted
+		playerHud.get_node("Chat/MutedMic").visible = voiceEmitter.muted
+		print("muted: %s" % voiceEmitter.muted)
+	
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
 			

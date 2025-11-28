@@ -75,7 +75,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	if Networking.localPlayer:
-		var timeLeft:float = Networking.localPlayer.abilityTimer.time_left
+		var timeLeft:float = Networking.localPlayer.abilityCooldown.time_left
 		if timeLeft > 0:
 			$seekerIcon/Label.show()
 			var seconds:float = fmod(timeLeft, 60)

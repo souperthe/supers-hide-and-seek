@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxpu8sq5c6dst"]
+
+[ext_resource type="PackedScene" uid="uid://up0rtte142u3" path="res://assets/models/characters/base_hider/base_hider.blend" id="1_xwix4"]
+
+[node name="base_hider" type="Node3D"]
+
+[node name="base_hider" parent="." instance=ExtResource("1_xwix4")]
+transform = Transform3D(-0.33, 0, 4.9828618e-08, 0, 0.33, 0, -4.9828618e-08, 0, -0.33, 0, 0, 0)
+
+[node name="Skeleton3D" parent="base_hider/Armature" index="0"]
+bones/1/position = Vector3(0, 1.9410685, 0)
+bones/1/rotation = Quaternion(-0.021796817, 0, 0, 0.9997624)
+bones/2/rotation = Quaternion(0.036871612, 0, 0, 0.99932003)
+bones/3/rotation = Quaternion(0.23203477, 0, 0, 0.9727075)
+bones/4/rotation = Quaternion(-0.07592234, -0.5725789, 0.80928, 0.1070289)
+bones/5/rotation = Quaternion(0.8625088, 0.08192122, 0.23499322, 0.4406198)
+bones/6/rotation = Quaternion(-1.4901161e-08, -1.1641532e-08, 3.7252903e-09, 1)
+bones/7/rotation = Quaternion(0.0043796794, -0.030790325, -0.9913887, 0.12720561)
+bones/8/rotation = Quaternion(0.9185644, -0.076810025, -0.1532414, 0.35616958)
+bones/9/rotation = Quaternion(8.381903e-09, -4.6566107e-10, -4.656613e-09, 1)
+bones/10/position = Vector3(0, 1.0000002, 2.0960323e-07)
+bones/10/rotation = Quaternion(0.056619287, 7.955541e-08, 8.87795e-08, 0.9983959)
+bones/11/rotation = Quaternion(0.0019593504, -0.118844345, 0.9927833, -0.015923126)
+bones/12/rotation = Quaternion(-0.4686182, 0.032063976, 0.0007793404, 0.88281834)
+bones/13/rotation = Quaternion(0.9399421, -0.011738462, 0.023160089, -0.3403449)
+bones/14/rotation = Quaternion(0.004751936, 0.6005272, 0.7965314, 0.06987277)
+bones/15/rotation = Quaternion(-0.5342321, 0.027738245, 0.030513918, 0.8443315)
+bones/16/rotation = Quaternion(0.46656325, -0.013438432, 0.05420363, 0.8827232)
+bones/17/position = Vector3(-0.5168437, 0.3601357, -1.2471807)
+bones/17/rotation = Quaternion(1.3767878e-07, 0.7071068, -0.7071068, -1.3767878e-07)
+bones/18/position = Vector3(0.4199952, 0.54632723, 1.3439908)
+bones/19/position = Vector3(-0.6, 1.1289961, 0.7063814)
+bones/19/rotation = Quaternion(-1.6858739e-07, 0.7071068, 0.7071068, -1.6858739e-07)
+bones/20/position = Vector3(0.3794874, 2.204189, 1.0964)
+
+[node name="AnimationPlayer" parent="base_hider" index="1"]
+speed_scale = 2.0
+
+[editable path="base_hider"]

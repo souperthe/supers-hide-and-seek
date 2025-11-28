@@ -11,6 +11,7 @@ var _playback:AudioStreamGeneratorPlayback = null
 var _hasLoopback: bool = true
 
 var speaking:bool = false
+var muted: bool = false
 
 
 
@@ -127,8 +128,12 @@ func _process(_delta: float) -> void:
 		_talkingSprite.visible = speaking
 	
 	
+	
 	if !is_multiplayer_authority():
 		return
-		
+	
+	if muted:
+		return
+	
 	_checkVoice()
 	return

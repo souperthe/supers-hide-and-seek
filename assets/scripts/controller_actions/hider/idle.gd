@@ -3,6 +3,8 @@ extends ControllerAction
 
 func actionEnter(message:String="")->void:
 	
+	corePlayer.animator.playAnimation("idle", 1)
+	
 	if message == "landing":
 		coreSound.playSound("res://assets/resources/rnd_sound/stone_step.tres")
 	
