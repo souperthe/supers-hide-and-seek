@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://c8i5i2af5ohaf"]
+[gd_scene load_steps=46 format=3 uid="uid://c8i5i2af5ohaf"]
 
 [ext_resource type="Script" uid="uid://jrbuo0ken0kb" path="res://assets/scripts/player.gd" id="1_ikdab"]
 [ext_resource type="Script" uid="uid://bmoapp8kdmh2f" path="res://assets/scripts/rpc_events.gd" id="2_1qp14"]
@@ -34,7 +34,11 @@
 [ext_resource type="Script" uid="uid://bjk5miuq51i8m" path="res://assets/scripts/controller_actions/fredbear/move.gd" id="29_0hcfg"]
 [ext_resource type="Script" uid="uid://db3obgc1pnh5a" path="res://assets/scripts/controller_actions/fredbear/jump.gd" id="30_0hcfg"]
 [ext_resource type="Script" uid="uid://c8mdawwvu1sjt" path="res://assets/scripts/controller_actions/fredbear/climbing.gd" id="31_ec4pp"]
-[ext_resource type="Script" path="res://assets/scripts/controller_actions/fredbear/punch.gd" id="32_dx6kc"]
+[ext_resource type="Script" uid="uid://el1apeyixe0y" path="res://assets/scripts/controller_actions/fredbear/punch.gd" id="32_dx6kc"]
+[ext_resource type="Script" uid="uid://cachoqork5avw" path="res://assets/scripts/controller_states/baldi.gd" id="33_8vsm8"]
+[ext_resource type="Script" uid="uid://detl8rd5n36jw" path="res://assets/scripts/controller_actions/baldi/idle.gd" id="34_jg5mb"]
+[ext_resource type="Script" uid="uid://e8b2pj45yomg" path="res://assets/scripts/controller_actions/baldi/slap.gd" id="34_lnwx1"]
+[ext_resource type="Script" uid="uid://de1xskh0bq0a7" path="res://assets/scripts/controller_actions/baldi/jump.gd" id="36_ti3fm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ikdab"]
 radius = 0.3
@@ -221,6 +225,19 @@ script = ExtResource("31_ec4pp")
 
 [node name="punch" type="Node" parent="controllerManager/fredbear"]
 script = ExtResource("32_dx6kc")
+
+[node name="baldi" type="Node" parent="controllerManager"]
+script = ExtResource("33_8vsm8")
+_initalAction = "idle"
+
+[node name="idle" type="Node" parent="controllerManager/baldi"]
+script = ExtResource("34_jg5mb")
+
+[node name="slap" type="Node" parent="controllerManager/baldi"]
+script = ExtResource("34_lnwx1")
+
+[node name="jump" type="Node" parent="controllerManager/baldi"]
+script = ExtResource("36_ti3fm")
 
 [node name="standingCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

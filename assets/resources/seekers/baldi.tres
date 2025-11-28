@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Seeker" load_steps=4 format=3 uid="uid://bdw2eomjf5udg"]
+
+[ext_resource type="Script" uid="uid://btqjdvfscl84" path="res://assets/scripts/seeker.gd" id="1_hjbgo"]
+[ext_resource type="Texture2D" uid="uid://c4jgtjuiacpim" path="res://assets/images/seeker_icons/baldiTEMP.png" id="2_dvgl0"]
+[ext_resource type="PackedScene" uid="uid://cwslmoupvgxr3" path="res://assets/models/characters/baldi/baldi.tscn" id="3_v2d7a"]
+
+[resource]
+script = ExtResource("1_hjbgo")
+seekerName = "Baldi"
+seekerQuote = "Welcome to my schoolhouse!"
+seekerIcon = ExtResource("2_dvgl0")
+seekerModel = ExtResource("3_v2d7a")
+useFirstPerson = false
+stateName = "baldi"
+metadata/_custom_type_script = "uid://btqjdvfscl84"

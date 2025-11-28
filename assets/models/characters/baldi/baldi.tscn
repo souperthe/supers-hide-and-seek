@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwslmoupvgxr3"]
+
+[ext_resource type="Texture2D" uid="uid://btnbamtke1kfy" path="res://assets/models/characters/baldi/baldiSprites.png" id="1_231ll"]
+[ext_resource type="AudioStream" uid="uid://dfk47qj0yeco5" path="res://assets/sound/sfx/character/baldi/BAL_Slap.wav" id="1_wc5hf"]
+
+[sub_resource type="Animation" id="Animation_bow0q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/BaldiSlap:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_wc5hf"]
+resource_name = "idle"
+length = 0.06667334
+step = 0.06666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 4]
+}
+
+[sub_resource type="Animation" id="Animation_231ll"]
+resource_name = "slap"
+length = 0.66667336
+step = 0.06666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/BaldiSlap:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hv8hr"]
+_data = {
+&"RESET": SubResource("Animation_bow0q"),
+&"idle": SubResource("Animation_wc5hf"),
+&"slap": SubResource("Animation_231ll")
+}
+
+[node name="baldi" type="Node3D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hv8hr")
+}
+autoplay = "idle"
+
+[node name="BaldiSlap" type="AudioStreamPlayer3D" parent="AnimationPlayer"]
+stream = ExtResource("1_wc5hf")
+volume_db = 30.0
+
+[node name="Sprite" type="Sprite3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.9, 0)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("1_231ll")
+hframes = 5
