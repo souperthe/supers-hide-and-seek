@@ -20,6 +20,8 @@ var currentTeam:superEnum.teams = superEnum.teams.hider
 @export var events:ClassRPCEvents
 @export var animator:AnimationManager
 @export var hitbox:HitboxManager
+@export var voiceEmitter:VoiceEmitter
+@export var playerHud:CanvasLayer
 
 @export var abilityTimer:Timer
 
@@ -253,7 +255,12 @@ func _physics_process(_delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if !is_multiplayer_authority():
 		return
-		
+	
+	if Input.is_action_just_pressed("mute_mic"):
+		voiceEmitter.muted = not voiceEmitter.muted
+		playerHud.get_node("Chat/MutedMic").visible = voiceEmitter.muted
+		print("muted: %s" % voiceEmitter.muted)
+	
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
 			

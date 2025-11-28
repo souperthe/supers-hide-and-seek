@@ -34,7 +34,7 @@
 [ext_resource type="Script" uid="uid://bjk5miuq51i8m" path="res://assets/scripts/controller_actions/fredbear/move.gd" id="29_0hcfg"]
 [ext_resource type="Script" uid="uid://db3obgc1pnh5a" path="res://assets/scripts/controller_actions/fredbear/jump.gd" id="30_0hcfg"]
 [ext_resource type="Script" uid="uid://c8mdawwvu1sjt" path="res://assets/scripts/controller_actions/fredbear/climbing.gd" id="31_ec4pp"]
-[ext_resource type="Script" path="res://assets/scripts/controller_actions/fredbear/punch.gd" id="32_dx6kc"]
+[ext_resource type="Script" uid="uid://el1apeyixe0y" path="res://assets/scripts/controller_actions/fredbear/punch.gd" id="32_dx6kc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ikdab"]
 radius = 0.3
@@ -62,7 +62,7 @@ radius = 1.4516602
 radius = 0.8798828
 height = 3.6064453
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "cameraArm", "controller", "sound", "interactor", "events", "animator", "hitbox", "abilityTimer", "synchronizer", "_neck", "viewmodelRoot", "modelRoot", "modelPivot", "wallRay", "neckOffset", "collisionStanding", "collisionCrouching", "interactRay")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "cameraArm", "controller", "sound", "interactor", "events", "animator", "hitbox", "voiceEmitter", "playerHud", "abilityTimer", "synchronizer", "_neck", "viewmodelRoot", "modelRoot", "modelPivot", "wallRay", "neckOffset", "collisionStanding", "collisionCrouching", "interactRay")]
 script = ExtResource("1_ikdab")
 camera = NodePath("neckOffset/Neck/viewbobPivot/tiltPivot/cameraArm/Camera3D")
 cameraArm = NodePath("neckOffset/Neck/viewbobPivot/tiltPivot/cameraArm")
@@ -72,6 +72,8 @@ interactor = NodePath("interactionManager")
 events = NodePath("RPCEvents")
 animator = NodePath("animationManager")
 hitbox = NodePath("hitboxManager")
+voiceEmitter = NodePath("VoiceEmitter")
+playerHud = NodePath("playerHud")
 abilityTimer = NodePath("AbilityTimer")
 synchronizer = NodePath("MultiplayerSynchronizer")
 _neck = NodePath("neckOffset/Neck")
