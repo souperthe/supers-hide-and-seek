@@ -10,7 +10,7 @@ var gameData:Dictionary = {
 	use_lms = false
 }
 
-@rpc("authority", "call_local", "unreliable")
+@rpc("authority", "call_local", "reliable")
 func startGame(desiredData:Dictionary=gameData) -> void:
 	
 	if !multiplayer.get_remote_sender_id() == 1:
