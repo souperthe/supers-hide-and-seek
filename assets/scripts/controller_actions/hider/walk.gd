@@ -4,6 +4,7 @@ var _stepTime:float = 0
 
 
 func actionEnter(_message:String="")->void:
+	corePlayer.animator.playAnimation("run", 2)
 	_stepTime = 0
 	return
 	

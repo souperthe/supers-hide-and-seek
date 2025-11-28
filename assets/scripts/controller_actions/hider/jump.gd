@@ -3,6 +3,8 @@ extends ControllerAction
 
 func actionEnter(message:String="")->void:
 	
+	corePlayer.animator.playAnimation("jump", 1)
+	
 	if message == "jump":
 		corePlayer.velocity.y = corePlayer.jump_velocity
 		if corePlayer.crouching:

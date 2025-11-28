@@ -90,6 +90,41 @@ func takeDamage(amount:float, knockback:Vector3) -> void:
 	SignalManager.damageTaken.emit(previousHealth, health, amount)
 	sound.playSound("res://assets/resources/rnd_sound/player_hurt.tres")
 	return
+	
+	
+func loadHider(hiderName:String) -> void:
+	var desiredHider:Hider = util.getHider(hiderName)
+	
+	if desiredHider == null:
+		return
+		
+	currentTeam = superEnum.teams.seeker
+	firstPerson = true
+	
+	util.clearChildren(modelRoot)
+	$Voice.pitch_scale = 1
+	
+	var hiderModel:Node3D = desiredHider.hiderModel.instantiate()
+	hiderModel.scale = desiredHider.modelScale
+	
+	
+	modelRoot.add_child(hiderModel)
+	
+	animator.animatorSetup()
+	
+	if is_multiplayer_authority():
+	
+		cameraArm.spring_length = 0
+		util.setShadows(
+			modelRoot,
+			GeometryInstance3D.ShadowCastingSetting.SHADOW_CASTING_SETTING_SHADOWS_ONLY
+		)
+	
+	
+		controller.changeState("hider")
+		
+		
+	return
 
 
 func loadSeeker(seekerName:String) -> void:
