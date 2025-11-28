@@ -43,7 +43,7 @@ func actionPhysics(delta:float)->void:
 	)
 	
 	var speed:float = corePlayer.walk_speed/2
-	var running:bool = Input.is_action_pressed("player_sprint") and get_parent().runTimer > 0
+	var running:bool = Input.is_action_pressed("player_sprint") and corePlayer.abilityTimer.time_left > 0
 	
 	
 	if running:

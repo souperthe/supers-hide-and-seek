@@ -105,3 +105,13 @@ func _actionProcess(delta:float) -> void:
 	currentAction.actionProcess(delta)
 
 	return
+	
+func useAbility(enterState:String="") -> bool:
+	if corePlayer.abilityCooldown.time_left > 0:
+		return false
+	util.oneShotSFX("res://assets/sound/sfx/ui/buttonclick.wav")
+	corePlayer.abilityTimer.start()
+	corePlayer.abilityCooldown.start()
+	if enterState != "":
+		actionTransition("search")
+	return true

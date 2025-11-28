@@ -10,5 +10,5 @@ func _timerEnd() -> void:
 	return
 
 func _ready() -> void:
-	_corePlayer.abilityTimer.timeout.connect(_timerEnd)
+	_corePlayer.abilityCooldown.timeout.connect(_timerEnd)
 	return

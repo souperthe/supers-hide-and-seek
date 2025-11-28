@@ -14,11 +14,3 @@ func controllerPhysics(delta:float) -> void:
 			return
 	runTimer -= delta*2
 	return
-
-func useAbility() -> bool:
-	if corePlayer.abilityTimer.time_left > 0:
-		return false
-	util.oneShotSFX("res://assets/sound/sfx/ui/buttonclick.wav")
-	runTimer = 18
-	corePlayer.abilityTimer.start()
-	return true

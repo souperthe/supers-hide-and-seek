@@ -9,11 +9,3 @@ func controllerPhysics(delta:float) -> void:
 	corePlayer.interactor.handleInteraction(delta)
 	return
 	
-	
-func useAbility() -> bool:
-	if corePlayer.abilityTimer.time_left > 0:
-		return false
-	util.oneShotSFX("res://assets/sound/sfx/ui/buttonclick.wav")
-	corePlayer.abilityTimer.start()
-	actionTransition("search")
-	return true

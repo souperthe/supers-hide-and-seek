@@ -24,6 +24,7 @@ var currentTeam:superEnum.teams = superEnum.teams.hider
 @export var playerHud:CanvasLayer
 
 @export var abilityTimer:Timer
+@export var abilityCooldown:Timer
 
 @export var synchronizer:MultiplayerSynchronizer
 
