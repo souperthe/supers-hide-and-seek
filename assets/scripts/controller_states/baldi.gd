@@ -17,18 +17,18 @@ func controllerPhysics(_delta:float) -> void:
 		corePlayer.seekerHud.get_node("BaldiHUD").switch_visible()
 	
 	if Input.is_action_just_pressed("player_ability"):
-		if notebooks.size() >= 4:
-			var oldestNotebook : Notebook = notebooks.pop_front()
-			
-			
-			var explode:Node3D = explosion.instantiate()
-			notebookNode.add_child(explode)
-			explode.global_position = oldestNotebook.global_position
-			util.lingerNode(explode,2)
-			
-			corePlayer.seekerHud.get_node("BaldiHUD").list.get_child(0).queue_free()
-			oldestNotebook.queue_free()
 		if useAbility():
+			if notebooks.size() >= 4:
+				var oldestNotebook : Notebook = notebooks.pop_front()
+			
+			
+				var explode:Node3D = explosion.instantiate()
+				notebookNode.add_child(explode)
+				explode.global_position = oldestNotebook.global_position
+				util.lingerNode(explode,2)
+			
+				corePlayer.seekerHud.get_node("BaldiHUD").list.get_child(0).queue_free()
+				oldestNotebook.queue_free()
 			var newNotebook = notebookScene.instantiate()
 			notebookNode.add_child(newNotebook)
 			corePlayer.seekerHud.get_node("BaldiHUD").add_notebook(newNotebook)
