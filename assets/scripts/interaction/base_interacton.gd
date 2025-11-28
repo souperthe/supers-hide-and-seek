@@ -12,5 +12,6 @@ var corePlayer:Player
 func enterInteraction(interactable:Object) -> void
 
 
-@abstract
-func interactionProcess(delta:float) -> void
+
+func interactionProcess(delta:float) -> void:
+	return
