@@ -47,7 +47,7 @@ func actionPhysics(delta:float)->void:
 	_stepTime += corePlayer.velocity.length() * delta
 	
 	if Input.is_action_just_pressed("player_ability"):
-		if get_parent().useAbility():
+		if coreState.useAbility("search"):
 			return
 	
 	if _stepTime > 4.5:

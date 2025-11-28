@@ -113,5 +113,5 @@ func useAbility(enterState:String="") -> bool:
 	corePlayer.abilityTimer.start()
 	corePlayer.abilityCooldown.start()
 	if enterState != "":
-		actionTransition("search")
+		actionTransition(enterState)
 	return true
