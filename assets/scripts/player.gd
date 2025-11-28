@@ -113,6 +113,7 @@ func loadHider(hiderName:String) -> void:
 	
 	modelRoot.add_child(hiderModel)
 	
+	
 	animator.animatorSetup()
 	
 	if is_multiplayer_authority():

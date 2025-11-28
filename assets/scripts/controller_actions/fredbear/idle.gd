@@ -2,7 +2,6 @@ extends ControllerAction
 
 
 func actionEnter(_message:String="")->void:
-	
 	corePlayer.animator.playAnimation("Fredbear_Idle_Anim")
 	
 	if _message == "land":
