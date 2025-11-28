@@ -35,8 +35,13 @@ func endProcess(interactor:Interaction) -> void:
 
 func _startInteraction(interactable:Object) -> void:
 	
+	if interactable.get_script() == null:
+		return
 	
-	var interactionType:String = interactable.get_class().to_lower()
+	var className:String = interactable.get_script().get_global_name()
+	var interactionType:String = className.to_lower()
+	
+	
 	
 	if !_allInteractions.has(interactionType):
 		util.oneShotSFX("res://assets/sound/sfx/tools/ifm/ifm_denyundo.wav")
@@ -44,6 +49,7 @@ func _startInteraction(interactable:Object) -> void:
 	
 	
 	var possibleInteractor:Interaction = _allInteractions[interactionType]
+	
 	
 	if _interactionProcesses.has(possibleInteractor):
 		return
