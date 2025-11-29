@@ -10,7 +10,7 @@ func actionEnter(_message:String="")->void:
 	corePlayer.modelPivot.look_at(
 		corePlayer.global_position+(-corePlayer.wallRay.get_collision_normal())
 	)
-	_climbSpeed = corePlayer.velocity.length()
+	_climbSpeed = Vector3(corePlayer.velocity.x,0,corePlayer.velocity.z).length()
 	
 	print(_climbSpeed)
 	

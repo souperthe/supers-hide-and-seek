@@ -193,13 +193,6 @@ func loadSeeker(seekerName:String) -> void:
 	
 	return
 
-func local_loadSeeker(seekerName:String) -> void: # testing purposes
-	sync_loadSeeker.rpc(seekerName)
-@rpc("authority","call_local","reliable")
-func sync_loadSeeker(seekerName:String) -> void:
-	print("syncedy")
-	loadSeeker(seekerName)
-
 func getSpeed()->float:
 	
 	if crouching:
@@ -209,6 +202,7 @@ func getSpeed()->float:
 
 func _setupOthers() -> void:
 	$playerHud.queue_free()
+	$seekerHud.queue_free()
 	return
 
 func _setupAuthority()->void:
@@ -232,7 +226,7 @@ func _setupAuthority()->void:
 	$Talking.pixel_size = 0
 	
 	Console.add_command("load_seeker", loadSeeker, ["Seeker Name"], 1)
-	Console.add_command("SERVER_seeker",local_loadSeeker,["Seeker Name"],1)
+	#Console.add_command("SERVER_seeker",local_loadSeeker,["Seeker Name"],1)
 	return
 
 
