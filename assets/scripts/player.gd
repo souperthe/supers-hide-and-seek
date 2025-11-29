@@ -197,6 +197,7 @@ func local_loadSeeker(seekerName:String) -> void: # testing purposes
 	sync_loadSeeker.rpc(seekerName)
 @rpc("authority","call_local","reliable")
 func sync_loadSeeker(seekerName:String) -> void:
+	print("syncedy")
 	loadSeeker(seekerName)
 
 func getSpeed()->float:

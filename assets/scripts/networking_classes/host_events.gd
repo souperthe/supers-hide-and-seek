@@ -9,6 +9,9 @@ var gameData:Dictionary = {
 	hide_time = 10, # time for hiders to hide
 	use_lms = false
 }
+#@rpc("authority","call_remote","reliable")
+#func sync_rng(serverseed: int):
+	#Networking.networkRNG.seed = serverseed
 
 @rpc("authority", "call_local", "reliable")
 func startGame(desiredData:Dictionary=gameData) -> void:
@@ -18,8 +21,8 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 		
 	print("starting game...")
 	print(desiredData)
-
-		
-		
+	
+	Networking.networkRNG.seed = 67420 * 143 # TODO temporary
+	
 	
 	return

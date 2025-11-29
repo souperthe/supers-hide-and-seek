@@ -5,6 +5,7 @@ var lobbyName:String = ""
 
 var currentPeer:MultiplayerPeer
 var players : Dictionary = {}
+var networkRNG : RandomNumberGenerator = RandomNumberGenerator.new() ## ONLY TO BE USED IN RPC EVENTS
 
 var maxPlayers: int = 20
 var localPlayer:Player
@@ -30,6 +31,7 @@ func _init() -> void:
 	print("Networking init")
 	
 	var steamName:String = Steam.getPersonaName()
+	networkRNG.seed = 123 # TODO temporary
 	
 	lobbyName = "SHAS_" + steamName + "'s lobby"
 	

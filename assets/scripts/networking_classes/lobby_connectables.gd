@@ -5,6 +5,7 @@ class_name ClassLobbyConnectables extends Node
 func peerJoined(pid:int) -> void:
 	print(pid)
 	#if multiplayer.is_server():
+		#Networking.hostEvents.sync_rng.rpc_id(Networking.networkRNG.seed)
 		#if Networking.players.size() > Networking.max_players:
 			#print("kick?")
 			#Networking.connection.kickPlayer(pid)
