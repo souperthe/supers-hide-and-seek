@@ -21,8 +21,10 @@ _playerScene = ExtResource("3_8anus")
 [node name="LobbyConnectables" type="Node" parent="Lobby"]
 script = ExtResource("3_qbfn3")
 
-[node name="HostEvents" type="Node" parent="."]
+[node name="HostEvents" type="Node" parent="." node_paths=PackedStringArray("seekTimer", "hideTimer")]
 script = ExtResource("4_4lkwq")
+seekTimer = NodePath("SeekTimer")
+hideTimer = NodePath("HideTimer")
 
 [node name="HideTimer" type="Timer" parent="HostEvents"]
 one_shot = true
