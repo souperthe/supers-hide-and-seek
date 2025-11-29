@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://btnbamtke1kfy"
-path.s3tc="res://.godot/imported/baldiSprites.png-751ae04a517aaa00eadc983418b62385.s3tc.ctex"
+path="res://.godot/imported/baldiSprites.png-751ae04a517aaa00eadc983418b62385.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/models/characters/baldi/baldiSprites.png"
-dest_files=["res://.godot/imported/baldiSprites.png-751ae04a517aaa00eadc983418b62385.s3tc.ctex"]
+dest_files=["res://.godot/imported/baldiSprites.png-751ae04a517aaa00eadc983418b62385.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
