@@ -7,10 +7,11 @@
 [ext_resource type="Script" uid="uid://di0hvc3hoohoj" path="res://assets/scripts/networking_classes/host_events.gd" id="4_4lkwq"]
 [ext_resource type="Script" uid="uid://dpjn3m7ykkb5d" path="res://assets/scripts/networking_classes/networking_console.gd" id="5_bc5yj"]
 
-[node name="Networking" type="Node" node_paths=PackedStringArray("lobby", "hostEvents", "playersHolder")]
+[node name="Networking" type="Node" node_paths=PackedStringArray("lobby", "hostEvents", "console", "playersHolder")]
 script = ExtResource("1_se51c")
 lobby = NodePath("Lobby")
 hostEvents = NodePath("HostEvents")
+console = NodePath("NetworkingConsole")
 playersHolder = NodePath("PlayersHolder")
 
 [node name="Lobby" type="Node" parent="." node_paths=PackedStringArray("_connectables")]

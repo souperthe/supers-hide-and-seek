@@ -20,6 +20,7 @@ var localData := {
 
 @export var lobby:ClassLobby
 @export var hostEvents:ClassHostEvents
+@export var console:ClassNetworkingConsole
 
 @export var playersHolder:Node3D
 
