@@ -52,10 +52,11 @@ func sendData(data:Dictionary, pid:int)->void:
 		
 		Networking.playersHolder.add_child(newPlayer)
 		
-		if pid == 1:
-			newPlayer.loadSeeker(data["desired_seeker"])
-		else:
-			newPlayer.loadHider("ball_man")
+		#if pid == 1:
+			#newPlayer.loadSeeker(data["desired_seeker"])
+		#else:
+			#newPlayer.loadHider("ball_man")
+		newPlayer.loadHider("ball_man")
 		
 	if !multiplayer.is_server():
 		return

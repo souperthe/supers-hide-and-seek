@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://nseqq2rn36q6"]
 
-[ext_resource type="Texture2D" uid="uid://cog5qxukeyytk" path="res://assets/images/multiuseexplosiondeltarunechapter2spritesheet.png" id="1_2iu8y"]
+[ext_resource type="Texture2D" uid="uid://cog5qxukeyytk" path="res://assets/images/multiuseexplosiondeltarunechapter2spritesheetcrazycattleexplosioneffectloudboomvfxhinull.png" id="1_2iu8y"]
 [ext_resource type="AudioStream" uid="uid://hrcme5kfmbpe" path="res://assets/sound/sfx/damage/explode.wav" id="2_4eycq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u7ujh"]

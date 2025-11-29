@@ -102,7 +102,9 @@ func setShadows(rootNode:Node3D, shadowMode:GeometryInstance3D.ShadowCastingSett
 	
 	return
 	
-	
+
+
+
 var _seekerPath:String = "res://assets/resources/seekers/"
 var _hiderPath:String = "res://assets/resources/hiders/"
 
@@ -116,7 +118,7 @@ func getHider(hiderName:String) -> Hider:
 	var foundHider:Hider = load(hiderPath) as Hider
 	
 	return foundHider
-	
+
 func getSeeker(seekerName:String) -> Seeker:
 	var trueName:String = seekerName.to_lower()
 	var seekerPath:String = _seekerPath + trueName + ".tres"

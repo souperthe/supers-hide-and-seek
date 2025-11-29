@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cog5qxukeyytk"
-path.s3tc="res://.godot/imported/multiuseexplosiondeltarunechapter2spritesheet.png-4c42ca2556a37a21ce25d9f8c3533399.s3tc.ctex"
+path.s3tc="res://.godot/imported/multiuseexplosiondeltarunechapter2spritesheetcrazycattleexplosioneffectloudboomvfxhinull.png-82e508b7af6d704c443141b848901b0e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/images/multiuseexplosiondeltarunechapter2spritesheet.png"
-dest_files=["res://.godot/imported/multiuseexplosiondeltarunechapter2spritesheet.png-4c42ca2556a37a21ce25d9f8c3533399.s3tc.ctex"]
+source_file="res://assets/images/multiuseexplosiondeltarunechapter2spritesheetcrazycattleexplosioneffectloudboomvfxhinull.png"
+dest_files=["res://.godot/imported/multiuseexplosiondeltarunechapter2spritesheetcrazycattleexplosioneffectloudboomvfxhinull.png-82e508b7af6d704c443141b848901b0e.s3tc.ctex"]
 
 [params]
 

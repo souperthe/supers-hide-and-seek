@@ -1,7 +1,6 @@
 @icon("res://assets/images/icons/public-speaker.svg")
 class_name ClassHostEvents extends Node
 
-
 var gameData:Dictionary = {
 	map = "srs3_school",
 	seekers = [1],
@@ -9,9 +8,6 @@ var gameData:Dictionary = {
 	hide_time = 10, # time for hiders to hide
 	use_lms = false
 }
-#@rpc("authority","call_remote","reliable")
-#func sync_rng(serverseed: int):
-	#Networking.networkRNG.seed = serverseed
 
 @rpc("authority", "call_local", "reliable")
 func startGame(desiredData:Dictionary=gameData) -> void:
@@ -23,6 +19,16 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 	print(desiredData)
 	
 	Networking.networkRNG.seed = 67420 * 143 # TODO temporary
+	
+	var hiders: Dictionary = Networking.players.duplicate()
+	for seekerpid in desiredData.seekers:
+		var plr : Player = util.getPlayer(seekerpid)
+		plr.loadSeeker(Networking.players[seekerpid].desired_seeker)
+		hiders.erase(seekerpid)
+	
+	for hiderpid in hiders:
+		var plr : Player = util.getPlayer(hiderpid)
+		plr.loadHider(Networking.players[hiderpid].desired_hider)
 	
 	
 	return

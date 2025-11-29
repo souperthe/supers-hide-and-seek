@@ -105,7 +105,6 @@ func loadHider(hiderName:String) -> void:
 	currentTeam = superEnum.teams.hider
 	firstPerson = true
 	
-	util.clearChildren(seekerHud)
 	util.clearChildren(modelRoot)
 	$Voice.pitch_scale = 1
 	
@@ -118,7 +117,8 @@ func loadHider(hiderName:String) -> void:
 	animator.animatorSetup()
 	
 	if is_multiplayer_authority():
-	
+		util.clearChildren(seekerHud)
+		
 		cameraArm.spring_length = 0
 		util.setShadows(
 			modelRoot,
@@ -149,7 +149,6 @@ func loadSeeker(seekerName:String) -> void:
 	modelPivot.rotation = Vector3.ZERO
 	rotation = Vector3.ZERO
 	
-	util.clearChildren(seekerHud)
 	util.clearChildren(modelRoot)
 	
 		
@@ -164,6 +163,7 @@ func loadSeeker(seekerName:String) -> void:
 	animator.animatorSetup()
 	
 	if is_multiplayer_authority():
+		util.clearChildren(seekerHud)
 		if desiredSeeker.seekerHUD:
 			var chosenSeekerHud:Control = desiredSeeker.seekerHUD.instantiate()
 			chosenSeekerHud.corePlayer = self

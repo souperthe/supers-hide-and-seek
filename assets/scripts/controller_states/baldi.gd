@@ -32,6 +32,7 @@ func controllerStart(_message:String="") -> void:
 	
 
 func controllerPhysics(_delta:float) -> void:
+	
 	if Input.is_action_just_pressed("player_alt_ability"):
 		corePlayer.seekerHud.get_node("BaldiHUD").switch_visible()
 	

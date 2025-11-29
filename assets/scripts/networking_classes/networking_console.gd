@@ -19,7 +19,7 @@ func _connectLobby(code:String="")->void:
 	return
 	
 func _createLobby(type:String = "lan")->void:
-	print("help")
+	print("help") # #
 	if type.to_lower() == "steam":
 		Networking.lobby.createLobby(
 			superEnum.lobbyType.steam,
@@ -34,4 +34,5 @@ func _createLobby(type:String = "lan")->void:
 func _ready() -> void:
 	Console.add_command("connect_lobby", _connectLobby, ["steam lobby code"])
 	Console.add_command("create_lobby", _createLobby, ["lobby type ex: steam, lan"])
+	Console.add_command("start_game",Networking.hostEvents.startGame.rpc)
 	return
