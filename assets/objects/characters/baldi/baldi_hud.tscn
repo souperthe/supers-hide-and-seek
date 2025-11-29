@@ -22,27 +22,27 @@ func _ready() -> void:
 	bg.material.set_shader_parameter(\"intensity\",1)
 	pass
 
-func tp_button_pressed(notebookUI : NotebookUI):
+func tp_button_pressed(notebookUI : NotebookUI) -> void:
 	corePlayer.global_position = notebookUI.notebookPart.global_position
 	hide_dither()
 
-func add_notebook(notebookPart : Notebook):
+func add_notebook(notebookPart : Notebook) -> void:
 	var newNotebookUI: NotebookUI = notebookUIScene.instantiate()
 	newNotebookUI.notebookPart = notebookPart
 	list.add_child(newNotebookUI)
 	newNotebookUI.get_node(\"BUTTON\").pressed.connect(tp_button_pressed.bind(newNotebookUI))
 
-func set_shader_value(value : float):
+func set_shader_value(value : float) -> void:
 	pad.material.set_shader_parameter(\"intensity\",value)
 	bg.material.set_shader_parameter(\"intensity\",value)
 
-func switch_visible():
+func switch_visible() -> void:
 	if hudVisible:
 		hide_dither()
 	else:
 		show_dither()
 
-func show_dither():
+func show_dither() -> void:
 	hudVisible = true
 	list.mouse_filter = Control.MOUSE_FILTER_STOP
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -51,7 +51,7 @@ func show_dither():
 	list.show()
 	exit.show()
 
-func hide_dither():
+func hide_dither() -> void:
 	hudVisible = false
 	list.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

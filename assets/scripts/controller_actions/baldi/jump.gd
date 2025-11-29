@@ -14,4 +14,4 @@ func actionPhysics(delta:float)->void:
 		corePlayer.velocity.z = corePlayer.wishDir.z * 20
 	
 	if corePlayer.is_on_floor():
-		coreState.actionTransition("idle", "land")
+		coreState.actionTransition("idle")
