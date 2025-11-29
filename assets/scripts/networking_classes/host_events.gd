@@ -1,6 +1,9 @@
 @icon("res://assets/images/icons/public-speaker.svg")
 class_name ClassHostEvents extends Node
 
+@export var seekTimer:Timer
+@export var hideTimer:Timer
+
 var gameData:Dictionary = {
 	map = "srs3_school",
 	seekers = [1],
@@ -20,7 +23,11 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 	
 	Networking.networkRNG.seed = 67420 * 143 # TODO temporary
 	
+	hideTimer.wait_time = desiredData.hide_time
+	seekTimer.wait_time = desiredData.seek_time
+	
 	var hiders: Dictionary = Networking.players.duplicate()
+	
 	for seekerpid in desiredData.seekers:
 		var plr : Player = util.getPlayer(seekerpid)
 		plr.loadSeeker(Networking.players[seekerpid].desired_seeker)
@@ -29,6 +36,9 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 	for hiderpid in hiders:
 		var plr : Player = util.getPlayer(hiderpid)
 		plr.loadHider(Networking.players[hiderpid].desired_hider)
+		
+		
+	SignalManager.roundStart.emit()
 	
 	
 	return

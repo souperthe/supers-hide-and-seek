@@ -24,6 +24,12 @@ script = ExtResource("3_qbfn3")
 [node name="HostEvents" type="Node" parent="."]
 script = ExtResource("4_4lkwq")
 
+[node name="HideTimer" type="Timer" parent="HostEvents"]
+one_shot = true
+
+[node name="SeekTimer" type="Timer" parent="HostEvents"]
+one_shot = true
+
 [node name="NetworkingConsole" type="Node" parent="."]
 script = ExtResource("5_bc5yj")
 

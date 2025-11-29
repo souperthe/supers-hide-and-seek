@@ -70,10 +70,13 @@ func handleInteraction(delta:float)->void:
 		interaction.interactionProcess(delta)
 		continue
 		
+		
+		
 	
 	var interactRay:RayCast3D = _corePlayer.interactRay
 	var interactable:Object = interactRay.get_collider()
 	
+	#print(interactable)
 	
 	if Input.is_action_just_pressed("player_interact"):
 		if interactable == null:

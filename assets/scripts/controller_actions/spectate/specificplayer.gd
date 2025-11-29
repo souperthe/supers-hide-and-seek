@@ -46,7 +46,7 @@ func actioneExit()->void:
 	SignalManager.peerDied.disconnect(_playerDied)
 	return
 	
-func actionPhysics(_delta:float)->void:
+func actionProcess(delta:float)->void:
 	var alivePlayers:Array[Player] = _getAlivePlayers()
 	var apLength:int = alivePlayers.size()
 	
@@ -63,10 +63,9 @@ func actionPhysics(_delta:float)->void:
 		
 	var desiredPlayer:Player = alivePlayers[_spectatePosition]
 	
-	corePlayer.position = corePlayer.position.lerp(
-		desiredPlayer.position,
-		12*_delta
-		)
+	corePlayer.position = desiredPlayer.position
+		#24*_delta
+		#)
 	
 	if Input.is_action_just_pressed("player_jump"):
 		coreState.actionTransition("freecam")

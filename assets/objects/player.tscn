@@ -338,24 +338,18 @@ skeleton = NodePath("../../..")
 [node name="HitBoxes" type="Node3D" parent="modelPivot"]
 
 [node name="cheesebox" type="Area3D" parent="modelPivot/HitBoxes"]
-collision_layer = 7
-collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="modelPivot/HitBoxes/cheesebox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5268917, -2.4641435)
 shape = SubResource("SphereShape3D_8wh5m")
 
 [node name="cheesebox_fall" type="Area3D" parent="modelPivot/HitBoxes"]
-collision_layer = 7
-collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="modelPivot/HitBoxes/cheesebox_fall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06591797, 0)
 shape = SubResource("CylinderShape3D_am6w6")
 
 [node name="bearbox" type="Area3D" parent="modelPivot/HitBoxes"]
-collision_layer = 7
-collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="modelPivot/HitBoxes/bearbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0156612, -1.2079715)

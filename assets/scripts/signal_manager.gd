@@ -13,6 +13,7 @@ signal lobbyFailed
 signal lobbySucess
 
 signal hostSucess
+signal roundStart
 
 
 signal peerDied(pid:int)
