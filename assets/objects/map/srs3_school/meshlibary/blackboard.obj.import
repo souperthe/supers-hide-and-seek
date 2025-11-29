@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b4baapricengi"
+path="res://.godot/imported/blackboard.obj-6e028db2b1e0235750e18943f4a44edd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/blackboard.obj-6e028db2b1e0235750e18943f4a44edd.mesh"]
+
+source_file="res://assets/objects/map/srs3_school/meshlibary/blackboard.obj"
+dest_files=["res://.godot/imported/blackboard.obj-6e028db2b1e0235750e18943f4a44edd.mesh", "res://.godot/imported/blackboard.obj-6e028db2b1e0235750e18943f4a44edd.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://banjnp8bjc6v1"]
+
+[ext_resource type="Texture2D" uid="uid://bvsnfy7ds5n6v" path="res://assets/objects/map/srs3_school/sprites/brick2.png" id="1_j83cg"]
+[ext_resource type="Texture2D" uid="uid://c4papq42w4bjk" path="res://assets/objects/map/srs3_school/sprites/checkerfloor.png" id="2_phv4h"]
+[ext_resource type="PackedScene" uid="uid://bab2cok5f6g5r" path="res://assets/objects/door.tscn" id="3_b6qld"]
+
+[sub_resource type="StandardMaterial3D" id="4"]
+albedo_texture = ExtResource("1_j83cg")
+metallic_texture = ExtResource("2_phv4h")
+uv1_scale = Vector3(2, 3.08, 4)
+
+[node name="doorwithwall" type="Node3D"]
+
+[node name="CSGCombiner" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox" type="CSGBox3D" parent="CSGCombiner"]
+size = Vector3(4, 8, 0.001)
+material = SubResource("4")
+
+[node name="CSGBox2" type="CSGBox3D" parent="CSGCombiner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8941116, 0)
+operation = 2
+size = Vector3(1.44, 3.058277, 1)
+material = SubResource("4")
+
+[node name="DoorHolder" parent="." instance=ExtResource("3_b6qld")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -4, 0)

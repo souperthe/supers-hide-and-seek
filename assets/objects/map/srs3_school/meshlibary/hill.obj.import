@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://s5rj8cjf3mrq"
+path="res://.godot/imported/hill.obj-324a71aa4532bd5b98e80ea6571a01f2.mesh"
+
+[deps]
+
+files=["res://.godot/imported/hill.obj-324a71aa4532bd5b98e80ea6571a01f2.mesh"]
+
+source_file="res://assets/objects/map/srs3_school/meshlibary/hill.obj"
+dest_files=["res://.godot/imported/hill.obj-324a71aa4532bd5b98e80ea6571a01f2.mesh", "res://.godot/imported/hill.obj-324a71aa4532bd5b98e80ea6571a01f2.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
