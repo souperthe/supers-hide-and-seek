@@ -22,8 +22,11 @@ func hitboxDamage(hitboxName:String, amount:float, knockback:Vector3) -> bool:
 			if body == _corePlayer:
 				continue
 				
+			print(body)
+				
 			if body.currentTeam != superEnum.teams.hider:
 				continue
+				
 			
 			
 			body.events.damageEvent.rpc(amount, knockback)

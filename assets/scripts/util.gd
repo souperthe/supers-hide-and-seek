@@ -92,6 +92,10 @@ func setShadows(rootNode:Node3D, shadowMode:GeometryInstance3D.ShadowCastingSett
 		
 		if node is GeometryInstance3D:
 			node.cast_shadow = shadowMode
+			
+			if shadowMode == GeometryInstance3D.ShadowCastingSetting.SHADOW_CASTING_SETTING_SHADOWS_ONLY:
+				node.set_layer_mask_value(1, false)
+				node.set_layer_mask_value(2, true)
 		
 		
 		continue

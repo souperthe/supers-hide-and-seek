@@ -102,7 +102,7 @@ func loadHider(hiderName:String) -> void:
 	if desiredHider == null:
 		return
 		
-	currentTeam = superEnum.teams.seeker
+	currentTeam = superEnum.teams.hider
 	firstPerson = true
 	
 	util.clearChildren(seekerHud)

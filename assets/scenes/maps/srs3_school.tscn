@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cic6mpxcgpvdx"]
+[gd_scene load_steps=10 format=3 uid="uid://cic6mpxcgpvdx"]
 
 [ext_resource type="MeshLibrary" uid="uid://cxnfrcp6hplm4" path="res://assets/objects/map/srs3_school/meshlibary/floors5.tres" id="1_fqlla"]
 [ext_resource type="MeshLibrary" uid="uid://cq7cigodo2crr" path="res://assets/objects/map/srs3_school/meshlibary/wallsreal.tres" id="2_076lk"]
@@ -13,6 +13,9 @@ size = Vector2(250, 242.5)
 [sub_resource type="StandardMaterial3D" id="28"]
 albedo_texture = ExtResource("6_8uk6k")
 uv1_scale = Vector3(76, 76, 76)
+
+[sub_resource type="Environment" id="Environment_fqlla"]
+background_mode = 1
 
 [node name="map" type="Node3D"]
 
@@ -177,6 +180,17 @@ size = Vector3(194.213, 48, 66.8593)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -118.03, 0, -6.86018)
 operation = 2
 size = Vector3(292.106, 48, 40)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="ceiling2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8, -108.8)
+size = Vector3(250, 0.1, 242.5)
+material = SubResource("28")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fqlla")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+visible = false
 
 [editable path="doorwithwall20"]
 [editable path="doorwithwall23"]
