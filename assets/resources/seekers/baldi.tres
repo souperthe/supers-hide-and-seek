@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="Seeker" load_steps=5 format=3 uid="uid://bdw2eomjf5udg"]
 
 [ext_resource type="Script" uid="uid://btqjdvfscl84" path="res://assets/scripts/seeker.gd" id="1_hjbgo"]
-[ext_resource type="Texture2D" uid="uid://c4jgtjuiacpim" path="res://assets/images/seeker_icons/baldiTEMP.png" id="2_dvgl0"]
 [ext_resource type="PackedScene" uid="uid://biv4krfy5ek2d" path="res://assets/objects/characters/baldi/baldi_hud.tscn" id="2_ghpm4"]
+[ext_resource type="Texture2D" uid="uid://bnoclxpwgixlp" path="res://assets/images/seeker_icons/baldi.png" id="3_ghpm4"]
 [ext_resource type="PackedScene" uid="uid://cwslmoupvgxr3" path="res://assets/models/characters/baldi/baldi.tscn" id="3_v2d7a"]
 
 [resource]
 script = ExtResource("1_hjbgo")
 seekerName = "Baldi"
 seekerQuote = "Welcome to my schoolhouse!"
-seekerIcon = ExtResource("2_dvgl0")
+seekerIcon = ExtResource("3_ghpm4")
 seekerModel = ExtResource("3_v2d7a")
 seekerHUD = ExtResource("2_ghpm4")
 useFirstPerson = false
