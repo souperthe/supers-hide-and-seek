@@ -1,15 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://bab2cok5f6g5r"]
+[gd_scene load_steps=7 format=3 uid="uid://bab2cok5f6g5r"]
 
 [ext_resource type="Script" uid="uid://5r6edsf8g624" path="res://assets/scripts/door_holder.gd" id="1_s3py5"]
 [ext_resource type="Script" uid="uid://1uv8a6n4vnio" path="res://assets/scripts/door.gd" id="1_wgw7t"]
 [ext_resource type="AudioStream" uid="uid://dik3dnd6yabv1" path="res://assets/resources/rnd_sound/wood_door_open.tres" id="2_86nj7"]
+[ext_resource type="AudioStream" uid="uid://lsjqx3bxgbsj" path="res://assets/resources/rnd_sound/wood_door_close.tres" id="3_d258k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wgw7t"]
 size = Vector3(1.2, 2.2, 0.1)
 
-[node name="DoorHolder" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_86nj7"]
+size = Vector3(1.2, 2.2, 0.05)
+
+[node name="DoorHolder" type="Node3D" node_paths=PackedStringArray("_hinge")]
 script = ExtResource("1_s3py5")
 openSound = ExtResource("2_86nj7")
+closeSound = ExtResource("3_d258k")
+_hinge = NodePath("Hinge")
 
 [node name="Hinge" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
@@ -27,5 +33,14 @@ script = ExtResource("1_wgw7t")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hinge/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
 shape = SubResource("BoxShape3D_wgw7t")
+
+[node name="Collision" type="StaticBody3D" parent="Hinge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hinge/Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+shape = SubResource("BoxShape3D_86nj7")
 
 [connection signal="interacted" from="Hinge/Area3D" to="." method="_on_area_3d_interacted"]

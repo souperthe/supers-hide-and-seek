@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://btqjdvfscl84" path="res://assets/scripts/seeker.gd" id="1_hjbgo"]
 [ext_resource type="PackedScene" uid="uid://biv4krfy5ek2d" path="res://assets/objects/characters/baldi/baldi_hud.tscn" id="2_ghpm4"]
-[ext_resource type="Texture2D" uid="uid://bnoclxpwgixlp" path="res://assets/images/seeker_icons/baldi.png" id="3_ghpm4"]
+[ext_resource type="Texture2D" uid="uid://cydhgbl1f2ed6" path="res://assets/images/seeker_icons/baldi_alt.png" id="3_ghpm4"]
 [ext_resource type="PackedScene" uid="uid://cwslmoupvgxr3" path="res://assets/models/characters/baldi/baldi.tscn" id="3_v2d7a"]
 
 [resource]

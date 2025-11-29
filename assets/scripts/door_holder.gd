@@ -6,8 +6,11 @@ var _open:bool = false
 @export var openSound:AudioStream
 @export var closeSound:AudioStream
 
+@export var _hinge:Node3D
+
 
 var _usedTime:float = 0
+var _hingeTween:Tween
 
 func _on_area_3d_interacted(who: Player) -> void:
 	
@@ -28,6 +31,54 @@ func _on_area_3d_interacted(who: Player) -> void:
 	
 	_open = !_open
 	print(_open)
+	
+	if _hingeTween:
+		_hingeTween.kill()
+		
+	var positionDiffrence:Vector3= (self.global_position - who.global_position).normalized()
+	var swingDirection:float = positionDiffrence.dot(global_transform.basis.z)
+	
+	swingDirection = clampf(swingDirection*100, -1, 1)
+	
+	_hingeTween = get_tree().create_tween()
+	
+	var tweenTime:float = 0.3
+	
+	if _open:
+	
+		_hingeTween.tween_property(
+			_hinge,
+			"rotation_degrees",
+			Vector3(0, 90*swingDirection, 0),
+			tweenTime
+		)
+		
+		util.oneShotSFX3D(
+			_hinge,
+			openSound.resource_path
+		)
+		
+	else:
+	
+		
+		_hingeTween.tween_property(
+			_hinge,
+			"rotation_degrees",
+			Vector3(0, 0, 0),
+			tweenTime
+		)
+		
+	
+	_hingeTween.play()
+	
+	if !_open:
+		await _hingeTween.finished
+		if _open:
+			return
+		util.oneShotSFX3D(
+			_hinge,
+			closeSound.resource_path
+		)
 	
 	
 	pass # Replace with function body.
