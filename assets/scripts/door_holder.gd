@@ -73,8 +73,10 @@ func _on_area_3d_interacted(who: Player) -> void:
 	
 	if !_open:
 		await _hingeTween.finished
+		
 		if _open:
 			return
+			
 		util.oneShotSFX3D(
 			_hinge,
 			closeSound.resource_path
