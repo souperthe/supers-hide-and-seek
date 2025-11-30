@@ -6,10 +6,11 @@ func add_player(pid: int):
 
 	player_button.text = pdata.username
 	player_button.name = str(pid)
-	player_button.icon = util.getPlayerAvatar(pdata.steamid,45645)
+	player_button.icon = util.getPlayerAvatar(pdata.steamid,32)
 	add_child(player_button)
 
 func load_players():
+	util.clearChildren(self)
 	for existing_players in get_children():
 		existing_players.queue_free()
 

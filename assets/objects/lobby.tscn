@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3jd02tfpugi"]
+[gd_scene load_steps=3 format=3 uid="uid://b3jd02tfpugi"]
 
 [ext_resource type="PackedScene" uid="uid://byjy3o6cra3pr" path="res://assets/objects/player_list.tscn" id="1_iemxt"]
+[ext_resource type="Script" uid="uid://b58xcluld6u3s" path="res://assets/scripts/lobby.gd" id="1_kueo0"]
 
 [node name="lobby" type="Node"]
+script = ExtResource("1_kueo0")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

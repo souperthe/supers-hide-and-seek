@@ -1,14 +1,90 @@
-[gd_scene load_steps=2 format=3 uid="uid://byjy3o6cra3pr"]
+[gd_scene load_steps=3 format=3 uid="uid://byjy3o6cra3pr"]
 
 [ext_resource type="Script" uid="uid://dqcv31fxct1b" path="res://assets/scripts/hud/player_list.gd" id="1_y0w55"]
+[ext_resource type="Texture2D" uid="uid://5do1dx5k4a5x" path="res://assets/images/icons/steamuser99butpixelated.png" id="2_bijlu"]
 
 [node name="PlayerList" type="FlowContainer"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -211.75
-offset_right = 211.75
+offset_left = -266.375
+offset_right = 266.375
 offset_bottom = 403.0
 grow_horizontal = 2
 alignment = 1
 script = ExtResource("1_y0w55")
+
+[node name="whosplaying?" type="Button" parent="."]
+layout_mode = 2
+text = "steamuser99"
+icon = ExtResource("2_bijlu")
+
+[node name="whosplaying?2" type="Button" parent="."]
+layout_mode = 2
+text = "steamuser99"
+icon = ExtResource("2_bijlu")
+
+[node name="whosplaying?3" type="Button" parent="."]
+layout_mode = 2
+text = "steamuser99"
+icon = ExtResource("2_bijlu")
+
+[node name="whosplaying?4" type="Button" parent="."]
+layout_mode = 2
+text = "steamuser99"
+icon = ExtResource("2_bijlu")
+
+[node name="whosplaying?5" type="Button" parent="."]
+layout_mode = 2
+text = "steamuser99"
+icon = ExtResource("2_bijlu")
+
+[node name="whosplaying?6" type="Button" parent="."]
+layout_mode = 2
+text = "steamuser99"
+icon = ExtResource("2_bijlu")
+
+[node name="whosplaying?7" type="Button" parent="."]
+layout_mode = 2
+text = "steamuser99"
+icon = ExtResource("2_bijlu")
+
+[node name="whosplaying?8" type="Button" parent="."]
+layout_mode = 2
+text = "steamuser99"
+icon = ExtResource("2_bijlu")
+
+[node name="whosplaying?9" type="Button" parent="."]
+layout_mode = 2
+text = "steamuser99"
+icon = ExtResource("2_bijlu")
+
+[node name="whosplaying?10" type="Button" parent="."]
+layout_mode = 2
+text = "steamuser99"
+icon = ExtResource("2_bijlu")
+
+[node name="whosplaying?11" type="Button" parent="."]
+layout_mode = 2
+text = "steamuser99"
+icon = ExtResource("2_bijlu")
+
+[node name="whosplaying?12" type="Button" parent="."]
+layout_mode = 2
+text = "steamuser99"
+icon = ExtResource("2_bijlu")
+
+[node name="whosplaying?13" type="Button" parent="."]
+layout_mode = 2
+text = "steamuser99"
+icon = ExtResource("2_bijlu")
+
+[node name="whosplaying?14" type="Button" parent="."]
+layout_mode = 2
+text = "steamuser99"
+icon = ExtResource("2_bijlu")
+
+[node name="whosplaying?15" type="Button" parent="."]
+layout_mode = 2
+text = "steamuser99"
+icon = ExtResource("2_bijlu")
