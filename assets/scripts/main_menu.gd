@@ -9,6 +9,7 @@ func _enterGame() -> void:
 	return
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	SignalManager.lobbySucess.connect(_enterGame)
 	SignalManager.hostSucess.connect(_enterGame)
 	return
