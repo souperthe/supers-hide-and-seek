@@ -3,4 +3,5 @@ class_name SelectableMap extends Resource
 
 
 @export var mapName:String
+@export var mapIcon:Texture2D
 @export var mapScene:PackedScene
