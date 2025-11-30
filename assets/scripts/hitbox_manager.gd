@@ -17,6 +17,8 @@ func hitboxDamage(hitboxName:String, amount:float, knockback:Vector3) -> bool:
 	
 	for body in bodies:
 		
+		print(body)
+		
 		if body is Player:
 			
 			if body == _corePlayer:
@@ -31,6 +33,13 @@ func hitboxDamage(hitboxName:String, amount:float, knockback:Vector3) -> bool:
 			
 			body.events.damageEvent.rpc(amount, knockback)
 			return true
+		elif body is DoorCollision:
+			
+			if !body.destroyed:
+				
+				body.breakEvent.rpc()
+				
+				return true
 		
 		
 		continue

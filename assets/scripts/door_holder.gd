@@ -8,6 +8,8 @@ var _open:bool = false
 
 @export var _hinge:Node3D
 
+@export var _brokenScene:PackedScene
+
 
 var _usedTime:float = 0
 var _hingeTween:Tween
@@ -83,4 +85,28 @@ func _on_area_3d_interacted(who: Player) -> void:
 		)
 	
 	
+	pass # Replace with function body.
+
+
+func _on_collision_broken(who: Player) -> void:
+	if _hingeTween:
+		_hingeTween.kill()
+		
+		
+	util.oneShotSFX3D(
+		self,
+		"res://assets/resources/rnd_sound/break_door.tres"
+	)
+		
+	var flingToward:Vector3 = who.modelPivot.global_transform.basis.z
+	var brokenDoor:RigidBody3D = _brokenScene.instantiate()
+	brokenDoor.position = $Hinge/CSGBox3D.global_position
+	brokenDoor.rotation = $Hinge/CSGBox3D.global_rotation
+	
+	global.masterScene.add_child(brokenDoor)
+	
+	brokenDoor.linear_velocity = flingToward*-36
+	
+	
+	$Hinge.queue_free()
 	pass # Replace with function body.
