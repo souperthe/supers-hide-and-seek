@@ -1,8 +1,11 @@
 extends ControllerAction
 
-func actionEnter(_message:String="")->void:
-	pass
+var _canClimb: bool = true
 
+func actionEnter(message:String="")->void:
+	_canClimb = true
+	if message == "noclimb":
+		_canClimb = false
 func actioneExit()->void:
 	pass
 
@@ -12,6 +15,13 @@ func actionPhysics(delta:float)->void:
 	if corePlayer.wishDir != Vector3.ZERO:
 		corePlayer.velocity.x = corePlayer.wishDir.x * 20
 		corePlayer.velocity.z = corePlayer.wishDir.z * 20
+		corePlayer.modelPivot.rotation.y = atan2(
+			-corePlayer.wishDir.x,
+			-corePlayer.wishDir.z
+		)
+		if corePlayer.wallRay.is_colliding() and _canClimb:
+			coreState.actionTransition("climb")
+			return
 	
 	if corePlayer.is_on_floor():
-		coreState.actionTransition("idle")
+		coreState.actionTransition("idle","reset")

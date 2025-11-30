@@ -31,16 +31,7 @@ func actionPhysics(delta:float)->void:
 		coreState.actionTransition("jump")
 		return
 		
-	var desiredRotation:float = atan2(
-		-corePlayer.wishDir.x,
-		-corePlayer.wishDir.z
-	)
-	
-	corePlayer.modelPivot.rotation.y = lerp_angle(
-		corePlayer.modelPivot.rotation.y,
-		desiredRotation,
-		10*delta
-	)
+	corePlayer.rotateToWish(delta)
 	
 	var speed:float = corePlayer.walk_speed/2
 	var running:bool = Input.is_action_pressed("player_sprint") and corePlayer.abilityTimer.time_left > 0

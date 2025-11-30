@@ -19,8 +19,16 @@ func actioneExit()->void:
 func actionPhysics(delta:float)->void:
 	slapLength -= delta
 	
+	
 	if corePlayer.wishDir != Vector3.ZERO:
 		direction = corePlayer.wishDir
+		corePlayer.modelPivot.rotation.y = atan2(
+			-corePlayer.wishDir.x,
+			-corePlayer.wishDir.z
+		)
+		if corePlayer.wallRay.is_colliding() and slapLength <= 0.2:
+			coreState.actionTransition("climb")
+			return
 	
 	corePlayer.velocity.x = direction.x * slapPower
 	corePlayer.velocity.z = direction.z * slapPower

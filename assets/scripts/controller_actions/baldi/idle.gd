@@ -17,6 +17,7 @@ func actionPhysics(delta:float)->void:
 	corePlayer.velocity.x = 0
 	corePlayer.velocity.z = 0
 	
+	
 	slapTimeLeft -= delta
 	if corePlayer.wishDir != Vector3.ZERO and slapTimeLeft <= 0 and canSlap:
 		coreState.actionTransition("slap")

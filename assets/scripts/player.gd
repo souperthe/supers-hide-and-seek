@@ -202,6 +202,17 @@ func getSpeed()->float:
 	
 	return walk_speed
 
+func rotateToWish(delta: float) -> void:
+	var desiredRotation:float = atan2(
+		-wishDir.x,
+		-wishDir.z
+	)
+	modelPivot.rotation.y = lerp_angle(
+		modelPivot.rotation.y,
+		desiredRotation,
+		10*delta
+	)
+
 func _setupOthers() -> void:
 	$playerHud.queue_free()
 	$seekerHud.queue_free()
