@@ -13,14 +13,16 @@ func load_players():
 	util.clearChildren(self)
 	for existing_players in get_children():
 		existing_players.queue_free()
-
+		
 	for ingame_player in Networking.players:
 		add_player(ingame_player)
+	
 
 func left(pid: int):
 	get_node(str(pid)).queue_free()
 
 func _ready() -> void :
-	SignalManager.peerJoined.connect(add_player)
-	SignalManager.peerLeft.connect(left)
+	#SignalManager.peerJoined.connect(add_player)
+	#SignalManager.peerLeft.connect(left)
+	SignalManager.updatePeerList.connect(load_players)
 	load_players()

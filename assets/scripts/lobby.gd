@@ -6,3 +6,9 @@ extends Node
 
 func _ready() -> void:
 	lobbyNameText.text = Networking.lobbyName
+
+func _on_start_pressed() -> void:
+	Networking.hostEvents.startGame.rpc()
+
+func _on_back_pressed() -> void:
+	Networking.lobby.clientDisconnect()

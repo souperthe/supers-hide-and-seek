@@ -32,3 +32,22 @@ offset_left = -212.0
 offset_top = 50.0
 offset_right = 211.5
 offset_bottom = 453.0
+
+[node name="START" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+offset_right = 56.0
+grow_vertical = 0
+text = "START"
+
+[node name="BACK" type="Button" parent="UI"]
+layout_mode = 1
+offset_right = 56.0
+offset_bottom = 31.0
+text = "BACK"
+
+[connection signal="pressed" from="UI/START" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="UI/BACK" to="." method="_on_back_pressed"]

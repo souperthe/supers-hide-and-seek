@@ -1,12 +1,11 @@
 extends CanvasLayer
 
-@export var masterScene : MasterScene
 @onready var main: Control = $menu/Main
 @onready var seekerPicker: Control = $menu/SeekerPicker
 
 func _enterGame() -> void:
 	#hide()
-	masterScene.switch_scene("res://assets/objects/lobby.tscn")
+	global.masterScene.switch_scene("res://assets/scenes/sub/lobby.tscn")
 	return
 
 func _ready() -> void:

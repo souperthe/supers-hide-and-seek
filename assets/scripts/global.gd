@@ -2,6 +2,7 @@
 class_name classGlobal extends Node
 
 var look_sensitivity : float = 0.006
+var masterScene : MasterScene
 
 
 func _init() -> void:

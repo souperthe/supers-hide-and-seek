@@ -28,14 +28,28 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 	
 	var hiders: Dictionary = Networking.players.duplicate()
 	
-	for seekerpid in desiredData.seekers:
-		var plr : Player = util.getPlayer(seekerpid)
-		plr.loadSeeker(Networking.players[seekerpid].desired_seeker)
-		hiders.erase(seekerpid)
+	global.masterScene.switch_scene("res://assets/scenes/sub/game.tscn")
 	
-	for hiderpid in hiders:
-		var plr : Player = util.getPlayer(hiderpid)
-		plr.loadHider(Networking.players[hiderpid].desired_hider)
+	for pid in Networking.players:
+		var pdata = Networking.players[pid]
+		var newPlayer: Player = Networking.lobby._playerScene.instantiate()
+		newPlayer.set_multiplayer_authority(pid)
+		newPlayer.authID = pid
+		newPlayer.steamID = pdata["steamid"]
+		newPlayer.playerName = pdata["username"]
+		newPlayer.name = str(pid)
+		
+		Networking.playersHolder.add_child(newPlayer)
+		newPlayer.loadHider("ball_man")
+	
+	#for seekerpid in desiredData.seekers:
+		#var plr : Player = util.getPlayer(seekerpid)
+		#plr.loadSeeker(Networking.players[seekerpid].desired_seeker)
+		#hiders.erase(seekerpid)
+	#
+	#for hiderpid in hiders:
+		#var plr : Player = util.getPlayer(hiderpid)
+		#plr.loadHider(Networking.players[hiderpid].desired_hider)
 		
 		
 	SignalManager.roundStart.emit()
