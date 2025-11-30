@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btnbamtke1kfy"
-path="res://.godot/imported/baldiSprites.png-751ae04a517aaa00eadc983418b62385.ctex"
+uid="uid://dxqdb5c8v1dff"
+path="res://.godot/imported/basebaldi.png-efbbdd2a6f0d79b264ce862d7cce1063.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/models/characters/baldi/baldiSprites.png"
-dest_files=["res://.godot/imported/baldiSprites.png-751ae04a517aaa00eadc983418b62385.ctex"]
+source_file="res://assets/models/characters/baldi/basebaldi.png"
+dest_files=["res://.godot/imported/basebaldi.png-efbbdd2a6f0d79b264ce862d7cce1063.ctex"]
 
 [params]
 

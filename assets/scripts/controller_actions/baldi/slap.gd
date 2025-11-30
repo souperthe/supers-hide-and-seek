@@ -5,6 +5,11 @@ var slapPower: float = 20
 var direction: Vector3
 
 func actionEnter(_message:String="")->void:
+	coreSound.playSound(
+		"res://assets/resources/rnd_sound/baldislap.tres",
+		1,
+		1
+		)
 	corePlayer.animator.playAnimation("slap")
 	slapLength = 0.3
 

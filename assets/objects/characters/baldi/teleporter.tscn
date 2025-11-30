@@ -7,8 +7,8 @@
 script = ExtResource("1_l8023")
 
 [node name="Sprite" type="Sprite3D" parent="."]
-pixel_size = 0.02
-billboard = 1
+pixel_size = 0.05
+axis = 1
 texture_filter = 0
 texture = ExtResource("2_svfj3")
 hframes = 5

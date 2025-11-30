@@ -25,11 +25,15 @@ func delete_teleporter() -> void:
 	util.lingerNode(explode,2)
 	oldestteleporter.queue_free()
 
+func _on_teleport_request(pos: Vector3) -> void:
+	corePlayer.global_position = pos
+	actionTransition("teleport")
+
 func controllerStart(_message:String="") -> void:
 	corePlayer.animator.animatorSetup()
 	corePlayer.neckOffset.position.y = 1.5
 	actionTransition(_initalAction)
-	
+	SignalManager.baldi_requestTP.connect(_on_teleport_request)
 
 func controllerPhysics(_delta:float) -> void:
 	
@@ -41,4 +45,4 @@ func controllerPhysics(_delta:float) -> void:
 			if Teleporters.size() >= 4:
 				delete_teleporter.rpc()
 				corePlayer.seekerHud.get_node("BaldiHUD").list.get_child(0).queue_free()
-			spawn_teleporter.rpc(corePlayer.modelRoot.global_position + Vector3(0,2,0))
+			spawn_teleporter.rpc(corePlayer.modelRoot.global_position + Vector3(0,0.1,0))

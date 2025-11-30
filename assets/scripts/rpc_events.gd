@@ -114,8 +114,6 @@ func animationSpeed(speed:float) -> void:
 	
 @rpc("authority", "call_remote", "unreliable")
 func animation(desiredAnimation:String, speed:float=1, seek:float=0) -> void:
-	
-	
 	_corePlayer.animator.playAnimation(
 		desiredAnimation,
 		speed,

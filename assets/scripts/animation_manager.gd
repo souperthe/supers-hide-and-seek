@@ -4,7 +4,7 @@ class_name AnimationManager extends Node
 
 @export var _corePlayer:Player
 
-var _animator:AnimationPlayer
+var _animator:Node
 
 var animationDone:bool = false
 var animationName:String = ""
@@ -51,40 +51,36 @@ func animationGetPosition() -> float:
 
 
 func playAnimation(desiredAnimation:String, speed:float=1, seek:float=0, sending:bool=false) -> void:
-	
 	if _animator == null:
 		# TODO this is a temp fix, going to actually fix this later
 		animatorSetup()
-		#playAnimation(desiredAnimation,speed,seek,sending)
 		return
 	
-	if _animator.current_animation == desiredAnimation:
-		return
+	if _animator is AnimationPlayer:
+		if _animator.current_animation == desiredAnimation:
+			return
 	
-	if not _animator.has_animation(desiredAnimation):
-		return
-	animationName = desiredAnimation
-	
-	_animator.play(
-		desiredAnimation,
-		animationBlend,
-	)
-	_animator.speed_scale = speed
-	_animator.seek(seek)
-	
-	animationDone = false
-	
-	if !sending:
-	
-		_corePlayer.events.animation.rpc(
+		if not _animator.has_animation(desiredAnimation):
+			return
+		animationName = desiredAnimation
+		
+		_animator.play(
 			desiredAnimation,
-			speed,
-			seek,
+			animationBlend,
 		)
-	
-	return
-	
-	
+		_animator.speed_scale = speed
+		_animator.seek(seek)
+		
+		animationDone = false
+		
+		if !sending:
+		
+			_corePlayer.events.animation.rpc(
+				desiredAnimation,
+				speed,
+				seek,
+			)
+		return
 
 
 func animatorSetup() -> void:

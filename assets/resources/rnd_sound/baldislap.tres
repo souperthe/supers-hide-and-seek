@@ -1,0 +1,9 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://d05m8rqmter40"]
+
+[ext_resource type="AudioStream" uid="uid://dfk47qj0yeco5" path="res://assets/sound/sfx/character/baldi/BAL_Slap.wav" id="1_xv35c"]
+
+[resource]
+playback_mode = 1
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("1_xv35c")
