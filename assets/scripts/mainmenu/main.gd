@@ -1,5 +1,7 @@
 extends Control
 
+@export var _seekerPicker:Control
+
 func _on_networking_type_item_selected(index: int) -> void:
 	pass # Replace with function body.
 
@@ -13,7 +15,7 @@ func _on_host_pressed() -> void:
 
 func _on_selectseeker_pressed() -> void:
 	hide()
-	%menu.seekerPicker.show()
+	_seekerPicker.show()
 
 func _on_selecthider_pressed() -> void:
 	pass # Replace with function body.
