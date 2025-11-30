@@ -2,7 +2,6 @@
 class_name Door extends Area3D
 
 
-
 signal interacted(who:Player)
 
 
@@ -16,3 +15,4 @@ func openEvent() -> void:
 	
 	
 	return
+	

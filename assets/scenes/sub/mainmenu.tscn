@@ -18,7 +18,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Main" type="Control" parent="menu"]
+[node name="Main" type="Control" parent="menu" node_paths=PackedStringArray("_seekerPicker")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,6 +26,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_0yby4")
+_seekerPicker = NodePath("../SeekerPicker")
 
 [node name="Title" type="RichTextLabel" parent="menu/Main"]
 layout_mode = 1

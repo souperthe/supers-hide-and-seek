@@ -52,4 +52,4 @@ func _loadSeekers() -> void:
 
 func _on_back_pressed() -> void:
 	hide()
-	menu.main.show()
+	get_parent_control().get_node("Main").show()
