@@ -2,9 +2,10 @@
 class_name VoiceEmitter extends Node
 
 
-@export var targetEmitter:AudioStreamPlayer3D
+@export var targetEmitter:Node
 @export var targetPlayer:Player
 @export var _talkingSprite:Sprite3D
+@export var _mutedSprite:TextureRect
 
 var _voiceBuffer: PackedByteArray = PackedByteArray()
 var _playback:AudioStreamGeneratorPlayback = null
@@ -19,9 +20,8 @@ const targetRate:int = 12000
 
 
 func _ready() -> void:
-	set_multiplayer_authority(
-		targetPlayer.get_multiplayer_authority()
-	)
+	if targetPlayer:
+		set_multiplayer_authority(targetPlayer.get_multiplayer_authority())
 	
 	var audioGenerator:AudioStreamGenerator = AudioStreamGenerator.new()
 	audioGenerator.mix_rate = targetRate
@@ -32,7 +32,7 @@ func _ready() -> void:
 	_playback = targetEmitter.get_stream_playback()
 	
 	assert(targetEmitter != null, "Target emitter must be valid")
-	assert(targetPlayer != null, "Target player must be valid")
+	#assert(targetPlayer != null, "Target player must be valid")
 	
 	if !is_multiplayer_authority():
 		return
@@ -131,6 +131,10 @@ func _process(_delta: float) -> void:
 	
 	if !is_multiplayer_authority():
 		return
+	
+	if Input.is_action_just_pressed("mute_mic"):
+		muted = !muted
+		_mutedSprite.visible = muted
 	
 	if muted:
 		return

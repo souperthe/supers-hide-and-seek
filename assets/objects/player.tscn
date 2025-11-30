@@ -115,11 +115,12 @@ _light = NodePath("../neckOffset/Neck/network_light")
 _corePlayer = NodePath("..")
 _voiceEmitter = NodePath("../Voice")
 
-[node name="VoiceEmitter" type="Node" parent="." node_paths=PackedStringArray("targetEmitter", "targetPlayer", "_talkingSprite")]
+[node name="VoiceEmitter" type="Node" parent="." node_paths=PackedStringArray("targetEmitter", "targetPlayer", "_talkingSprite", "_mutedSprite")]
 script = ExtResource("2_34ecl")
 targetEmitter = NodePath("../Voice")
 targetPlayer = NodePath("..")
 _talkingSprite = NodePath("../Talking")
+_mutedSprite = NodePath("../playerHud/Chat/MutedMic")
 metadata/_custom_type_script = "uid://bxavxns0owjwj"
 
 [node name="interactionManager" type="Node" parent="." node_paths=PackedStringArray("_corePlayer")]
@@ -371,3 +372,5 @@ one_shot = true
 [node name="AbilityTimer" type="Timer" parent="."]
 wait_time = 8.0
 one_shot = true
+
+[editable path="playerHud"]
