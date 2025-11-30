@@ -12,6 +12,8 @@ config_version=5
 
 config/name="Super's Hide & Seek"
 run/main_scene="uid://l0fnoreb82o8"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="SHNS"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
