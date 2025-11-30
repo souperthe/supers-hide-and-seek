@@ -16,6 +16,7 @@ func actionPhysics(delta:float)->void:
 		
 	if !corePlayer.is_on_floor():
 		coreState.actionTransition("jump")
+		corePlayer.coyote_time = 0.2
 		return
 		
 	if Input.is_action_just_pressed("player_jump"):

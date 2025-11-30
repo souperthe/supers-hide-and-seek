@@ -56,6 +56,8 @@ var useMovement:bool = true
 var gravity:float = 42.0
 
 var jump_velocity : float = 12.0
+var jump_buffer : float = 0.0
+var coyote_time : float = 0.0
 
 var crouching:bool = false
 

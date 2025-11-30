@@ -33,6 +33,10 @@ func actionPhysics(delta:float)->void:
 		coreState.actionTransition("jump", "jump")
 		return
 	
+	if corePlayer.jump_buffer > 0:
+		coreState.actionTransition("jump", "jump")
+		return
+	
 	#print(_delta)
 	
 	

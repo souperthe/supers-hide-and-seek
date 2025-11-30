@@ -17,6 +17,8 @@ func actioneExit()->void:
 func actionPhysics(delta:float)->void:
 	
 	corePlayer.velocity.y -= corePlayer.gravity * delta
+	corePlayer.jump_buffer -= delta
+	corePlayer.coyote_time -= delta
 	
 	#corePlayer.velocity = corePlayer.wishDir * corePlayer.getSpeed()
 	var cur_speed_in_wish_dir:float = corePlayer.velocity.dot(corePlayer.wishDir)
@@ -30,8 +32,12 @@ func actionPhysics(delta:float)->void:
 	if corePlayer.is_on_floor():
 		coreState.actionTransition("idle", "landing")
 		return
-		
-
+	
+	if Input.is_action_just_pressed("player_jump"):
+		if corePlayer.coyote_time > 0:
+			corePlayer.velocity.y = corePlayer.jump_velocity
+		else:
+			corePlayer.jump_buffer = 0.1
 	
 	
 	return
