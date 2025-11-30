@@ -26,8 +26,6 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 	hideTimer.wait_time = desiredData.hide_time
 	seekTimer.wait_time = desiredData.seek_time
 	
-	var hiders: Dictionary = Networking.players.duplicate()
-	
 	global.masterScene.switch_scene("res://assets/scenes/sub/game.tscn")
 	
 	for pid in Networking.players:
@@ -39,8 +37,18 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 		newPlayer.playerName = pdata["username"]
 		newPlayer.name = str(pid)
 		
+		if pid != multiplayer.get_unique_id():
+			newPlayer.position = Vector3.UP*1248
+		
 		Networking.playersHolder.add_child(newPlayer)
-		newPlayer.loadHider("ball_man")
+		
+		if desiredData.seekers.has(pid):
+			newPlayer.loadSeeker(pdata.desired_seeker)
+		else:
+			newPlayer.loadHider(pdata.desired_hider)
+		
+	
+	
 	
 	#for seekerpid in desiredData.seekers:
 		#var plr : Player = util.getPlayer(seekerpid)
