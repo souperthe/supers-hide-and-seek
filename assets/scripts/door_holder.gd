@@ -93,10 +93,6 @@ func _on_collision_broken(who: Player) -> void:
 		_hingeTween.kill()
 		
 		
-	util.oneShotSFX3D(
-		self,
-		"res://assets/resources/rnd_sound/break_door.tres"
-	)
 		
 	var flingToward:Vector3 = who.modelPivot.global_transform.basis.z
 	var brokenDoor:RigidBody3D = _brokenScene.instantiate()
@@ -106,6 +102,11 @@ func _on_collision_broken(who: Player) -> void:
 	global.masterScene.add_child(brokenDoor)
 	
 	brokenDoor.linear_velocity = flingToward*-36
+	
+	util.oneShotSFX3D(
+		brokenDoor,
+		"res://assets/resources/rnd_sound/break_door.tres"
+	)
 	
 	
 	$Hinge.queue_free()
