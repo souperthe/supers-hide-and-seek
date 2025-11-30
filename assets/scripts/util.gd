@@ -3,6 +3,27 @@ class_name ClassUtil extends Node
 
 const _characters:String= 'abcdefghijklmnopqrstuvwxyz12371293192ASJDBJASAEJKFWEJK'
 
+func getPlayerAvatar(pid: int, size: int) -> ImageTexture:
+	var sizedata: int
+	match size:
+		32:
+			sizedata = Steam.getSmallFriendAvatar(pid)
+		64:
+			sizedata = Steam.getMediumFriendAvatar(pid)
+		128:
+			sizedata = Steam.getLargeFriendAvatar(pid)
+		_:
+			push_warning("invalid profile size. setting to 32.")
+			return getPlayerAvatar(pid,32)
+	
+	var image_data: Dictionary = Steam.getImageRGBA(sizedata)
+	var image_buffer: PackedByteArray = image_data["buffer"]
+	var player_avatar: Image = Image.create_from_data(size,size,false,Image.FORMAT_RGBA8,image_buffer)
+	if player_avatar.get_size().x > size or player_avatar.get_size().y > size:
+		player_avatar.resize(size,size)
+	
+	var avatar_texture: ImageTexture = ImageTexture.create_from_image(player_avatar)
+	return avatar_texture
 
 func getPlayer(pid:int) -> Player:
 	

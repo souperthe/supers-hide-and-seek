@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://byjy3o6cra3pr"]
+
+[ext_resource type="Script" uid="uid://dqcv31fxct1b" path="res://assets/scripts/hud/player_list.gd" id="1_y0w55"]
+
+[node name="PlayerList" type="FlowContainer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -211.75
+offset_right = 211.75
+offset_bottom = 403.0
+grow_horizontal = 2
+alignment = 1
+script = ExtResource("1_y0w55")

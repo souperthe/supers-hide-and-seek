@@ -155,3 +155,4 @@ autoplay = "explode"
 stream = ExtResource("2_4eycq")
 volume_db = 30.0
 autoplay = true
+bus = &"SFX"

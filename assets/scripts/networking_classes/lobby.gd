@@ -38,25 +38,25 @@ func sendData(data:Dictionary, pid:int)->void:
 		SignalManager.peerJoined.emit(pid)
 		SignalManager.updatePeerList.emit()
 		
-		var newPlayer:Player = _playerScene.instantiate()
+		#var newPlayer:Player = _playerScene.instantiate()
+		#
+		#newPlayer.set_multiplayer_authority(pid)
+		#newPlayer.authID = pid
+		#newPlayer.steamID = data["steamid"]
+		#newPlayer.playerName = data["username"]
+		#newPlayer.name = str(pid)
+		#
+		#
+		#if pid != multiplayer.get_unique_id():
+			#newPlayer.position = Vector3.UP*1248
 		
-		newPlayer.set_multiplayer_authority(pid)
-		newPlayer.authID = pid
-		newPlayer.steamID = data["steamid"]
-		newPlayer.playerName = data["username"]
-		newPlayer.name = str(pid)
-		
-		
-		if pid != multiplayer.get_unique_id():
-			newPlayer.position = Vector3.UP*1248
-		
-		Networking.playersHolder.add_child(newPlayer)
+		#Networking.playersHolder.add_child(newPlayer)
 		
 		#if pid == 1:
 			#newPlayer.loadSeeker(data["desired_seeker"])
 		#else:
 			#newPlayer.loadHider("ball_man")
-		newPlayer.loadHider("ball_man")
+		#newPlayer.loadHider("ball_man")
 		
 	if !multiplayer.is_server():
 		return
