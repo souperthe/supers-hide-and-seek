@@ -2,11 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://5do1dx5k4a5x" path="res://assets/images/icons/steamuser99butpixelated.png" id="1_3pwjk"]
 [ext_resource type="PackedScene" uid="uid://cic6mpxcgpvdx" path="res://assets/scenes/maps/srs3_school.tscn" id="1_xrx5y"]
-[ext_resource type="Script" uid="uid://f2byg5kj3h40" path="res://assets/scripts/map_resource.gd" id="2_3pwjk"]
+[ext_resource type="Script" path="res://assets/scripts/map_resource.gd" id="2_3pwjk"]
 
 [resource]
 script = ExtResource("2_3pwjk")
 mapName = "SRS3 School"
 mapIcon = ExtResource("1_3pwjk")
 mapScene = ExtResource("1_xrx5y")
-metadata/_custom_type_script = "uid://f2byg5kj3h40"

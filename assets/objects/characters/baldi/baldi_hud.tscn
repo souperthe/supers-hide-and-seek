@@ -9,8 +9,8 @@
 script/source = "extends Control
 
 var corePlayer:Player
-var notebookUIScene:PackedScene = preload(\"res://assets/objects/characters/baldi/notebook_ui.tscn\")
-@onready var list:VBoxContainer = $NotebookList
+var teleporterUIScene:PackedScene = preload(\"res://assets/objects/characters/baldi/teleporter_ui.tscn\")
+@onready var list:VBoxContainer = $TeleporterList
 @onready var pad:TextureRect = $Pad
 @onready var bg:TextureRect = $BG
 @onready var exit:Button = $EXIT
@@ -22,15 +22,15 @@ func _ready() -> void:
 	bg.material.set_shader_parameter(\"intensity\",1)
 	pass
 
-func tp_button_pressed(notebookUI : NotebookUI) -> void:
-	corePlayer.global_position = notebookUI.notebookPart.global_position
+func tp_button_pressed(teleporterUI : TeleporterUI) -> void:
+	corePlayer.global_position = teleporterUI.TeleporterPart.global_position
 	hide_dither()
 
-func add_notebook(notebookPart : Notebook) -> void:
-	var newNotebookUI: NotebookUI = notebookUIScene.instantiate()
-	newNotebookUI.notebookPart = notebookPart
-	list.add_child(newNotebookUI)
-	newNotebookUI.get_node(\"BUTTON\").pressed.connect(tp_button_pressed.bind(newNotebookUI))
+func add_notebook(teleporterPart : TeleportWrapper) -> void:
+	var newTeleporterUI: TeleporterUI = teleporterUIScene.instantiate()
+	newTeleporterUI.TeleporterPart = teleporterPart
+	list.add_child(newTeleporterUI)
+	newTeleporterUI.get_node(\"BUTTON\").pressed.connect(tp_button_pressed.bind(newTeleporterUI))
 
 func set_shader_value(value : float) -> void:
 	pad.material.set_shader_parameter(\"intensity\",value)
@@ -94,7 +94,7 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 texture = ExtResource("2_qgpc8")
 
-[node name="NotebookList" type="VBoxContainer" parent="."]
+[node name="TeleporterList" type="VBoxContainer" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8

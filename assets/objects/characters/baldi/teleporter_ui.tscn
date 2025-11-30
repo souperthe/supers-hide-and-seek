@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://dbuck0x04m0" path="res://assets/images/character/baldi/uiborder.png" id="1_3v313"]
 [ext_resource type="Script" uid="uid://jpyn1g0yuhnt" path="res://assets/scripts/characters/baldi/notebook_ui.gd" id="1_5r17n"]
-[ext_resource type="Texture2D" uid="uid://cotlr2hxwgogu" path="res://assets/images/character/baldi/notebooksheet.png" id="1_ypjep"]
 [ext_resource type="FontFile" uid="uid://cfxb2x8c377u6" path="res://assets/fonts/Comic Sans MS.ttf" id="2_3ajmx"]
+[ext_resource type="Texture2D" uid="uid://chb14vlb0h12j" path="res://assets/images/character/baldi/wrapperSheet.png" id="3_5r17n"]
 
-[node name="NotebookUI" type="Control"]
+[node name="TeleportererUI" type="Control"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 3
 anchor_right = 1.0
@@ -32,9 +32,10 @@ patch_margin_bottom = 3
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(146, 74)
-texture = ExtResource("1_ypjep")
-hframes = 7
+position = Vector2(127, 77)
+scale = Vector2(2, 2)
+texture = ExtResource("3_5r17n")
+hframes = 5
 frame = 1
 
 [node name="BUTTON" type="Button" parent="."]

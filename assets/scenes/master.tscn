@@ -6,5 +6,4 @@
 [node name="master" type="Node"]
 script = ExtResource("1_qa8j7")
 
-[node name="menuLayer" parent="." node_paths=PackedStringArray("masterScene") instance=ExtResource("3_tpt81")]
-masterScene = NodePath("..")
+[node name="menuLayer" parent="." instance=ExtResource("3_tpt81")]

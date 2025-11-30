@@ -1,7 +1,7 @@
-class_name NotebookUI extends Control
+class_name TeleporterUI extends Control
 
 @onready var sprite = $Sprite
-var notebookPart : Notebook
+var TeleporterPart : TeleportWrapper
 
 func _ready() -> void:
-	sprite.frame = notebookPart.sprite.frame
+	sprite.frame = TeleporterPart.sprite.frame

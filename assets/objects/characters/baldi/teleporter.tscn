@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7djvr1tmacn4"]
+
+[ext_resource type="Script" uid="uid://dm0ogh6suu2tl" path="res://assets/scripts/characters/baldi/notebook.gd" id="1_l8023"]
+[ext_resource type="Texture2D" uid="uid://chb14vlb0h12j" path="res://assets/images/character/baldi/wrapperSheet.png" id="2_svfj3"]
+
+[node name="TeleportWrapper" type="Node3D"]
+script = ExtResource("1_l8023")
+
+[node name="Sprite" type="Sprite3D" parent="."]
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_svfj3")
+hframes = 5

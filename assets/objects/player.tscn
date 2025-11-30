@@ -245,7 +245,7 @@ script = ExtResource("34_lnwx1")
 [node name="jump" type="Node" parent="controllerManager/baldi"]
 script = ExtResource("36_ti3fm")
 
-[node name="Notebooks" type="Node3D" parent="controllerManager/baldi"]
+[node name="TeleportWrappers" type="Node3D" parent="controllerManager/baldi"]
 top_level = true
 
 [node name="standingCollision" type="CollisionShape3D" parent="."]
