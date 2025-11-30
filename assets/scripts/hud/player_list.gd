@@ -11,9 +11,6 @@ func add_player(pid: int):
 
 func load_players():
 	util.clearChildren(self)
-	for existing_players in get_children():
-		existing_players.queue_free()
-		
 	for ingame_player in Networking.players:
 		add_player(ingame_player)
 	

@@ -205,6 +205,11 @@ func getSpeed()->float:
 func _setupOthers() -> void:
 	$playerHud.queue_free()
 	$seekerHud.queue_free()
+	
+	set_process(false)
+	set_physics_process(false)
+	set_process_input(false)
+	set_process_unhandled_input(false)
 	return
 
 func _setupAuthority()->void:

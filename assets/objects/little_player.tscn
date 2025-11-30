@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://brq5guap51es8"]
+
+[ext_resource type="Texture2D" uid="uid://5do1dx5k4a5x" path="res://assets/images/icons/steamuser99butpixelated.png" id="1_ms7ya"]
+[ext_resource type="Script" uid="uid://wstcj20m8c2" path="res://assets/scripts/little_player.gd" id="1_njoau"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ms7ya"]
+size = Vector2(64, 64)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_njoau"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="LittlePlayer" type="CharacterBody2D"]
+script = ExtResource("1_njoau")
+
+[node name="Avatar" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("1_ms7ya")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_ms7ya")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_njoau")

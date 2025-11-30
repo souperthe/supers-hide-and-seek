@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3jd02tfpugi"]
+[gd_scene load_steps=5 format=3 uid="uid://b3jd02tfpugi"]
 
 [ext_resource type="PackedScene" uid="uid://byjy3o6cra3pr" path="res://assets/objects/player_list.tscn" id="1_iemxt"]
 [ext_resource type="Script" uid="uid://b58xcluld6u3s" path="res://assets/scripts/lobby.gd" id="1_kueo0"]
+[ext_resource type="PackedScene" uid="uid://brq5guap51es8" path="res://assets/objects/little_player.tscn" id="2_h1aau"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4nbvp"]
+size = Vector2(1151, 89)
 
 [node name="lobby" type="Node"]
 script = ExtResource("1_kueo0")
+littleguyScene = ExtResource("2_h1aau")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -48,6 +53,15 @@ layout_mode = 1
 offset_right = 56.0
 offset_bottom = 31.0
 text = "BACK"
+
+[node name="littleguys" type="Node2D" parent="."]
+
+[node name="Floor" type="StaticBody2D" parent="littleguys"]
+position = Vector2(0, 648)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="littleguys/Floor"]
+position = Vector2(576.5, 44.5)
+shape = SubResource("RectangleShape2D_4nbvp")
 
 [connection signal="pressed" from="UI/START" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="UI/BACK" to="." method="_on_back_pressed"]
