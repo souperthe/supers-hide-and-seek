@@ -1,9 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://g6x7gisj15n4"]
+[gd_scene load_steps=6 format=3 uid="uid://g6x7gisj15n4"]
 
 [ext_resource type="StyleBox" uid="uid://bm8tvdqbdwhqa" path="res://assets/resources/style/settings.tres" id="1_2fgi8"]
+[ext_resource type="Script" uid="uid://dh6b23jal3b2g" path="res://assets/scripts/settings.gd" id="1_4c8lc"]
 [ext_resource type="StyleBox" uid="uid://3elcr62s4ba2" path="res://assets/resources/style/settings_unselected.tres" id="2_4c8lc"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4c8lc"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yc1se"]
+bg_color = Color(0.42352942, 0.43529412, 0.44705883, 1)
 border_width_left = 3
 border_width_right = 3
 border_width_bottom = 3
@@ -11,6 +15,7 @@ border_color = Color(0.38039216, 0.38039216, 0.38039216, 1)
 border_blend = true
 
 [node name="SettingsUI" type="CanvasLayer"]
+script = ExtResource("1_4c8lc")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -35,16 +40,28 @@ grow_horizontal = 2
 [node name="VIDEO" type="Button" parent="UI/ButtonsList"]
 layout_mode = 2
 theme_override_styles/normal = ExtResource("1_2fgi8")
+theme_override_styles/pressed = ExtResource("1_2fgi8")
+theme_override_styles/hover = ExtResource("1_2fgi8")
+theme_override_styles/disabled = ExtResource("1_2fgi8")
+theme_override_styles/focus = ExtResource("1_2fgi8")
 text = "video"
 
 [node name="AUDIO" type="Button" parent="UI/ButtonsList"]
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_4c8lc")
+theme_override_styles/pressed = ExtResource("1_2fgi8")
+theme_override_styles/hover = ExtResource("2_4c8lc")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4c8lc")
+theme_override_styles/focus = ExtResource("1_2fgi8")
 text = "audio"
 
 [node name="INPUT" type="Button" parent="UI/ButtonsList"]
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_4c8lc")
+theme_override_styles/pressed = ExtResource("1_2fgi8")
+theme_override_styles/hover = ExtResource("2_4c8lc")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4c8lc")
+theme_override_styles/focus = ExtResource("1_2fgi8")
 text = "input"
 
 [node name="Video" type="Control" parent="UI"]
@@ -57,44 +74,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="UI/Video"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_yc1se")
-
-[node name="Audio" type="Control" parent="UI"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 28.25
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="UI/Audio"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_yc1se")
-
-[node name="Input" type="Control" parent="UI"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 28.25
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="UI/Input"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
