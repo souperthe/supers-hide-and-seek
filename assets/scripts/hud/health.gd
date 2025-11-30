@@ -13,7 +13,7 @@ func _becomeSeeker(seeker:Seeker) -> void:
 	$healthPivot.position.x = 130.0
 	return
 	
-func _damageTaken(previousHealth:float, currentHealth:float, damageAmount:float) -> void:
+func _damageTaken(_previousHealth:float, currentHealth:float, damageAmount:float) -> void:
 	_showAmount(damageAmount)
 	$healthPivot/PanelContainer/Label.text = str(currentHealth)
 	_shakeAmount = 10

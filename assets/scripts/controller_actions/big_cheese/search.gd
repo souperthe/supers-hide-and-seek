@@ -4,7 +4,7 @@ var _searching:bool = false
 var _headRoot:Sprite3D
 var _tween:Tween
 
-func _createScanRing(root:Node3D) -> void:
+func _createScanRing(_root:Node3D) -> void:
 	coreSound.playSound(
 		"res://assets/sound/sfx/hl1/fvox/bell.wav",
 		0.8,

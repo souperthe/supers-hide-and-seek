@@ -15,8 +15,8 @@ func damageEvent(amount:float, knockback:Vector3) -> void:
 		
 	var damager:int = multiplayer.get_remote_sender_id()
 	var damagerPlayer:Player = util.getPlayer(damager)
-		
-		
+	
+	
 	_corePlayer.takeDamage(amount, knockback)
 	
 	

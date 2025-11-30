@@ -13,5 +13,5 @@ func enterInteraction(interactable:Object) -> void
 
 
 
-func interactionProcess(delta:float) -> void:
+func interactionProcess(_delta:float) -> void:
 	return

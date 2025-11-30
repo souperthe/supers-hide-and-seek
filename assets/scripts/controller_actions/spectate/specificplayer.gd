@@ -46,7 +46,7 @@ func actioneExit()->void:
 	SignalManager.peerDied.disconnect(_playerDied)
 	return
 	
-func actionProcess(delta:float)->void:
+func actionProcess(_delta:float)->void:
 	var alivePlayers:Array[Player] = _getAlivePlayers()
 	var apLength:int = alivePlayers.size()
 	
