@@ -16,6 +16,7 @@ uv1_scale = Vector3(76, 76, 76)
 
 [sub_resource type="Environment" id="Environment_fqlla"]
 background_mode = 1
+background_color = Color(0.24477637, 0.2447764, 0.24477637, 1)
 
 [node name="map" type="Node3D"]
 

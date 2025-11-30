@@ -4,8 +4,8 @@
 size = Vector3(1.44, 2.635, 0.1)
 
 [node name="brokenDoor" type="RigidBody3D"]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
+collision_mask = 2
 gravity_scale = 4.0
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
