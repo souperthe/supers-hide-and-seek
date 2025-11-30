@@ -18,7 +18,11 @@ func peerLeft(pid:int) -> void:
 	if multiplayer.is_server():
 		print("%s has left" % pid)
 		Networking.lobby.removeData.rpc(pid)
-		
+	
+	if pid == 1:
+		Networking.lobby.clientDisconnect()
+		print("HOST DISCONNECT")
+	
 	return
 	
 func lobbyCreated(result:superEnum.steamResult, newLobbyId:int)->void:

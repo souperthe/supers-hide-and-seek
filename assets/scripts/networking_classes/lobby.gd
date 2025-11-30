@@ -69,10 +69,10 @@ func sendData(data:Dictionary, pid:int)->void:
 func clientDisconnect():
 	currentLobbyId = 0
 	Networking.players.clear()
-	print(Networking.players)
 	Networking.currentPeer = null
 	multiplayer.multiplayer_peer = null
 	global.masterScene.switch_scene("res://assets/scenes/sub/mainmenu.tscn")
+	util.clearChildren(Networking.playersHolder)
 
 func createLobby(lobbyType:superEnum.lobbyType, visibility:Steam.LobbyType = Steam.LobbyType.LOBBY_TYPE_INVISIBLE) -> void:
 	
