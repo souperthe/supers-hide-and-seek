@@ -33,7 +33,7 @@ func actionPhysics(delta:float)->void:
 		return
 	
 	if Input.is_action_just_pressed("player_jump"):
-		coreState.actionTransition("jump", "no_climb")
+		coreState.actionTransition("jump", "noclimb")
 		var fling:Vector3 = corePlayer.modelPivot.global_transform.basis.z * 6
 		corePlayer.velocity.x = fling.x
 		corePlayer.velocity.z = fling.z
