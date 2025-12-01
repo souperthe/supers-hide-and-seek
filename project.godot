@@ -137,6 +137,10 @@ mute_mic={
 3d/physics_engine="Jolt Physics"
 common/physics_interpolation=true
 
+[rendering]
+
+occlusion_culling/use_occlusion_culling=true
+
 [steam]
 
 initialization/app_id=480
