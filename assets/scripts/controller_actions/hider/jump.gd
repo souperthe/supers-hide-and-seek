@@ -35,6 +35,7 @@ func actionPhysics(delta:float)->void:
 	
 	if Input.is_action_just_pressed("player_jump"):
 		if corePlayer.coyote_time > 0:
+			corePlayer.coyote_time = 0
 			corePlayer.velocity.y = corePlayer.jump_velocity
 		else:
 			corePlayer.jump_buffer = 0.1

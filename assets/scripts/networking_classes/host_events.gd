@@ -25,11 +25,14 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 	
 	hideTimer.wait_time = desiredData.hide_time
 	seekTimer.wait_time = desiredData.seek_time
-	
 	global.masterScene.switch_scene("res://assets/scenes/sub/game.tscn")
 	
-	for pid in Networking.players:
-		var pdata = Networking.players[pid]
+	var desiredMap: SelectableMap = load("res://assets/resources/maps/%s.tres" % desiredData.map)
+	var mapScene: Node3D = desiredMap.mapScene.instantiate()
+	global.masterScene.currentScene.map.add_child(mapScene)
+	
+	for pid: int in Networking.players:
+		var pdata: Dictionary = Networking.players[pid]
 		var newPlayer: Player = Networking.lobby._playerScene.instantiate()
 		newPlayer.set_multiplayer_authority(pid)
 		newPlayer.authID = pid
@@ -46,21 +49,11 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 			newPlayer.loadSeeker(pdata.desired_seeker)
 		else:
 			newPlayer.loadHider(pdata.desired_hider)
-		
 	
 	
-	
-	#for seekerpid in desiredData.seekers:
-		#var plr : Player = util.getPlayer(seekerpid)
-		#plr.loadSeeker(Networking.players[seekerpid].desired_seeker)
-		#hiders.erase(seekerpid)
-	#
-	#for hiderpid in hiders:
-		#var plr : Player = util.getPlayer(hiderpid)
-		#plr.loadHider(Networking.players[hiderpid].desired_hider)
-		
-		
 	SignalManager.roundStart.emit()
+	hideTimer.start()
+	seekTimer.start()
 	
 	
 	return
