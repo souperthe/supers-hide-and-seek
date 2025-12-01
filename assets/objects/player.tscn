@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://c8i5i2af5ohaf"]
+[gd_scene load_steps=51 format=3 uid="uid://c8i5i2af5ohaf"]
 
 [ext_resource type="Script" uid="uid://jrbuo0ken0kb" path="res://assets/scripts/player.gd" id="1_ikdab"]
 [ext_resource type="Script" uid="uid://bmoapp8kdmh2f" path="res://assets/scripts/rpc_events.gd" id="2_1qp14"]
@@ -20,9 +20,11 @@
 [ext_resource type="Texture2D" uid="uid://sfofdqbs0rvf" path="res://assets/images/icons/old-microphone.png" id="13_fg3d2"]
 [ext_resource type="Script" uid="uid://c1nptbygdrtmt" path="res://assets/scripts/controller_states/spectate.gd" id="14_axagv"]
 [ext_resource type="Script" uid="uid://bu2rt8q5lcw5o" path="res://assets/scripts/controller_actions/big_cheese/idle.gd" id="14_y0ns2"]
+[ext_resource type="AudioStream" uid="uid://g8bwkapefg5w" path="res://assets/sound/chase/cold_loop.wav" id="15_0i1ue"]
 [ext_resource type="Script" uid="uid://dhr0dsd005iu7" path="res://assets/scripts/controller_actions/spectate/freecam.gd" id="15_cis3c"]
 [ext_resource type="Script" uid="uid://ciqm61qaw8njt" path="res://assets/scripts/controller_actions/big_cheese/walk.gd" id="15_rjy6x"]
 [ext_resource type="Script" uid="uid://b78hyq3oq1n0c" path="res://assets/scripts/controller_actions/spectate/specificplayer.gd" id="16_3l5fp"]
+[ext_resource type="AudioStream" uid="uid://b72rosicl6mxt" path="res://assets/sound/chase/warm_loop.wav" id="16_41qyv"]
 [ext_resource type="Script" uid="uid://cscosh8oacq3v" path="res://assets/scripts/controller_actions/big_cheese/fly_transition.gd" id="16_g7bc3"]
 [ext_resource type="Script" uid="uid://olq56wixjsls" path="res://assets/scripts/controller_actions/big_cheese/flying.gd" id="17_usqfr"]
 [ext_resource type="Script" uid="uid://dtj2tphdin33k" path="res://assets/scripts/controller_actions/big_cheese/flying_land.gd" id="18_vhanp"]
@@ -35,7 +37,7 @@
 [ext_resource type="Script" uid="uid://bjk5miuq51i8m" path="res://assets/scripts/controller_actions/fredbear/move.gd" id="29_0hcfg"]
 [ext_resource type="Script" uid="uid://db3obgc1pnh5a" path="res://assets/scripts/controller_actions/fredbear/jump.gd" id="30_0hcfg"]
 [ext_resource type="Script" uid="uid://c8mdawwvu1sjt" path="res://assets/scripts/controller_actions/fredbear/climbing.gd" id="31_ec4pp"]
-[ext_resource type="Script" path="res://assets/scripts/controller_actions/fredbear/punch.gd" id="32_dx6kc"]
+[ext_resource type="Script" uid="uid://el1apeyixe0y" path="res://assets/scripts/controller_actions/fredbear/punch.gd" id="32_dx6kc"]
 [ext_resource type="Script" uid="uid://cachoqork5avw" path="res://assets/scripts/controller_states/baldi.gd" id="33_8vsm8"]
 [ext_resource type="Script" uid="uid://detl8rd5n36jw" path="res://assets/scripts/controller_actions/baldi/idle.gd" id="34_jg5mb"]
 [ext_resource type="Script" uid="uid://e8b2pj45yomg" path="res://assets/scripts/controller_actions/baldi/slap.gd" id="34_lnwx1"]
@@ -158,6 +160,12 @@ script = ExtResource("5_6r1sy")
 
 [node name="jump" type="Node" parent="controllerManager/hider"]
 script = ExtResource("6_nqkij")
+
+[node name="ColdChase" type="AudioStreamPlayer" parent="controllerManager/hider"]
+stream = ExtResource("15_0i1ue")
+
+[node name="HotChase" type="AudioStreamPlayer" parent="controllerManager/hider"]
+stream = ExtResource("16_41qyv")
 
 [node name="spectate" type="Node" parent="controllerManager"]
 script = ExtResource("14_axagv")

@@ -4,12 +4,13 @@ class_name ClassHostEvents extends Node
 @export var seekTimer:Timer
 @export var hideTimer:Timer
 var hiders: Array[Player] = []
+var seekers: Array[Player] = []
 
 var currentData:Dictionary = {}
 var gameData:Dictionary = {
 	map = "srs3_school",
 	seekers = [1],
-	seek_time = 10, # time for seekers to seek
+	seek_time = 600, # time for seekers to seek
 	hide_time = 10, # time for hiders to hide
 	use_lms = false
 }
@@ -76,6 +77,7 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 		
 		if desiredData.seekers.has(pid):
 			newPlayer.loadSeeker(pdata.desired_seeker)
+			seekers.append(newPlayer)
 		else:
 			newPlayer.loadHider(pdata.desired_hider)
 			hiders.append(newPlayer)
