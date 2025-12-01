@@ -43,6 +43,8 @@ func _init() -> void:
 	return
 
 func _ready() -> void:
+	Steam.allowP2PPacketRelay(true)
+	Steam.initRelayNetworkAccess()
 	ui.hide()
 
 func _process(_delta: float) -> void:
