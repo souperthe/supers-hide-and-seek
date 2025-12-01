@@ -24,3 +24,4 @@ signal becameSeeker(seeker:Seeker)
 signal damageTaken(previousHealth:float, currentHealth:float, damageAmount:float)
 
 signal baldi_requestTP(pos:Vector3)
+signal baldi_doorOpen(pos:Vector3)

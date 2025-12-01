@@ -47,6 +47,8 @@ func _on_area_3d_interacted(who: Player) -> void:
 	var tweenTime:float = 0.3
 	
 	if _open:
+		
+		SignalManager.baldi_doorOpen.emit(global_position)
 	
 		_hingeTween.tween_property(
 			_hinge,
