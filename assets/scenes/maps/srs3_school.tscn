@@ -31,7 +31,7 @@ environment = SubResource("Environment_fqlla")
 visible = false
 
 [node name="Lights" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.090729, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14903617, 0)
 
 [node name="Light" parent="Lights" instance=ExtResource("1_076lk")]
 transform = Transform3D(1, 0, 0, 0, 0.04000962, 0.9991993, 0, -0.9991993, 0.04000962, -0.26281166, 5.8503647, -4.2530794)
@@ -565,7 +565,7 @@ operation = 2
 size = Vector3(292.106, 48, 40)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="ceiling2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8, -108.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.0397654, -108.8)
 layers = 2
 size = Vector3(250, 0.1, 242.5)
 material = SubResource("28")

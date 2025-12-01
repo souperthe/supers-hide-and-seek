@@ -24,6 +24,30 @@ func getPlayerAvatar(pid: int, size: int) -> ImageTexture:
 	
 	var avatar_texture: ImageTexture = ImageTexture.create_from_image(player_avatar)
 	return avatar_texture
+	
+	
+func getPlayersOnTeam(desiredTeam:superEnum.teams) -> Array[Player]:
+	
+	var foundPlayers:Array[Player]
+	var allPlayers:Array[Node] = Networking.playersHolder.get_children()
+	
+	
+	for player in allPlayers:
+		if player is Player:
+			
+			if player.currentTeam != desiredTeam:
+				continue
+				
+			foundPlayers.append(player)
+			
+			
+			continue
+		else:
+			continue
+		continue
+	
+	
+	return foundPlayers
 
 func getPlayer(pid:int) -> Player:
 	
