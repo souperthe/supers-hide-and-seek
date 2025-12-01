@@ -7,17 +7,17 @@ var active: bool = true
 func _ready() -> void:
 	
 	var seekers:Array = Networking.hostEvents.seekers
-	
 	var seekersNames:Array[String]
 	var namesString:String = ""
 	
 	for seeker: int in seekers:
+		print("sekkaskdeas %s" % seeker)
 		var seekerData:Dictionary = Networking.players[seeker]
 		var seekerName:String = seekerData.get("username")
 		
 		seekersNames.append(seekerName)
 		continue
-		
+	print(seekersNames)
 	for indx: int in range(seekersNames.size()):
 		var seekerName:String = seekersNames[indx]
 		
@@ -29,7 +29,6 @@ func _ready() -> void:
 		
 		continue
 		
-	print(namesString)
 	
 	var aretheSeekers:String = " is the Seeker"
 	

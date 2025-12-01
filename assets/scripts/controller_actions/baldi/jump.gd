@@ -15,8 +15,8 @@ func actioneExit()->void:
 func actionPhysics(delta:float)->void:
 	corePlayer.velocity.y -= (corePlayer.gravity) * delta
 	
-	corePlayer.velocity.x = corePlayer.wishDir.x * corePlayer.walk_speed
-	corePlayer.velocity.z = corePlayer.wishDir.z * corePlayer.walk_speed
+	corePlayer.velocity.x = corePlayer.wishDir.x * (corePlayer.walk_speed / 2)
+	corePlayer.velocity.z = corePlayer.wishDir.z * (corePlayer.walk_speed / 2)
 	
 	if corePlayer.is_on_floor():
 		coreState.actionTransition("idle","reset")

@@ -123,13 +123,13 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 		Networking.playersHolder.add_child(newPlayer)
 		
 		if desiredData.seekers.has(pid):
+			seekers.append(pid)
 			newPlayer.loadSeeker(pdata.desired_seeker)
 			newPlayer.playerHud.seeking.active = true
 			newPlayer.playerHud.seeking.show()
-			seekers.append(pid)
 		else:
-			newPlayer.loadHider(pdata.desired_hider)
 			hiders.append(pid)
+			newPlayer.loadHider(pdata.desired_hider)
 	
 	
 	SignalManager.roundStart.emit()
