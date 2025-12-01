@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var health: Control = $Health
 @onready var timer: Control = $Timer
 @onready var chat: Control = $Chat
+@onready var seeking: Control = $Seeking
 
 func _timerEnd() -> void:
 	util.oneShotSFX(

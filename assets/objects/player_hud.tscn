@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://6g6cls708sff"]
+[gd_scene load_steps=14 format=3 uid="uid://6g6cls708sff"]
 
 [ext_resource type="Script" uid="uid://b77mlexn74h6b" path="res://assets/scripts/player_hud.gd" id="1_yt60p"]
+[ext_resource type="Script" uid="uid://b2w0f136ykcd2" path="res://assets/scripts/hud/seeking.gd" id="2_0qdgq"]
 [ext_resource type="Script" uid="uid://4tsjytst2406" path="res://assets/scripts/hud/health.gd" id="2_ms88w"]
 [ext_resource type="StyleBox" uid="uid://imcr7eeyigil" path="res://assets/resources/style/stylebox.tres" id="3_8shm4"]
 [ext_resource type="FontFile" uid="uid://cf6oxl6bhsl5e" path="res://assets/fonts/Basalte-Fond.ttf" id="3_as176"]
@@ -8,6 +9,12 @@
 [ext_resource type="Script" uid="uid://c11780ui54qe4" path="res://assets/scripts/hud/chat.gd" id="5_8shm4"]
 [ext_resource type="Script" uid="uid://r3ygy2864cqn" path="res://assets/scripts/hud/timer.gd" id="6_evoih"]
 [ext_resource type="Texture2D" uid="uid://dmgtpya8jh4rf" path="res://assets/images/icons/old-microphoneMUTED.png" id="7_2nd5j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_evoih"]
+line_spacing = 2.0
+font = ExtResource("3_as176")
+font_size = 39
+font_color = Color(0.8117647, 0.09803922, 0.1254902, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ms88w"]
 line_spacing = 2.0
@@ -28,6 +35,63 @@ font_color = Color(0.8098538, 1, 0.95183474, 1)
 
 [node name="playerHud" type="CanvasLayer"]
 script = ExtResource("1_yt60p")
+
+[node name="Seeking" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_0qdgq")
+
+[node name="BG" type="ColorRect" parent="Seeking"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Time" type="PanelContainer" parent="Seeking"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -84.69232
+offset_top = -45.0
+offset_right = 84.69232
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(84.693, 0)
+theme_override_styles/panel = ExtResource("3_8shm4")
+
+[node name="TimerLabel" type="Label" parent="Seeking/Time"]
+layout_mode = 2
+text = "00:00:00"
+label_settings = SubResource("LabelSettings_evoih")
+horizontal_alignment = 1
+
+[node name="SeekingLabel" type="Label" parent="Seeking"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -177.0
+offset_top = -82.0
+offset_right = 173.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "TIME UNTIL SEEKING."
+label_settings = SubResource("LabelSettings_evoih")
+horizontal_alignment = 1
 
 [node name="Health" type="Control" parent="." node_paths=PackedStringArray("_healthPanel", "_amountExample")]
 layout_mode = 3

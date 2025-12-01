@@ -2,7 +2,7 @@ extends Control
 
 @onready var timerLabel: Label = $Time/TimerLabel
 @onready var seekerLabel: Label = $Seeker/InfoLabel
-
+var active: bool = true
 
 func _ready() -> void:
 	
@@ -43,6 +43,7 @@ func _ready() -> void:
 	return
 
 func _process(_delta: float) -> void:
+	if not active: return
 	var timeleft = Networking.hostEvents.seekTimer.time_left
 	
 	var minutes : float = timeleft / 60
