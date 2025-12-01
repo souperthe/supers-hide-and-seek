@@ -3,6 +3,7 @@ class_name ClassHostEvents extends Node
 
 @export var seekTimer:Timer
 @export var hideTimer:Timer
+var hiders: Array[Player] = []
 
 var gameData:Dictionary = {
 	map = "testmap",
@@ -17,7 +18,8 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 	
 	if !multiplayer.get_remote_sender_id() == 1:
 		return
-		
+	
+	hiders.clear()
 	print("starting game...")
 	print(desiredData)
 	
@@ -49,6 +51,7 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 			newPlayer.loadSeeker(pdata.desired_seeker)
 		else:
 			newPlayer.loadHider(pdata.desired_hider)
+			hiders.append(newPlayer)
 	
 	
 	SignalManager.roundStart.emit()
