@@ -22,6 +22,7 @@ func _ready() -> void:
 	SignalManager.peerLeft.connect(_on_peer_left)
 
 func _on_counting_finished() -> void:
+	hideTimer.start()
 	util.oneShotSFX(
 		"res://assets/sound/sfx/resource/warning.wav"
 	)
@@ -132,7 +133,6 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 	
 	
 	SignalManager.roundStart.emit()
-	hideTimer.start()
 	seekTimer.start()
 	
 	util.oneShotSFX(
