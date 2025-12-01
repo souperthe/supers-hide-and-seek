@@ -24,9 +24,23 @@ func breakDoors(hitboxName:String) -> void:
 		continue
 	
 	return
+	
+func openDoors(hitboxName:String) -> void:
+	var bodies:Array[Node3D] = checkHitbox(hitboxName)
+	
+	for body in bodies:
+	
+		if body is DoorCollision:
+			body.openEvent()
+				
+			return
+		
+		
+		continue
+	return
 
 
-func hitboxDamage(hitboxName:String, amount:float, knockback:Vector3) -> bool:
+func hitboxDamage(hitboxName:String, amount:float, knockback:Vector3, breakdoor:bool=true) -> bool:
 	var bodies:Array[Node3D] = checkHitbox(hitboxName)
 	
 	#print(bodies)
@@ -50,7 +64,7 @@ func hitboxDamage(hitboxName:String, amount:float, knockback:Vector3) -> bool:
 			
 			body.events.damageEvent.rpc(amount, knockback)
 			return true
-		elif body is DoorCollision:
+		elif body is DoorCollision and breakdoor:
 			
 			if !body.destroyed:
 				

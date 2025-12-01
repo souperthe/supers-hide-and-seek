@@ -25,9 +25,10 @@ func actionPhysics(delta:float)->void:
 	
 	if !_attacked:
 		var knockBack:Vector3 = corePlayer.modelPivot.transform.basis.z*-120
-		if corePlayer.hitbox.hitboxDamage("cheesebox", 9500, knockBack):
+		if corePlayer.hitbox.hitboxDamage("cheesebox", 9500, knockBack, false):
 			_attacked = true
 	
+	corePlayer.hitbox.openDoors("cheesebox")
 	
 	if corePlayer.wishDir != Vector3.ZERO:
 		direction = corePlayer.wishDir

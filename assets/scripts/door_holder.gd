@@ -114,3 +114,14 @@ func _on_collision_broken(who: Player) -> void:
 	
 	$Hinge.queue_free()
 	pass # Replace with function body.
+
+
+func _on_collision_force_open(who: Player) -> void:
+	if _open:
+		return
+		
+	if locked:
+		return
+		
+	$Hinge/Area3D.openEvent.rpc()
+	pass # Replace with function body.

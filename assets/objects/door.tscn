@@ -49,3 +49,4 @@ shape = SubResource("BoxShape3D_86nj7")
 
 [connection signal="interacted" from="Hinge/Area3D" to="." method="_on_area_3d_interacted"]
 [connection signal="broken" from="Hinge/Collision" to="." method="_on_collision_broken"]
+[connection signal="forceOpen" from="Hinge/Collision" to="." method="_on_collision_force_open"]
