@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cic6mpxcgpvdx"]
+[gd_scene load_steps=9 format=3 uid="uid://cic6mpxcgpvdx"]
 
 [ext_resource type="MeshLibrary" uid="uid://cxnfrcp6hplm4" path="res://assets/objects/map/srs3_school/meshlibary/floors5.tres" id="1_fqlla"]
 [ext_resource type="MeshLibrary" uid="uid://cq7cigodo2crr" path="res://assets/objects/map/srs3_school/meshlibary/wallsreal.tres" id="2_076lk"]
@@ -6,9 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cwpcftoalnag3" path="res://assets/objects/map/srs3_school/doubledoorwithwall.tscn" id="4_iu6x6"]
 [ext_resource type="PackedScene" uid="uid://banjnp8bjc6v1" path="res://assets/objects/map/srs3_school/doorwithwallstaff.tscn" id="5_th6di"]
 [ext_resource type="Texture2D" uid="uid://cq7hi4wvkht0u" path="res://assets/objects/map/srs3_school/sprites/woodtest.png" id="6_8uk6k"]
-
-[sub_resource type="PlaneMesh" id="27"]
-size = Vector2(250, 242.5)
 
 [sub_resource type="StandardMaterial3D" id="28"]
 albedo_texture = ExtResource("6_8uk6k")
@@ -162,11 +159,7 @@ locked = true
 [node name="ceiling2" type="CSGCombiner3D" parent="."]
 extra_cull_margin = 16384.0
 calculate_tangents = false
-
-[node name="CSGMesh" type="CSGMesh3D" parent="ceiling2"]
-transform = Transform3D(1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 4.8, -108.8)
-mesh = SubResource("27")
-material = SubResource("28")
+use_collision = true
 
 [node name="CSGBox" type="CSGBox3D" parent="ceiling2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 26)
