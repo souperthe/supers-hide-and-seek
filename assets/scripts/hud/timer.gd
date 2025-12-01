@@ -4,7 +4,12 @@ extends Control
 @onready var seekerLabel: Label = $Seeker/InfoLabel
 var active: bool = true
 
+
 func _ready() -> void:
+	SignalManager.roundStart.connect(_loadSeekers)
+	return
+
+func _loadSeekers() -> void:
 	
 	var seekers:Array = Networking.hostEvents.seekers
 	var seekersNames:Array[String]

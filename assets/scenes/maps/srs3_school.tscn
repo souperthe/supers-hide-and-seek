@@ -541,7 +541,6 @@ locked = true
 locked = true
 
 [node name="ceiling2" type="CSGCombiner3D" parent="."]
-visible = false
 extra_cull_margin = 16384.0
 calculate_tangents = false
 use_collision = true
