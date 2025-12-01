@@ -61,7 +61,11 @@ func actionProcess(_delta:float)->void:
 	elif _spectatePosition < 0:
 		_spectatePosition = apLength
 		
-	var desiredPlayer:Player = alivePlayers[_spectatePosition]
+	var desiredPlayer:Player = alivePlayers.get(_spectatePosition)
+	
+	if desiredPlayer == null:
+		coreState.actionTransition("freecam")
+		return
 	
 	corePlayer.position = desiredPlayer.position
 		#24*_delta
