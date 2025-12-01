@@ -20,7 +20,7 @@ func calcSound(distance: float) -> float:
 	return (K / (distance - C)) * 4
 
 func chaseSetup() -> void:
-	var seekers:Array = Networking.hostEvents.currentData.get("seekers")
+	var seekers:Array = Networking.hostEvents.seekers
 	for seeker in seekers:
 		#var pdata: Dictionary = Networking.players[seeker]
 		killer = util.getPlayer(seeker)
