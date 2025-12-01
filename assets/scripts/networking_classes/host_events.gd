@@ -5,6 +5,7 @@ class_name ClassHostEvents extends Node
 @export var hideTimer:Timer
 var hiders: Array[int] = []
 var seekers: Array[int] = []
+var isOver:bool = false
 
 var currentData:Dictionary = {}
 var gameData:Dictionary = {
@@ -50,7 +51,10 @@ func endGame(reason: superEnum.endGameReason=superEnum.endGameReason.hidersWin):
 	if !multiplayer.get_remote_sender_id() == 1:
 		return
 	
+	if isOver: 
+		return
 	print(reason)
+	isOver = true
 	
 	hideTimer.stop()
 	seekTimer.stop()
@@ -90,6 +94,7 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 	if !multiplayer.get_remote_sender_id() == 1:
 		return
 	
+	isOver = false
 	hiders.clear()
 	print("starting game...")
 	print(desiredData)
