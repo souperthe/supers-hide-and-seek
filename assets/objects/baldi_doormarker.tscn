@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0mev0qdw1gxh"]
+
+[ext_resource type="Texture2D" uid="uid://woj53he1q5ks" path="res://assets/images/character/baldi/door_marker/door_marker1.png" id="1_mc0xt"]
+[ext_resource type="Texture2D" uid="uid://cpj5xh1heywe" path="res://assets/images/character/baldi/door_marker/door_marker2.png" id="2_4q82p"]
+[ext_resource type="Texture2D" uid="uid://cyoawlnk2xr85" path="res://assets/images/character/baldi/door_marker/door_marker3.png" id="3_y6xwv"]
+[ext_resource type="Texture2D" uid="uid://ct8122csqbi2c" path="res://assets/images/character/baldi/door_marker/door_marker4.png" id="4_qlg2p"]
+[ext_resource type="Texture2D" uid="uid://dmsuw166kehaa" path="res://assets/images/character/baldi/door_marker/door_marker5.png" id="5_nwjic"]
+[ext_resource type="Texture2D" uid="uid://bqn34rk6pobew" path="res://assets/images/character/baldi/door_marker/door_marker6.png" id="6_tvob0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dtdag"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mc0xt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4q82p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y6xwv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qlg2p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_nwjic")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tvob0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[node name="baldi_doormarker" type="Node3D"]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+pixel_size = 0.0034
+billboard = 1
+no_depth_test = true
+fixed_size = true
+sprite_frames = SubResource("SpriteFrames_dtdag")
+frame_progress = 0.75432163
