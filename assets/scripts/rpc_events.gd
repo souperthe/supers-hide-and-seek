@@ -69,6 +69,7 @@ func callDead() -> void:
 	_corePlayer.currentTeam = superEnum.teams.spectator
 	_corePlayer.health = 0
 	_voiceEmitter.stop()
+	_corePlayer.voiceEmitter.hasLoopback = false
 	SignalManager.peerDied.emit(_corePlayer.authID)
 	
 	if Networking.localPlayer == _corePlayer:
