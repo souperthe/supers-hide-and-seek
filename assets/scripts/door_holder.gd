@@ -92,6 +92,9 @@ func _on_collision_broken(who: Player) -> void:
 	if _hingeTween:
 		_hingeTween.kill()
 		
+	if locked:
+		return
+		
 		
 		
 	var flingToward:Vector3 = who.modelPivot.global_transform.basis.z

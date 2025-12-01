@@ -5,7 +5,7 @@ class_name ClassHostEvents extends Node
 @export var hideTimer:Timer
 
 var gameData:Dictionary = {
-	map = "testmap",
+	map = "srs3_school",
 	seekers = [1],
 	seek_time = 600, # time for seekers to seek
 	hide_time = 10, # time for hiders to hide
@@ -25,6 +25,10 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 	
 	hideTimer.wait_time = desiredData.hide_time
 	seekTimer.wait_time = desiredData.seek_time
+	
+	gameData = desiredData
+	
+	
 	global.masterScene.switch_scene("res://assets/scenes/sub/game.tscn")
 	
 	var desiredMap: SelectableMap = load("res://assets/resources/maps/%s.tres" % desiredData.map)
