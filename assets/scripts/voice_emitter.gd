@@ -9,7 +9,7 @@ class_name VoiceEmitter extends Node
 
 var _voiceBuffer: PackedByteArray = PackedByteArray()
 var _playback:AudioStreamGeneratorPlayback = null
-var _hasLoopback: bool = true
+var hasLoopback: bool = true
 
 var speaking:bool = false
 var muted: bool = false
@@ -61,6 +61,10 @@ func dymanicGain(sample: float) -> float:
 	
 @rpc("any_peer", "call_remote", "unreliable")
 func _processVoice(voiceData:Dictionary) -> void:
+	
+	if targetEmitter == null:
+		return
+		
 	var decompressedVoice: Dictionary = Steam.decompressVoice(voiceData["buffer"], targetRate)
 	
 	if decompressedVoice["result"] == Steam.VOICE_RESULT_OK and decompressedVoice["size"] > 0:
@@ -104,9 +108,10 @@ func _processVoice(voiceData:Dictionary) -> void:
 	
 func _checkVoice() -> void:
 	var voiceData: Dictionary = Steam.getVoice()
+
 	
 	if voiceData["result"] == Steam.VOICE_RESULT_OK and voiceData["written"]:
-		if _hasLoopback:
+		if hasLoopback:
 			_processVoice.rpc(voiceData)
 	return
 	

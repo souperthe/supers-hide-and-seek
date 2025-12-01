@@ -4,6 +4,9 @@ var slapLength: float = 0
 var slapPower: float = 20
 var direction: Vector3
 
+
+var _attacked:bool = false
+
 func actionEnter(_message:String="")->void:
 	coreSound.playSound(
 		"res://assets/resources/rnd_sound/baldislap.tres",
@@ -12,12 +15,18 @@ func actionEnter(_message:String="")->void:
 		)
 	corePlayer.animator.playAnimation("slap")
 	slapLength = 0.3
+	_attacked = false
 
 func actioneExit()->void:
 	pass
 
 func actionPhysics(delta:float)->void:
 	slapLength -= delta
+	
+	if !_attacked:
+		var knockBack:Vector3 = corePlayer.modelPivot.transform.basis.z*-120
+		if corePlayer.hitbox.hitboxDamage("cheesebox", 9500, knockBack):
+			_attacked = true
 	
 	
 	if corePlayer.wishDir != Vector3.ZERO:
