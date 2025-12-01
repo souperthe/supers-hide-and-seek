@@ -127,8 +127,14 @@ mute_mic={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="world"
+3d_physics/layer_3="interactions"
+
 [physics]
 
+3d/physics_engine="Jolt Physics"
 common/physics_interpolation=true
 
 [steam]
