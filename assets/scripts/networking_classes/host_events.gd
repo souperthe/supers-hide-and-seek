@@ -5,13 +5,36 @@ class_name ClassHostEvents extends Node
 @export var hideTimer:Timer
 var hiders: Array[Player] = []
 
+var currentData:Dictionary = {}
 var gameData:Dictionary = {
 	map = "srs3_school",
 	seekers = [1],
-	seek_time = 600, # time for seekers to seek
+	seek_time = 10, # time for seekers to seek
 	hide_time = 10, # time for hiders to hide
 	use_lms = false
 }
+
+func _ready() -> void:
+	seekTimer.timeout.connect(endGame.rpc)
+
+@rpc("authority","call_local","reliable")
+func endGame(reason: superEnum.endGameReason=superEnum.endGameReason.hidersWin):
+	
+	if !multiplayer.get_remote_sender_id() == 1:
+		return
+	
+	hiders.clear()
+	print("ending game...")
+	util.oneShotSFX(
+		"res://assets/sound/sfx/buttons/button24.wav"
+	)
+	
+	await get_tree().create_timer(3).timeout
+	
+	Steam.setLobbyJoinable(Networking.lobby.currentLobbyId,true)
+	util.clearChildren(Networking.playersHolder)
+	global.masterScene.switch_scene("res://assets/scenes/sub/lobby.tscn")
+	
 
 @rpc("authority", "call_local", "reliable")
 func startGame(desiredData:Dictionary=gameData) -> void:
@@ -23,13 +46,13 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 	print("starting game...")
 	print(desiredData)
 	
+	Steam.setLobbyJoinable(Networking.lobby.currentLobbyId,false)
 	Networking.networkRNG.seed = 67420 * 143 # TODO temporary
 	
 	hideTimer.wait_time = desiredData.hide_time
 	seekTimer.wait_time = desiredData.seek_time
 	
-	gameData = desiredData
-	
+	currentData = desiredData
 	
 	global.masterScene.switch_scene("res://assets/scenes/sub/game.tscn")
 	
@@ -61,6 +84,4 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 	SignalManager.roundStart.emit()
 	hideTimer.start()
 	seekTimer.start()
-	
-	
 	return

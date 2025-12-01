@@ -12,6 +12,12 @@ enum teams {
 	spectator
 }
 
+enum endGameReason {
+	seekersLeft,
+	seekersWin,
+	hidersWin,
+}
+
 enum steamResult {
 	RESULT_NONE,
 	RESULT_OK,

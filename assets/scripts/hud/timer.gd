@@ -6,7 +6,7 @@ extends Control
 
 func _ready() -> void:
 	
-	var seekers:Array = Networking.hostEvents.gameData.get("seekers")
+	var seekers:Array = Networking.hostEvents.currentData.get("seekers")
 	
 	var seekersNames:Array[String]
 	var namesString:String = ""
