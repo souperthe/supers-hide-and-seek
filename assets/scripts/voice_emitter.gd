@@ -109,11 +109,12 @@ func _processVoice(voiceData:Dictionary) -> void:
 func _checkVoice() -> void:
 	var voiceData: Dictionary = Steam.getVoice()
 
-	
 	if voiceData["result"] == Steam.VOICE_RESULT_OK and voiceData["written"]:
 		if hasLoopback:
 			print("debug debug")
 			_processVoice.rpc(voiceData)
+	else:
+		print(voiceData["result"])
 	return
 	
 	
