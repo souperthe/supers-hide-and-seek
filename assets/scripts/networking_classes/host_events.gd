@@ -3,8 +3,8 @@ class_name ClassHostEvents extends Node
 
 @export var seekTimer:Timer
 @export var hideTimer:Timer
-var hiders: Array[Player] = []
-var seekers: Array[Player] = []
+var hiders: Array[int] = []
+var seekers: Array[int] = []
 
 var currentData:Dictionary = {}
 var gameData:Dictionary = {
@@ -30,8 +30,8 @@ func endGame(reason: superEnum.endGameReason=superEnum.endGameReason.hidersWin):
 		"res://assets/sound/sfx/buttons/button24.wav"
 	)
 	
-	for seeker in seekers:
-		seeker.seeking = false
+	for seekerid in seekers:
+		util.getPlayer(seekerid).seeking = false
 	await get_tree().create_timer(3).timeout
 	
 	Steam.setLobbyJoinable(Networking.lobby.currentLobbyId,true)
@@ -80,10 +80,10 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 		if desiredData.seekers.has(pid):
 			newPlayer.loadSeeker(pdata.desired_seeker)
 			newPlayer.seeking = true
-			seekers.append(newPlayer)
+			seekers.append(pid)
 		else:
 			newPlayer.loadHider(pdata.desired_hider)
-			hiders.append(newPlayer)
+			hiders.append(pid)
 	
 	
 	SignalManager.roundStart.emit()

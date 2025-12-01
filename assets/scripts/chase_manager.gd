@@ -29,14 +29,15 @@ func radiusCheck() -> void:
 	
 	if killer == _corePlayer:
 		pass
-		#for hider in Networking.hostEvents.hiders:
-			#var dist = (_corePlayer.global_position - hider.global_position).length()
+		for hiderid: int in Networking.hostEvents.hiders:
+			var hider: Player = util.getPlayer(hiderid)
+			var dist = (_corePlayer.global_position - hider.global_position).length()
 			#inchase = dist <= 25 or (inchase and dist <= 60)
-			#
-			#if inchase:
-				#radiuses.get("L3").get(2).volume_db = linear_to_db((dist <= 60) and inchase and 1.05)
-			#else:
-				#radiuses.get("L3").get(2).volume_db = linear_to_db(0)
+			
+			if hider.chase.inchase:
+				radiuses.get("L3").get(2).volume_db = linear_to_db((dist <= 60) and inchase and 1.05)
+			else:
+				radiuses.get("L3").get(2).volume_db = linear_to_db(0)
 	else:
 		var dist: float = (_corePlayer.global_position - killer.global_position).length()
 		for layer: String in radiuses:
