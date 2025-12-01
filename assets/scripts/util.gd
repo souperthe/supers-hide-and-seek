@@ -129,6 +129,11 @@ func setShadows(rootNode:Node3D, shadowMode:GeometryInstance3D.ShadowCastingSett
 var _seekerPath:String = "res://assets/resources/seekers/"
 var _hiderPath:String = "res://assets/resources/hiders/"
 
+func dictionaryRandom(dictionary: Dictionary) -> Variant:
+	var random_key : Variant = dictionary.keys().pick_random()
+	
+	return dictionary[random_key]
+
 func getHider(hiderName:String) -> Hider:
 	var trueName:String = hiderName.to_lower()
 	var hiderPath:String = _hiderPath + trueName + ".tres"

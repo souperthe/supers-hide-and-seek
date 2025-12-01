@@ -29,7 +29,20 @@ func _on_peer_left(pid):
 	pass
 
 func _on_start_pressed() -> void:
-	Networking.hostEvents.startGame.rpc()
+	
+	if !multiplayer.is_server():
+		return
+		
+	var desiredSeeker:Dictionary = util.dictionaryRandom(Networking.players)
+	var seekerPID:int = desiredSeeker.get("pid")
+	
+	print(desiredSeeker)
+	
+	Networking.hostEvents.gameData.set("seekers", [seekerPID])
+		
+	
+	
+	Networking.hostEvents.startGame.rpc(Networking.hostEvents.gameData)
 
 func _on_back_pressed() -> void:
 	Networking.lobby.clientDisconnect()
