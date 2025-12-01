@@ -15,12 +15,13 @@ func peerJoined(pid:int) -> void:
 func peerLeft(pid:int) -> void:
 	SignalManager.peerLeft.emit(pid)
 	
+	var plr: Player = util.getPlayer(pid)
+	if plr:
+		plr.queue_free()
+	
 	if multiplayer.is_server():
 		print("%s has left" % pid)
 		Networking.lobby.removeData.rpc(pid)
-		var plr: Player = util.getPlayer(pid)
-		if plr:
-			plr.queue_free()
 	
 	if pid == 1:
 		Networking.lobby.clientDisconnect()

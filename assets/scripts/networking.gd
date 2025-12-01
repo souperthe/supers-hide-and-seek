@@ -21,6 +21,7 @@ var localData := {
 @export var lobby:ClassLobby
 @export var hostEvents:ClassHostEvents
 @export var console:ClassNetworkingConsole
+@export var ui:ClassNetworkingUI
 
 @export var playersHolder:Node3D
 
@@ -41,6 +42,8 @@ func _init() -> void:
 	
 	return
 
+func _ready() -> void:
+	ui.hide()
 
 func _process(_delta: float) -> void:
 	Steam.runNetworkingCallbacks()
