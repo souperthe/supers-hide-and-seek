@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cic6mpxcgpvdx"]
 
-[ext_resource type="PackedScene" path="res://assets/objects/map/srs3_school/light.tscn" id="1_076lk"]
+[ext_resource type="PackedScene" uid="uid://c1w5coxxmu6a1" path="res://assets/objects/map/srs3_school/light.tscn" id="1_076lk"]
 [ext_resource type="MeshLibrary" uid="uid://cxnfrcp6hplm4" path="res://assets/objects/map/srs3_school/meshlibary/floors5.tres" id="1_fqlla"]
 [ext_resource type="MeshLibrary" uid="uid://cq7cigodo2crr" path="res://assets/objects/map/srs3_school/meshlibary/wallsreal.tres" id="2_076lk"]
 [ext_resource type="PackedScene" uid="uid://kf615r6tpaee" path="res://assets/objects/map/srs3_school/doorwithwall.tscn" id="3_lqkob"]
@@ -24,6 +24,7 @@ uv1_scale = Vector3(76, 76, 76)
 environment = SubResource("Environment_fqlla")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+visible = false
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.090729, 0)
@@ -540,7 +541,6 @@ locked = true
 locked = true
 
 [node name="ceiling2" type="CSGCombiner3D" parent="."]
-visible = false
 extra_cull_margin = 16384.0
 calculate_tangents = false
 use_collision = true
