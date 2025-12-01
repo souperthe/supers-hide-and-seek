@@ -36,9 +36,10 @@ func actionPhysics(delta:float)->void:
 			-corePlayer.wishDir.x,
 			-corePlayer.wishDir.z
 		)
-		if corePlayer.wallRay.is_colliding() and slapLength <= 0.2:
-			coreState.actionTransition("climb")
-			return
+		
+	if Input.is_action_just_pressed("player_jump"):
+		coreState.actionTransition("jump","jump")
+		return
 	
 	corePlayer.velocity.x = direction.x * slapPower
 	corePlayer.velocity.z = direction.z * slapPower

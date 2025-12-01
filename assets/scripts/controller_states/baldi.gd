@@ -2,10 +2,13 @@ extends ControllerState
 
 
 @onready var teleporterHolder: Node3D = $TeleportWrappers
-var teleporterScene: PackedScene = preload("res://assets/objects/characters/baldi/teleporter.tscn")
-var explosion:PackedScene = preload("res://assets/objects/explosion_vfx.tscn")
+var teleporterScene: PackedScene = load("res://assets/objects/characters/baldi/teleporter.tscn")
+var explosion:PackedScene = load("res://assets/objects/explosion_vfx.tscn")
 var Teleporters:Array[TeleportWrapper] = []
 var maxTeleporters: int = 4
+
+
+@export var markerScene:PackedScene
 
 @rpc("authority","call_local","reliable")
 func spawn_teleporter(spawnPos: Vector3) -> void:
@@ -28,12 +31,36 @@ func delete_teleporter() -> void:
 func _on_teleport_request(pos: Vector3) -> void:
 	corePlayer.global_position = pos
 	actionTransition("teleport")
+	
+	
+func _doorOpened(position:Vector3) -> void:
+	var newMarker:Node3D = markerScene.instantiate()
+	newMarker.position = position
+	
+	var animator:AnimatedSprite3D = newMarker.find_child("AnimatedSprite3D")
+	
+	animator.play("default")
+	animator.pixel_size = 0.0034
+	
+	global.masterScene.add_child(newMarker)
+	
+	util.oneShotSFX(
+		"res://assets/sound/sfx/ambient/alarms/warningbell1.wav",
+		1.5,
+		0.2
+	)
+	
+	await get_tree().create_timer(3).timeout
+	
+	newMarker.queue_free()
+	return
 
 func controllerStart(_message:String="") -> void:
 	corePlayer.animator.animatorSetup()
 	corePlayer.neckOffset.position.y = 1.5
 	actionTransition(_initalAction)
 	SignalManager.baldi_requestTP.connect(_on_teleport_request)
+	SignalManager.baldi_doorOpen.connect(_doorOpened)
 
 func controllerPhysics(_delta:float) -> void:
 	

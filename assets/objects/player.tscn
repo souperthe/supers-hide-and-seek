@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://c8i5i2af5ohaf"]
+[gd_scene load_steps=54 format=3 uid="uid://c8i5i2af5ohaf"]
 
 [ext_resource type="Script" uid="uid://jrbuo0ken0kb" path="res://assets/scripts/player.gd" id="1_ikdab"]
 [ext_resource type="Script" uid="uid://bmoapp8kdmh2f" path="res://assets/scripts/rpc_events.gd" id="2_1qp14"]
@@ -46,6 +46,7 @@
 [ext_resource type="Script" uid="uid://de1xskh0bq0a7" path="res://assets/scripts/controller_actions/baldi/jump.gd" id="36_ti3fm"]
 [ext_resource type="Script" uid="uid://dujy2opa7ckve" path="res://assets/scripts/controller_actions/baldi/teleport.gd" id="38_1e2mi"]
 [ext_resource type="Script" uid="uid://brh5u0fj5r31d" path="res://assets/scripts/controller_actions/baldi/climb.gd" id="39_2fydn"]
+[ext_resource type="PackedScene" uid="uid://c0mev0qdw1gxh" path="res://assets/objects/baldi_doormarker.tscn" id="39_x2vy3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ikdab"]
 radius = 0.3
@@ -269,6 +270,7 @@ script = ExtResource("32_dx6kc")
 
 [node name="baldi" type="Node" parent="controllerManager"]
 script = ExtResource("33_8vsm8")
+markerScene = ExtResource("39_x2vy3")
 _initalAction = "idle"
 
 [node name="idle" type="Node" parent="controllerManager/baldi"]

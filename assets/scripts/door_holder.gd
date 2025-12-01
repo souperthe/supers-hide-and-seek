@@ -48,7 +48,11 @@ func _on_area_3d_interacted(who: Player) -> void:
 	
 	if _open:
 		
-		SignalManager.baldi_doorOpen.emit(global_position)
+		if who.currentTeam == superEnum.teams.hider:
+		
+			SignalManager.baldi_doorOpen.emit(
+				$Hinge/CSGBox3D.global_position
+				)
 	
 		_hingeTween.tween_property(
 			_hinge,

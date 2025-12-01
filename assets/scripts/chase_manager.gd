@@ -13,8 +13,10 @@ var alreadyPlayingChase: bool = false
 var killer: Player = null
 
 func calcSound(distance: float) -> float:
-	var K = 4.96
-	var C = -10.26
+	
+	var K:float = 4.96
+	var C:float = -10.26
+	
 	return (K / (distance - C)) * 4
 
 func chaseSetup() -> void:
