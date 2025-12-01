@@ -175,6 +175,8 @@ func loadSeeker(seekerName:String) -> void:
 			chosenSeekerHud.corePlayer = self
 			seekerHud.add_child(chosenSeekerHud)
 			seekerHud.show()
+			
+		SignalManager.becameSeeker.emit(desiredSeeker)
 	
 		if !firstPerson:
 			cameraArm.spring_length = 5
@@ -194,7 +196,6 @@ func loadSeeker(seekerName:String) -> void:
 	
 	currentTeam = superEnum.teams.seeker
 	
-	SignalManager.becameSeeker.emit(desiredSeeker)
 	
 	
 	return
