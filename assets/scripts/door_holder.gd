@@ -19,7 +19,7 @@ func _on_area_3d_interacted(who: Player) -> void:
 	var currentTime:float = Time.get_unix_time_from_system()
 	var timeDiff:float = currentTime-_usedTime
 	
-	if timeDiff < 0.2:
+	if timeDiff < 0.15:
 		return
 	
 	_usedTime = Time.get_unix_time_from_system()
@@ -47,6 +47,8 @@ func _on_area_3d_interacted(who: Player) -> void:
 	var tweenTime:float = 0.3
 	
 	if _open:
+		
+		SignalManager.baldi_doorOpen.emit(global_position)
 	
 		_hingeTween.tween_property(
 			_hinge,
@@ -113,4 +115,15 @@ func _on_collision_broken(who: Player) -> void:
 	
 	
 	$Hinge.queue_free()
+	pass # Replace with function body.
+
+
+func _on_collision_force_open(who: Player) -> void:
+	if _open:
+		return
+		
+	if locked:
+		return
+		
+	$Hinge/Area3D.openEvent.rpc()
 	pass # Replace with function body.

@@ -5,26 +5,6 @@ extends ControllerState
 
 var _canCrouch:bool = false
 
-#func handleChaseTheme() -> void:
-	#var closestSeeker : Player = null
-	#var closestNumber: float
-	#for seeker in Networking.hostEvents.seekers:
-		#var distance: float = (corePlayer.global_position - seeker.global_position).length()
-		#if distance < closestNumber or not closestNumber:
-			#closestNumber = distance
-			#closestSeeker = seeker
-	#
-	#if closestNumber >= 20 and closestNumber < 40:
-		#$HotChase.stop()
-		#if not $ColdChase.playing:
-			#$ColdChase.play()
-	#elif closestNumber < 40:
-		#$ColdChase.stop()
-		#if not $HotChase.playing:
-			#$HotChase.play()
-	#else:
-		#$ColdChase.stop()
-		#$HotChase.stop()
 
 func controllerStart(_message:String="")->void:
 	corePlayer.neckOffset.position.y = 0

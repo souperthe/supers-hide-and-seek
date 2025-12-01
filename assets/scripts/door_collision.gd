@@ -5,8 +5,16 @@ class_name DoorCollision extends StaticBody3D
 var destroyed:bool = false
 
 signal broken(who:Player)
+signal forceOpen(who:Player)
 
 
+func openEvent() -> void:
+	
+	forceOpen.emit(
+		Networking.localPlayer
+	)
+	
+	return
 
 @rpc("any_peer", "call_local", "reliable")
 func breakEvent():

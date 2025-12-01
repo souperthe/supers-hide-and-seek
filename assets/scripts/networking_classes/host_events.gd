@@ -86,4 +86,8 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 	SignalManager.roundStart.emit()
 	hideTimer.start()
 	seekTimer.start()
+	
+	util.oneShotSFX(
+		"res://assets/sound/sfx/ambient/alarms/warningbell1.wav"
+	)
 	return
