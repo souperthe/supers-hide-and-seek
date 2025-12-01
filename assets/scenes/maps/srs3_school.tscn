@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cic6mpxcgpvdx"]
 
-[ext_resource type="PackedScene" uid="uid://bccy3xly8l0gq" path="res://assets/objects/map/srs3_school/light.tscn" id="1_076lk"]
+[ext_resource type="PackedScene" uid="uid://c1w5coxxmu6a1" path="res://assets/objects/map/srs3_school/light.tscn" id="1_076lk"]
 [ext_resource type="MeshLibrary" uid="uid://cxnfrcp6hplm4" path="res://assets/objects/map/srs3_school/meshlibary/floors5.tres" id="1_fqlla"]
 [ext_resource type="MeshLibrary" uid="uid://cq7cigodo2crr" path="res://assets/objects/map/srs3_school/meshlibary/wallsreal.tres" id="2_076lk"]
 [ext_resource type="PackedScene" uid="uid://kf615r6tpaee" path="res://assets/objects/map/srs3_school/doorwithwall.tscn" id="3_lqkob"]
@@ -10,7 +10,6 @@
 
 [sub_resource type="Environment" id="Environment_fqlla"]
 background_mode = 1
-glow_enabled = true
 glow_blend_mode = 0
 glow_hdr_threshold = 0.41
 glow_hdr_scale = 0.0
