@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://c8i5i2af5ohaf"]
+[gd_scene load_steps=53 format=3 uid="uid://c8i5i2af5ohaf"]
 
 [ext_resource type="Script" uid="uid://jrbuo0ken0kb" path="res://assets/scripts/player.gd" id="1_ikdab"]
 [ext_resource type="Script" uid="uid://bmoapp8kdmh2f" path="res://assets/scripts/rpc_events.gd" id="2_1qp14"]
@@ -8,10 +8,12 @@
 [ext_resource type="Script" uid="uid://dmo0jxb8j7daa" path="res://assets/scripts/hitbox_manager.gd" id="2_am6w6"]
 [ext_resource type="Script" uid="uid://d1acepvi6enht" path="res://assets/scripts/sound_manager.gd" id="2_fh75e"]
 [ext_resource type="Script" uid="uid://2ib7l6uqqdra" path="res://assets/scripts/interaction_manager.gd" id="2_lvyht"]
+[ext_resource type="Script" uid="uid://dws8fr5ve6qp8" path="res://assets/scripts/chase_manager.gd" id="2_vcvpc"]
 [ext_resource type="Script" uid="uid://byixfhnxaujvy" path="res://assets/scripts/interaction/rigid_body_3d.gd" id="3_htwuo"]
 [ext_resource type="Script" uid="uid://dx63y06pacekr" path="res://assets/scripts/controller_states/hider.gd" id="3_jg13i"]
 [ext_resource type="Script" uid="uid://c04b57p8gi1fy" path="res://assets/scripts/controller_actions/hider/idle.gd" id="4_jssbp"]
 [ext_resource type="Script" uid="uid://6c5e5ebftq52" path="res://assets/scripts/controller_actions/hider/walk.gd" id="5_6r1sy"]
+[ext_resource type="AudioStream" uid="uid://c6i3ri62llkx8" path="res://assets/sound/chase/hot_loop.wav" id="5_rt1sw"]
 [ext_resource type="Script" uid="uid://dqcgyyqkxjksd" path="res://assets/scripts/controller_actions/hider/jump.gd" id="6_nqkij"]
 [ext_resource type="PackedScene" uid="uid://6g6cls708sff" path="res://assets/objects/player_hud.tscn" id="7_xvjlw"]
 [ext_resource type="Script" uid="uid://wndtq88tdhh6" path="res://assets/scripts/interaction/door.gd" id="8_bseap"]
@@ -71,7 +73,7 @@ properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "cameraArm", "controller", "sound", "interactor", "events", "animator", "hitbox", "voiceEmitter", "playerHud", "seekerHud", "abilityTimer", "abilityCooldown", "synchronizer", "_neck", "viewmodelRoot", "modelRoot", "modelPivot", "wallRay", "neckOffset", "collisionStanding", "collisionCrouching", "interactRay")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "cameraArm", "controller", "sound", "interactor", "events", "animator", "hitbox", "voiceEmitter", "playerHud", "seekerHud", "chase", "abilityTimer", "abilityCooldown", "synchronizer", "_neck", "viewmodelRoot", "modelRoot", "modelPivot", "wallRay", "neckOffset", "collisionStanding", "collisionCrouching", "interactRay")]
 script = ExtResource("1_ikdab")
 camera = NodePath("neckOffset/Neck/viewbobPivot/tiltPivot/cameraArm/Camera3D")
 cameraArm = NodePath("neckOffset/Neck/viewbobPivot/tiltPivot/cameraArm")
@@ -84,6 +86,7 @@ hitbox = NodePath("hitboxManager")
 voiceEmitter = NodePath("VoiceEmitter")
 playerHud = NodePath("playerHud")
 seekerHud = NodePath("seekerHud")
+chase = NodePath("chaseManager")
 abilityTimer = NodePath("AbilityTimer")
 abilityCooldown = NodePath("AbilityCoolDown")
 synchronizer = NodePath("MultiplayerSynchronizer")
@@ -103,6 +106,28 @@ volume_db = 50.0
 max_distance = 15.0
 bus = &"Voice"
 attenuation_filter_db = 0.0
+
+[node name="chaseManager" type="Node" parent="." node_paths=PackedStringArray("_corePlayer")]
+script = ExtResource("2_vcvpc")
+_corePlayer = NodePath("..")
+
+[node name="L1" type="AudioStreamPlayer" parent="chaseManager"]
+stream = ExtResource("15_0i1ue")
+volume_db = -80.0
+autoplay = true
+bus = &"Music"
+
+[node name="L2" type="AudioStreamPlayer" parent="chaseManager"]
+stream = ExtResource("16_41qyv")
+volume_db = -80.0
+autoplay = true
+bus = &"Music"
+
+[node name="L3" type="AudioStreamPlayer" parent="chaseManager"]
+stream = ExtResource("5_rt1sw")
+volume_db = -80.0
+autoplay = true
+bus = &"Music"
 
 [node name="hitboxManager" type="Node" parent="." node_paths=PackedStringArray("_hitboxHolder", "_corePlayer")]
 script = ExtResource("2_am6w6")

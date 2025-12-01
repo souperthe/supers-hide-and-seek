@@ -23,6 +23,7 @@ var currentTeam:superEnum.teams = superEnum.teams.hider
 @export var voiceEmitter:VoiceEmitter
 @export var playerHud:CanvasLayer
 @export var seekerHud:CanvasLayer
+@export var chase:ChaseManager
 
 @export var abilityTimer:Timer
 @export var abilityCooldown:Timer
@@ -250,6 +251,7 @@ func _setupAuthority()->void:
 
 func _ready() -> void:
 	animator.animatorSetup()
+	chase.chaseSetup()
 	if !is_multiplayer_authority():
 		_setupOthers()
 		return
