@@ -22,7 +22,7 @@ func actioneExit()->void:
 	return
 	
 func actionPhysics(delta:float)->void:
-	if !_alreadyHit:
+	if !_alreadyHit and corePlayer.seeking:
 		var knockBack:Vector3 = corePlayer.modelPivot.transform.basis.z*-120
 		if corePlayer.hitbox.hitboxDamage("cheesebox", 9500, knockBack):
 			_alreadyHit = true

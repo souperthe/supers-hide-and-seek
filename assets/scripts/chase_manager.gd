@@ -13,11 +13,9 @@ var alreadyPlayingChase: bool = false
 var killer: Player = null
 
 func calcSound(distance: float) -> float:
-	#var K = 6
-	#var C = -6
-	#return K / (distance - C)
-	return 1.0
-
+	var K = 4.96
+	var C = -10.26
+	return (K / (distance - C)) * 4
 
 func chaseSetup() -> void:
 	var seekers:Array = Networking.hostEvents.currentData.get("seekers")
@@ -27,9 +25,18 @@ func chaseSetup() -> void:
 
 func radiusCheck() -> void:
 	if killer == null: return
+	if not killer.seeking: return
 	
 	if killer == _corePlayer:
 		pass
+		#for hider in Networking.hostEvents.hiders:
+			#var dist = (_corePlayer.global_position - hider.global_position).length()
+			#inchase = dist <= 25 or (inchase and dist <= 60)
+			#
+			#if inchase:
+				#radiuses.get("L3").get(2).volume_db = linear_to_db((dist <= 60) and inchase and 1.05)
+			#else:
+				#radiuses.get("L3").get(2).volume_db = linear_to_db(0)
 	else:
 		var dist: float = (_corePlayer.global_position - killer.global_position).length()
 		for layer: String in radiuses:

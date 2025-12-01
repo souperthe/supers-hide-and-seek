@@ -28,7 +28,6 @@ func controllerProcess(delta:float) -> void:
 		if !corePlayer.is_on_floor():
 			_canCrouch = false
 	
-	corePlayer.chase.radiusCheck()
 	corePlayer.collisionCrouching.disabled = !corePlayer.crouching
 	corePlayer.collisionStanding.disabled = corePlayer.crouching
 	

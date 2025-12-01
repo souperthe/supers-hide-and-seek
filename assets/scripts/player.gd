@@ -64,6 +64,8 @@ var crouching:bool = false
 
 var firstPerson:bool = true
 
+var seeking:bool = false
+
 const walk_speed : float = 12.1
 const sprint_speed : float = 18.1
 const ground_accel : float = 12.0
@@ -261,9 +263,10 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if !is_multiplayer_authority():
 		return
+	
 	rawDir = Input.get_vector("player_left", "player_right", "player_up", "player_down")
 	cameraDir = (_neck.global_transform.basis * Vector3(rawDir.x, 0, rawDir.y)).normalized()
-	
+	chase.radiusCheck()
 	var _movementDir:Vector3 = (global_transform.basis * Vector3(rawDir.x, 0, rawDir.y)).normalized()
 	
 	if !firstPerson:

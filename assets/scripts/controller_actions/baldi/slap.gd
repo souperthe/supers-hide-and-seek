@@ -23,7 +23,7 @@ func actioneExit()->void:
 func actionPhysics(delta:float)->void:
 	slapLength -= delta
 	
-	if !_attacked:
+	if !_attacked and corePlayer.seeking:
 		var knockBack:Vector3 = corePlayer.modelPivot.transform.basis.z*-120
 		if corePlayer.hitbox.hitboxDamage("cheesebox", 9500, knockBack, false):
 			_attacked = true
