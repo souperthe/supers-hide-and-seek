@@ -25,11 +25,12 @@ func _ready() -> void:
 func _on_counting_finished() -> void:
 	seekTimer.start()
 	util.oneShotSFX(
-		"res://assets/sound/sfx/resource/warning.wav"
+		"res://assets/sound/sfx/ambient/alarms/city_siren_loop2.wav"
 	)
 	for seekerid: int in seekers:
 		var seeker: Player = util.getPlayer(seekerid)
 		seeker.seeking = true
+		seeker.freeze = false
 		if seeker.is_multiplayer_authority():
 			seeker.playerHud.seeking.active = false
 			seeker.playerHud.seeking.hide()
@@ -131,6 +132,7 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 			seekers.append(pid)
 			newPlayer.loadSeeker(pdata.desired_seeker)
 			newPlayer.playerHud.seeking.active = true
+			newPlayer.freeze = true
 			newPlayer.playerHud.seeking.show()
 		else:
 			hiders.append(pid)

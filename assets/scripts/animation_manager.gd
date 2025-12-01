@@ -17,7 +17,7 @@ func _animationFinished(_animationName:String) -> void:
 	animationDone = true
 	return
 	
-func animationSetSpeed(speed:float) -> void:
+func animationSetSpeed(speed:float, sending:bool=false) -> void:
 	
 	if _animator == null:
 		return
@@ -27,11 +27,12 @@ func animationSetSpeed(speed:float) -> void:
 		
 	_animator.speed_scale = speed
 	
-	_corePlayer.events.animationSpeed.rpc(speed)
+	if !sending:
+		_corePlayer.events.animationSpeed.rpc(speed)
 	
 	return
 	
-func animationSeek(timePosition:float) -> void:
+func animationSeek(timePosition:float, sending:bool=false) -> void:
 	
 	if _animator == null:
 		return
@@ -39,8 +40,8 @@ func animationSeek(timePosition:float) -> void:
 		
 	_animator.seek(timePosition)
 	
-	
-	_corePlayer.events.animationSeek.rpc(timePosition)
+	if !sending:
+		_corePlayer.events.animationSeek.rpc(timePosition)
 	
 	return
 	

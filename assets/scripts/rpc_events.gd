@@ -105,12 +105,12 @@ func _physics_process(_delta: float) -> void:
 	
 @rpc("authority", "call_remote", "unreliable")
 func animationSeek(timePosition:float) -> void:
-	_corePlayer.animator.animationSeek(timePosition)
+	_corePlayer.animator.animationSeek(timePosition, true)
 	return
 	
 @rpc("authority", "call_remote", "unreliable")
 func animationSpeed(speed:float) -> void:
-	_corePlayer.animator.animationSetSpeed(speed)
+	_corePlayer.animator.animationSetSpeed(speed, true)
 	return
 	
 @rpc("authority", "call_remote", "reliable")

@@ -65,6 +65,7 @@ var crouching:bool = false
 var firstPerson:bool = true
 
 var seeking:bool = false
+var freeze:bool = false
 
 const walk_speed : float = 12.1
 const sprint_speed : float = 18.1

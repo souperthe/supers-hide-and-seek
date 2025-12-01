@@ -72,6 +72,9 @@ func _process(delta: float) -> void:
 	
 	if !corePlayer.is_multiplayer_authority():
 		return
+		
+	if corePlayer.freeze:
+		return
 	
 	if !run:
 		return
@@ -87,6 +90,9 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	
 	if !corePlayer.is_multiplayer_authority():
+		return
+		
+	if corePlayer.freeze:
 		return
 	
 	if !run:
