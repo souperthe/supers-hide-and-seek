@@ -65,9 +65,9 @@ func _processVoice(voiceData:Dictionary) -> void:
 	if targetEmitter == null:
 		return
 		
-	var decompressedVoice: Dictionary = Steam.decompressVoice(voiceData["buffer"], targetRate)
+	var decompressedVoice: Dictionary = Steam.decompressVoice(voiceData['buffer'], targetRate)
 	print("im receiving im receiving")
-	if decompressedVoice["result"] == Steam.VOICE_RESULT_OK and decompressedVoice["size"] > 0:
+	if decompressedVoice['result'] == Steam.VOICE_RESULT_OK and decompressedVoice['size'] > 0:
 		
 		_voiceBuffer = decompressedVoice['uncompressed']
 		_voiceBuffer.resize(decompressedVoice['size'])
@@ -109,7 +109,7 @@ func _processVoice(voiceData:Dictionary) -> void:
 func _checkVoice() -> void:
 	var voiceData: Dictionary = Steam.getVoice()
 
-	if voiceData["result"] == Steam.VOICE_RESULT_OK and voiceData["written"]:
+	if voiceData['result'] == Steam.VOICE_RESULT_OK and voiceData['written']:
 		if hasLoopback:
 			print("debug debug")
 			_processVoice.rpc(voiceData)
