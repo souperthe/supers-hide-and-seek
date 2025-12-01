@@ -114,7 +114,7 @@ func _checkVoice() -> void:
 			print("debug debug")
 			_processVoice.rpc(voiceData)
 	else:
-		print(voiceData["result"])
+		print("uh oh, what went wrong here? %s" % voiceData["result"])
 	return
 	
 	
