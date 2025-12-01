@@ -122,7 +122,7 @@ script = ExtResource("2_34ecl")
 targetEmitter = NodePath("../Voice")
 targetPlayer = NodePath("..")
 _talkingSprite = NodePath("../Talking")
-_mutedSprite = NodePath("../playerHud/Chat/MutedMic")
+_mutedSprite = NodePath("../playerHud/MutedMic")
 metadata/_custom_type_script = "uid://bxavxns0owjwj"
 
 [node name="interactionManager" type="Node" parent="." node_paths=PackedStringArray("_corePlayer")]

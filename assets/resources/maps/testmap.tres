@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SelectableMap" load_steps=4 format=3 uid="uid://55odc7kdwjg7"]
+
+[ext_resource type="Texture2D" uid="uid://5do1dx5k4a5x" path="res://assets/images/icons/steamuser99butpixelated.png" id="1_2it4f"]
+[ext_resource type="Script" path="res://assets/scripts/map_resource.gd" id="1_ul1t6"]
+[ext_resource type="PackedScene" uid="uid://5v8hkm8lwh8k" path="res://assets/scenes/maps/test.tscn" id="2_k424r"]
+
+[resource]
+script = ExtResource("1_ul1t6")
+mapName = "TEST MAP TEST"
+mapIcon = ExtResource("1_2it4f")
+mapScene = ExtResource("2_k424r")

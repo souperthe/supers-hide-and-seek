@@ -112,7 +112,7 @@ func animationSpeed(speed:float) -> void:
 	_corePlayer.animator.animationSetSpeed(speed)
 	return
 	
-@rpc("authority", "call_remote", "unreliable")
+@rpc("authority", "call_remote", "reliable")
 func animation(desiredAnimation:String, speed:float=1, seek:float=0) -> void:
 	_corePlayer.animator.playAnimation(
 		desiredAnimation,
@@ -123,7 +123,7 @@ func animation(desiredAnimation:String, speed:float=1, seek:float=0) -> void:
 	
 	return
 
-@rpc("authority", "call_remote", "unreliable")
+@rpc("authority", "call_remote", "reliable")
 func sound(soundPath:String, soundPitch:float=1, soundVolume:float=1)->void:
 	
 	util.oneShotSFX3D(

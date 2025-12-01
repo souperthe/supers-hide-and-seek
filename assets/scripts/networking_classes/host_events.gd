@@ -5,7 +5,7 @@ class_name ClassHostEvents extends Node
 @export var hideTimer:Timer
 
 var gameData:Dictionary = {
-	map = "srs3_school",
+	map = "testmap",
 	seekers = [1],
 	seek_time = 600, # time for seekers to seek
 	hide_time = 10, # time for hiders to hide
