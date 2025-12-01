@@ -40,6 +40,8 @@ func actionPhysics(delta:float)->void:
 	if running:
 		corePlayer.animator.playAnimation("Fredbear_Run_Anim", 1.5)
 		speed = corePlayer.walk_speed*3.2
+		
+		corePlayer.hitbox.breakDoors("cheesebox")
 	else:
 		corePlayer.animator.playAnimation("Fredbear_Walk_Anim")
 		

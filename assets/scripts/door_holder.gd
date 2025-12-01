@@ -19,7 +19,7 @@ func _on_area_3d_interacted(who: Player) -> void:
 	var currentTime:float = Time.get_unix_time_from_system()
 	var timeDiff:float = currentTime-_usedTime
 	
-	if timeDiff < 0.2:
+	if timeDiff < 0.15:
 		return
 	
 	_usedTime = Time.get_unix_time_from_system()

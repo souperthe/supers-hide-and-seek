@@ -8,6 +8,23 @@ var _allBoxes:Dictionary[String, Area3D]
 
 
 
+func breakDoors(hitboxName:String) -> void:
+	var bodies:Array[Node3D] = checkHitbox(hitboxName)
+	for body in bodies:
+	
+		if body is DoorCollision:
+			
+			if !body.destroyed:
+				
+				body.breakEvent.rpc()
+				
+				return
+		
+		
+		continue
+	
+	return
+
 
 func hitboxDamage(hitboxName:String, amount:float, knockback:Vector3) -> bool:
 	var bodies:Array[Node3D] = checkHitbox(hitboxName)

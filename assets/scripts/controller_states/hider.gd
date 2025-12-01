@@ -8,6 +8,7 @@ var _canCrouch:bool = false
 func handleChaseTheme() -> void:
 	var closestSeeker : Player = null
 	var closestNumber: float
+	
 	for seeker in Networking.hostEvents.seekers:
 		var distance: float = (corePlayer.global_position - seeker.global_position).length()
 		if distance < closestNumber or not closestNumber:
@@ -19,9 +20,10 @@ func handleChaseTheme() -> void:
 		if not $ColdChase.playing:
 			$ColdChase.play()
 	elif closestNumber < 40:
-		$ColdChase.stop()
 		if not $HotChase.playing:
+			$HotChase.seek($ColdChase.get_playback_position())
 			$HotChase.play()
+		$ColdChase.stop()
 	else:
 		$ColdChase.stop()
 		$HotChase.stop()
