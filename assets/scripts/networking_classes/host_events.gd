@@ -30,6 +30,8 @@ func endGame(reason: superEnum.endGameReason=superEnum.endGameReason.hidersWin):
 		"res://assets/sound/sfx/buttons/button24.wav"
 	)
 	
+	for seeker in seekers:
+		seeker.seeking = false
 	await get_tree().create_timer(3).timeout
 	
 	Steam.setLobbyJoinable(Networking.lobby.currentLobbyId,true)
@@ -77,6 +79,7 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 		
 		if desiredData.seekers.has(pid):
 			newPlayer.loadSeeker(pdata.desired_seeker)
+			newPlayer.seeking = true
 			seekers.append(newPlayer)
 		else:
 			newPlayer.loadHider(pdata.desired_hider)
