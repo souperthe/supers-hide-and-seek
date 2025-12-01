@@ -22,9 +22,15 @@ func _ready() -> void:
 	SignalManager.peerLeft.connect(_on_peer_left)
 
 func _on_counting_finished() -> void:
+	util.oneShotSFX(
+		"res://assets/sound/sfx/resource/warning.wav"
+	)
 	for seekerid: int in seekers:
 		var seeker: Player = util.getPlayer(seekerid)
 		seeker.seeking = true
+		if seeker.is_multiplayer_authority():
+			seeker.playerHud.seeking.active = false
+			seeker.playerHud.seeking.hide()
 
 func _on_peer_died(pid: int) -> void:
 	hiders.erase(pid)
@@ -117,6 +123,8 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 		
 		if desiredData.seekers.has(pid):
 			newPlayer.loadSeeker(pdata.desired_seeker)
+			newPlayer.playerHud.seeking.active = true
+			newPlayer.playerHud.seeking.show()
 			seekers.append(pid)
 		else:
 			newPlayer.loadHider(pdata.desired_hider)
