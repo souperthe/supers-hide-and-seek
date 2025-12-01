@@ -90,7 +90,7 @@ func lobbyJoined(this_lobby_id: int, _permissions: int, _locked: bool, _response
 		return
 		
 	print("joining lobby..")
-
+	
 	var peer:SteamMultiplayerPeer = SteamMultiplayerPeer.new()
 	Networking.lobby.currentLobbyId = this_lobby_id
 	peer.debug_level = SteamMultiplayerPeer.DEBUG_LEVEL_PEER
