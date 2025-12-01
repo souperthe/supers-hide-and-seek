@@ -9,6 +9,7 @@ class_name ChaseManager extends Node
 	"L1" : [45,60,$L1]
 }
 var inchase: bool = false
+var alreadyPlayingChase: bool = false
 var killer: Player = null
 
 func chaseSetup():
@@ -31,9 +32,22 @@ func radiusCheck():
 			var upcoming: float = ldata.get(1)
 			var sound: AudioStreamPlayer = ldata.get(2)
 			if inchase:
-				pass
+				if dist < 60:
+					if layer == "L3":
+						sound.volume_db = linear_to_db(1)
+					else:
+						sound.volume_db = linear_to_db(0)
+				else:
+					alreadyPlayingChase = false
+					inchase = false
+					sound.volume_db = linear_to_db(0)
 			else:
 				if dist <= upcoming and dist > radius:
+					if layer == "L3":
+						inchase = true
+						if not alreadyPlayingChase:
+							alreadyPlayingChase = true
+							sound.play()
 					sound.volume_db = linear_to_db(1)
 				else:
 					sound.volume_db = linear_to_db(0)
