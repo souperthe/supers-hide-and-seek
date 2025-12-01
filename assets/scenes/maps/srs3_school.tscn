@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://cic6mpxcgpvdx"]
+[gd_scene load_steps=10 format=3 uid="uid://cic6mpxcgpvdx"]
 
+[ext_resource type="PackedScene" uid="uid://c1w5coxxmu6a1" path="res://assets/objects/map/srs3_school/light.tscn" id="1_076lk"]
 [ext_resource type="MeshLibrary" uid="uid://cxnfrcp6hplm4" path="res://assets/objects/map/srs3_school/meshlibary/floors5.tres" id="1_fqlla"]
 [ext_resource type="MeshLibrary" uid="uid://cq7cigodo2crr" path="res://assets/objects/map/srs3_school/meshlibary/wallsreal.tres" id="2_076lk"]
 [ext_resource type="PackedScene" uid="uid://kf615r6tpaee" path="res://assets/objects/map/srs3_school/doorwithwall.tscn" id="3_lqkob"]
@@ -13,9 +14,71 @@ uv1_scale = Vector3(76, 76, 76)
 
 [sub_resource type="Environment" id="Environment_fqlla"]
 background_mode = 1
-background_color = Color(0.24477637, 0.2447764, 0.24477637, 1)
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.0508
 
 [node name="map" type="Node3D"]
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.090729, 0)
+
+[node name="Node3D" parent="Node3D" instance=ExtResource("1_076lk")]
+transform = Transform3D(1, 0, 0, 0, 0.04000962, 0.9991993, 0, -0.9991993, 0.04000962, -0.26281166, 5.8503647, -4.2530794)
+
+[node name="Node3D2" parent="Node3D" instance=ExtResource("1_076lk")]
+transform = Transform3D(1, 0, 0, 0, 0.04000962, 0.9991993, 0, -0.9991993, 0.04000962, -12.257612, 5.8503647, -24.4943)
+
+[node name="Node3D3" parent="Node3D" instance=ExtResource("1_076lk")]
+transform = Transform3D(1, 0, 0, 0, 0.04000962, 0.9991993, 0, -0.9991993, 0.04000962, 15.66778, 5.8503647, -33.67782)
+
+[node name="Node3D4" parent="Node3D" instance=ExtResource("1_076lk")]
+transform = Transform3D(1, 0, 0, 0, 0.04000962, 0.9991993, 0, -0.9991993, 0.04000962, 0.14918804, 5.8503647, -24.4943)
+
+[node name="Node3D5" parent="Node3D" instance=ExtResource("1_076lk")]
+transform = Transform3D(1, 0, 0, 0, 0.04000962, 0.9991993, 0, -0.9991993, 0.04000962, -12.483418, 5.8503647, -60.09305)
+
+[node name="Node3D6" parent="Node3D" instance=ExtResource("1_076lk")]
+transform = Transform3D(1, 0, 0, 0, 0.04000962, 0.9991993, 0, -0.9991993, 0.04000962, -41.18527, 5.8503647, -40.055344)
+
+[node name="Node3D7" parent="Node3D" instance=ExtResource("1_076lk")]
+transform = Transform3D(1, 0, 0, 0, 0.04000962, 0.9991993, 0, -0.9991993, 0.04000962, -13.623203, 5.8503647, -40.055344)
+
+[node name="Node3D8" parent="Node3D" instance=ExtResource("1_076lk")]
+transform = Transform3D(1, 0, 0, 0, 0.04000962, 0.9991993, 0, -0.9991993, 0.04000962, 0.14918804, 5.8503647, -48.999012)
+
+[node name="Node3D9" parent="Node3D" instance=ExtResource("1_076lk")]
+transform = Transform3D(1, 0, 0, 0, 0.04000962, 0.9991993, 0, -0.9991993, 0.04000962, 0.14918804, 5.8503647, -82.856255)
+
+[node name="Node3D10" parent="Node3D" instance=ExtResource("1_076lk")]
+transform = Transform3D(1, 0, 0, 0, 0.04000962, 0.9991993, 0, -0.9991993, 0.04000962, 0.14918804, 5.8503647, -113.966644)
+
+[node name="Node3D11" parent="Node3D" instance=ExtResource("1_076lk")]
+transform = Transform3D(1, 0, 0, 0, 0.04000962, 0.9991993, 0, -0.9991993, 0.04000962, 0.14918804, 5.8503647, -138.75769)
+
+[node name="Node3D12" parent="Node3D" instance=ExtResource("1_076lk")]
+transform = Transform3D(1, 0, 0, 0, 0.04000962, 0.9991993, 0, -0.9991993, 0.04000962, -36.648403, 5.8503647, -111.20775)
+
+[node name="Node3D13" parent="Node3D" instance=ExtResource("1_076lk")]
+transform = Transform3D(1, 0, 0, 0, 0.04000962, 0.9991993, 0, -0.9991993, 0.04000962, -15.292587, 5.8503647, -110.666)
+
+[node name="Node3D14" parent="Node3D" instance=ExtResource("1_076lk")]
+transform = Transform3D(1, 0, 0, 0, 0.04000962, 0.9991993, 0, -0.9991993, 0.04000962, -36.648403, 5.8503647, -96.460655)
+
+[node name="Node3D15" parent="Node3D" instance=ExtResource("1_076lk")]
+transform = Transform3D(1, 0, 0, 0, 0.04000962, 0.9991993, 0, -0.9991993, 0.04000962, -15.292587, 5.8503647, -95.91891)
+
+[node name="Node3D16" parent="Node3D" instance=ExtResource("1_076lk")]
+transform = Transform3D(1, 0, 0, 0, 0.04000962, 0.9991993, 0, -0.9991993, 0.04000962, -15.292587, 5.8503647, -95.91891)
+
+[node name="Node3D17" parent="Node3D" instance=ExtResource("1_076lk")]
+transform = Transform3D(1, 0, 0, 0, 0.04000962, 0.9991993, 0, -0.9991993, 0.04000962, -22.455666, 5.8503647, -119.8063)
+
+[node name="Node3D18" parent="Node3D" instance=ExtResource("1_076lk")]
+transform = Transform3D(1, 0, 0, 0, 0.04000962, 0.9991993, 0, -0.9991993, 0.04000962, -41.85697, 5.8503647, -119.8063)
+
+[node name="Node3D19" parent="Node3D" instance=ExtResource("1_076lk")]
+transform = Transform3D(1, 0, 0, 0, 0.04000962, 0.9991993, 0, -0.9991993, 0.04000962, -63.609474, 5.8503647, -129.94577)
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_fqlla")
@@ -157,6 +220,7 @@ locked = true
 locked = true
 
 [node name="ceiling2" type="CSGCombiner3D" parent="."]
+visible = false
 extra_cull_margin = 16384.0
 calculate_tangents = false
 use_collision = true
@@ -178,6 +242,7 @@ size = Vector3(292.106, 48, 40)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="ceiling2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8, -108.8)
+layers = 2
 size = Vector3(250, 0.1, 242.5)
 material = SubResource("28")
 
