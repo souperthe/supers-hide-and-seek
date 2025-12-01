@@ -17,6 +17,10 @@ func actionPhysics(delta:float)->void:
 	corePlayer.velocity.x = 0
 	corePlayer.velocity.z = 0
 	
+	if Input.is_action_just_pressed("player_jump"):
+		coreState.actionTransition("jump","jump")
+		return
+	
 	
 	slapTimeLeft -= delta
 	if corePlayer.wishDir != Vector3.ZERO and slapTimeLeft <= 0 and canSlap:

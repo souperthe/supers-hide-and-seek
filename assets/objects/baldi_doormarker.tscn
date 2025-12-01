@@ -41,4 +41,6 @@ billboard = 1
 no_depth_test = true
 fixed_size = true
 sprite_frames = SubResource("SpriteFrames_dtdag")
-frame_progress = 0.75432163
+frame_progress = 0.27538005
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
