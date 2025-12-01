@@ -5,6 +5,7 @@ extends Node
 @onready var playerList: FlowContainer = $UI/PlayerList
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	lobbyNameText.text = Networking.lobbyName
 	SignalManager.peerJoined.connect(_on_peer_joined)
 	for pid in Networking.players:

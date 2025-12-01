@@ -6,19 +6,19 @@ extends Control
 
 func _ready() -> void:
 	
-	var seekers:Array = Networking.hostEvents.currentData.get("seekers")
+	var seekers:Array = Networking.hostEvents.seekers
 	
 	var seekersNames:Array[String]
 	var namesString:String = ""
 	
-	for seeker in seekers:
+	for seeker: int in seekers:
 		var seekerData:Dictionary = Networking.players[seeker]
 		var seekerName:String = seekerData.get("username")
 		
 		seekersNames.append(seekerName)
 		continue
 		
-	for indx in range(seekersNames.size()):
+	for indx: int in range(seekersNames.size()):
 		var seekerName:String = seekersNames[indx]
 		
 		

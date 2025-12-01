@@ -17,6 +17,25 @@ var gameData:Dictionary = {
 
 func _ready() -> void:
 	seekTimer.timeout.connect(endGame.rpc)
+	hideTimer.timeout.connect(_on_counting_finished)
+	SignalManager.peerDied.connect(_on_peer_died)
+	SignalManager.peerLeft.connect(_on_peer_left)
+
+func _on_counting_finished() -> void:
+	for seekerid: int in seekers:
+		var seeker: Player = util.getPlayer(seekerid)
+		seeker.seeking = true
+
+func _on_peer_died(pid: int) -> void:
+	hiders.erase(pid)
+	if multiplayer.is_server():
+		if hiders.size() <= 0: endGame.rpc(superEnum.endGameReason.seekersWin)
+
+func _on_peer_left(pid: int) -> void:
+	seekers.erase(pid)
+	hiders.erase(pid)
+	if multiplayer.is_server():
+		if seekers.size() <= 0: endGame.rpc(superEnum.endGameReason.seekersLeft)
 
 @rpc("authority","call_local","reliable")
 func endGame(reason: superEnum.endGameReason=superEnum.endGameReason.hidersWin):
@@ -24,18 +43,37 @@ func endGame(reason: superEnum.endGameReason=superEnum.endGameReason.hidersWin):
 	if !multiplayer.get_remote_sender_id() == 1:
 		return
 	
+	print(reason)
+	
+	hideTimer.stop()
+	seekTimer.stop()
 	hiders.clear()
+	seekers.clear()
 	print("ending game...")
 	util.oneShotSFX(
 		"res://assets/sound/sfx/buttons/button24.wav"
 	)
-	
-	for seekerid in seekers:
+	for seekerid: int in seekers:
 		util.getPlayer(seekerid).seeking = false
-	await get_tree().create_timer(3).timeout
+	
+	var wintext: String = ""
+	match reason:
+		superEnum.endGameReason.seekersLeft:
+			wintext = "THE SEEKERS HAVE LEFT!"
+		superEnum.endGameReason.seekersWin:
+			wintext = "THE SEEKERS HAVE WON!"
+		superEnum.endGameReason.hidersWin:
+			wintext = "THE HIDERS HAVE WON!"
+		_:
+			wintext = "...uh?"
+	Networking.ui.show()
+	Networking.ui.reasonLabel.text = wintext
+	
+	await get_tree().create_timer(5).timeout
 	
 	Steam.setLobbyJoinable(Networking.lobby.currentLobbyId,true)
 	util.clearChildren(Networking.playersHolder)
+	Networking.ui.hide()
 	global.masterScene.switch_scene("res://assets/scenes/sub/lobby.tscn")
 	
 
@@ -79,7 +117,6 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 		
 		if desiredData.seekers.has(pid):
 			newPlayer.loadSeeker(pdata.desired_seeker)
-			newPlayer.seeking = true
 			seekers.append(pid)
 		else:
 			newPlayer.loadHider(pdata.desired_hider)

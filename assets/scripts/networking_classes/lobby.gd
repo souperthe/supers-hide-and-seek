@@ -22,6 +22,8 @@ func removeData(pid:int) -> void:
 		return
 		
 	Networking.players.erase(pid)
+	Networking.hostEvents.hiders.erase(pid)
+	Networking.hostEvents.seekers.erase(pid)
 	SignalManager.updatePeerList.emit()
 	return
 
