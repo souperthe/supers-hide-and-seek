@@ -4,22 +4,28 @@ class_name ChaseManager extends Node
 @export var _corePlayer: Player
 
 @onready var radiuses: Dictionary[String,Array] = {
-	"L3" : [0,30,$L3],
-	"L2" : [30,45,$L2],
+	"L3" : [0,15,$L3],
+	"L2" : [15,45,$L2],
 	"L1" : [45,60,$L1]
 }
 var inchase: bool = false
 var alreadyPlayingChase: bool = false
 var killer: Player = null
 
-func chaseSetup():
+func calcSound(distance: float) -> float:
+	#var K = 6
+	#var C = -6
+	#return K / (distance - C)
+	return 1.0
+
+
+func chaseSetup() -> void:
 	var seekers:Array = Networking.hostEvents.currentData.get("seekers")
 	for seeker in seekers:
 		#var pdata: Dictionary = Networking.players[seeker]
 		killer = util.getPlayer(seeker)
-	
 
-func radiusCheck():
+func radiusCheck() -> void:
 	if killer == null: return
 	
 	if killer == _corePlayer:
@@ -34,7 +40,7 @@ func radiusCheck():
 			if inchase:
 				if dist < 60:
 					if layer == "L3":
-						sound.volume_db = linear_to_db(1)
+						sound.volume_db = linear_to_db(calcSound(dist))
 					else:
 						sound.volume_db = linear_to_db(0)
 				else:
@@ -48,6 +54,6 @@ func radiusCheck():
 						if not alreadyPlayingChase:
 							alreadyPlayingChase = true
 							sound.play()
-					sound.volume_db = linear_to_db(1)
+					sound.volume_db = linear_to_db(calcSound(dist))
 				else:
 					sound.volume_db = linear_to_db(0)
