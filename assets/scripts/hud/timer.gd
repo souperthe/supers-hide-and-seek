@@ -3,6 +3,45 @@ extends Control
 @onready var timerLabel: Label = $Time/TimerLabel
 @onready var seekerLabel: Label = $Seeker/InfoLabel
 
+
+func _ready() -> void:
+	
+	var seekers:Array = Networking.hostEvents.gameData.get("seekers")
+	
+	var seekersNames:Array[String]
+	var namesString:String = ""
+	
+	for seeker in seekers:
+		var seekerData:Dictionary = Networking.players[seeker]
+		var seekerName:String = seekerData.get("username")
+		
+		seekersNames.append(seekerName)
+		continue
+		
+	for indx in range(seekersNames.size()):
+		var seekerName:String = seekersNames[indx]
+		
+		
+		if indx != 0:
+			namesString += ", "
+		
+		namesString += seekerName
+		
+		continue
+		
+	print(namesString)
+	
+	var aretheSeekers:String = " is the Seeker"
+	
+	if seekersNames.size() > 1:
+		aretheSeekers = " are the Seekers"
+	
+	seekerLabel.text = namesString + aretheSeekers
+	
+	
+	
+	return
+
 func _process(_delta: float) -> void:
 	var timeleft = Networking.hostEvents.seekTimer.time_left
 	
