@@ -153,9 +153,10 @@ _talkingSprite = NodePath("../Talking")
 _mutedSprite = NodePath("../playerHud/MutedMic")
 metadata/_custom_type_script = "uid://bxavxns0owjwj"
 
-[node name="interactionManager" type="Node" parent="." node_paths=PackedStringArray("_corePlayer")]
+[node name="interactionManager" type="Node" parent="." node_paths=PackedStringArray("_corePlayer", "_playerLabel")]
 script = ExtResource("2_lvyht")
 _corePlayer = NodePath("..")
+_playerLabel = NodePath("../playerHud/Label")
 
 [node name="RigidSync" type="Node" parent="interactionManager" node_paths=PackedStringArray("_holdPoint")]
 script = ExtResource("3_htwuo")

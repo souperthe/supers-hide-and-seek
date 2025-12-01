@@ -124,7 +124,7 @@ func _on_collision_broken(who: Player) -> void:
 	pass # Replace with function body.
 
 
-func _on_collision_force_open(who: Player) -> void:
+func _on_collision_force_open(_who: Player) -> void:
 	if _open:
 		return
 		

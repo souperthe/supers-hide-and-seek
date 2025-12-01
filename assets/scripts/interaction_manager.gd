@@ -2,6 +2,7 @@
 class_name InteractionManager extends Node
 
 @export var _corePlayer:Player
+@export var _playerLabel:Label
 #@export var _holdPoint:Node3D
 
 var _interactionProcesses : Array[Interaction]
@@ -70,11 +71,18 @@ func handleInteraction(delta:float)->void:
 		interaction.interactionProcess(delta)
 		continue
 		
+	if _playerLabel:
+		_playerLabel.text = ""
+		
 		
 		
 	
 	var interactRay:RayCast3D = _corePlayer.interactRay
 	var interactable:Object = interactRay.get_collider()
+	
+	if interactable is Player:
+		if _playerLabel:
+			_playerLabel.text = interactable.playerName
 	
 	#print(interactable)
 	

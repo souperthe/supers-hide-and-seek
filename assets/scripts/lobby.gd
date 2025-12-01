@@ -25,7 +25,7 @@ func _on_peer_joined(pid : int) -> void:
 	voice.add_child(audiovoice)
 	add_child(voice)
 	
-func _on_peer_left(pid):
+func _on_peer_left(_pid):
 	pass
 
 func _on_start_pressed() -> void:

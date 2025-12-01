@@ -67,7 +67,7 @@ func _processVoice(voiceData:Dictionary) -> void:
 		
 	var decompressedVoice: Dictionary = Steam.decompressVoice(voiceData['buffer'], targetRate)
 	print("im receiving im receiving")
-	if decompressedVoice['result'] == Steam.VOICE_RESULT_OK and decompressedVoice['size'] > 0:
+	if decompressedVoice['result'] == Steam.VOICE_RESULT_OK and decompressedVoice["size"] > 0:
 		
 		_voiceBuffer = decompressedVoice['uncompressed']
 		_voiceBuffer.resize(decompressedVoice['size'])
