@@ -37,10 +37,7 @@ func actionPhysics(delta:float)->void:
 			return
 	
 	if corePlayer.is_on_floor():
-		if goto != Vector3.ZERO:
-			coreState.actionTransition("flying_land")
-		else:
-			coreState.actionTransition("fly_transition")
+		coreState.actionTransition("fly_transition")
 		return
 	
 	return

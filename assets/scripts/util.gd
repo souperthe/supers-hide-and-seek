@@ -25,6 +25,18 @@ func getPlayerAvatar(pid: int, size: int) -> ImageTexture:
 	var avatar_texture: ImageTexture = ImageTexture.create_from_image(player_avatar)
 	return avatar_texture
 	
+func bytes_to_packed_vector2_array(bytes: PackedByteArray) -> PackedVector2Array:
+	if bytes.size() % 8 != 0:
+		return PackedVector2Array()
+		
+	var result: PackedVector2Array = []
+	var count: int = int(float(bytes.size()) / 8)
+	result.resize(count)
+	for i in count:
+		var x: float = bytes.decode_float(i * 8)
+		var y: float = bytes.decode_float(i * 8 + 4)
+		result[i] = Vector2(x, y)
+	return result
 	
 func getPlayersOnTeam(desiredTeam:superEnum.teams) -> Array[Player]:
 	
