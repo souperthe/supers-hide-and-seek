@@ -255,7 +255,7 @@ func _setupAuthority()->void:
 
 func _ready() -> void:
 	animator.animatorSetup()
-	chase.chaseSetup()
+	SignalManager.roundStart.connect(chase.chaseSetup)
 	if !is_multiplayer_authority():
 		_setupOthers()
 		return

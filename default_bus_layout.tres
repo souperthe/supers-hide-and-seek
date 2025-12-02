@@ -1,4 +1,9 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://pqaumok8tfot"]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://pqaumok8tfot"]
+
+[sub_resource type="AudioEffectHardLimiter" id="AudioEffectHardLimiter_j3pel"]
+resource_name = "HardLimiter"
+pre_gain_db = 2.0
+ceiling_db = 0.0
 
 [sub_resource type="AudioEffectCapture" id="AudioEffectCapture_j3pel"]
 resource_name = "Capture"
@@ -34,5 +39,7 @@ bus/5/mute = true
 bus/5/bypass_fx = false
 bus/5/volume_db = 0.0
 bus/5/send = &"Master"
-bus/5/effect/0/effect = SubResource("AudioEffectCapture_j3pel")
+bus/5/effect/0/effect = SubResource("AudioEffectHardLimiter_j3pel")
 bus/5/effect/0/enabled = true
+bus/5/effect/1/effect = SubResource("AudioEffectCapture_j3pel")
+bus/5/effect/1/enabled = true

@@ -30,7 +30,7 @@ func _ready() -> void:
 	if is_multiplayer_authority():
 		
 		bus_idx = AudioServer.get_bus_index(global.microphoneInput.bus)
-		capture = AudioServer.get_bus_effect(bus_idx, 0)
+		capture = AudioServer.get_bus_effect(bus_idx, 1)
 		capture.clear_buffer()
 		capture.reset_state()
 		
