@@ -20,29 +20,22 @@ func _ready() -> void:
 	if targetPlayer:
 		set_multiplayer_authority(targetPlayer.authID)
 	
-	mic = AudioStreamPlayer.new()
-	mic.bus = "Microphone"
-	add_child(mic)
-	mic.play()
-	
-	
-	bus = mic.bus
-	bus_idx = AudioServer.get_bus_index(bus)
-	capture = AudioServer.get_bus_effect(bus_idx, 0)
-	
 	var generator:AudioStreamGenerator = AudioStreamGenerator.new()
-	
 	generator.mix_rate = 48000
 	
 	targetEmitter.stream = generator
 	targetEmitter.play()
 	
+	
 	if is_multiplayer_authority():
-		mic.stream = AudioStreamMicrophone.new()
-		mic.play()
+		
+		bus_idx = AudioServer.get_bus_index(global.microphoneInput.bus)
+		capture = AudioServer.get_bus_effect(bus_idx, 0)
+		capture.clear_buffer()
+		capture.reset_state()
+		
 		stream = targetEmitter.get_stream_playback()
 	else: 
-		mic.stop()
 		targetEmitter.play()
 		stream = targetEmitter.get_stream_playback()
 		

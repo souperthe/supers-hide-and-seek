@@ -5,6 +5,9 @@ var look_sensitivity : float = 0.006
 var masterScene : MasterScene
 
 
+var microphoneInput : AudioStreamPlayer
+
+
 func _init() -> void:
 	print("starting game")
 	return
@@ -13,6 +16,12 @@ func _ready() -> void:
 	Steam.steamInit(
 		480, true
 	)
+	
+	microphoneInput = AudioStreamPlayer.new()
+	microphoneInput.bus = "Microphone"
+	microphoneInput.stream = AudioStreamMicrophone.new()
+	add_child(microphoneInput)
+	microphoneInput.play()
 	return
 
 
