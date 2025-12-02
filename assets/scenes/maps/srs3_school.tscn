@@ -587,6 +587,8 @@ locked = true
 extra_cull_margin = 16384.0
 calculate_tangents = false
 use_collision = true
+collision_layer = 7
+collision_mask = 7
 
 [node name="CSGBox" type="CSGBox3D" parent="ceiling2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 26)
