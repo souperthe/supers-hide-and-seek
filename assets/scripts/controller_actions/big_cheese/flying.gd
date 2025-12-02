@@ -13,7 +13,7 @@ func actioneExit()->void:
 
 func actionPhysics(delta:float)->void:
 	
-	corePlayer.velocity.y -= (corePlayer.gravity) * delta
+	corePlayer.velocity.y -= (corePlayer.gravity/2) * delta
 	
 	var goto:Vector3 = corePlayer.wishDir * (corePlayer.walk_speed*2)
 	
@@ -33,7 +33,6 @@ func actionPhysics(delta:float)->void:
 		
 	if corePlayer.velocity.y < 0:
 		if corePlayer.hitbox.hitboxDamage("cheesebox_fall", 100, corePlayer.velocity):
-			coreState.actionTransition("land_fall")
 			return
 	
 	if corePlayer.is_on_floor():
