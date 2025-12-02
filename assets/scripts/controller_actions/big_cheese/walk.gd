@@ -4,7 +4,7 @@ var _stepTime:float = 0
 
 func actionEnter(_message:String="")->void:
 	
-	corePlayer.animator.playAnimation("walk")
+	corePlayer.animator.playAnimation("walk", 1.5)
 	_stepTime = 0
 	
 	coreSound.playSound(
@@ -42,7 +42,7 @@ func actionPhysics(delta:float)->void:
 		return
 	
 	
-	corePlayer.velocity = corePlayer.wishDir * (corePlayer.walk_speed/2)
+	corePlayer.velocity = corePlayer.wishDir * (corePlayer.walk_speed/1.5)
 	
 	_stepTime += corePlayer.velocity.length() * delta
 	
