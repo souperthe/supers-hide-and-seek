@@ -19,7 +19,7 @@ func _on_peer_joined(pid : int) -> void:
 	voice.set_multiplayer_authority(pid)
 	voice.name = str(pid)
 	voice.targetEmitter = audiovoice
-	voice._mutedSprite = $UI/MutedMic
+	#voice._mutedSprite = $UI/MutedMic
 	audiovoice.name = "Voice"
 	audiovoice.bus = &"Voice"
 	voice.add_child(audiovoice)

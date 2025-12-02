@@ -145,12 +145,10 @@ _light = NodePath("../neckOffset/Neck/network_light")
 _corePlayer = NodePath("..")
 _voiceEmitter = NodePath("../Voice")
 
-[node name="VoiceEmitter" type="Node" parent="." node_paths=PackedStringArray("targetEmitter", "targetPlayer", "_talkingSprite", "_mutedSprite")]
+[node name="VoiceEmitter" type="Node" parent="." node_paths=PackedStringArray("targetEmitter", "targetPlayer")]
 script = ExtResource("2_34ecl")
 targetEmitter = NodePath("../Voice")
 targetPlayer = NodePath("..")
-_talkingSprite = NodePath("../Talking")
-_mutedSprite = NodePath("../playerHud/MutedMic")
 metadata/_custom_type_script = "uid://bxavxns0owjwj"
 
 [node name="interactionManager" type="Node" parent="." node_paths=PackedStringArray("_corePlayer", "_playerLabel")]
