@@ -113,8 +113,8 @@ func _checkVoice() -> void:
 		if hasLoopback:
 			print("debug debug")
 			_processVoice.rpc(voiceData)
-	else:
-		print("uh oh, what went wrong here? %s" % voiceData["result"])
+	#else:
+		#print("uh oh, what went wrong here? %s" % voiceData["result"])
 	return
 	
 	

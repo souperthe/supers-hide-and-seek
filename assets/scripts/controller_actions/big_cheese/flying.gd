@@ -13,7 +13,7 @@ func actioneExit()->void:
 
 func actionPhysics(delta:float)->void:
 	
-	corePlayer.velocity.y -= (corePlayer.gravity/2) * delta
+	corePlayer.velocity.y -= (corePlayer.gravity/2.5) * delta
 	
 	var goto:Vector3 = corePlayer.wishDir * (corePlayer.walk_speed*2)
 	
