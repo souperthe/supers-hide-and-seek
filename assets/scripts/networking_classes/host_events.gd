@@ -12,7 +12,7 @@ var gameData:Dictionary = {
 	map = "srs3_school",
 	seekers = [1],
 	seek_time = 600, # time for seekers to seek
-	hide_time = 10, # time for hiders to hide
+	hide_time = 20, # time for hiders to hide
 	use_lms = false
 }
 
