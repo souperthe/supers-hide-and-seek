@@ -1,5 +1,5 @@
 @icon("res://assets/images/icons/microphone.svg")
-class_name VoiceEmitterOLD extends Node
+class_name VoiceEmitter extends Node
 
 
 @export var targetEmitter:Node
