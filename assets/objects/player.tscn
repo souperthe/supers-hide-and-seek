@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://bmoapp8kdmh2f" path="res://assets/scripts/rpc_events.gd" id="2_1qp14"]
 [ext_resource type="Script" uid="uid://df1c277cqjm5o" path="res://assets/scripts/controller_manager.gd" id="2_5pvfp"]
 [ext_resource type="Script" uid="uid://dt4s1la1cgwgp" path="res://assets/scripts/animation_manager.gd" id="2_7muya"]
-[ext_resource type="Script" uid="uid://bxavxns0owjwj" path="res://assets/scripts/voice_emitter.gd" id="2_34ecl"]
 [ext_resource type="Script" uid="uid://dmo0jxb8j7daa" path="res://assets/scripts/hitbox_manager.gd" id="2_am6w6"]
 [ext_resource type="Script" uid="uid://d1acepvi6enht" path="res://assets/scripts/sound_manager.gd" id="2_fh75e"]
 [ext_resource type="Script" uid="uid://2ib7l6uqqdra" path="res://assets/scripts/interaction_manager.gd" id="2_lvyht"]
@@ -18,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://6g6cls708sff" path="res://assets/objects/player_hud.tscn" id="7_xvjlw"]
 [ext_resource type="Script" uid="uid://wndtq88tdhh6" path="res://assets/scripts/interaction/door.gd" id="8_bseap"]
 [ext_resource type="ArrayMesh" uid="uid://ddlvb5op1kbts" path="res://assets/models/placeholder/player.obj" id="9_bkysh"]
+[ext_resource type="Script" uid="uid://imgu1tmsox20" path="res://assets/scripts/voice_emitterOLD.gd" id="9_x2vy3"]
 [ext_resource type="Script" uid="uid://qwdcoukg2owl" path="res://assets/scripts/controller_states/big_cheese.gd" id="12_qgtm8"]
 [ext_resource type="Texture2D" uid="uid://sfofdqbs0rvf" path="res://assets/images/icons/old-microphone.png" id="13_fg3d2"]
 [ext_resource type="Script" uid="uid://c1nptbygdrtmt" path="res://assets/scripts/controller_states/spectate.gd" id="14_axagv"]
@@ -84,7 +84,7 @@ interactor = NodePath("interactionManager")
 events = NodePath("RPCEvents")
 animator = NodePath("animationManager")
 hitbox = NodePath("hitboxManager")
-voiceEmitter = NodePath("VoiceEmitter")
+voiceEmitter = NodePath("")
 playerHud = NodePath("playerHud")
 seekerHud = NodePath("seekerHud")
 chase = NodePath("chaseManager")
@@ -145,11 +145,13 @@ _light = NodePath("../neckOffset/Neck/network_light")
 _corePlayer = NodePath("..")
 _voiceEmitter = NodePath("../Voice")
 
-[node name="VoiceEmitter" type="Node" parent="." node_paths=PackedStringArray("targetEmitter", "targetPlayer")]
-script = ExtResource("2_34ecl")
+[node name="VoiceEmitter" type="Node" parent="." node_paths=PackedStringArray("targetEmitter", "targetPlayer", "_talkingSprite", "_mutedSprite")]
+script = ExtResource("9_x2vy3")
 targetEmitter = NodePath("../Voice")
 targetPlayer = NodePath("..")
-metadata/_custom_type_script = "uid://bxavxns0owjwj"
+_talkingSprite = NodePath("../Talking")
+_mutedSprite = NodePath("../playerHud/MutedMic")
+metadata/_custom_type_script = "uid://imgu1tmsox20"
 
 [node name="interactionManager" type="Node" parent="." node_paths=PackedStringArray("_corePlayer", "_playerLabel")]
 script = ExtResource("2_lvyht")
