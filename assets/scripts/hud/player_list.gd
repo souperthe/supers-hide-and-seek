@@ -7,6 +7,7 @@ func add_player(pid: int):
 	player_button.text = pdata.username
 	player_button.name = str(pid)
 	player_button.icon = util.getPlayerAvatar(pdata.steamid,32)
+	Steam.setInGameVoiceSpeaking(pdata.steamid, true)
 	add_child(player_button)
 
 func load_players():
