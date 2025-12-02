@@ -7,7 +7,8 @@ extends Control
 
 var _teamColors:Dictionary[superEnum.teams, String] = {
 	superEnum.teams.seeker: "red",
-	superEnum.teams.hider: "blue"
+	superEnum.teams.hider: "blue",
+	superEnum.teams.spectator: "white"
 }
 
 func _getMessage(sender:int, message:String) -> void:
