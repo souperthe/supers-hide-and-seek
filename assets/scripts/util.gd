@@ -111,12 +111,16 @@ func generate_word(length:int) -> String:
 		word += _characters[randi()% n_char]
 	return word
 
-func oneShotSFX3D(emitter:Node3D, soundPath:String, soundPitch:float=1, soundVolume:float=1, from:float=0)->void:
+func oneShotSFX3D(emitter:Node3D, soundPath:String, soundPitch:float=1, soundVolume:float=1, from:float=0, doppler:bool=true)->void:
 	var newSound:AudioStreamPlayer3D = AudioStreamPlayer3D.new()
 	newSound.stream = load(soundPath)
 	newSound.pitch_scale = soundPitch
 	newSound.volume_linear = soundVolume
-	newSound.attenuation_filter_db = 0.0
+	newSound.unit_size = 40
+	newSound.max_distance = 80
+	newSound.attenuation_filter_db = 0
+	if doppler:
+		newSound.doppler_tracking = AudioStreamPlayer3D.DOPPLER_TRACKING_PHYSICS_STEP
 	emitter.add_child(newSound)
 	newSound.play(from)
 	await newSound.finished

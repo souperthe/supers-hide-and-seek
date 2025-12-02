@@ -12,7 +12,9 @@ func playSound(soundPath:String, soundPitch:float=1, soundVolume:float=1) -> voi
 		_corePlayer,
 		soundPath,
 		soundPitch,
-		soundVolume
+		soundVolume,
+		0,
+		false
 	)
 	
 	_corePlayer.events.sound.rpc(soundPath, soundPitch, soundVolume)
