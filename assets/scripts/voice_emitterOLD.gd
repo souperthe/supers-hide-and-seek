@@ -50,12 +50,15 @@ var _gain: float = 1.0
 	
 func dymanicGain(sample: float) -> float:
 	var absSample:float = abs(sample)
+	
 	if absSample < _noiseFloor/2:
 		_peak *= 0.995/2
 		return 0.0 
+		
 	_gain = max(_peak * 0.9995, absSample)
 	_gain = _targetPeak / max(_peak, 0.01)
 	_gain = clamp(_gain, 0.1, 12.0)
+	
 	return _gain
 	
 	

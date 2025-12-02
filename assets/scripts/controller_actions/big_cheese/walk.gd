@@ -44,13 +44,13 @@ func actionPhysics(delta:float)->void:
 	
 	corePlayer.velocity = corePlayer.wishDir * (corePlayer.walk_speed/1.5)
 	
-	_stepTime += corePlayer.velocity.length() * delta
+	_stepTime += corePlayer.animator._animator.speed_scale * delta
 	
 	if Input.is_action_just_pressed("player_ability"):
 		if coreState.useAbility("search"):
 			return
 	
-	if _stepTime > 4.5:
+	if _stepTime > 0.8:
 		coreSound.playSound(
 			"res://assets/resources/rnd_sound/cog_step.tres",
 			1,
