@@ -53,8 +53,11 @@ func send_voice(data : PackedVector2Array) -> void:
 func check_mic() -> void:
 	buffer_size = capture.get_frames_available()
 	
+	#print(buffer_size)
+	
 	var voice_data : PackedVector2Array = capture.get_buffer(buffer_size)
-	send_voice.rpc(voice_data)
+	if buffer_size > 500:
+		send_voice.rpc(voice_data)
 	capture.clear_buffer()
 	return
 
