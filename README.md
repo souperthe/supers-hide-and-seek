@@ -10,7 +10,8 @@ Once all hiders are dead the Seekers win, but if all Hiders are alive when times
 This project aims to recreate that in a more light-weight and optimized form in Godot, with a unique spin put onto it.
 
 
-## MODEL CREDITS
+## CREDITS
+### MODELS
 - Baldi:
     https://www.deviantart.com/pfgfromyt/art/Baldi-s-Basics-Plus-Model-Release-Blender-3-0-991109504
 - Big Cheese & Skelecog:
@@ -18,3 +19,5 @@ This project aims to recreate that in a more light-weight and optimized form in 
     https://skfb.ly/oGVSs
 - Fredbear:
     https://skfb.ly/pCOSP
+### SOUNDS
+- https://github.com/sourcesounds/hl2
