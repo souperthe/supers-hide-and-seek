@@ -28,10 +28,16 @@ This project aims to recreate that in a more light-weight and optimized form in 
 - [GodotSteam MultiplayerPeer v4.5.1](https://codeberg.org/godotsteam/multiplayerpeer/releases/tag/v4.16.2)
 
 ## DISCLAIMERS
-- We are under no obligation to:
+- We are under no obligation to
+  
     Accept pull requests
-- We may or may not:
+  
+- We may or may not
+  
     Publish additional releases in the future
     Create technical documentation
+  
 - Please read the license before using this software.
+
     Any assets not created by us are not included in the license.
+  
