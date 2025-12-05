@@ -27,6 +27,7 @@ This project aims to recreate that in a more light-weight and optimized form in 
 
 - [GodotSteam MultiplayerPeer v4.5.1](https://codeberg.org/godotsteam/multiplayerpeer/releases/tag/v4.16.2)
 - [Steam (duh)](https://store.steampowered.com/)
+- [Blender (for model imports)](https://www.blender.org/)
 
 ## DISCLAIMERS
 ### We are under no obligation to
