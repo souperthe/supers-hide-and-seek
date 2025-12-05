@@ -30,14 +30,14 @@ This project aims to recreate that in a more light-weight and optimized form in 
 ## DISCLAIMERS
 ### We are under no obligation to
   
-    Accept pull requests
+- Accept pull requests
   
 ### We may or may not
   
-    Publish additional releases in the future
-    Create technical documentation
+- Publish additional releases in the future
+- Create technical documentation
   
 ### Please read the license before using this software.
 
-    Any assets not created by us are not included in the license.
+- Any assets not created by us are not included in the license.
   
