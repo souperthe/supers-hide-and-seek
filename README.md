@@ -26,6 +26,7 @@ This project aims to recreate that in a more light-weight and optimized form in 
 ## REQUIREMENTS
 
 - [GodotSteam MultiplayerPeer v4.5.1](https://codeberg.org/godotsteam/multiplayerpeer/releases/tag/v4.16.2)
+- [Steam (duh)](https://store.steampowered.com/)
 
 ## DISCLAIMERS
 ### We are under no obligation to
