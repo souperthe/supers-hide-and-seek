@@ -22,3 +22,17 @@ This project aims to recreate that in a more light-weight and optimized form in 
 ### SOUNDS
 - https://github.com/sourcesounds/hl2
 - https://sounds.spriters-resource.com/pc_computer/toontownonline/asset/397892/
+
+## Requirements
+
+- [GodotSteam MultiplayerPeer v4.5.1](https://codeberg.org/godotsteam/multiplayerpeer/releases/tag/v4.16.2)
+
+## Disclaimer
+- We are under no obligation to:
+  -  update this repository
+  -  accept pull requests
+- We may or may not:
+  - publish additional releases in the future
+  - create technical documentation
+- Please read the license before using this software.
+  - Any assets from Toontown Online are not included in the license.
