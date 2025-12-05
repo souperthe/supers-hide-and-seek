@@ -22,6 +22,7 @@ This project aims to recreate that in a more light-weight and optimized form in 
 ### SOUNDS
 - https://github.com/sourcesounds/hl2
 - https://sounds.spriters-resource.com/pc_computer/toontownonline/asset/397892/
+- https://sounds.spriters-resource.com/pc_computer/baldisbasicsineducationandlearning/asset/411831/
 
 ## REQUIREMENTS
 
