@@ -6,6 +6,7 @@ var masterScene : MasterScene
 
 
 var microphoneInput : AudioStreamPlayer
+var microphoneMuted: bool = false
 
 
 func _init() -> void:

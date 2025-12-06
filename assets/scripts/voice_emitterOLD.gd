@@ -12,7 +12,6 @@ var _playback:AudioStreamGeneratorPlayback = null
 var hasLoopback: bool = true
 
 var speaking:bool = false
-var muted: bool = false
 
 
 
@@ -37,8 +36,9 @@ func _ready() -> void:
 	if !is_multiplayer_authority():
 		return
 		
-		
+	
 	print("starting voice")
+	_mutedSprite.visible = global.microphoneMuted
 	Steam.startVoiceRecording()
 	return
 	
@@ -143,10 +143,10 @@ func _process(_delta: float) -> void:
 		return
 	
 	if Input.is_action_just_pressed("mute_mic"):
-		muted = !muted
-		_mutedSprite.visible = muted
+		global.microphoneMuted = not global.microphoneMuted
+		_mutedSprite.visible = global.microphoneMuted
 	
-	if muted:
+	if global.microphoneMuted:
 		return
 	
 	_checkVoice()
