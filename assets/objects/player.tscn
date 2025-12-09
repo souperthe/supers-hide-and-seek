@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://c8i5i2af5ohaf"]
+[gd_scene load_steps=55 format=3 uid="uid://c8i5i2af5ohaf"]
 
 [ext_resource type="Script" uid="uid://jrbuo0ken0kb" path="res://assets/scripts/player.gd" id="1_ikdab"]
 [ext_resource type="Script" uid="uid://bmoapp8kdmh2f" path="res://assets/scripts/rpc_events.gd" id="2_1qp14"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dmo0jxb8j7daa" path="res://assets/scripts/hitbox_manager.gd" id="2_am6w6"]
 [ext_resource type="Script" uid="uid://d1acepvi6enht" path="res://assets/scripts/sound_manager.gd" id="2_fh75e"]
 [ext_resource type="Script" uid="uid://2ib7l6uqqdra" path="res://assets/scripts/interaction_manager.gd" id="2_lvyht"]
+[ext_resource type="Script" uid="uid://dkb8ltjc6067n" path="res://addons/raytraced_audio/raytraced_audio_player_3d.gd" id="2_nj0sc"]
 [ext_resource type="Script" uid="uid://dws8fr5ve6qp8" path="res://assets/scripts/chase_manager.gd" id="2_vcvpc"]
 [ext_resource type="Script" uid="uid://byixfhnxaujvy" path="res://assets/scripts/interaction/rigid_body_3d.gd" id="3_htwuo"]
 [ext_resource type="Script" uid="uid://dx63y06pacekr" path="res://assets/scripts/controller_states/hider.gd" id="3_jg13i"]
@@ -108,6 +109,8 @@ unit_size = 15.0
 max_distance = 30.0
 bus = &"Voice"
 attenuation_filter_db = 0.0
+script = ExtResource("2_nj0sc")
+metadata/_custom_type_script = "uid://dkb8ltjc6067n"
 
 [node name="chaseManager" type="Node" parent="." node_paths=PackedStringArray("_corePlayer")]
 script = ExtResource("2_vcvpc")
@@ -144,7 +147,7 @@ _corePlayer = NodePath("..")
 script = ExtResource("2_1qp14")
 _light = NodePath("../neckOffset/Neck/network_light")
 _corePlayer = NodePath("..")
-_voiceEmitter = NodePath("../Voice")
+_voiceEmitter = NodePath("")
 
 [node name="VoiceEmitter" type="Node" parent="." node_paths=PackedStringArray("targetEmitter", "targetPlayer", "_talkingSprite", "_mutedSprite")]
 script = ExtResource("9_x2vy3")

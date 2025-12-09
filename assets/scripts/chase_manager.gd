@@ -11,6 +11,7 @@ class_name ChaseManager extends Node
 var inchase: bool = false
 var alreadyPlayingChase: bool = false
 var killer: Player = null
+var playthemes: bool = false
 
 func calcSound(distance: float) -> float:
 	
@@ -26,6 +27,7 @@ func chaseSetup() -> void:
 		killer = util.getPlayer(seeker)
 
 func radiusCheck() -> void:
+	if not playthemes: return
 	if killer == null: return
 	if not killer.seeking: return
 	

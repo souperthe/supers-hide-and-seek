@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://pqaumok8tfot"]
+[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://pqaumok8tfot"]
 
 [sub_resource type="AudioEffectHardLimiter" id="AudioEffectHardLimiter_j3pel"]
 resource_name = "HardLimiter"
@@ -7,6 +7,13 @@ ceiling_db = 0.0
 
 [sub_resource type="AudioEffectCapture" id="AudioEffectCapture_j3pel"]
 resource_name = "Capture"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_j3pel"]
+resource_name = "reverb"
+hipass = 1.0
+
+[sub_resource type="AudioEffectPanner" id="AudioEffectPanner_g28q7"]
+resource_name = "pan"
 
 [resource]
 bus/1/name = &"SFX"
@@ -43,3 +50,19 @@ bus/5/effect/0/effect = SubResource("AudioEffectHardLimiter_j3pel")
 bus/5/effect/0/enabled = true
 bus/5/effect/1/effect = SubResource("AudioEffectCapture_j3pel")
 bus/5/effect/1/enabled = true
+bus/6/name = &"RaytracedReverb"
+bus/6/solo = false
+bus/6/mute = false
+bus/6/bypass_fx = false
+bus/6/volume_db = 0.0
+bus/6/send = &"Master"
+bus/6/effect/0/effect = SubResource("AudioEffectReverb_j3pel")
+bus/6/effect/0/enabled = true
+bus/7/name = &"RaytracedAmbient"
+bus/7/solo = false
+bus/7/mute = false
+bus/7/bypass_fx = false
+bus/7/volume_db = 0.0
+bus/7/send = &"Master"
+bus/7/effect/0/effect = SubResource("AudioEffectPanner_g28q7")
+bus/7/effect/0/enabled = true

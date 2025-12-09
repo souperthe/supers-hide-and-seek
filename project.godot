@@ -23,6 +23,7 @@ config/icon="res://icon.svg"
 
 [audio]
 
+general/3d_panning_strength=1.0
 driver/enable_input=true
 driver/mix_rate=48000
 
@@ -34,10 +35,11 @@ Networking="*res://assets/objects/autoload/networking.tscn"
 superEnum="*res://assets/scripts/super_enum.gd"
 SignalManager="*res://assets/scripts/signal_manager.gd"
 Console="*res://addons/console/console.gd"
+RpcAwait="*res://addons/rpc-await/rpc_await.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/console/plugin.cfg")
+enabled=PackedStringArray("res://addons/console/plugin.cfg", "res://addons/raytraced_audio/plugin.cfg", "res://addons/rpc-await/plugin.cfg")
 
 [input]
 
@@ -141,6 +143,11 @@ mute_mic={
 
 3d/physics_engine="Jolt Physics"
 common/physics_interpolation=true
+
+[raytraced_audio]
+
+reverb_bus=&"RaytracedReverb"
+ambient_bus=&"RaytracedAmbient"
 
 [rendering]
 
