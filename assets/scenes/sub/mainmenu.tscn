@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cviiv3phf8uy2"]
+[gd_scene load_steps=7 format=3 uid="uid://cviiv3phf8uy2"]
 
 [ext_resource type="Script" uid="uid://daborhbprgsmt" path="res://assets/scripts/main_menu.gd" id="1_1taxn"]
 [ext_resource type="Script" uid="uid://c4r4anr5q5u3u" path="res://assets/scripts/mainmenu/main.gd" id="2_0yby4"]
-[ext_resource type="FontFile" uid="uid://pp6uta6h61is" path="res://assets/fonts/Tiny-Regular.ttf" id="3_bvm21"]
+[ext_resource type="Texture2D" uid="uid://bil5evvf1c6bd" path="res://assets/images/shnsicon.png" id="3_1ykmp"]
 [ext_resource type="Script" uid="uid://b8gwlxucibvcf" path="res://assets/scripts/mainmenu/seeker_picker.gd" id="4_mt0xs"]
+[ext_resource type="FontFile" uid="uid://cfxb2x8c377u6" path="res://assets/fonts/Comic Sans MS.ttf" id="4_xigph"]
 [ext_resource type="Texture2D" uid="uid://borex5vqc1i4e" path="res://assets/images/seeker_icons/big_cheese.png" id="5_lm47t"]
 
 [node name="menuLayer" type="CanvasLayer"]
@@ -28,20 +29,6 @@ grow_vertical = 2
 script = ExtResource("2_0yby4")
 _seekerPicker = NodePath("../SeekerPicker")
 
-[node name="Title" type="RichTextLabel" parent="menu/Main"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 23.0
-offset_bottom = 71.0
-grow_horizontal = 2
-theme_override_fonts/normal_font = ExtResource("3_bvm21")
-theme_override_font_sizes/normal_font_size = 36
-bbcode_enabled = true
-text = "[wave]SUPERS HIDE AND SEEK"
-fit_content = true
-scroll_active = false
-
 [node name="WIP" type="RichTextLabel" parent="menu/Main"]
 layout_mode = 1
 anchors_preset = 10
@@ -58,11 +45,11 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -196.25
-offset_right = 229.0
-offset_bottom = 196.25
+offset_left = 35.0
+offset_top = -164.0
+offset_right = 165.0
+offset_bottom = 211.0
 grow_vertical = 2
-alignment = 1
 
 [node name="NetworkingType" type="OptionButton" parent="menu/Main/ButtonsList"]
 layout_mode = 2
@@ -102,6 +89,45 @@ layout_mode = 2
 [node name="SETTINGS" type="Button" parent="menu/Main/ButtonsList"]
 layout_mode = 2
 text = "SETTINGS"
+
+[node name="TitlePanel" type="Panel" parent="menu/Main"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 52.0
+offset_right = 337.0
+offset_bottom = 113.0
+
+[node name="Icon" type="TextureRect" parent="menu/Main/TitlePanel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_vertical = 2
+texture = ExtResource("3_1ykmp")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="menu/Main/TitlePanel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -189.0
+offset_top = -11.5
+offset_right = -22.0
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_xigph")
+theme_override_font_sizes/font_size = 16
+text = "super's hide and seek"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SeekerPicker" type="Control" parent="menu" node_paths=PackedStringArray("_seekersHolder", "_currentSeeker")]
 visible = false

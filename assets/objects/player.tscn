@@ -143,11 +143,10 @@ _corePlayer = NodePath("..")
 script = ExtResource("2_7muya")
 _corePlayer = NodePath("..")
 
-[node name="RPCEvents" type="Node" parent="." node_paths=PackedStringArray("_light", "_corePlayer", "_voiceEmitter")]
+[node name="RPCEvents" type="Node" parent="." node_paths=PackedStringArray("_light", "_corePlayer")]
 script = ExtResource("2_1qp14")
 _light = NodePath("../neckOffset/Neck/network_light")
 _corePlayer = NodePath("..")
-_voiceEmitter = NodePath("")
 
 [node name="VoiceEmitter" type="Node" parent="." node_paths=PackedStringArray("targetEmitter", "targetPlayer", "_talkingSprite", "_mutedSprite")]
 script = ExtResource("9_x2vy3")

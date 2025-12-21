@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://6g6cls708sff"]
+[gd_scene load_steps=17 format=3 uid="uid://6g6cls708sff"]
 
 [ext_resource type="Script" uid="uid://b77mlexn74h6b" path="res://assets/scripts/player_hud.gd" id="1_yt60p"]
 [ext_resource type="Script" uid="uid://b2w0f136ykcd2" path="res://assets/scripts/hud/seeking.gd" id="2_0qdgq"]
@@ -9,6 +9,9 @@
 [ext_resource type="Script" uid="uid://c11780ui54qe4" path="res://assets/scripts/hud/chat.gd" id="5_8shm4"]
 [ext_resource type="Script" uid="uid://r3ygy2864cqn" path="res://assets/scripts/hud/timer.gd" id="6_evoih"]
 [ext_resource type="Texture2D" uid="uid://dmgtpya8jh4rf" path="res://assets/images/icons/old-microphoneMUTED.png" id="7_2nd5j"]
+[ext_resource type="Texture2D" uid="uid://bil5evvf1c6bd" path="res://assets/images/shnsicon.png" id="9_3adly"]
+[ext_resource type="Script" uid="uid://b656htjltynoi" path="res://assets/scripts/hud/pause.gd" id="9_3607w"]
+[ext_resource type="FontFile" uid="uid://cfxb2x8c377u6" path="res://assets/fonts/Comic Sans MS.ttf" id="10_6xpvq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_evoih"]
 line_spacing = 2.0
@@ -305,6 +308,96 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 bbcode_enabled = true
+
+[node name="Pause" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_3607w")
+
+[node name="ColorRect" type="ColorRect" parent="Pause"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4862745)
+
+[node name="TitlePanel" type="Panel" parent="Pause"]
+layout_mode = 1
+offset_left = 33.0
+offset_top = 52.0
+offset_right = 337.0
+offset_bottom = 113.0
+
+[node name="Icon" type="TextureRect" parent="Pause/TitlePanel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_vertical = 2
+texture = ExtResource("9_3adly")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="Pause/TitlePanel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -189.0
+offset_top = -11.5
+offset_right = -22.0
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_6xpvq")
+theme_override_font_sizes/font_size = 16
+text = "super's hide and seek"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonsList" type="VBoxContainer" parent="Pause"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 35.0
+offset_top = -164.0
+offset_right = 160.0
+offset_bottom = 211.0
+grow_vertical = 2
+
+[node name="RESUME" type="Button" parent="Pause/ButtonsList"]
+layout_mode = 2
+text = "Resume Game"
+
+[node name="HSeparator" type="HSeparator" parent="Pause/ButtonsList"]
+layout_mode = 2
+
+[node name="OPTIONS" type="Button" parent="Pause/ButtonsList"]
+layout_mode = 2
+text = "Options"
+
+[node name="HSeparator2" type="HSeparator" parent="Pause/ButtonsList"]
+layout_mode = 2
+
+[node name="DISCONNECT" type="Button" parent="Pause/ButtonsList"]
+layout_mode = 2
+text = "Disconnect"
+
+[node name="QUIT" type="Button" parent="Pause/ButtonsList"]
+layout_mode = 2
+text = "Quit"
 
 [node name="MutedMic" type="TextureRect" parent="."]
 visible = false

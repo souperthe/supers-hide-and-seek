@@ -17,6 +17,8 @@ var gameData:Dictionary = {
 }
 
 func _ready() -> void:
+	Networking.networkRNG.randomize() # temp
+	
 	seekTimer.timeout.connect(endGame.rpc)
 	hideTimer.timeout.connect(_on_counting_finished)
 	SignalManager.peerDied.connect(_on_peer_died)
@@ -45,6 +47,10 @@ func _on_peer_left(pid: int) -> void:
 	hiders.erase(pid)
 	if multiplayer.is_server():
 		if seekers.size() <= 0: endGame.rpc(superEnum.endGameReason.seekersLeft)
+
+@rpc("any_peer","call_remote","reliable")
+func get_rng_seed() -> int:
+	return Networking.networkRNG.seed
 
 @rpc("authority","call_local","reliable")
 func endGame(reason: superEnum.endGameReason=superEnum.endGameReason.hidersWin):
@@ -101,7 +107,9 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 	print(desiredData)
 	
 	Steam.setLobbyJoinable(Networking.lobby.currentLobbyId,false)
-	Networking.networkRNG.seed = 67420 * 143 # TODO temporary
+	if not multiplayer.is_server():
+		Networking.networkRNG.seed = await RpcAwait.send_rpc(1,get_rng_seed)
+	print(Networking.networkRNG.seed)
 	
 	hideTimer.wait_time = desiredData.hide_time
 	seekTimer.wait_time = desiredData.seek_time
