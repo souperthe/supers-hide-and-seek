@@ -46,6 +46,8 @@ var currentTeam:superEnum.teams = superEnum.teams.hider
 
 @export var interactRay:RayCast3D
 
+@export var raycastListener:RaytracedAudioListener
+
 var cameraInput:bool = true
 
 var cameraDir:Vector3
@@ -229,6 +231,8 @@ func _setupOthers() -> void:
 	return
 
 func _setupAuthority()->void:
+	raycastListener.is_enabled = true
+	raycastListener.make_current()
 	camera.clear_current()
 	
 	Networking.localPlayer = self
