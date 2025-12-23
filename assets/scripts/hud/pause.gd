@@ -22,3 +22,17 @@ func _process(_delta: float) -> void:
 			visible_others(false)
 			show()
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+func _on_resume_pressed() -> void:
+	visible_others(true)
+	hide()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func _on_options_pressed() -> void:
+	pass # Replace with function body.
+
+func _on_disconnect_pressed() -> void:
+	Networking.lobby.clientDisconnect()
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()

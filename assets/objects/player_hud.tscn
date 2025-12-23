@@ -426,3 +426,8 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_alignment = 1
+
+[connection signal="pressed" from="Pause/ButtonsList/RESUME" to="Pause" method="_on_resume_pressed"]
+[connection signal="pressed" from="Pause/ButtonsList/OPTIONS" to="Pause" method="_on_options_pressed"]
+[connection signal="pressed" from="Pause/ButtonsList/DISCONNECT" to="Pause" method="_on_disconnect_pressed"]
+[connection signal="pressed" from="Pause/ButtonsList/QUIT" to="Pause" method="_on_quit_pressed"]
