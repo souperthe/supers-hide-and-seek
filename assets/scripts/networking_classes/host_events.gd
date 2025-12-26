@@ -47,6 +47,7 @@ func _on_peer_left(pid: int) -> void:
 	hiders.erase(pid)
 	if multiplayer.is_server():
 		if seekers.size() <= 0: endGame.rpc(superEnum.endGameReason.seekersLeft)
+		if hiders.size() <= 0: endGame.rpc(superEnum.endGameReason.seekersWin)
 
 @rpc("any_peer","call_remote","reliable")
 func get_rng_seed() -> int:
