@@ -23,6 +23,8 @@ This project aims to recreate that in a more light-weight and optimized form in 
 - https://github.com/sourcesounds/hl2
 - https://sounds.spriters-resource.com/pc_computer/toontownonline/asset/397892/
 - https://sounds.spriters-resource.com/pc_computer/baldisbasicsineducationandlearning/
+### SPRITES/IMAGES
+- https://kenney.nl/assets/particle-pack
 
 ## REQUIREMENTS
 
