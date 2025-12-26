@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://c8i5i2af5ohaf"]
+[gd_scene load_steps=57 format=3 uid="uid://c8i5i2af5ohaf"]
 
 [ext_resource type="Script" uid="uid://jrbuo0ken0kb" path="res://assets/scripts/player.gd" id="1_ikdab"]
 [ext_resource type="Script" uid="uid://bmoapp8kdmh2f" path="res://assets/scripts/rpc_events.gd" id="2_1qp14"]
@@ -45,10 +45,11 @@
 [ext_resource type="Script" uid="uid://detl8rd5n36jw" path="res://assets/scripts/controller_actions/baldi/idle.gd" id="34_jg5mb"]
 [ext_resource type="Script" uid="uid://e8b2pj45yomg" path="res://assets/scripts/controller_actions/baldi/slap.gd" id="34_lnwx1"]
 [ext_resource type="Script" uid="uid://de1xskh0bq0a7" path="res://assets/scripts/controller_actions/baldi/jump.gd" id="36_ti3fm"]
-[ext_resource type="Script" path="res://assets/scripts/controller_actions/baldi/teleport.gd" id="38_1e2mi"]
-[ext_resource type="Script" path="res://assets/scripts/controller_actions/baldi/climb.gd" id="39_2fydn"]
+[ext_resource type="Script" uid="uid://dujy2opa7ckve" path="res://assets/scripts/controller_actions/baldi/teleport.gd" id="38_1e2mi"]
+[ext_resource type="Script" uid="uid://brh5u0fj5r31d" path="res://assets/scripts/controller_actions/baldi/climb.gd" id="39_2fydn"]
 [ext_resource type="PackedScene" uid="uid://c0mev0qdw1gxh" path="res://assets/objects/baldi_doormarker.tscn" id="39_x2vy3"]
 [ext_resource type="Script" uid="uid://bjpmu5sklv5h8" path="res://addons/raytraced_audio/raytraced_audio_listener.gd" id="48_knge3"]
+[ext_resource type="Texture2D" uid="uid://cdk7rffjw41l8" path="res://assets/images/light_01.png" id="49_5jbsy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ikdab"]
 radius = 0.3
@@ -345,6 +346,7 @@ top_level = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.22825933)
 visible = false
 light_energy = 2.0
+light_projector = ExtResource("49_5jbsy")
 light_cull_mask = 4294967293
 shadow_enabled = true
 shadow_caster_mask = 4294967293
@@ -374,6 +376,7 @@ metadata/_custom_type_script = "uid://bjpmu5sklv5h8"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.22825933)
 visible = false
 light_energy = 2.0
+light_projector = ExtResource("49_5jbsy")
 shadow_enabled = true
 spot_range = 15.244
 spot_angle = 43.15
