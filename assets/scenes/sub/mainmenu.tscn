@@ -42,14 +42,10 @@ horizontal_alignment = 1
 
 [node name="ButtonsList" type="VBoxContainer" parent="menu/Main"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 35.0
-offset_top = -164.0
-offset_right = 165.0
-offset_bottom = 211.0
-grow_vertical = 2
+offset_left = 33.0
+offset_top = 144.0
+offset_right = 163.0
+offset_bottom = 519.0
 
 [node name="NetworkingType" type="OptionButton" parent="menu/Main/ButtonsList"]
 layout_mode = 2
