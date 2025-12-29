@@ -6,8 +6,8 @@ transform = Transform3D(1, 0, 0, 0, 0.040009648, 0.99919933, 0, -0.99919933, 0.0
 [node name="SpotLight3D4" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
 light_color = Color(0.9999998, 0.90088296, 0.82616967, 1)
+light_bake_mode = 1
 shadow_enabled = true
-shadow_bias = 0.005
 distance_fade_enabled = true
 distance_fade_shadow = 20.0
 spot_range = 14.433
