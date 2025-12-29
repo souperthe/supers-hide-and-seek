@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://c8i5i2af5ohaf"]
+[gd_scene load_steps=60 format=3 uid="uid://c8i5i2af5ohaf"]
 
 [ext_resource type="Script" uid="uid://jrbuo0ken0kb" path="res://assets/scripts/player.gd" id="1_ikdab"]
 [ext_resource type="Script" uid="uid://bmoapp8kdmh2f" path="res://assets/scripts/rpc_events.gd" id="2_1qp14"]
@@ -50,6 +50,7 @@
 [ext_resource type="PackedScene" uid="uid://c0mev0qdw1gxh" path="res://assets/objects/baldi_doormarker.tscn" id="39_x2vy3"]
 [ext_resource type="Script" uid="uid://bjpmu5sklv5h8" path="res://addons/raytraced_audio/raytraced_audio_listener.gd" id="48_knge3"]
 [ext_resource type="Texture2D" uid="uid://cdk7rffjw41l8" path="res://assets/images/light_01.png" id="49_5jbsy"]
+[ext_resource type="Shader" uid="uid://37d8oyr0a1ge" path="res://assets/shaders/retro.gdshader" id="50_wh3vi"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ikdab"]
 radius = 0.3
@@ -57,6 +58,17 @@ radius = 0.3
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5pvfp"]
 radius = 0.3
 height = 1.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u75jc"]
+render_priority = 0
+shader = ExtResource("50_wh3vi")
+shader_parameter/levels = 15.000000223518
+shader_parameter/gamma = Vector2(0.125, 10)
+
+[sub_resource type="QuadMesh" id="QuadMesh_pb6fc"]
+material = SubResource("ShaderMaterial_u75jc")
+flip_faces = true
+size = Vector2(2, 2)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8wh5m"]
 radius = 1.3088431
@@ -371,6 +383,12 @@ collide_with_areas = true
 script = ExtResource("48_knge3")
 is_enabled = false
 metadata/_custom_type_script = "uid://bjpmu5sklv5h8"
+
+[node name="posterization" type="MeshInstance3D" parent="neckOffset/Neck/viewbobPivot/tiltPivot/cameraArm/Camera3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0, 0, 0)
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_pb6fc")
 
 [node name="network_light" type="SpotLight3D" parent="neckOffset/Neck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.22825933)

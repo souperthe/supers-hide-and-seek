@@ -114,10 +114,10 @@ func _checkVoice() -> void:
 
 	if voiceData['result'] == Steam.VOICE_RESULT_OK and voiceData['written']:
 		if hasLoopback:
-			print("debug debug")
+			#print("debug debug")
 			_processVoice.rpc(voiceData)
-	#else:
-		#print("uh oh, what went wrong here? %s" % voiceData["result"])
+	else:
+		print("uh oh, what went wrong here? %s" % voiceData["result"])
 	return
 	
 	

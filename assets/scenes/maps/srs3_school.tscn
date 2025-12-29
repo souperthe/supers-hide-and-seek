@@ -10,6 +10,7 @@
 
 [sub_resource type="Environment" id="Environment_fqlla"]
 background_mode = 1
+tonemap_mode = 3
 glow_blend_mode = 0
 glow_hdr_threshold = 0.41
 glow_hdr_scale = 0.0
@@ -28,7 +29,8 @@ uv1_scale = Vector3(76, 76, 76)
 environment = SubResource("Environment_fqlla")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-visible = false
+shadow_enabled = true
+sky_mode = 2
 
 [node name="Lights" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14903617, 0)

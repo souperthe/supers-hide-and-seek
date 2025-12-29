@@ -69,6 +69,9 @@ var firstPerson:bool = true
 var seeking:bool = false
 var freeze:bool = false
 
+var max_zoom: float = 5
+var min_zoom: float = 1
+
 const walk_speed : float = 12.1
 const sprint_speed : float = 18.1
 const ground_accel : float = 12.0
@@ -181,7 +184,7 @@ func loadSeeker(seekerName:String) -> void:
 		SignalManager.becameSeeker.emit(desiredSeeker)
 	
 		if !firstPerson:
-			cameraArm.spring_length = 5
+			cameraArm.spring_length = max_zoom
 		else:
 			cameraArm.spring_length = 0
 			util.setShadows(
@@ -223,6 +226,7 @@ func rotateToWish(delta: float) -> void:
 func _setupOthers() -> void:
 	$playerHud.queue_free()
 	$seekerHud.queue_free()
+	%posterization.queue_free()
 	
 	set_process(false)
 	set_physics_process(false)
@@ -304,5 +308,10 @@ func _unhandled_input(event: InputEvent) -> void:
 				rotate_y(-event.relative.x * global.look_sensitivity)
 			else:
 				neckOffset.rotate_y(-event.relative.x * global.look_sensitivity)
+		if not firstPerson:
+			if event.is_action("mousewheelup"):
+				cameraArm.spring_length = clamp(cameraArm.spring_length - 0.2,min_zoom,max_zoom)
+			elif event.is_action("mousewheeldown"):
+				cameraArm.spring_length = clamp(cameraArm.spring_length + 0.2,min_zoom,max_zoom)
 			
 	return
