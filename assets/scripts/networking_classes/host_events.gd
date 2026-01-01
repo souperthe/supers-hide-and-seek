@@ -9,7 +9,7 @@ var isOver:bool = false
 
 var currentData:Dictionary = {}
 var gameData:Dictionary = {
-	map = "srs3_school",
+	map = "testmap",
 	seekers = [1],
 	seek_time = 600, # time for seekers to seek
 	hide_time = 20, # time for hiders to hide
@@ -102,6 +102,8 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 	if !multiplayer.get_remote_sender_id() == 1:
 		return
 	
+	var isalone : bool = Networking.players.size() == 1
+	print("is alone %s" % isalone)
 	isOver = false
 	hiders.clear()
 	print("starting game...")
@@ -112,7 +114,10 @@ func startGame(desiredData:Dictionary=gameData) -> void:
 		Networking.networkRNG.seed = await RpcAwait.send_rpc(1,get_rng_seed)
 	print(Networking.networkRNG.seed)
 	
-	hideTimer.wait_time = desiredData.hide_time
+	if isalone:
+		hideTimer.wait_time = 1
+	else:
+		hideTimer.wait_time = desiredData.hide_time
 	seekTimer.wait_time = desiredData.seek_time
 	
 	currentData = desiredData

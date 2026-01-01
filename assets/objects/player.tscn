@@ -62,7 +62,7 @@ height = 1.2
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u75jc"]
 render_priority = 0
 shader = ExtResource("50_wh3vi")
-shader_parameter/levels = 15.000000223518
+shader_parameter/levels = 20.000000298024
 shader_parameter/gamma = Vector2(0.125, 10)
 
 [sub_resource type="QuadMesh" id="QuadMesh_pb6fc"]
@@ -387,6 +387,7 @@ metadata/_custom_type_script = "uid://bjpmu5sklv5h8"
 [node name="posterization" type="MeshInstance3D" parent="neckOffset/Neck/viewbobPivot/tiltPivot/cameraArm/Camera3D"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0, 0, 0)
+visible = false
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_pb6fc")
 
