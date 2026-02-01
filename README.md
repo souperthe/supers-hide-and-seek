@@ -26,9 +26,16 @@ This project aims to recreate that in a more light-weight and optimized form in 
 ### SPRITES/IMAGES
 - https://kenney.nl/assets/particle-pack
 
+## USEFUL COMMANDS (press `)
+    create_lobby steam
+  this creates a lobby with steam P2P, the host button on the menu creates a lan lobby
+  
+    connect_lobby LOBBYID
+  joins a lobby
+
 ## REQUIREMENTS
 
-- [GodotSteam MultiplayerPeer v4.5.1](https://codeberg.org/godotsteam/multiplayerpeer/releases/tag/v4.16.2)
+- [GodotSteam MultiplayerPeer v4.5.1](https://codeberg.org/godotsteam/multiplayerpeer/releases/tag/v4.16.2) (you could also use regular godot, but this is setup on multiplayer-peer with Spacewar so i wouldn't reccomend.)
 - [Steam (duh)](https://store.steampowered.com/)
 - [Blender (for model imports)](https://www.blender.org/)
 
@@ -39,7 +46,6 @@ This project aims to recreate that in a more light-weight and optimized form in 
   
 ### We may or may not
   
-- Publish additional releases in the future
 - Create technical documentation
   
 ### Please read the license before using this software.
