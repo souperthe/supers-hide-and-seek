@@ -27,8 +27,10 @@ This project aims to recreate that in a more light-weight and optimized form in 
 - https://kenney.nl/assets/particle-pack
 
 ## USEFUL COMMANDS
-- create_lobby steam (creates a lobby with steam p2p)
-- connect_lobby LOBBYID (joins a lobby)
+-        create_lobby steam
+  this creates a lobby with steam P2P, the host button on the menu creates a lan lobby
+-        connect_lobby LOBBYID
+  joins a lobby
 
 ## REQUIREMENTS
 
