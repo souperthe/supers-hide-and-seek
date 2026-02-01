@@ -39,7 +39,6 @@ This project aims to recreate that in a more light-weight and optimized form in 
   
 ### We may or may not
   
-- Publish additional releases in the future
 - Create technical documentation
   
 ### Please read the license before using this software.
