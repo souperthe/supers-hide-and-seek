@@ -26,7 +26,7 @@ This project aims to recreate that in a more light-weight and optimized form in 
 ### SPRITES/IMAGES
 - https://kenney.nl/assets/particle-pack
 
-## USEFUL COMMANDS
+## USEFUL COMMANDS (press `)
     create_lobby steam
   this creates a lobby with steam P2P, the host button on the menu creates a lan lobby
   
