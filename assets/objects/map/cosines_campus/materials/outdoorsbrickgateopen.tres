@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dq5uowjbocyp4"]
+
+[ext_resource type="Texture2D" uid="uid://q4plf7aqtaj7" path="res://graphics/textures/outdoorsredbrickbar2.png" id="1_ey6hq"]
+
+[resource]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_ey6hq")
+texture_filter = 0

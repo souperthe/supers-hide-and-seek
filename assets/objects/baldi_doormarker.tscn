@@ -40,6 +40,7 @@ pixel_size = 0.0034
 billboard = 1
 no_depth_test = true
 fixed_size = true
+texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_dtdag")
 frame_progress = 0.27538005
 

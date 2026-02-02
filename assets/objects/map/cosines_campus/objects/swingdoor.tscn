@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://cvc5bei20cc2j"]
+
+[ext_resource type="Material" uid="uid://b7ilf8h8rn8lm" path="res://assets/objects/map/cosines_campus/materials/swingdoor.tres" id="1_ecygw"]
+[ext_resource type="Script" uid="uid://yi70iflpdkux" path="res://assets/scripts/cosineDoor.gd" id="2_0b8ad"]
+[ext_resource type="AudioStream" uid="uid://cbfx2nvmd44of" path="res://assets/sound/sfx/doors/cosine/door1.wav" id="3_gkbfb"]
+[ext_resource type="Material" uid="uid://cwso06sxg1tgo" path="res://assets/objects/map/cosines_campus/materials/swingdoorbrownbrickopen.tres" id="3_htdrv"]
+[ext_resource type="AudioStream" uid="uid://bdf1eco455jwn" path="res://assets/sound/sfx/doors/cosine/door2.wav" id="4_vodld"]
+[ext_resource type="Shape3D" uid="uid://r8ck7rcbe7c1" path="res://assets/objects/map/cosines_campus/collisionboxes/doublewallcollision.tres" id="6_wxxa4"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vqmyg"]
+material = ExtResource("1_ecygw")
+orientation = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_oda2v"]
+material = ExtResource("3_htdrv")
+orientation = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_catog"]
+size = Vector3(0.1, 2, 2)
+
+[node name="SwingDoor" type="MeshInstance3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 1)
+mesh = SubResource("PlaneMesh_vqmyg")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_ecygw")
+script = ExtResource("2_0b8ad")
+DoorType = "SwingDoor"
+
+[node name="DoorBack" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_oda2v")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_ecygw")
+
+[node name="DoorOpen" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_gkbfb")
+max_distance = 20.0
+bus = &"3DSFX"
+attenuation_filter_cutoff_hz = 20500.0
+
+[node name="DoorClose" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_vodld")
+max_distance = 20.0
+bus = &"3DSFX"
+attenuation_filter_cutoff_hz = 20500.0
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_catog")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = ExtResource("6_wxxa4")
+disabled = true
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

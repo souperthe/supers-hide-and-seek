@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://gai60ajimqfx"]
+
+[ext_resource type="Texture2D" uid="uid://cgx3rxjy8agan" path="res://assets/objects/map/cosines_campus/textures/redwall4 cosine.png" id="1_keco7"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_keco7")
+texture_filter = 0

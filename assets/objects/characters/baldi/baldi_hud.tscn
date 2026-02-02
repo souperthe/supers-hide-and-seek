@@ -92,6 +92,7 @@ offset_top = -648.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
+mouse_filter = 2
 texture = ExtResource("2_qgpc8")
 
 [node name="TeleporterList" type="VBoxContainer" parent="."]

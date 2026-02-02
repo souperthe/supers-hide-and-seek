@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dglyahvwuit7x"]
+
+[ext_resource type="Texture2D" uid="uid://b4haasnsns5eu" path="res://assets/objects/map/cosines_campus/textures/outdoorsredbrick6.png" id="1_o5xd1"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_o5xd1")
+texture_filter = 0

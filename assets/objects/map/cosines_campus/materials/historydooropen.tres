@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bomif58v1ir1e"]
+
+[ext_resource type="Texture2D" uid="uid://b3c3lbg77018t" path="res://assets/objects/map/cosines_campus/textures/brickwall6 cosine.png" id="1_yvils"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_yvils")
+texture_filter = 0

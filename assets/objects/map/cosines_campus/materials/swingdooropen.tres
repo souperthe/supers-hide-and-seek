@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://l88op7cm77c3"]
+
+[ext_resource type="Texture2D" uid="uid://ccv46w38x1ab6" path="res://assets/objects/map/cosines_campus/textures/swingdoor2 cosine.png" id="1_jqlbv"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_jqlbv")
+texture_filter = 0

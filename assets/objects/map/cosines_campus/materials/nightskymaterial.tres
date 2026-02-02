@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://ciqkg8ppo8ag7"]
+
+[ext_resource type="Shader" uid="uid://ch0ov24w5kphr" path="res://assets/shaders/sky.gdshader" id="1_pg5xd"]
+[ext_resource type="Texture2D" uid="uid://ctd5owskkix5a" path="res://assets/objects/map/cosines_campus/textures/cosinenightsky2.png" id="2_oes3n"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_pg5xd")
+shader_parameter/lock_aspect = true
+shader_parameter/aspect_ratio = 2.0
+shader_parameter/fov = Vector2(150, 150)
+shader_parameter/tiling = Vector2i(1, 1)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/sky_texture = ExtResource("2_oes3n")

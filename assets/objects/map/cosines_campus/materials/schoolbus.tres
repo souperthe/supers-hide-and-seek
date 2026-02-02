@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://caf7q677xrq26"]
+
+[ext_resource type="Texture2D" uid="uid://q5h6jc3tgxo7" path="res://assets/objects/map/cosines_campus/textures/schoolbus2.png" id="1_ppho6"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_ppho6")
+texture_filter = 0

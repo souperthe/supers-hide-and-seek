@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cu1kdmekv1q5j"]
+
+[ext_resource type="Texture2D" uid="uid://b4tol0qe7h6tx" path="res://assets/objects/map/cosines_campus/textures/carpet texturecosine.png" id="1_0sjt5"]
+
+[resource]
+albedo_texture = ExtResource("1_0sjt5")
+texture_filter = 4

@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://4tgc6qmbnyr5"]
+
+[ext_resource type="Texture2D" uid="uid://davvh4dbamp84" path="res://assets/objects/map/cosines_campus/textures/brownbrickwall1.png" id="1_otore"]
+
+[resource]
+albedo_texture = ExtResource("1_otore")
+texture_filter = 0

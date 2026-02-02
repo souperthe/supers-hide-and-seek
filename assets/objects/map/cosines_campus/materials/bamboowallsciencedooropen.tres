@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bq3d3xppnyoje"]
+
+[ext_resource type="Texture2D" uid="uid://bdhfqb4joatqc" path="res://assets/objects/map/cosines_campus/textures/greenwall4.png" id="1_kwi22"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_kwi22")
+texture_filter = 0

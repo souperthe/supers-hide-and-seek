@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cwso06sxg1tgo"]
+
+[ext_resource type="Texture2D" uid="uid://crg2vg50oe0pj" path="res://assets/objects/map/cosines_campus/textures/swingdoor2 brownbrick.png" id="1_njnu0"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_njnu0")
+texture_filter = 0

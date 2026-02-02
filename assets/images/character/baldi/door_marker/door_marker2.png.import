@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cpj5xh1heywe"
-path.s3tc="res://.godot/imported/door_marker2.png-7a67034b486bb16ec52a938e7ca90291.s3tc.ctex"
+path="res://.godot/imported/door_marker2.png-7a67034b486bb16ec52a938e7ca90291.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/images/character/baldi/door_marker/door_marker2.png"
-dest_files=["res://.godot/imported/door_marker2.png-7a67034b486bb16ec52a938e7ca90291.s3tc.ctex"]
+dest_files=["res://.godot/imported/door_marker2.png-7a67034b486bb16ec52a938e7ca90291.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

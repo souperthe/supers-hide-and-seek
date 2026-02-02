@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bnnx0ewfqutbi"]
+
+[ext_resource type="Texture2D" uid="uid://75eyxl0mjlyx" path="res://assets/objects/map/cosines_campus/textures/swingdooroutdoorsredbrickopen.png" id="1_ylv5t"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_ylv5t")
+texture_filter = 0

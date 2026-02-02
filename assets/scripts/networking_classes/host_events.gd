@@ -9,7 +9,7 @@ var isOver:bool = false
 
 var currentData:Dictionary = {}
 var gameData:Dictionary = {
-	map = "testmap",
+	map = "cosines_campus",
 	seekers = [1],
 	seek_time = 600, # time for seekers to seek
 	hide_time = 20, # time for hiders to hide

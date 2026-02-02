@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://baofcpuortut3"]
+
+[ext_resource type="Texture2D" uid="uid://n8crksjwbxlv" path="res://assets/objects/map/cosines_campus/textures/fence texturecosine.png" id="1_n1qdu"]
+
+[resource]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("1_n1qdu")
+texture_filter = 0

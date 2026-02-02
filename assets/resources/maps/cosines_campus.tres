@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SelectableMap" load_steps=4 format=3 uid="uid://bjiuuudcp3kyu"]
+
+[ext_resource type="Texture2D" uid="uid://5do1dx5k4a5x" path="res://assets/images/icons/steamuser99butpixelated.png" id="1_bm2bl"]
+[ext_resource type="PackedScene" uid="uid://bm5e5pxedu7n3" path="res://assets/scenes/maps/cosines_campus.tscn" id="2_bm2bl"]
+[ext_resource type="Script" uid="uid://f2byg5kj3h40" path="res://assets/scripts/map_resource.gd" id="3_v02po"]
+
+[resource]
+script = ExtResource("3_v02po")
+mapName = "Cosine's Campus"
+mapIcon = ExtResource("1_bm2bl")
+mapScene = ExtResource("2_bm2bl")

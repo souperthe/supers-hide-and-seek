@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dg5ue13h0u6kt"
-path.s3tc="res://.godot/imported/baloontemp.png-1269e96b09225d89d2c1e838699d0300.s3tc.ctex"
+path="res://.godot/imported/baloontemp.png-1269e96b09225d89d2c1e838699d0300.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/models/characters/baldi/baloontemp.png"
-dest_files=["res://.godot/imported/baloontemp.png-1269e96b09225d89d2c1e838699d0300.s3tc.ctex"]
+dest_files=["res://.godot/imported/baloontemp.png-1269e96b09225d89d2c1e838699d0300.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

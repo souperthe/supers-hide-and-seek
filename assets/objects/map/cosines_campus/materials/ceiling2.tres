@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://k13ti1n3270w"]
+
+[ext_resource type="Texture2D" uid="uid://12ghu4dgqahj" path="res://assets/objects/map/cosines_campus/textures/ceiling texture2 cosine.png" id="1_aqw2v"]
+
+[resource]
+cull_mode = 2
+albedo_texture = ExtResource("1_aqw2v")
+texture_filter = 0

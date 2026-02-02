@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c0iw648cunaic"]
+
+[ext_resource type="Texture2D" uid="uid://bnhoohqckjw3i" path="res://assets/objects/map/cosines_campus/textures/funny cyantile.png" id="1_si1nt"]
+
+[resource]
+albedo_texture = ExtResource("1_si1nt")
+texture_filter = 0
