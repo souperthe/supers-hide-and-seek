@@ -1,4 +1,4 @@
-[gd_scene load_steps=1489 format=3 uid="uid://bm5e5pxedu7n3"]
+[gd_scene load_steps=1490 format=3 uid="uid://bm5e5pxedu7n3"]
 
 [ext_resource type="Material" uid="uid://cu1kdmekv1q5j" path="res://assets/objects/map/cosines_campus/materials/floorcarpet.tres" id="5"]
 [ext_resource type="Material" uid="uid://dqxxbjssef7j" path="res://assets/objects/map/cosines_campus/materials/coloredwoodwall.tres" id="6"]
@@ -5387,6 +5387,11 @@ size = Vector3(45, 1, 35.85)
 [sub_resource type="BoxMesh" id="BoxMesh_s73lp"]
 material = SubResource("StandardMaterial3D_ocsj2")
 size = Vector3(36, 1, 35.85)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ocsj2"]
+material = ExtResource("75")
+flip_faces = true
+size = Vector3(500, 3, 500)
 
 [sub_resource type="BoxMesh" id="BoxMesh_odna6"]
 material = SubResource("StandardMaterial3D_ocsj2")
@@ -65922,6 +65927,11 @@ mesh = SubResource("BoxMesh_s73lp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.545456, 2.5166495, 45.15308)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_s73lp")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="MapGeometry/ThingsToPreventYouFromLookingOutsideTooEasily"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.545456, 9.243924, 45.15308)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_ocsj2")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="MapGeometry/ThingsToPreventYouFromLookingOutsideTooEasily"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.090912, 2.5166495, 76.97126)
