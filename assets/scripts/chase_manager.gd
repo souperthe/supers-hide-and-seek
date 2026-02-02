@@ -11,7 +11,7 @@ class_name ChaseManager extends Node
 var inchase: bool = false
 var alreadyPlayingChase: bool = false
 var killer: Player = null
-var playthemes: bool = false
+var playthemes: bool = true
 
 func calcSound(distance: float) -> float:
 	
