@@ -8,6 +8,10 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Super's Hide & Seek"
@@ -15,16 +19,17 @@ config/tags=PackedStringArray("game")
 run/main_scene="uid://l0fnoreb82o8"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="SHNS"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
-boot_splash/fullsize=false
+boot_splash/stretch_mode=0
 boot_splash/use_filter=false
 config/icon="uid://bil5evvf1c6bd"
 config/windows_native_icon="res://icon.ico"
 
 [audio]
 
+buses/default_bus_layout="uid://pqaumok8tfot"
 general/3d_panning_strength=1.0
 driver/enable_input=true
 driver/mix_rate=48000
@@ -36,7 +41,7 @@ util="*res://assets/scripts/util.gd"
 Networking="*res://assets/objects/autoload/networking.tscn"
 superEnum="*res://assets/scripts/super_enum.gd"
 SignalManager="*res://assets/scripts/signal_manager.gd"
-Console="*res://addons/console/console.gd"
+Console="*uid://ouiu5xh1cs8n"
 RpcAwait="*res://addons/rpc-await/rpc_await.gd"
 
 [editor_plugins]
